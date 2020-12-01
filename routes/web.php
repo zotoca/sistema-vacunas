@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+
+Route::get("/iniciar-sesion", "App\Http\Controllers\AuthController@showLogin");
+Route::post("/do-login", "App\Http\Controllers\AuthController@doLogin");
+
+Route::group(["middleware" => "auth"], function(){
+    Route::get("/panel", "App\Http\Controllers\DashboardController@index");
+});
