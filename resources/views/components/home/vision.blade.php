@@ -1,5 +1,5 @@
-<section class="section" id="vision">
-    <h2 class="title title-big text-right">Visión</h2>
+<section class="section" data-aos="fade-up">
+    <h2 class="title title-big text-right title-underline">Visión</h2>
     <div class="row mb-5 mt-5">
         <div class="col-5 vision"> 
             <img src="{{asset("images/vision.png")}}" alt="Misión del proyecto" class="img-fluid">

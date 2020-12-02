@@ -1,5 +1,5 @@
-<section class="mt-5">
-    <h2 class="title title-big">Caracteristicas</h2>
+<section class="section" data-aos="fade-up" id="mision">
+    <h2 class="title title-big title-underline">Caracteristicas</h2>
     <div class="row mt-5 mb-5">
         <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
             <div class="card border-0 shadow-lg">
