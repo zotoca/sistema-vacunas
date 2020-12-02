@@ -1,4 +1,4 @@
-<div class="jumbotron bg-white">
+<div class="jumbotron bg-white" data-aos="fade-up">
     <div class="row">
         <div class="col-lg-6">
             <h1 class="display-4 title mb-4">Sistema vacunativo</h1>

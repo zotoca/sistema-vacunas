@@ -1,5 +1,5 @@
-<section class="section" id="mision">
-    <h2 class="title title-big">Misión</h2>
+<section class="section" data-aos="fade-up" id="vision">
+    <h2 class="title title-big title-underline">Misión</h2>
     <div class="row mb-5 mt-5">
         <div class="col-md-12 col-lg-7">
             <p class="lead">

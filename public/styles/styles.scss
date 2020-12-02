@@ -2,6 +2,7 @@
 
 $font-text: "Lato", sans-serif, Arial;
 $title: "Archivo Black", Impact;
+$title-underline-width: calc(4% + 10px);
 $title-size: 2.5rem;
 $color-primary: #007bff;
 $transition-time: 0.2s;
@@ -25,6 +26,25 @@ body {
 .title {
     font-family: $title;
     font-weight: bold;
+
+    &.title-underline {
+        position: relative;
+        &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            left: 0;
+            bottom: -12px;
+            background: $color-primary;
+            width: $title-underline-width;
+            height: 8px;
+        }
+
+        &.text-right::before {
+            left: inherit;
+            right: 0;
+        }
+    }
 
     &.title-big {
         font-size: $title-size;
@@ -77,8 +97,13 @@ body {
     }
 }
 
-.navbar .navbar-nav .nav-item.nav-item-hover {
+.navbar-nav .nav-item.nav-item-hover {
     position: relative;
+
+    &.active::before {
+        width: 100%;
+    }
+
     &:hover::before {
         width: 100%;
     }
@@ -112,17 +137,24 @@ body {
         text-align: right;
         display: inline;
 
-        &.nav-item-hover:hover::before {
-            width: 3px;
-        }
+        &.nav-item-hover {
+            &.active::before {
+                width: 3px;
+                height: 100%;
+            }
 
-        &.nav-item-hover::before {
-            right: -8px;
-            top: 0;
-            bottom: 0;
-            height: 100%;
-            width: 0;
-            left: inherit;
+            &:hover::before {
+                width: 3px;
+            }
+
+            &::before {
+                right: -8px;
+                top: 0;
+                bottom: 0;
+                height: 100%;
+                width: 0;
+                left: inherit;
+            }
         }
     }
 }

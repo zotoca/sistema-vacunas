@@ -8,5 +8,7 @@
           @include("components.home.mision")
           @include("components.home.vision")
           @include("components.home.galery")
+          @include("components.home.OrganizationChart")
+          @include("components.footer.footer")
    </div>
 @endsection
