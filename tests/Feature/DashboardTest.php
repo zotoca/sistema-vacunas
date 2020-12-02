@@ -13,6 +13,19 @@ class DashboardTest extends TestCase
     use RefreshDatabase;
     
 
+    public function test_a_guest_cannot_see_dashboard(){
+        $this->get("/panel")
+            ->assertRedirect("/iniciar-sesion");
+
+    }
+
+    public function test_a_administrator_cannot_see_home(){
+        $this->signIn();
+
+        $this->get("/")
+            ->assertRedirect("/panel");
+    }
+
     public function test_a_administrator_see_dashboard(){
         
 
