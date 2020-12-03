@@ -14,8 +14,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
         <title>@yield("title")</title>
     </head>
-    <body>
-
+    <body style="overflow-y: hidden;">
+        @include("components.loaders.loader")
         @yield("body")
         
         <script src="{{asset("scripts/vendors/jquery-3.3.1.slim.min.js")}}" ></script>

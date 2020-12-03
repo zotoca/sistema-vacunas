@@ -1,7 +1,7 @@
 <div class="jumbotron bg-white" data-aos="fade-up">
     <div class="row">
         <div class="col-lg-6">
-            <h1 class="display-4 title mb-4">Sistema vacunativo</h1>
+            <h1 class="display-4 title title-home mb-4">Sistema vacunativo</h1>
             <p class="lead">
                 Un sistema de vacunas <strong>simple</strong> y <strong>fácil</strong> de usar, posee diversas herramientas como monitoreo de administradores y gestión de datos como casas, calles y usuarios. Proporciona un resumen diarío de
                 datos y <strong>diagramas</strong> fáciles de ver.

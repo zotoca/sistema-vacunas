@@ -1,4 +1,4 @@
-<div class="container position-sticky">
+<div class="container">
     <nav class="navbar navbar-expand-lg navbar-light mt-3">
         <a class="title navbar-brand text-uppercase" href="/">
             <img src="{{asset("images/brand.png")}}" 
