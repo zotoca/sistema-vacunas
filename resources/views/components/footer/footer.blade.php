@@ -1,4 +1,4 @@
-<footer class="pt-4 my-md-5 pt-md-5 border-top" data-aos="fade-up">
+<footer class="container pt-4 my-md-5 pt-md-5 border-top" data-aos="fade-up">
     <div class="row">
         <div class="col-12 col-md">
             <img class="mb-2" src="{{asset("images/brand.png")}}" alt="Logo de la aplicación" width="32" height="32" />
