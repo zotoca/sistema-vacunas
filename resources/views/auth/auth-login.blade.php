@@ -12,6 +12,7 @@
                 @csrf
                 @error("login")
                     <div class="alert alert-danger">
+                        <i class="fa fa-times mr-1"></i>
                         {{$message}}
                     </div>
                 @enderror
