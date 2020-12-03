@@ -95,7 +95,7 @@
                 <div class="card">
                     <img class="card-img-top img-fluid" src="{{asset("images/vacunas.png")}}">
                     <div class="card-body">
-                        <h3 class="card-title">Vacunas</h3>
+                        <h3 class="card-title title">Vacunas</h3>
                         <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi neque reiciendis sequi atque soluta, laudantium nostrum laborum consequatur distinctio p</p>
                         <a href="#" class="btn btn-block btn-primary stretched-link">Seleccionar</a>
                     </div>
@@ -106,7 +106,7 @@
                 <div class="card">
                     <img class="card-img-top img-fluid" src="{{asset("images/persons.png")}}">
                     <div class="card-body">
-                        <h3 class="card-title">Personas</h3>
+                        <h3 class="card-title title">Personas</h3>
                         <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi neque reiciendis sequi atque soluta, laudantium nostrum laborum consequatur distinctio p</p>
                         <a href="#" class="btn btn-block btn-primary stretched-link">Seleccionar</a>
                     </div>
@@ -117,7 +117,7 @@
                 <div class="card">
                     <img class="card-img-top img-fluid" src="{{asset("images/admins.png")}}">
                     <div class="card-body">
-                        <h3 class="card-title">Administradores</h3>
+                        <h3 class="card-title title">Administradores</h3>
                         <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi neque reiciendis sequi atque soluta, laudantium nostrum laborum consequatur distinctio p</p>
                         <a href="#" class="btn btn-block btn-primary stretched-link">Seleccionar</a>
                     </div>
@@ -128,7 +128,7 @@
                 <div class="card">
                     <img class="card-img-top img-fluid" src="{{asset("images/streets.png")}}">
                     <div class="card-body">
-                        <h3 class="card-title">Calles</h3>
+                        <h3 class="card-title title">Calles</h3>
                         <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi neque reiciendis sequi atque soluta, laudantium nostrum laborum consequatur distinctio p</p>
                         <a href="#" class="btn btn-block btn-primary stretched-link">Seleccionar</a>
                     </div>
@@ -139,7 +139,7 @@
                 <div class="card">
                     <img class="card-img-top img-fluid" src="{{asset("images/foro.jpg")}}">
                     <div class="card-body">
-                        <h3 class="card-title">Foro</h3>
+                        <h3 class="card-title title">Foro</h3>
                         <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi neque reiciendis sequi atque soluta, laudantium nostrum laborum consequatur distinctio p</p>
                         <a href="#" class="btn btn-block btn-primary stretched-link">Seleccionar</a>
                     </div>
@@ -150,7 +150,7 @@
                 <div class="card">
                     <img class="card-img-top img-fluid" src="{{asset("images/news.jpg")}}">
                     <div class="card-body">
-                        <h3 class="card-title">Noticias</h3>
+                        <h3 class="card-title title">Noticias</h3>
                         <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi neque reiciendis sequi atque soluta, laudantium nostrum laborum consequatur distinctio p</p>
                         <a href="#" class="btn btn-block btn-primary stretched-link">Seleccionar</a>
                     </div>

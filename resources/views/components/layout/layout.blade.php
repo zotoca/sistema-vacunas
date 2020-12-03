@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="{{asset("styles/vendors/normalize.min.css")}}" />
         <link rel="stylesheet" href="{{asset("styles/vendors/aos.css")}}" />
         <link rel="stylesheet" href="{{asset("styles/vendors/bootstrap.css")}}">
+        <link rel="stylesheet" href="{{asset("styles/vendors/lightbox.min.css")}}">
         <link rel="stylesheet" href="{{asset("styles/styles.css")}}">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="shortcut icon" href="{{asset("favicon.png")}}" type="image/png">
@@ -20,6 +21,8 @@
         
         <script src="{{asset("scripts/vendors/jquery-3.3.1.slim.min.js")}}" ></script>
         <script src="{{asset("scripts/vendors/popper.min.js")}}"></script>
+        <script src="{{asset("scripts/vendors/lightbox-plus-jquery.min.js")}}" ></script>
+        <script src="{{asset("scripts/vendors/lightbox.min.js")}}"></script>
         <script src="{{asset("scripts/vendors/bootstrap.js")}}"></script>
         <script src="{{asset("scripts/vendors/polyfill.js")}}"></script>
         <script src="{{asset("scripts/vendors/sweetalert.min.js")}}"></script>

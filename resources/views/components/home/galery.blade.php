@@ -10,13 +10,20 @@
     <div id="galery-carrusel" class="carousel slide mt-5" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="d-block w-100" src="https://picsum.photos/id/69/800/800" alt="First slide" />
+                <a href="https://picsum.photos/id/102/800/800"  data-lightbox="https://picsum.photos/id/102/800/800">
+                    <img class="d-block w-100" src="https://picsum.photos/id/102/800/800" alt="First slide" />
+                </a>
+                
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="https://picsum.photos/id/55/800/800" alt="Second slide" />
+                <a href="https://picsum.photos/id/69/800/800"  data-lightbox="https://picsum.photos/id/69/800/800">
+                    <img class="d-block w-100" src="https://picsum.photos/id/69/800/800" alt="First slide" />
+                </a>
             </div>
             <div class="carousel-item">
-                <img class="d-block w-100" src="https://picsum.photos/id/31/800/800" alt="Third slide" />
+                <a href="https://picsum.photos/id/63/800/800"  data-lightbox="https://picsum.photos/id/63/800/800">
+                    <img class="d-block w-100" src="https://picsum.photos/id/63/800/800" alt="First slide" />
+                </a>
             </div>
         </div>
         <a class="carousel-control-prev" href="#galery-carrusel" role="button" data-slide="prev">
