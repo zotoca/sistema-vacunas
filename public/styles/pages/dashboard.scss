@@ -1,3 +1,4 @@
+
 .dashboard-banner {
     background: #3ca55c;
     background: -webkit-linear-gradient(to right, #b5ac49, #3ca55c);
@@ -11,46 +12,22 @@
     max-width: 300px;
 }
 
-.card-admins,
-.card-persons,
-.card-houses,
-.card-streets {
-    i.fa {
-        font-size: 1.5rem;
+@each $class, $colors in $card-names {
+    .card-#{$class} {
+        background: linear-gradient(to right, nth($colors, 1), nth($colors, 2));
+        i.fa {
+            font-size: 1.5rem;
+        }
+        transition: transform 0.3s ease;
+        cursor: pointer;
+        &:hover {
+            transform: translateY(-10px);
+        }
     }
-    transition: transform 0.3s ease;
-    cursor: pointer;
-    &:hover {
-        transform: translateY(-10px);
-    }
 }
 
-.card-admins {
-    background: #2193b0;
-    background: -webkit-linear-gradient(to right, #6dd5ed, #2193b0);
-    background: linear-gradient(to right, #6dd5ed, #2193b0);
-}
-
-.card-persons {
-    background: #1488cc;
-    background: -webkit-linear-gradient(to right, #2b32b2, #1488cc);
-    background: linear-gradient(to right, #2b32b2, #1488cc);
-}
-
-.card-houses {
-    background: #f12711;
-    background: -webkit-linear-gradient(to right, #f5af19, #f12711);
-    background: linear-gradient(to right, #f5af19, #f12711);
-}
-
-.card-streets {
-    background: #11998e;
-    background: -webkit-linear-gradient(to right, #38ef7d, #11998e);
-    background: linear-gradient(to right, #38ef7d, #11998e);
-}
-
-.dashboard-actions .card > img{
+.dashboard-actions .card > img {
     width: 100%;
     height: 170px;
-    object-fit: cover;;
+    object-fit: cover;
 }

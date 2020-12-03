@@ -6,6 +6,24 @@ $title-size: 2.5rem;
 $color-primary: #007bff;
 $transition-time: 0.2s;
 $carousel-height: 500px;
+$card-names: (
+    "admins": (
+        #6dd5ed,
+        #2193b0
+    ),
+    "persons": (
+        #2b32b2,
+        #1488cc
+    ),
+    "houses": (
+        #f5af19,
+        #f12711
+    ),
+    "streets": (
+        #38ef7d,
+        #11998e
+    )
+);
 $sm: 576px;
 $md: 768px;
 $lg: 992px;
