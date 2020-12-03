@@ -10,10 +10,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbar">
             <div class="navbar-nav mx-auto">
-                <a class="nav-item nav-link nav-item-hover text-uppercase" href="#mision" data-hash="mision">misión</a>
-                <a class="nav-item nav-link nav-item-hover text-uppercase" href="#vision" data-hash="vision">visión</a>
-                <a class="nav-item nav-link nav-item-hover text-uppercase" href="#galeria" data-hash="galeria">galería</a>
-                <a class="nav-item nav-link nav-item-hover text-uppercase" href="#organigrama" data-hash="organigrama">organigrama</a>
+                <a class="nav-item nav-link nav-item-hover text-uppercase" href="http://{{request()->getHttpHost()}}/#mision" data-hash="mision">misión</a>
+                <a class="nav-item nav-link nav-item-hover text-uppercase" href="http://{{request()->getHttpHost()}}/#vision" data-hash="vision">visión</a>
+                <a class="nav-item nav-link nav-item-hover text-uppercase" href="http://{{request()->getHttpHost()}}/#galeria" data-hash="galeria">galería</a>
+                <a class="nav-item nav-link nav-item-hover text-uppercase" href="http://{{request()->getHttpHost()}}/#organigrama" data-hash="organigrama">organigrama</a>
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="/noticias">noticias</a>
                 <a class="nav-item nav-link nav-item-hover text-uppercase border rounded" href="/iniciar-sesion">iniciar sesión</a>
             </div>

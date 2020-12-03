@@ -1,0 +1,46 @@
+@media screen and(max-width: $sm) {
+    body {
+        font-size: 14px;
+    }
+    
+    .title {
+        &.title-big {
+            font-size: 1.8rem;
+        }
+    }
+}
+
+@media screen and(max-width: $lg) {
+    .mision img,
+    .vision img {
+        display: none;
+    }
+
+    .navbar-nav {
+        align-items: flex-end;
+    }
+    .navbar .navbar-nav .nav-item {
+        text-align: right;
+        display: inline;
+
+        &.nav-item-hover {
+            &.active::before {
+                width: 3px;
+                height: 100%;
+            }
+
+            &:hover::before {
+                width: 3px;
+            }
+
+            &::before {
+                right: -8px;
+                top: 0;
+                bottom: 0;
+                height: 100%;
+                width: 0;
+                left: inherit;
+            }
+        }
+    }
+}

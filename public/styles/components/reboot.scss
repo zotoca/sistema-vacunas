@@ -1,0 +1,10 @@
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    * {
+        font-family: $font-text;
+        text-rendering: optimizeLegibility;
+    }
+}

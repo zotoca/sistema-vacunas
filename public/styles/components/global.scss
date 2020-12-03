@@ -1,0 +1,43 @@
+.title {
+    font-family: $title;
+    font-weight: bold;
+
+    &.title-underline {
+        position: relative;
+        &::before {
+            content: "";
+            display: block;
+            position: absolute;
+            left: 0;
+            bottom: -12px;
+            background: $color-primary;
+            width: $title-underline-width;
+            height: 8px;
+        }
+
+        &.text-right::before {
+            left: inherit;
+            right: 0;
+        }
+    }
+
+    &.title-big {
+        font-size: $title-size;
+    }
+}
+
+.icon-rounded {
+    display: inline-block;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    padding: 1rem;
+    color: $color-primary;
+    background: lighten($color-primary, 40%);
+    width: 72px;
+    height: 72px;
+}
+
+.section {
+    margin-top: 6rem;
+}
+

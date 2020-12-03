@@ -1,160 +1,18 @@
 @charset "UTF-8";
 
-$font-text: "Lato", sans-serif, Arial;
-$title: "Archivo Black", Impact;
-$title-underline-width: calc(4% + 10px);
-$title-size: 2.5rem;
-$color-primary: #007bff;
-$transition-time: 0.2s;
-$carousel-height: 500px;
-$sm: 576px;
-$md: 768px;
-$lg: 992px;
-$xl: 1200px;
+// components
+@import "./components/variables.scss";
+@import "./components/reboot.scss";
+@import "./components/navbar.scss";
+@import "./components/carousel.scss";
+@import "./components/global.scss";
 
-html {
-    scroll-behavior: smooth;
-}
+// web pages
+@import "./pages/home.scss";
+@import "./pages/login.scss";
+@import "./pages/dashboard.scss";
 
-body {
-    * {
-        font-family: $font-text;
-        text-rendering: optimizeLegibility;
-    }
-}
+// media queries 
+@import "./components/media-queries.scss";
 
-.title {
-    font-family: $title;
-    font-weight: bold;
 
-    &.title-underline {
-        position: relative;
-        &::before {
-            content: "";
-            display: block;
-            position: absolute;
-            left: 0;
-            bottom: -12px;
-            background: $color-primary;
-            width: $title-underline-width;
-            height: 8px;
-        }
-
-        &.text-right::before {
-            left: inherit;
-            right: 0;
-        }
-    }
-
-    &.title-big {
-        font-size: $title-size;
-    }
-}
-
-.icon-rounded {
-    display: inline-block;
-    flex: 0 0 auto;
-    border-radius: 50%;
-    padding: 1rem;
-    color: $color-primary;
-    background: lighten($color-primary, 40%);
-    width: 72px;
-    height: 72px;
-}
-
-.mision img,
-.vision img {
-    max-width: 340px;
-}
-
-.mision img {
-    margin-top: -8rem;
-}
-
-.vision img {
-    margin-top: -10rem;
-}
-
-.section {
-    margin-top: 6rem;
-}
-
-.navbar .navbar-toggler {
-    border: 0;
-    outline: none;
-}
-
-.carousel {
-    .carousel-inner {
-        height: $carousel-height !important;
-    }
-    .carousel-item {
-        height: $carousel-height;
-        img {
-            object-fit: cover;
-            height: 100%;
-        }
-    }
-}
-
-.navbar-nav .nav-item.nav-item-hover {
-    position: relative;
-
-    &.active::before {
-        width: 100%;
-    }
-
-    &:hover::before {
-        width: 100%;
-    }
-
-    &::before {
-        content: "";
-        display: block;
-        position: absolute;
-        width: 0;
-        height: 3px;
-        background: $color-primary;
-        left: 0;
-        bottom: -8px;
-        transition: width $transition-time ease;
-    }
-}
-
-@media screen and(max-width: $lg) {
-}
-
-@media screen and(max-width: $lg) {
-    .mision img,
-    .vision img {
-        display: none;
-    }
-
-    .navbar-nav {
-        align-items: flex-end;
-    }
-    .navbar .navbar-nav .nav-item {
-        text-align: right;
-        display: inline;
-
-        &.nav-item-hover {
-            &.active::before {
-                width: 3px;
-                height: 100%;
-            }
-
-            &:hover::before {
-                width: 3px;
-            }
-
-            &::before {
-                right: -8px;
-                top: 0;
-                bottom: 0;
-                height: 100%;
-                width: 0;
-                left: inherit;
-            }
-        }
-    }
-}
