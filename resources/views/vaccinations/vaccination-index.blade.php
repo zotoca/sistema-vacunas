@@ -46,14 +46,13 @@
     </section>
 
     <section class="container mt-5">
-        <div class="row" id="vaccinations-list">
+        <div class="row">
         @forelse($vaccinations as $vaccination)
-        <div class="col-sm-12 col-md-6 col-lg-4 px-2 py-2" id="{{$vaccination->id}}">
+        <div class="col-sm-12 col-md-6 col-lg-4 px-2 py-2">
             <div class="card">
-                <img class="card-img-top" src="{{asset("/images/vacunas.png")}}" alt="Vacuna">
+                <img class="card-img-top" src="{{asset("/images/vacunas.png")}}" alt="{{$vaccination->name}}" title="{{$vaccination->name}}">
                 <div class="card-body">
                     <h5 class="card-title title pl-1">{{$vaccination->name}}</h5>
-                    <div class="">
                         <!-- Nota importante, la funcion $vaccination->path() retorna la url de la vacuna "/vacunas/1" por ejemplo, utilizar ese link para realizar
                         las peticiones con axios, ya que en un futuro, quien sabe, el link puede cambiar, y esta funcion viene definida en los modelos,
                         solo si lo deseas, puedes utilizar este link, si no, puedes utilizar $vaccination->id que te dara la id y acto seguido
@@ -72,7 +71,6 @@
                                 </button>
                             </div>
                         </div>
-                    </div>
                 </div>
             </diV>
         </div>

@@ -1,4 +1,12 @@
-export function querySelector(node) {
+export function getId(node) {
+    return document.getElementById(node);
+}
+
+export function selectorAll(node) {
+    return document.querySelectorAll(node);
+}
+
+export function selector(node) {
     return document.querySelector(node);
 }
 
@@ -11,20 +19,6 @@ export function setProps(element, props = {}) {
 
 export function element(nodeName, props) {
     return setProps(document.createElement(nodeName), props);
-}
-
-export function createButtonEdit(props = {}) {
-    const btn = element("button");
-    btn.className = "btn btn-primary btn-block";
-    btn.innerHTML = `Editar <i class="fa fa-pencil ml-1"></i>`;
-    return setProps(btn, props);
-}
-
-export function createButtonDelete(props = {}) {
-    const btn = element("button");
-    btn.className = "btn btn-danger btn-block";
-    btn.innerHTML = `Eliminar <i class="fa fa-trash-alt ml-1"></i>`;
-    return setProps(btn, props);
 }
 
 export function append(element, childs = []) {

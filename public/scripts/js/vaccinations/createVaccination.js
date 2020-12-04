@@ -1,9 +1,9 @@
 import { createOrExitButtons, success, error } from "../helpers/sweetAlerts.js";
 import { createVaccination } from "../helpers/requests.js";
-import { createCardVaccionation } from "./DOM/vaccionations.js";
+import { getId } from "../helpers/DOM.js";
 
 window.addEventListener("DOMContentLoaded", () => {
-    const btnCreateVaccination = document.getElementById("create-vaccination");
+    const btnCreateVaccination = getId("create-vaccination");
     btnCreateVaccination.addEventListener("click", async () => {
         Swal.fire({
             title: "Crear una vacuna",
@@ -22,7 +22,6 @@ window.addEventListener("DOMContentLoaded", () => {
                             "Vacuna creada",
                             "La vacuna " + name + " se creó con exito."
                         );
-                        createCardVaccionation(name, "no tiene");
                     } else {
                         error("Ocurrió un error al crear la vacuna.");
                     }
