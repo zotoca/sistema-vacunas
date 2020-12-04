@@ -21,10 +21,16 @@ function editVaccinationConfirm(id) {
         inputPlaceholder: "Nuevo nombre de la vacuna",
         allowEscapeKey: false,
         showLoaderOnConfirm: true,
-        allowOutsideClick: false,
+        allowOutsideClick: () => !Swal.isLoading(),
         // es necesario retornar una promesa para que se pause el modal
         // hasta no terminar, no es posible salir del modal
         preConfirm: (name) => {
+            if (!name) {
+                error("El campo debe ser obligatorio.");
+                // es necesario retornar una promesa, por lo tanto
+                // se simula que hubo una promesa failla
+                return Promise.reject("El campo debe ser obligatorio.");
+            }
             // promise returned
             return editVaccination(name, id).then(
                 (res) => {
