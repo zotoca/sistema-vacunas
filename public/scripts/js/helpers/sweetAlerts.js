@@ -17,6 +17,12 @@ export const deleteOrExitButtons = {
     ...buttonsConfig,
 };
 
+export const eidtOrExitButtons = {
+    cancelButtonText: "Salir",
+    confirmButtonText: "Sí, editar",
+    ...buttonsConfig,
+};
+
 export function error(text = "") {
     Swal.fire("Ocurrió un error", text, "error");
 }
