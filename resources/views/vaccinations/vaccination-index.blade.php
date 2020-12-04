@@ -89,5 +89,5 @@
     </section>
 
     @include("components.footer.footer")
-    <script src={{asset("scripts/js/dashboard/createVaccination.js")}} type="module"></script>
+    <script src={{asset("scripts/js/vaccinations/vaccionations.js")}} type="module"></script>
 @endsection
