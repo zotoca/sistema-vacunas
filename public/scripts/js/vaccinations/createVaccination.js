@@ -8,6 +8,7 @@ window.addEventListener("DOMContentLoaded", () => {
             title: "Crear una vacuna",
             input: "text",
             inputPlaceholder: "Nombre de la vacuna",
+            allowEscapeKey : false,
             preConfirm: async (name) => {
                 if (!name) {
                     error("El campo debe ser obligatorio.");
@@ -16,10 +17,10 @@ window.addEventListener("DOMContentLoaded", () => {
                 try {
                     const res = await createVaccination(name);
                     if (res.message === "ok") {
-                        success({
-                            title: "Vacuna creada",
-                            text: "La vacuna " + name + " se creó con exito.",
-                        });
+                        success(
+                            "Vacuna creada",
+                            "La vacuna " + name + " se creó con exito."
+                        );
                     } else {
                         error("Ocurrió un error al crear la vacuna.");
                     }

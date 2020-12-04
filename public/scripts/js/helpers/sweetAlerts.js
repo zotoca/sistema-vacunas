@@ -18,17 +18,9 @@ export const deleteOrExitButtons = {
 };
 
 export function error(text = "") {
-    Swal.fire({
-        titleText: "Ocurrió un error",
-        icon: "error",
-        text,
-    });
+    Swal.fire("Ocurrió un error", text, "error");
 }
 
-export function success({ title = "", text = "" }) {
-    Swal.fire({
-        titleText: title,
-        icon: "success",
-        text,
-    });
+export function success(title = "", text = "" ) {
+    Swal.fire(title, text, "success");
 }

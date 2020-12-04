@@ -1,4 +1,4 @@
-import { createOrExitButtons, success, error } from "../helpers/sweetAlerts.js";
+import { deleteOrExitButtons, success, error } from "../helpers/sweetAlerts.js";
 import { deleteVaccination } from "../helpers/requests.js";
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -9,24 +9,49 @@ window.addEventListener("DOMContentLoaded", () => {
     btnsDeleteVaccionations.forEach((btn) =>
         btn.addEventListener("click", () => {
             const id = +btn.getAttribute("data-id");
-            //deleteVaccination(id);
-            deleteVaccinationConfirm();
+            deleteVaccinationConfirm(id);
         })
     );
 });
 
-function deleteVaccinationConfirm() {
+function deleteVaccinationConfirm(id) {
     Swal.fire({
         title: "¿Deseas eliminar esta vacuna?",
         icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#28a745",
-        cancelButtonColor: "#dc3545",
-        confirmButtonText: "Sí, eliminar",
-        cancelButtonText : "Salir"
-    }).then((result) => {
-        if (result.isConfirmed) {
-            Swal.fire("Deleted!", "Your file has been deleted.", "success");
-        }
+        allowEscapeKey: false,
+        showLoaderOnConfirm: true,
+        allowOutsideClick: false,
+        // es necesario retornar una promesa para que se pause el modal
+        // hasta no terminar, no es posible salir del modal
+        preConfirm: () => {
+            // promise returned
+            return deleteVaccination(id).then(
+                (res) => {
+                    if (res.message === "ok") {
+                        success("Vacuna eliminada", "");
+                    } else {
+                        error("Ocurrió un error al crear la vacuna.");
+                    }
+                },
+                () => error("Ocurrió un error de conexión.")
+            );
+        },
+        ...deleteOrExitButtons,
     });
 }
+
+/**async (result) => {
+
+            if (result.isConfirmed) {
+                try {
+                    const res = await deleteVaccination(id);
+                    if (res.message === "ok") {
+                        success("Vacuna eliminada", "");
+                    } else {
+                        error("Ocurrió un error al crear la vacuna.");
+                    }
+                } catch (error) {
+                    error("Ocurrió un error de conexión.");
+                }
+            }
+        } */

@@ -52,7 +52,7 @@
             <div class="card">
                 <img class="card-img-top" src="{{asset("/images/vacunas.png")}}" alt="Vacuna">
                 <div class="card-body">
-                    <h5 class="card-title title">{{$vaccination->name}}</h5>
+                    <h5 class="card-title title pl-1">{{$vaccination->name}}</h5>
                     <div class="">
                         <!-- Nota importante, la funcion $vaccination->path() retorna la url de la vacuna "/vacunas/1" por ejemplo, utilizar ese link para realizar
                         las peticiones con axios, ya que en un futuro, quien sabe, el link puede cambiar, y esta funcion viene definida en los modelos,
