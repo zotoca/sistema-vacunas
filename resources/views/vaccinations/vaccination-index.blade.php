@@ -8,6 +8,7 @@
             <h2 class="title title-big">Vacunas</h2>
         </div>
     </section>
+
     <section class="container mt-5">
         <div class="row">
             <div class="col-md-12 col-lg-4 mb-1">
@@ -24,7 +25,9 @@
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-6 col-lg-6 px-lg-1">
-                        <button class="btn btn-success btn-block">Crear vacuna <i class="fa fa-plus ml-1"></i></button>
+                        <button class="btn btn-success btn-block" id="create-vaccination">
+                            Crear vacuna <i class="fa fa-plus ml-1"></i>
+                        </button>
                     </div>
                 </div>
                 
@@ -43,9 +46,9 @@
     </section>
 
     <section class="container mt-5">
-        <div class="row">
+        <div class="row" id="vaccinations-list">
         @forelse($vaccinations as $vaccination)
-        <div class="col-sm-12 col-md-6 col-lg-4 px-2 py-2">
+        <div class="col-sm-12 col-md-6 col-lg-4 px-2 py-2" id="{{$vaccination->id}}">
             <div class="card">
                 <img class="card-img-top" src="{{asset("/images/vacunas.png")}}" alt="Vacuna">
                 <div class="card-body">
@@ -57,13 +60,13 @@
                         armar la url de la vacuna "/vacunas/1" -->
                         <div class="row w-100 m-0">
                             <div class="col-sm-12 col-lg-6 p-1">
-                                <button class="btn btn-primary btn-block" data-delete-vaccination-link="{{$vaccination->path()}}">
+                                <button class="btn btn-primary btn-block" data-id="{{$vaccination->id}}">
                                     Editar 
                                     <i class="fa fa-pencil ml-1"></i>
                                 </button>
                             </div>
                             <div class="col-sm-12 col-lg-6 p-1">
-                                <button class="btn btn-danger btn-block" data-edit-vaccinate-link="{{$vaccination->path()}}">
+                                <button class="btn btn-danger btn-block" data-id="{{$vaccination->id}}">
                                     Eliminar 
                                     <i class="fa fa-trash-alt ml-1"></i>
                                 </button>
@@ -84,6 +87,7 @@
             {{$vaccinations->links()}}
         </div>
     </section>
-    @include("components.footer.footer")
 
+    @include("components.footer.footer")
+    <script src={{asset("scripts/js/dashboard/createVaccination.js")}} type="module"></script>
 @endsection
