@@ -36,6 +36,7 @@ function editVaccinationConfirm(id) {
                 (res) => {
                     if (res.message === "ok") {
                         success("Vacuna editada", "");
+                        window.location.reload();
                     } else {
                         error("Ocurrió un error al editada la vacuna.");
                     }

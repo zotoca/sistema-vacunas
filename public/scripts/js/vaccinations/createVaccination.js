@@ -22,6 +22,7 @@ window.addEventListener("DOMContentLoaded", () => {
                             "Vacuna creada",
                             "La vacuna " + name + " se creó con exito."
                         );
+                        window.location.reload();
                     } else {
                         error("Ocurrió un error al crear la vacuna.");
                     }

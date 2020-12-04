@@ -28,6 +28,7 @@ function deleteVaccinationConfirm(id) {
                 (res) => {
                     if (res.message === "ok") {
                         success("Vacuna eliminada", "");
+                        window.location.reload();
                     } else {
                         error("Ocurrió un error al crear la vacuna.");
                     }
