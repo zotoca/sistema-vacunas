@@ -1,11 +1,20 @@
-export const createOrExitButtons = {
+export const buttonsConfig = {
     showConfirmButton: true,
-    confirmButtonColor: "#28a745", // boostrap color
-    confirmButtonText: "Crear",
-
     showCancelButton: true,
+    confirmButtonColor: "#28a745", // boostrap color
     cancelButtonColor: "#dc3545", // boostrap color
+};
+
+export const createOrExitButtons = {
+    confirmButtonText: "Crear",
     cancelButtonText: "Salir",
+    ...buttonsConfig,
+};
+
+export const deleteOrExitButtons = {
+    cancelButtonText: "Salir",
+    confirmButtonText: "Sí, eliminar",
+    ...buttonsConfig,
 };
 
 export function error(text = "") {

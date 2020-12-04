@@ -60,13 +60,13 @@
                         armar la url de la vacuna "/vacunas/1" -->
                         <div class="row w-100 m-0">
                             <div class="col-sm-12 col-lg-6 p-1">
-                                <button class="btn btn-primary btn-block" data-id="{{$vaccination->id}}">
+                                <button class="btn btn-primary btn-block" data-id="{{$vaccination->id}}" data-action="edit">
                                     Editar 
                                     <i class="fa fa-pencil ml-1"></i>
                                 </button>
                             </div>
                             <div class="col-sm-12 col-lg-6 p-1">
-                                <button class="btn btn-danger btn-block" data-id="{{$vaccination->id}}">
+                                <button class="btn btn-danger btn-block" data-id="{{$vaccination->id}}" data-action="delete">
                                     Eliminar 
                                     <i class="fa fa-trash-alt ml-1"></i>
                                 </button>
