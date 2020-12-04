@@ -39,19 +39,3 @@ function deleteVaccinationConfirm(id) {
         ...deleteOrExitButtons,
     });
 }
-
-/**async (result) => {
-
-            if (result.isConfirmed) {
-                try {
-                    const res = await deleteVaccination(id);
-                    if (res.message === "ok") {
-                        success("Vacuna eliminada", "");
-                    } else {
-                        error("Ocurrió un error al crear la vacuna.");
-                    }
-                } catch (error) {
-                    error("Ocurrió un error de conexión.");
-                }
-            }
-        } */

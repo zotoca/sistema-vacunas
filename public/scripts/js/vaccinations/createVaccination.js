@@ -1,5 +1,6 @@
 import { createOrExitButtons, success, error } from "../helpers/sweetAlerts.js";
 import { createVaccination } from "../helpers/requests.js";
+import { createCardVaccionation } from "./DOM/vaccionations.js";
 
 window.addEventListener("DOMContentLoaded", () => {
     const btnCreateVaccination = document.getElementById("create-vaccination");
@@ -8,7 +9,7 @@ window.addEventListener("DOMContentLoaded", () => {
             title: "Crear una vacuna",
             input: "text",
             inputPlaceholder: "Nombre de la vacuna",
-            allowEscapeKey : false,
+            allowEscapeKey: false,
             preConfirm: async (name) => {
                 if (!name) {
                     error("El campo debe ser obligatorio.");
@@ -21,6 +22,7 @@ window.addEventListener("DOMContentLoaded", () => {
                             "Vacuna creada",
                             "La vacuna " + name + " se creó con exito."
                         );
+                        createCardVaccionation(name, "no tiene");
                     } else {
                         error("Ocurrió un error al crear la vacuna.");
                     }
