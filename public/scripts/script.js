@@ -1,2 +1,2 @@
-import "./js/utils/detectLinksActive.js";
-import "./js/utils/loader.js";
+import "./js/helpers/detectLinksActive.js";
+import "./js/helpers/loader.js";

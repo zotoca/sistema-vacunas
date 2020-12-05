@@ -1,3 +1,5 @@
+export const body = document.body;
+
 export function getId(node) {
     return document.getElementById(node);
 }
