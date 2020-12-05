@@ -9,6 +9,8 @@ class Street extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function path(){
         return "/calles/$this->id";
     }
