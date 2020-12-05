@@ -24,7 +24,7 @@
             </div>
         </div>
         @empty
-        <h1>Sin vacunas aun</h1>
+            @include("components.notResults.notResults")
         @endforelse
     </div>
 </section>

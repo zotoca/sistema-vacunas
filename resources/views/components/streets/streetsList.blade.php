@@ -27,7 +27,7 @@
             </div>
         </div>
         @empty
-        <h1>Sin calles aun</h1>
+            @include("components.notResults.notResults")
         @endforelse
     </div>
 </section>
