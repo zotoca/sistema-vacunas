@@ -39,6 +39,11 @@ Route::group(["middleware" => "auth"], function(){
     Route::put("/calles/{street}", "App\Http\Controllers\StreetController@update");    
     Route::delete("/calles/{street}", "App\Http\Controllers\StreetController@destroy");
 
+    Route::get("/calles/{street}/casas", "App\Http\Controllers\HouseController@index");
+    Route::post("/casas", "App\Http\Controllers\HouseController@store");
+    Route::put("/casas/{house}", "App\Http\Controllers\HouseController@update");    
+    Route::delete("/casas/{house}", "App\Http\Controllers\HouseController@destroy");
+
     Route::get("/logout", "App\Http\Controllers\AuthController@logout");
 
 

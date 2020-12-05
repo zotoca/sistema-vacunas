@@ -15,5 +15,20 @@ class Street extends Model
         return "/calles/$this->id";
     }
 
+    public function houses(){
+
+        return $this->hasMany("App\Models\House");
+
+
+    }
+
+
+    public function addHouse($number){
+
+        return $this->houses()->create(["number" => $number]);
+
+
+    }
+
 
 }

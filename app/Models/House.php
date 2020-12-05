@@ -9,6 +9,8 @@ class House extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function street(){
         return $this->belongsTo("App\Models\Street");
     }
