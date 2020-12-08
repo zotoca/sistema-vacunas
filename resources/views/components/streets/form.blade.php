@@ -1,4 +1,4 @@
-<section class="container mt-5">
+<section class="container mt-5" data-aos="fade-up">
     <div class="row">
         <div class="col-md-12 col-lg-4 mb-1">
             <div class="row">

@@ -1,7 +1,7 @@
-<section class="container mt-5">
+<section class="container mt-5" data-aos="fade-up">
     <div class="row">
         @forelse($vaccinations as $vaccination)
-        <div class="col-sm-12 col-md-6 col-lg-4 px-2 py-2">
+        <div class="col-sm-12 col-md-6 col-lg-4 px-2 py-2" >
             <div class="card">
                 <img class="card-img-top" src="{{asset("/images/vacunas.png")}}" alt="{{$vaccination->name}}" title="{{$vaccination->name}}">
                 <div class="card-body">

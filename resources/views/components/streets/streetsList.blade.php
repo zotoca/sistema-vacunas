@@ -1,4 +1,4 @@
-<section class="container mt-5">
+<section class="container mt-5" data-aos="fade-up">
     <div class="row">
         @forelse($streets as $street)
         <div class="col-sm-12 col-md-6 col-lg-4 px-2 py-2">
