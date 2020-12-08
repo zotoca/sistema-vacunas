@@ -26,6 +26,7 @@ class PersonFactory extends Factory
         return [
             "first_name" => $this->faker->firstName,
             "last_name" => $this->faker->lastName,
+            "dni" => $this->faker->randomNumber(8),
             "gender" => \Arr::random(["masculino","femenino"]),
             "birthday" => $this->faker->date,
             "age" => $this->faker->numberBetween(1,80),

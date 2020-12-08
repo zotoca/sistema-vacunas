@@ -44,6 +44,8 @@ Route::group(["middleware" => "auth"], function(){
     Route::put("/casas/{house}", "App\Http\Controllers\HouseController@update");    
     Route::delete("/casas/{house}", "App\Http\Controllers\HouseController@destroy");
 
+    Route::get("/personas", "App\Http\Controllers\PersonController@index");
+
     Route::get("/logout", "App\Http\Controllers\AuthController@logout");
 
 

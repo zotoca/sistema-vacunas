@@ -18,6 +18,10 @@ class Person extends Model
     public function path(){
         return "/persona/$this->id";
     }
+
+    public function personVaccinations(){
+        return $this->hasMany("App\Models\PersonVaccination");
+    }
     
 
 

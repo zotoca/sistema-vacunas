@@ -18,6 +18,7 @@ class CreatePersonsTable extends Migration
 
             $table->string("first_name");
             $table->string("last_name");
+            $table->string("dni");
             $table->enum("gender",['masculino','femenino']);
             $table->date("birthday");
             $table->unsignedTinyInteger("age");
