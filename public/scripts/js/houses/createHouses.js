@@ -30,7 +30,6 @@ window.addEventListener("DOMContentLoaded", () => {
                         error("Ocurrió un error al crear la casa.");
                     }
                 } catch (e) {
-                    debugger;
                     console.log(e);
                     error("Ocurrió un error de conexión.");
                 }

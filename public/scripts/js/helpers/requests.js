@@ -42,6 +42,10 @@ export async function editHouse(number, id) {
     return PUT(`${HOUSES_URL}/${id}`, { number });
 }
 
+export async function createPerson(person) {
+    return POST(`${PERSONS_URL}/`, person);
+}
+
 export async function deletePerson(id) {
     return DELETE(`${PERSONS_URL}/${id}`);
 }

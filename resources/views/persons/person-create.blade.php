@@ -11,7 +11,7 @@
 
     <section class="container mt-5">
        
-        <form>
+        <form id="create-person-form">
             <div class="form-group" data-aos="fade-up">
                 <div class="row">
                     <div class="col-sm-12 col-md-2 col-lg-1 d-flex align-items-center">
@@ -143,7 +143,7 @@
             <div class="form-group" data-aos="fade-up">
                 <div class="row">
                     <div class="col-12">
-                        <button class="btn btn-success btn-block" type="button" id="create-person">
+                        <button class="btn btn-success btn-block" type="submit" id="create-person">
                             Crear persona
                             <i class="fa fa-arrow-right ml-1"></i>
                         </button>
