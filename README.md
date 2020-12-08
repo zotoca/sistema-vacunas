@@ -56,12 +56,13 @@ Metodo:GET
 #### Crear persona  
 Ruta:/personas  
 Metodo:POST  
-Datos requeridos:first_name: requerido y string, last_name:requerido y string, dni:requerido y string, gender: requerido y entre (masculino,femenino),birthday:requerido y fecha, phone_number: requerido y alfanumerico, father_dni:debe de ser el dni de una persona existente, mother_dni:debe de ser el dni de una persona existente, house_id:requerido y debe de ser el id de una casa existente  
+Datos requeridos:first_name: requerido y string, last_name:requerido y string, dni:requerido y string, gender: requerido y entre (masculino,femenino),
+image:imagen de tipo "jpeg,jpg,png,gif,bmp,svg,webp",birthday:requerido y fecha, phone_number: requerido y alfanumerico, father_dni:debe de ser el dni de una persona existente, mother_dni:debe de ser el dni de una persona existente, house_id:requerido y debe de ser el id de una casa existente  
 Retorno:["message":"ok"]  
 #### Editar persona  
 Ruta:/personas/{person_id}  
 Metodo:PUT  
-Datos requeridos:first_name:string, last_name:string, dni:string, gender: entre (masculino,femenino),birthday: y fecha, phone_number: alfanumerico, father_dni:debe de ser el dni de una persona existente, mother_dni:debe de ser el dni de una persona existente, house_id: debe de ser el id de una casa existente  
+Datos requeridos:first_name:string, last_name:string, dni:string, gender: entre (masculino,femenino),image:imagen de tipo "jpeg,jpg,png,gif,bmp,svg,webp",birthday: y fecha, phone_number: alfanumerico, father_dni:debe de ser el dni de una persona existente, mother_dni:debe de ser el dni de una persona existente, house_id: debe de ser el id de una casa existente  
 Retorno:["message":"ok"]  
 #### Eliminar persona  
 Ruta:/persona/{person_id}  
