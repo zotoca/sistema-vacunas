@@ -3,7 +3,7 @@
 @section("body")
 @include("components.navbar.navbar")
 
-<section class="container mt-5">
+<section class="container mt-5" data-aos="fade-up">
     <div class="row" data-aos="fade-up">
         <img class="col-lg-6 offset-lg-3 col-12 rounded-circle img-login" src="{{asset("images/lading_page.png")}}" class="img-fluid" alt="">
         <div class="col-lg-6 offset-lg-3 col-12">

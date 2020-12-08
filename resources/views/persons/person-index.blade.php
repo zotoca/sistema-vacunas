@@ -8,5 +8,5 @@
     @include("components.persons.pagination")
     @include("components.footer.footer")
     
-    <script src={{asset("scripts/js/houses/house.js")}} type="module"></script>
+    <script src={{asset("scripts/js/persons/deletePersons.js")}} type="module"></script>
 @endsection

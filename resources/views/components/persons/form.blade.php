@@ -1,4 +1,4 @@
-<section class="container mt-5">
+<section class="container mt-5" data-aos="fade-up">
     <div class="row">
         <div class="col-md-12 col-lg-4 mb-1">
             <div class="row">
@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-6 px-lg-1">
-                    <a href="/persons/create" class="btn btn-success btn-block">Crear persona <i class="fa fa-plus ml-1"></i></a>
+                    <a href="/personas/crear" class="btn btn-success btn-block">Crear persona <i class="fa fa-plus ml-1"></i></a>
                 </div>
             </div>
         </div>
@@ -27,7 +27,7 @@
                         <button class="btn btn-primary">Buscar <i class="fa fa-search ml-1"></i></button>
                     </div>
                 </div>
-                <div class="input-group w-100">
+                <div class="input-group w-100 mt-2">
                     <select name="missing-vaccination" placeholder="Vacuna faltante" class="form-control">
                         @foreach($vaccinations as $vaccination)
                             <option value="{{$vaccination->id}}">{{$vaccination->name}}</option>
