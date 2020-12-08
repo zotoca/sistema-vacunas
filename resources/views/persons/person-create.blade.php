@@ -14,10 +14,10 @@
         <form>
             <div class="form-group" data-aos="fade-up">
                 <div class="row">
-                    <div class="col-sm-12 col-lg-1 d-flex align-items-center">
+                    <div class="col-sm-12 col-md-2 col-lg-1 d-flex align-items-center">
                         <img src="{{asset("images/anon.png")}}" alt="Anoymous user" id="perfil-preview" class="rounded-circle" width="80" height="80">
                     </div>
-                    <div class="col-sm-12 col-lg-11">
+                    <div class="col-sm-12 col-md-10 col-lg-11">
                         <label for="perfil-photo" class="font-weight-bold mb-2 lead">Foto de perfil</label>
                         <button class="btn btn-outline-primary d-block" type="button" id="upload-image">
                             Subir imágen <i class="fa fa-file-upload ml-1"></i>
@@ -110,9 +110,7 @@
                 </div>
             </div>
 
-            <hr class="my-4" />
-
-            <div class="form-group" data-aos="fade-up">
+            {{-- <div class="form-group" data-aos="fade-up">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
                         <label for="vaccination-id" class="font-weight-bold mb-2 lead">Vacuna</label>
@@ -140,8 +138,24 @@
                         <input type="date" class="form-control" name="vaccination_date" id="vaccination-date" required>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
+            <div class="form-group" data-aos="fade-up">
+                <div class="row">
+                    <div class="col-12">
+                        <button class="btn btn-success btn-block" type="button" id="create-person">
+                            Crear persona
+                            <i class="fa fa-arrow-right ml-1"></i>
+                        </button>
+                    </div>
+                    {{-- <div class="col-sm-12 col-lg-6">
+                        <button class="btn btn-primary btn-block" type="button" id="view-vaccinations">
+                            Ver vacunas                            
+                            <i class="fa fa-list ml-1"></i>
+                        </button>
+                    </div> --}}
+                </div>
+            </div>
         </form>
     </section>
     @include("components.footer.footer")
