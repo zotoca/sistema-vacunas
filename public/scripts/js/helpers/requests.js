@@ -1,4 +1,9 @@
-import { VACCINATIONS_URL, STREETS_URL,HOUSES_URL } from "./config.js";
+import {
+    VACCINATIONS_URL,
+    STREETS_URL,
+    HOUSES_URL,
+    PERSONS_URL,
+} from "./config.js";
 import POST, { DELETE, PUT } from "./http.js";
 
 export function createVaccination(name) {
@@ -25,8 +30,8 @@ export async function editStreet(name, id) {
     return PUT(`${STREETS_URL}/${id}`, { name });
 }
 
-export function createHouse(number,street_id) {
-    return POST(HOUSES_URL, { number, street_id});
+export function createHouse(number, street_id) {
+    return POST(HOUSES_URL, { number, street_id });
 }
 
 export async function deleteHouse(id) {
@@ -35,4 +40,8 @@ export async function deleteHouse(id) {
 
 export async function editHouse(number, id) {
     return PUT(`${HOUSES_URL}/${id}`, { number });
+}
+
+export async function deletePerson(id) {
+    return DELETE(`${PERSONS_URL}/${id}`);
 }

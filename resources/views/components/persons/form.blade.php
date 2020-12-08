@@ -27,7 +27,7 @@
                         <button class="btn btn-primary">Buscar <i class="fa fa-search ml-1"></i></button>
                     </div>
                 </div>
-                <div class="input-group w-100">
+                <div class="input-group w-100 mt-2">
                     <select name="missing-vaccination" placeholder="Vacuna faltante" class="form-control">
                         @foreach($vaccinations as $vaccination)
                             <option value="{{$vaccination->id}}">{{$vaccination->name}}</option>
