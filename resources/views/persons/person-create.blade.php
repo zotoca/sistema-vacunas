@@ -22,7 +22,7 @@
                         <button class="btn btn-outline-primary d-block" type="button" id="upload-image">
                             Subir imágen <i class="fa fa-file-upload ml-1"></i>
                         </button>
-                        <input type="file" name="perfil_photo" id="perfil-photo" class="form-control d-none" accept=".jpg, .png, .jpeg, .gif, .bmp">
+                        <input type="file" name="image" id="perfil-photo" class="form-control d-none" accept=".jpg, .png, .jpeg, .gif, .bmp">
                     </div>
                 </div>
             </div>
@@ -105,7 +105,7 @@
 
                     <div class="col-sm-12 col-lg-6">
                         <label for="mother-number" class="font-weight-bold mb-2 lead">Cédula de la madre</label>
-                        <input type="number" class="form-control" name="mother_number" id="mother-number" placeholder="0000000" required>
+                        <input type="number" class="form-control" name="mother_dni" id="mother-number" placeholder="0000000" required>
                     </div>
                 </div>
             </div>
