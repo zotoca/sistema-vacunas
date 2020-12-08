@@ -45,6 +45,13 @@ Route::group(["middleware" => "auth"], function(){
     Route::delete("/casas/{house}", "App\Http\Controllers\HouseController@destroy");
 
     Route::get("/personas", "App\Http\Controllers\PersonController@index");
+    Route::get("/personas/{person}", "App\Http\Controllers\PersonController@show");
+    Route::get("/personas/crear", "App\Http\Controllers\PersonController@create");
+    Route::post("/personas", "App\Http\Controllers\PersonController@store");
+    Route::get("/personas/editar/{person}", "App\Http\Controllers\PersonController@edit");
+    Route::put("/personas/{person}", "App\Http\Controllers\PersonController@update");
+    Route::delete("/personas/{person}", "App\Http\Controllers\PersonController@destroy");
+
 
     Route::get("/logout", "App\Http\Controllers\AuthController@logout");
 
