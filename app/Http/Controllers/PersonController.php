@@ -14,6 +14,7 @@ use App\Http\Requests\PersonCreateRequest;
 use App\Http\Requests\PersonUpdateRequest;
 use App\Models\Person;
 use App\Models\Vaccination;
+use App\Models\Street;
 
 class PersonController extends Controller
 {
@@ -49,7 +50,10 @@ class PersonController extends Controller
     }
 
     public function create(){
-        return View::make("persons.person-create");
+        $streets = Street::all();
+        $houses = $streets[0]->houses;
+
+        return View::make("persons.person-create",["streets" => $streets, "houses" => $houses]);
     }
 
     public function store(PersonCreateRequest $request){
@@ -60,10 +64,12 @@ class PersonController extends Controller
             return in_array($key,["first_name","last_name","dni","gender","birthday","phone_number","house_id"]);
         }, ARRAY_FILTER_USE_KEY);
 
-        $person_data["image_url"] = Storage::putFile("avatars", $request->file("image"));
-        
-        if(isset($validated["father_dni"])){
-            $person_data["father_id"] = Person::where("dni",$validated["father_dni"]); 
+
+        if(isset($validated["image"])){
+            $person_data["image_url"] = Storage::putFile("public", $request->file("image"));
+        }        
+        if(isset($validated["father_dni"]) && $validated["father_dni"] != ""){
+            $person_data["father_id"] = Person::where("dni",$validated["father_dni"])->first()->id; 
         }
 
         if(isset($validated["mother_dni"])){
