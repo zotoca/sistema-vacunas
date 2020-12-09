@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 use App\Models\Street;
+use App\Models\House;
 
 class StreetsTest extends TestCase
 {
@@ -119,6 +120,39 @@ class StreetsTest extends TestCase
         
         
         $this->assertDatabaseMissing("streets", ["name" => $street->name]);
+    }
+
+    public function test_a_administrator_can_get_streets_api(){
+
+        $this->withoutExceptionHandling();
+
+        $this->signIn();
+
+        $streets = Street::factory(10)->create();
+
+        $this->getJson("/api/calles")
+            ->assertStatus(200)
+            ->assertJsonStructure(['*'=>['id',"name"]]);
+    }
+
+    public function test_a_Administrator_can_get_street_houses_api(){
+        $this->signIn();
+
+        $house = House::factory()->create();
+        $street = $house->street;
+
+        $this->getJson("/api/calles/$street->id/casas")
+            ->assertStatus(200)
+            ->assertJsonStructure(["*"=>["id","number"]]);
+    }
+
+    public function test_a_administrator_cant_get_inexistent_street_houses_api(){
+        $this->signIn();
+
+        $this->getJson("/api/calles/1/casas")
+            ->assertStatus(404);
+    
+
     }
 
 
