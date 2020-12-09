@@ -7,6 +7,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const btnUploadImage = getId("upload-image");
     const btnFile = getId("perfil-photo");
     const imagePreview = getId("perfil-preview");
+    const anchorImagePreview = imagePreview.parentNode;
 
     const form = getId("create-person-form");
     const btnCreatePerson = getId("create-person");
@@ -31,10 +32,12 @@ window.addEventListener("DOMContentLoaded", () => {
         const imgFile = e.target.files[0];
         fileReader.onload = () => {
             imagePreview.src = fileReader.result;
+            anchorImagePreview.href = fileReader.result;
+            anchorImagePreview.setAttribute("data-lightbox", fileReader.result);
         };
         fileReader.readAsDataURL(imgFile);
     });
-    
+
     isEmptyInputsForm(form, inputNames);
 
     btnCreatePerson.addEventListener("click", async () => {
