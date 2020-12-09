@@ -1,9 +1,9 @@
 <?php
-
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+use Illuminate\Contracts\Validation\Validator;
 
 class PersonCreateRequest extends FormRequest
 {
@@ -27,19 +27,21 @@ class PersonCreateRequest extends FormRequest
         return [
             "first_name" => "required|string",
             "last_name" => "required|string",
+            "image" => "mimes:jpeg,jpg,png,gif,bmp,svg,webp",
             "dni" => "required|numeric",
             "gender" => "required|in:masculino,femenino",
             "birthday" => "required|date",
-            "phone_number" => "required|alpha_num",
-            "father_dni" => "required|exists:persons,cedula",
-            "mother_dni" => "required|exists:persons,cedula",
+            "phone_number" => "required|string",
+            "father_dni" => "exists:persons,dni",
+            "mother_dni" => "rexists:persons,dni",
             "house_id" => "required|exists:houses,id",
-            "person_vaccination" => "array",
-            "person_vaccination.*.vaccination_id" => "exists:vaccinations,id",
-            "person_vaccination.*.dose" => "string",
-            "person_vaccination.*.lot_number" => "string",
-            "person_vaccination.*.is_vaccinated" => "boolean",
-            "person_vaccination.*.vaccination_date" => "date"
         ];
     }
+
+    
+    //public function failedValidation(Validator $validator){
+    //    dd($validator->errors());
+
+    //    throw new ValidatorException($errors);
+    //}
 }

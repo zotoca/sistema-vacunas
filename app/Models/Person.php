@@ -11,12 +11,14 @@ class Person extends Model
 
     protected $table = "persons";
 
+    protected $guarded = [];
+
     public function house(){
         return $this->belongsTo("App\Models\House");
     }
 
     public function path(){
-        return "/persona/$this->id";
+        return "/personas/$this->id";
     }
 
     public function personVaccinations(){

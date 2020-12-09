@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
+use Carbon\Carbon;
+use View;
+use Storage;
+
+
 
 use App\Http\Requests\PersonCreateRequest;
-
+use App\Http\Requests\PersonUpdateRequest;
 use App\Models\Person;
 use App\Models\Vaccination;
-use View;
 
 class PersonController extends Controller
 {
@@ -49,37 +53,79 @@ class PersonController extends Controller
     }
 
     public function store(PersonCreateRequest $request){
-        $validated = $request->validated;
+        $validated = $request->validated();
+        
         
         $person_data =  array_filter($validated, function($key){
             return in_array($key,["first_name","last_name","dni","gender","birthday","phone_number","house_id"]);
         }, ARRAY_FILTER_USE_KEY);
 
-        if($validated["father_dni"]){
+        $person_data["image_url"] = Storage::putFile("avatars", $request->file("image"));
+        
+        if(isset($validated["father_dni"])){
             $person_data["father_id"] = Person::where("dni",$validated["father_dni"]); 
         }
 
-        if($validated["mother_dni"]){
+        if(isset($validated["mother_dni"])){
             $person_data["mother_id"] = Person::where("dni",$validated["mother_dni"])->first()->id;
         }
 
         $actual = Carbon::now();
 
-        $validated["age"] = $actual->diffForHumans($validated["birthday"], $actual);
+        $person_data["age"] = Carbon::parse($person_data["birthday"])->age;
         
-        $new_person = Person::create($validated);
+        $new_person = Person::create($person_data);
 
-        foreach($validated["person_vaccination"] as $person_vaccination){
-            
-            $person_vaccination_data = $person_vaccination;
-
-            $person_vaccination_data["person_id"] = $new_person->id;
-        }
 
         return redirect("/personas");
     }
 
-    public function edit(){
-        return View::make("persons.person-edit");
+    public function edit(Person $person){
+        return View::make("persons.person-edit",["person"=>$person]);
+    }
+
+    public function update(PersonUpdateRequest $request, Person $person){
+
+        $validated = $request->validated();
+        
+        
+        $person_data =  array_filter($validated, function($key){
+            return in_array($key,["first_name","last_name","dni","gender","birthday","phone_number","house_id"]);
+        }, ARRAY_FILTER_USE_KEY);
+        if(isset($validated["image"])){
+            Storage::delete($person->image_url);
+            $person_data["image_url"] = Storage::putFile("avatars", $request->file("image"));
+        }
+        
+        if(isset($validated["father_dni"])){
+            $person_data["father_id"] = Person::where("dni",$validated["father_dni"]); 
+        }
+
+        if(isset($validated["mother_dni"])){
+            $person_data["mother_id"] = Person::where("dni",$validated["mother_dni"])->first()->id;
+        }
+
+        $actual = Carbon::now();
+
+        if(isset($validated["birthday"])){
+            $person_data["age"] = Carbon::parse($person_data["birthday"])->age;
+        }
+
+        $person->update($person_data);
+
+
+        return redirect("/personas");
+
+
+    }
+
+    public function destroy(Person $person){
+        Storage::delete($person->image_url);
+
+        $person->delete();
+
+        return response()->json(["message"=>"ok"]);
+
+
     }
 }

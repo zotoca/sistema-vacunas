@@ -12,6 +12,13 @@ class PersonVaccination extends Model
 
     protected $table = "person_vaccination";
 
+    public function person(){
+        return $this->belongsTo("App\Models\Person");
 
+    }
+
+    public function vaccination(){
+        return $this->belongsTo("App\Models\Vaccination");
+    }
 
 }
