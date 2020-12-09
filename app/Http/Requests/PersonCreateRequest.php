@@ -32,16 +32,15 @@ class PersonCreateRequest extends FormRequest
             "gender" => "required|in:masculino,femenino",
             "birthday" => "required|date",
             "phone_number" => "required|string",
-            "father_dni" => "exists:persons,dni",
-            "mother_dni" => "exists:persons,dni",
+            "father_dni" => "nullable|exists:persons,dni",
+            "mother_dni" => "nullable|exists:persons,dni",
             "house_id" => "required|exists:houses,id",
         ];
     }
-
     
     //public function failedValidation(Validator $validator){
     //    dd($validator->errors());
 
-    //    throw new ValidatorException($errors);
+    //   throw new ValidatorException($errors);
     //}
 }

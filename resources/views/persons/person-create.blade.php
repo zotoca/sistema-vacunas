@@ -11,8 +11,14 @@
 
     <section class="container mt-5">
        {{--enctype para enviarse archivos binarios--}}
-        <form id="create-person-form" data-aos="fade-up" method="POST" action=""  enctype="multipart/form-data">
+        <form id="create-person-form" data-aos="fade-up" method="POST" action="/personas"  enctype="multipart/form-data">
+            @csrf
             <div class="form-group">
+                @error("image")
+                    <div class="alert alert-danger">
+                        {{$message}}
+                    </div>
+                @enderror
                 <div class="row">
                     <div class="col-sm-12 col-md-2 col-lg-1 d-flex align-items-center">
                         <a href="{{asset("images/anon.png")}}" 
@@ -47,19 +53,29 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
+                        @error("first_name")
+                            <div class="alert alert-danger">
+                                {{$message}}
+                            </div>
+                        @enderror
                         <label for="first-name" class="font-weight-bold mb-2 lead d-block">
                             Nombre
                             <small class="text-muted float-right font-weight-bold">(requerido)</small>
                         </label>
-                        <input type="text" class="form-control" name="first_name" id="first-name" placeholder="Juan" autofocus required>
+                        <input type="text" value="{{old('first_name')}}" class="form-control" name="first_name" id="first-name" placeholder="Juan" autofocus required>
                     </div>
 
                     <div class="col-sm-12 col-lg-6">
+                        @error("last_name")
+                            <div class="alert alert-danger">
+                                {{$message}}
+                            </div>
+                        @enderror
                         <label for="last-name" class="font-weight-bold mb-2 lead d-block">
                             Apellido
                             <small class="text-muted float-right font-weight-bold">(requerido)</small>
                         </label>
-                        <input type="text" class="form-control" name="last_name" id="last-name" placeholder="Mendoza" required>
+                        <input type="text" value="{{old('last_name')}}" class="form-control" name="last_name" id="last-name" placeholder="Mendoza" required>
                     </div>
                 </div>
             </div>
@@ -67,19 +83,29 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
+                        @error("dni")
+                            <div class="alert alert-danger">
+                                {{$message}}
+                            </div>
+                        @enderror
                         <label for="dni" class="font-weight-bold mb-2 lead d-block">
                             Cédula
                             <small class="text-muted float-right font-weight-bold">(requerido)</small>
                         </label>
-                        <input type="number" class="form-control" name="dni" id="dni" placeholder="0000000" required>
+                        <input type="number" value="{{old('dni')}}" class="form-control" name="dni" id="dni" placeholder="0000000" required>
                     </div>
 
                     <div class="col-sm-12 col-lg-6">
+                        @error("phone_number")
+                            <div class="alert alert-danger">
+                                {{$message}}
+                            </div>
+                        @enderror
                         <label for="phone-number" class="font-weight-bold mb-2 lead d-block">
                             Teléfono
                             <small class="text-muted float-right font-weight-bold">(requerido)</small>
                         </label>
-                        <input type="number" class="form-control" name="phone_number" id="phone-number" placeholder="0000000" required>
+                        <input type="number" value="{{old('phone_number')}}"  class="form-control" name="phone_number" id="phone-number" placeholder="0000000" required>
                     </div>
                 </div>
             </div>
@@ -87,21 +113,31 @@
             <div class="form-group">
                  <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
+                        @error("birthday")
+                            <div class="alert alert-danger">
+                                {{$message}}
+                            </div>
+                        @enderror
                         <label for="birthday" class="font-weight-bold mb-2 lead d-block">
                             Fecha de nacimiento
                             <small class="text-muted float-right font-weight-bold">(requerido)</small>
                         </label>
-                        <input type="date" class="form-control" name="birthday" id="birthday" required>
+                        <input value="{{old('birthday')}}"  type="date" class="form-control" name="birthday" id="birthday" required>
                     </div>
 
                     <div class="col-sm-12 col-lg-6 mb-3">
+                        @error("gender")
+                            <div class="alert alert-danger">
+                                {{$message}}
+                            </div>
+                        @enderror
                         <label for="gender" class="font-weight-bold mb-2 lead d-block">
                             Género
                             <small class="text-muted float-right font-weight-bold">(requerido)</small>
                         </label>
                         <select name="gender" id="gender" class="form-control" required>
-                            <option value="femenino">Mujer</option>
-                            <option value="masculino">Hombre</option>
+                            <option value="femenino" {{ (old("gender") == "femenino" ? "selected":"")}}>Mujer</option>
+                            <option value="masculino" {{ (old("gender") == "masculino" ? "selected":"")}}>Hombre</option>
                         </select>
                     </div>
                 </div>
@@ -110,23 +146,33 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
+                        
                         <label for="street-id" class="font-weight-bold mb-2 lead d-block">
                             Calle
                             <small class="text-muted float-right font-weight-bold">(requerido)</small>
                         </label>
                         <select name="street_id" id="street-id"  class="form-control" required>
-                           <option value="21">Calle 21</option>
+                           @foreach($streets as $street)
+                                <option {{ (old("street_id") == $street->id ? "selected":"")}} value="{{$street->id}}">{{$street->name}}</option>
+                           @endforeach
                             
                         </select>
                     </div>
 
                     <div class="col-sm-12 col-lg-6">
+                        @error("house_id")
+                            <div class="alert alert-danger">
+                                {{$message}}
+                            </div>
+                        @enderror
                         <label for="house-id" class="font-weight-bold mb-2 lead d-block">
                             Casa
                             <small class="text-muted float-right font-weight-bold">(requerido)</small>
                         </label>
                         <select name="house_id" id="house-id"  class="form-control" required>
-                            <option value="11">Casa 11 de la calle 21</option>
+                            @foreach($houses as $house)
+                                <option {{ (old("house_id") == $house->id ? "selected":"")}} value="{{$house->id}}">Casa N#{{$house->number}} Calle {{$streets[0]->name}}</option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
@@ -137,17 +183,27 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
+                        @error("father_dni")
+                            <div class="alert alert-danger">
+                                {{$message}}
+                            </div>
+                        @enderror
                         <label for="father-dni" class="font-weight-bold mb-2 lead d-block">
                             Cédula del padre 
                         <small class="text-muted ml-2 float-right">(opcional)</small></label>
-                        <input type="number" class="form-control" name="father_dni" id="father-dni" placeholder="0000000">
+                        <input type="number" class="form-control" value="{{old('father_dni')}}" name="father_dni" id="father-dni" placeholder="0000000">
                     </div>
 
                     <div class="col-sm-12 col-lg-6">
+                        @error("mother_dni")
+                            <div class="alert alert-danger">
+                                {{$message}}
+                            </div>
+                        @enderror
                         <label for="mother-number" class="font-weight-bold mb-2 lead d-block">
                             Cédula de la madre 
                         <small class="text-muted ml-2 float-right">(opcional)</small></label>
-                        <input type="number" class="form-control" name="mother_dni" id="mother-number" placeholder="0000000">
+                        <input type="number" class="form-control" value="{{old('mother_dni')}}" name="mother_dni" id="mother-number" placeholder="0000000">
                     </div>
                 </div>
             </div>

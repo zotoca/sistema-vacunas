@@ -19,7 +19,7 @@ class CreatePersonsTable extends Migration
             $table->string("first_name");
             $table->string("last_name");
             $table->string("dni");
-            $table->string("image_url")->nullable();
+            $table->string("image_url")->default("person.png");
             $table->enum("gender",['masculino','femenino']);
             $table->date("birthday");
             $table->unsignedTinyInteger("age");
