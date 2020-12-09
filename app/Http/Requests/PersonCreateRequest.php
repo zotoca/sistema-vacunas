@@ -33,7 +33,7 @@ class PersonCreateRequest extends FormRequest
             "birthday" => "required|date",
             "phone_number" => "required|string",
             "father_dni" => "exists:persons,dni",
-            "mother_dni" => "rexists:persons,dni",
+            "mother_dni" => "exists:persons,dni",
             "house_id" => "required|exists:houses,id",
         ];
     }
