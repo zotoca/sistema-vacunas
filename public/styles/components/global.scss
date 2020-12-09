@@ -42,7 +42,9 @@
 }
 
 input.bad,
-input.bad:focus {
+input.bad:focus,
+select.bad,
+select.bad:focus {
     box-shadow: 0 0 0 0.2rem #dc354670;
     border-color: #dc3545;
 }
