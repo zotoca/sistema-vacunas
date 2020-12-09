@@ -15,7 +15,7 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-md-2 col-lg-1 d-flex align-items-center">
-                        <img src="{{asset("images/anon.png")}}" alt="Anoymous user" id="perfil-preview" class="rounded-circle" width="80" height="80">
+                        <img src="{{asset("images/anon.png")}}" alt="Anoymous user" id="perfil-preview" class="rounded-circle" width="80" height="80" style="object-fit: cover;">
                     </div>
                     <div class="col-sm-12 col-md-10 col-lg-11">
                         <label for="perfil-photo" class="font-weight-bold mb-2 lead">Foto de perfil</label>
