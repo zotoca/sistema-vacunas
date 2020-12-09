@@ -8,7 +8,7 @@
                     <h5 class="card-title title pl-1">{{$person->first_name}}</h5>
                     <div class="row w-100 m-0">
                         <div class="col-sm-12 col-lg-6 p-1">
-                            <a class="btn btn-primary btn-block" href="/personas/editar/{{$person->id}}">
+                            <a class="btn btn-primary btn-block" href="/personas/{{$person->id}}/editar">
                                 Editar
                                 <i class="fa fa-pencil ml-1"></i>
                             </a>
