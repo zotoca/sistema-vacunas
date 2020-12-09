@@ -10,8 +10,8 @@
     </section>
 
     <section class="container mt-5">
-       
-        <form id="create-person-form" data-aos="fade-up">
+       {{--enctype para enviarse archivos binarios--}}
+        <form id="create-person-form" data-aos="fade-up" method="POST" action=""  enctype="multipart/form-data">
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-md-2 col-lg-1 d-flex align-items-center">
