@@ -11,8 +11,8 @@
 
     <section class="container mt-5">
        
-        <form id="create-person-form">
-            <div class="form-group" data-aos="fade-up">
+        <form id="create-person-form" data-aos="fade-up">
+            <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-md-2 col-lg-1 d-flex align-items-center">
                         <img src="{{asset("images/anon.png")}}" alt="Anoymous user" id="perfil-preview" class="rounded-circle" width="80" height="80">
@@ -29,7 +29,7 @@
 
             <hr class="my-4" />
 
-            <div class="form-group" data-aos="fade-up">
+            <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
                         <label for="first-name" class="font-weight-bold mb-2 lead">Nombre</label>
@@ -43,7 +43,7 @@
                 </div>
             </div>
 
-            <div class="form-group" data-aos="fade-up">
+            <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
                         <label for="dni" class="font-weight-bold mb-2 lead">Cédula</label>
@@ -57,7 +57,7 @@
                 </div>
             </div>
 
-            <div class="form-group" data-aos="fade-up">
+            <div class="form-group">
                  <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
                         <label for="birthday" class="font-weight-bold mb-2 lead">Fecha de nacimiento</label>
@@ -74,7 +74,7 @@
                 </div>
             </div>
 
-            <div class="form-group" data-aos="fade-up">
+            <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
                         <label for="street-id" class="font-weight-bold mb-2 lead">Calle</label>
@@ -96,7 +96,7 @@
 
             <hr class="my-4" />
 
-            <div class="form-group" data-aos="fade-up">
+            <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
                         <label for="father-dni" class="font-weight-bold mb-2 lead">Cédula del padre</label>
@@ -140,7 +140,7 @@
                 </div>
             </div> --}}
 
-            <div class="form-group" data-aos="fade-up">
+            <div class="form-group">
                 <div class="row">
                     <div class="col-12">
                         <button class="btn btn-success btn-block" type="submit" id="create-person">

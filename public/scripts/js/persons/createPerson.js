@@ -4,6 +4,10 @@ import isValidForm, { isEmptyInputsForm } from "../helpers/forms.js";
 import { getId } from "../helpers/DOM.js";
 
 window.addEventListener("DOMContentLoaded", () => {
+    const btnUploadImage = getId("upload-image");
+    const btnFile = getId("perfil-photo");
+    const imagePreview = getId("perfil-preview");
+
     const form = getId("create-person-form");
     const btnCreatePerson = getId("create-person");
     const inputNames = [
@@ -18,8 +22,19 @@ window.addEventListener("DOMContentLoaded", () => {
         "father_dni",
         "mother_dni",
     ];
+    const fileReader = new FileReader();
 
     form.addEventListener("submit", (e) => e.preventDefault());
+    btnUploadImage.addEventListener("click", () => btnFile.click());
+
+    btnFile.addEventListener("change", (e) => {
+        const imgFile = e.target.files[0];
+        fileReader.onload = () => {
+            imagePreview.src = fileReader.result;
+        };
+        fileReader.readAsDataURL(imgFile);
+    });
+    
     isEmptyInputsForm(form, inputNames);
 
     btnCreatePerson.addEventListener("click", async () => {
