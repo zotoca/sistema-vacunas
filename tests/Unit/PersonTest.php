@@ -16,7 +16,7 @@ class PersonTest extends TestCase
     public function test_it_has_a_path(){
         $person = Person::factory()->create();
 
-        $this->assertEquals("/persona/$person->id", $person->path());
+        $this->assertEquals("/personas/$person->id", $person->path());
     }
 
     public function test_it_belongs_to_a_house(){
