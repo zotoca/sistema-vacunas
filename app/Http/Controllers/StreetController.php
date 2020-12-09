@@ -48,5 +48,19 @@ class StreetController extends Controller
 
     }
 
+    public function indexApi(Request $request){
+
+        $streets = Street::all();
+
+        return response()->json($streets);
+    }
+
+    public function housesApi(Street $street){
+
+        $houses = $street->houses;
+
+        return response()->json($houses);
+    }
+    
 
 }
