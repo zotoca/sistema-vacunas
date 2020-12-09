@@ -94,16 +94,15 @@
                     <div class="col-sm-12 col-lg-6 mb-3">
                         <label for="street-id" class="font-weight-bold mb-2 lead">Calle</label>
                         <select name="street_id" id="street-id"  class="form-control" required>
-                            <option value="s1">Calle 1</option>
-                            <option value="s2">Calle 2</option>
+                           <option value="21">Calle 21</option>
+                            
                         </select>
                     </div>
 
                     <div class="col-sm-12 col-lg-6">
                         <label for="house-id" class="font-weight-bold mb-2 lead">Casa</label>
                         <select name="house_id" id="house-id"  class="form-control" required>
-                            <option value="c1">Casa 1</option>
-                            <option value="c2">Casa 2</option>
+                            <option value="11">Casa 11 de la calle 21</option>
                         </select>
                     </div>
                 </div>
@@ -114,13 +113,13 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
-                        <label for="father-dni" class="font-weight-bold mb-2 lead">Cédula del padre</label>
-                        <input type="number" class="form-control" name="father_dni" id="father-dni" placeholder="0000000" required>
+                        <label for="father-dni" class="font-weight-bold mb-2 lead">Cédula del padre <small class="text-muted ml-2">(opcional)</small></label>
+                        <input type="number" class="form-control" name="father_dni" id="father-dni" placeholder="0000000">
                     </div>
 
                     <div class="col-sm-12 col-lg-6">
-                        <label for="mother-number" class="font-weight-bold mb-2 lead">Cédula de la madre</label>
-                        <input type="number" class="form-control" name="mother_dni" id="mother-number" placeholder="0000000" required>
+                        <label for="mother-number" class="font-weight-bold mb-2 lead">Cédula de la madre <small class="text-muted ml-2">(opcional)</small></label>
+                        <input type="number" class="form-control" name="mother_dni" id="mother-number" placeholder="0000000">
                     </div>
                 </div>
             </div>

@@ -1,6 +1,10 @@
 import { success, error } from "../helpers/sweetAlerts.js";
 import { createPerson } from "../helpers/requests.js";
-import isValidForm, { isEmptyInputsForm } from "../helpers/forms.js";
+import isValidForm, {
+    isEmptyInputsForm,
+    checkEmptyValueFormData,
+} from "../helpers/forms.js";
+
 import { getId } from "../helpers/DOM.js";
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -20,8 +24,6 @@ window.addEventListener("DOMContentLoaded", () => {
         "birthday",
         "street_id",
         "house_id",
-        "father_dni",
-        "mother_dni",
     ];
     const fileReader = new FileReader();
 
@@ -53,7 +55,9 @@ window.addEventListener("DOMContentLoaded", () => {
                 // execute code before the alert open
                 Swal.showLoading();
                 try {
-                    const res = await createPerson(data);
+                    const res = await createPerson(
+                        checkEmptyValueFormData(data)
+                    );
                     if (res.message === "ok") {
                         success(
                             "Persona creada",

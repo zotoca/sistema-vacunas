@@ -27,3 +27,13 @@ export function isEmptyInputsForm(form, inputsName = []) {
         });
     }
 }
+
+export function checkEmptyValueFormData(formData) {
+    const fd = new FormData();
+    for (const [key, value] of formData.entries()) {
+        if (value) {
+            fd.append(key, value);
+        }
+    }
+    return fd;
+}
