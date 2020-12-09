@@ -11,25 +11,40 @@
 
     <section class="container mt-5">
        
-        <form>
-            <div class="form-group" data-aos="fade-up">
+        <form id="create-person-form" data-aos="fade-up">
+            <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-md-2 col-lg-1 d-flex align-items-center">
-                        <img src="{{asset("images/anon.png")}}" alt="Anoymous user" id="perfil-preview" class="rounded-circle" width="80" height="80">
+                        <a href="{{asset("images/anon.png")}}" 
+                            data-lightbox="{{asset("images/anon.png")}}"
+                            class="d-block position-relative text-reset perfil-preview-container"
+                        >
+                            <div class="perfil-preview-icon">
+                                <i class="fa fa-eye"></i>
+                            </div>
+                            <img src="{{asset("images/anon.png")}}" 
+                                alt="Anoymous user" 
+                                id="perfil-preview"
+                                class="rounded-circle" 
+                                width="80" height="80" 
+                                style="object-fit: cover;"
+                            >
+                        </a>
+                        
                     </div>
                     <div class="col-sm-12 col-md-10 col-lg-11">
                         <label for="perfil-photo" class="font-weight-bold mb-2 lead">Foto de perfil</label>
                         <button class="btn btn-outline-primary d-block" type="button" id="upload-image">
                             Subir imágen <i class="fa fa-file-upload ml-1"></i>
                         </button>
-                        <input type="file" name="perfil_photo" id="perfil-photo" class="form-control d-none" accept=".jpg, .png, .jpeg, .gif, .bmp">
+                        <input type="file" name="image" id="perfil-photo" class="form-control d-none" accept=".jpg, .png, .jpeg, .gif, .bmp">
                     </div>
                 </div>
             </div>
 
             <hr class="my-4" />
 
-            <div class="form-group" data-aos="fade-up">
+            <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
                         <label for="first-name" class="font-weight-bold mb-2 lead">Nombre</label>
@@ -43,7 +58,7 @@
                 </div>
             </div>
 
-            <div class="form-group" data-aos="fade-up">
+            <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
                         <label for="dni" class="font-weight-bold mb-2 lead">Cédula</label>
@@ -57,7 +72,7 @@
                 </div>
             </div>
 
-            <div class="form-group" data-aos="fade-up">
+            <div class="form-group">
                  <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
                         <label for="birthday" class="font-weight-bold mb-2 lead">Fecha de nacimiento</label>
@@ -74,7 +89,7 @@
                 </div>
             </div>
 
-            <div class="form-group" data-aos="fade-up">
+            <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
                         <label for="street-id" class="font-weight-bold mb-2 lead">Calle</label>
@@ -96,7 +111,7 @@
 
             <hr class="my-4" />
 
-            <div class="form-group" data-aos="fade-up">
+            <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
                         <label for="father-dni" class="font-weight-bold mb-2 lead">Cédula del padre</label>
@@ -105,7 +120,7 @@
 
                     <div class="col-sm-12 col-lg-6">
                         <label for="mother-number" class="font-weight-bold mb-2 lead">Cédula de la madre</label>
-                        <input type="number" class="form-control" name="mother_number" id="mother-number" placeholder="0000000" required>
+                        <input type="number" class="form-control" name="mother_dni" id="mother-number" placeholder="0000000" required>
                     </div>
                 </div>
             </div>
@@ -140,10 +155,10 @@
                 </div>
             </div> --}}
 
-            <div class="form-group" data-aos="fade-up">
+            <div class="form-group">
                 <div class="row">
                     <div class="col-12">
-                        <button class="btn btn-success btn-block" type="button" id="create-person">
+                        <button class="btn btn-success btn-block" type="submit" id="create-person">
                             Crear persona
                             <i class="fa fa-arrow-right ml-1"></i>
                         </button>

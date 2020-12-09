@@ -41,3 +41,8 @@
     margin-top: 6rem;
 }
 
+input.bad,
+input.bad:focus {
+    box-shadow: 0 0 0 0.2rem #dc354670;
+    border-color: #dc3545;
+}

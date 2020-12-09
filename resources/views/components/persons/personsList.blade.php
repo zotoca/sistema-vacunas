@@ -3,7 +3,7 @@
         @forelse($persons as $person)
         <div class="col-sm-12 col-md-6 col-lg-4 px-2 py-2">
             <div class="card">
-                <img class="card-img-top" src="{{asset("/images/streets.png")}}" alt="{{$person->first_name}}" title="{{$person->first_name}}">
+                <img class="card-img-top" src="{{asset("/images/person.png")}}" alt="{{$person->first_name}}" title="{{$person->first_name}}">
                 <div class="card-body">
                     <h5 class="card-title title pl-1">{{$person->first_name}}</h5>
                     <div class="row w-100 m-0">
