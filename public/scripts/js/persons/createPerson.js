@@ -1,5 +1,6 @@
 import { success, error } from "../helpers/sweetAlerts.js";
 import { createPerson } from "../helpers/requests.js";
+import { isImage } from "../helpers/checkTypeFile.js";
 import isValidForm, {
     isEmptyInputsForm,
     checkEmptyValueFormData,
@@ -12,7 +13,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const btnFile = getId("perfil-photo");
     const imagePreview = getId("perfil-preview");
     const anchorImagePreview = imagePreview.parentNode;
-
+    const fileReader = new FileReader();
     const form = getId("create-person-form");
     const btnCreatePerson = getId("create-person");
     const inputNames = [
@@ -25,17 +26,24 @@ window.addEventListener("DOMContentLoaded", () => {
         "street_id",
         "house_id",
     ];
-    const fileReader = new FileReader();
+    const setLinkImagePreview = (img) => {
+        imagePreview.src = img;
+        anchorImagePreview.href = img;
+        anchorImagePreview.setAttribute("data-lightbox", img);
+    };
 
     form.addEventListener("submit", (e) => e.preventDefault());
     btnUploadImage.addEventListener("click", () => btnFile.click());
 
     btnFile.addEventListener("change", (e) => {
         const imgFile = e.target.files[0];
+        if (!isImage(btnFile)) {
+            setLinkImagePreview("/images/anon.png");
+            return;
+        }
+
         fileReader.onload = () => {
-            imagePreview.src = fileReader.result;
-            anchorImagePreview.href = fileReader.result;
-            anchorImagePreview.setAttribute("data-lightbox", fileReader.result);
+            setLinkImagePreview(fileReader.result);
         };
         fileReader.readAsDataURL(imgFile);
     });

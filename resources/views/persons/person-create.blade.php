@@ -37,7 +37,7 @@
                         <button class="btn btn-outline-primary d-block" type="button" id="upload-image">
                             Subir imágen <i class="fa fa-file-upload ml-1"></i>
                         </button>
-                        <input type="file" name="image" id="perfil-photo" class="form-control d-none" accept=".jpg, .png, .jpeg, .gif, .bmp">
+                        <input type="file" name="image" id="perfil-photo" class="form-control d-none" accept=".jpeg,.jpg,.png,.gif,.bmp,.svg">
                     </div>
                 </div>
             </div>
@@ -47,12 +47,18 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
-                        <label for="first-name" class="font-weight-bold mb-2 lead">Nombre</label>
+                        <label for="first-name" class="font-weight-bold mb-2 lead d-block">
+                            Nombre
+                            <small class="text-muted float-right font-weight-bold">(requerido)</small>
+                        </label>
                         <input type="text" class="form-control" name="first_name" id="first-name" placeholder="Juan" autofocus required>
                     </div>
 
                     <div class="col-sm-12 col-lg-6">
-                        <label for="last-name" class="font-weight-bold mb-2 lead">Apellido</label>
+                        <label for="last-name" class="font-weight-bold mb-2 lead d-block">
+                            Apellido
+                            <small class="text-muted float-right font-weight-bold">(requerido)</small>
+                        </label>
                         <input type="text" class="form-control" name="last_name" id="last-name" placeholder="Mendoza" required>
                     </div>
                 </div>
@@ -61,12 +67,18 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
-                        <label for="dni" class="font-weight-bold mb-2 lead">Cédula</label>
+                        <label for="dni" class="font-weight-bold mb-2 lead d-block">
+                            Cédula
+                            <small class="text-muted float-right font-weight-bold">(requerido)</small>
+                        </label>
                         <input type="number" class="form-control" name="dni" id="dni" placeholder="0000000" required>
                     </div>
 
                     <div class="col-sm-12 col-lg-6">
-                        <label for="phone-number" class="font-weight-bold mb-2 lead">Teléfono</label>
+                        <label for="phone-number" class="font-weight-bold mb-2 lead d-block">
+                            Teléfono
+                            <small class="text-muted float-right font-weight-bold">(requerido)</small>
+                        </label>
                         <input type="number" class="form-control" name="phone_number" id="phone-number" placeholder="0000000" required>
                     </div>
                 </div>
@@ -75,12 +87,18 @@
             <div class="form-group">
                  <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
-                        <label for="birthday" class="font-weight-bold mb-2 lead">Fecha de nacimiento</label>
+                        <label for="birthday" class="font-weight-bold mb-2 lead d-block">
+                            Fecha de nacimiento
+                            <small class="text-muted float-right font-weight-bold">(requerido)</small>
+                        </label>
                         <input type="date" class="form-control" name="birthday" id="birthday" required>
                     </div>
 
                     <div class="col-sm-12 col-lg-6 mb-3">
-                        <label for="gender" class="font-weight-bold mb-2 lead">Género</label>
+                        <label for="gender" class="font-weight-bold mb-2 lead d-block">
+                            Género
+                            <small class="text-muted float-right font-weight-bold">(requerido)</small>
+                        </label>
                         <select name="gender" id="gender" class="form-control" required>
                             <option value="femenino">Mujer</option>
                             <option value="masculino">Hombre</option>
@@ -92,7 +110,10 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
-                        <label for="street-id" class="font-weight-bold mb-2 lead">Calle</label>
+                        <label for="street-id" class="font-weight-bold mb-2 lead d-block">
+                            Calle
+                            <small class="text-muted float-right font-weight-bold">(requerido)</small>
+                        </label>
                         <select name="street_id" id="street-id"  class="form-control" required>
                            <option value="21">Calle 21</option>
                             
@@ -100,7 +121,10 @@
                     </div>
 
                     <div class="col-sm-12 col-lg-6">
-                        <label for="house-id" class="font-weight-bold mb-2 lead">Casa</label>
+                        <label for="house-id" class="font-weight-bold mb-2 lead d-block">
+                            Casa
+                            <small class="text-muted float-right font-weight-bold">(requerido)</small>
+                        </label>
                         <select name="house_id" id="house-id"  class="form-control" required>
                             <option value="11">Casa 11 de la calle 21</option>
                         </select>
@@ -113,12 +137,16 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
-                        <label for="father-dni" class="font-weight-bold mb-2 lead">Cédula del padre <small class="text-muted ml-2">(opcional)</small></label>
+                        <label for="father-dni" class="font-weight-bold mb-2 lead d-block">
+                            Cédula del padre 
+                        <small class="text-muted ml-2 float-right">(opcional)</small></label>
                         <input type="number" class="form-control" name="father_dni" id="father-dni" placeholder="0000000">
                     </div>
 
                     <div class="col-sm-12 col-lg-6">
-                        <label for="mother-number" class="font-weight-bold mb-2 lead">Cédula de la madre <small class="text-muted ml-2">(opcional)</small></label>
+                        <label for="mother-number" class="font-weight-bold mb-2 lead d-block">
+                            Cédula de la madre 
+                        <small class="text-muted ml-2 float-right">(opcional)</small></label>
                         <input type="number" class="form-control" name="mother_dni" id="mother-number" placeholder="0000000">
                     </div>
                 </div>
