@@ -112,11 +112,12 @@
                     <div class="col-sm-12 col-lg-6 mb-3">
                         <label for="street-id" class="font-weight-bold mb-2 lead d-block">
                             Calle
-                            <small class="text-muted float-right font-weight-bold">(requerido)</small>
+                            <small class="text-muted float-right font-weight-bold">
+                                (requerido)
+                                <div class="loader-data" id="loader-street"></div>
+                            </small>
                         </label>
-                        <select name="street_id" id="street-id"  class="form-control" required>
-                           <option value="21">Calle 21</option>
-                            
+                        <select name="street_id" id="street-id"  class="form-control" required disabled>
                         </select>
                     </div>
 
@@ -125,8 +126,8 @@
                             Casa
                             <small class="text-muted float-right font-weight-bold">(requerido)</small>
                         </label>
-                        <select name="house_id" id="house-id"  class="form-control" required>
-                            <option value="11">Casa 11 de la calle 21</option>
+                        <select name="house_id" id="house-id"  class="form-control" required disabled>
+                        
                         </select>
                     </div>
                 </div>

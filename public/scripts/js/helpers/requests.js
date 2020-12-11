@@ -55,3 +55,7 @@ export async function deletePerson(id) {
 export async function getStreets() {
     return GET(STREETS_API_URL);
 }
+
+export async function getHouses(streetId) {
+    return GET(HOUSES_API_URL(streetId));
+}

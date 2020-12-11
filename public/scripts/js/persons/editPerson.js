@@ -1,5 +1,5 @@
 import { success, error } from "../helpers/sweetAlerts.js";
-import { createPerson, getStreets } from "../helpers/requests.js";
+import { createPerson, getStreets, getHouses } from "../helpers/requests.js";
 import { isImage } from "../helpers/checkTypeFile.js";
 import isValidForm, {
     checkEmptyInputsInForm,
@@ -11,11 +11,28 @@ import { getId } from "../helpers/DOM.js";
 window.addEventListener("DOMContentLoaded", () => {
     // ---------- CALLES Y CASAS -----------------
     const streetsSelect = getId("street-id");
+    const loaderStreet = getId("loader-street");
+
     const housesSelect = getId("house-id");
     // --------------------------------------------
     async function showStreets() {
         const streets = await getStreets();
-        console.log(streets);
+        streetsSelect.innerHTML = createOptions(streets, ["id", "name"]);
+        streetsSelect.disabled = false;
+        loaderStreet.classList.add("d-none");
+    }
+
+    async function showHouses(id) {
+        const houses = await getHouses(id);
+    }
+
+    function createOptions(streets, props) {
+        let tpl = "";
+        const [value, text] = props;
+        for (const item of streets) {
+            tpl += `<option value="${item[value]}">${item[text]}</option>`;
+        }
+        return tpl;
     }
 
     showStreets();
