@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             VaccinationSeeder::class,
             StreetSeeder::class,
-            PersonSeeder::class
+            PersonSeeder::class,
+            HouseSeeder::class,
         ]);
 
     }
