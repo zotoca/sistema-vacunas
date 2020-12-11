@@ -124,10 +124,13 @@
                     <div class="col-sm-12 col-lg-6">
                         <label for="house-id" class="font-weight-bold mb-2 lead d-block">
                             Casa
-                            <small class="text-muted float-right font-weight-bold">(requerido)</small>
+                            <small class="text-muted float-right font-weight-bold">
+                                (requerido)
+                                <div class="loader-data" id="loader-house"></div>
+                            </small>
                         </label>
                         <select name="house_id" id="house-id"  class="form-control" required disabled>
-                        
+
                         </select>
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 import { success, error } from "../helpers/sweetAlerts.js";
 import { createPerson, getStreets, getHouses } from "../helpers/requests.js";
 import { isImage } from "../helpers/checkTypeFile.js";
+import { createHTMLOptions } from "../helpers/DOM.js";
 import isValidForm, {
     checkEmptyInputsInForm,
     checkEmptyValueFormData,
@@ -14,25 +15,30 @@ window.addEventListener("DOMContentLoaded", () => {
     const loaderStreet = getId("loader-street");
 
     const housesSelect = getId("house-id");
+    const loaderHouse = getId("loader-house");
+
     // --------------------------------------------
+    streetsSelect.addEventListener("change", (e) => {
+        showHouses(e.target.value);
+    });
+
     async function showStreets() {
+        loaderStreet.style.display = "block";
         const streets = await getStreets();
-        streetsSelect.innerHTML = createOptions(streets, ["id", "name"]);
+        streetsSelect.innerHTML = createHTMLOptions(streets, ["id", "name"]);
         streetsSelect.disabled = false;
-        loaderStreet.classList.add("d-none");
+        loaderStreet.style.display = "none";
+        showHouses(streetsSelect.value);
     }
 
     async function showHouses(id) {
+        housesSelect.disabled = true;
+        loaderHouse.style.display = "block";
         const houses = await getHouses(id);
-    }
-
-    function createOptions(streets, props) {
-        let tpl = "";
-        const [value, text] = props;
-        for (const item of streets) {
-            tpl += `<option value="${item[value]}">${item[text]}</option>`;
-        }
-        return tpl;
+        console.log(houses);
+        housesSelect.innerHTML = createHTMLOptions(houses, ["id", "number"]);
+        loaderHouse.style.display = "none";
+        housesSelect.disabled = false;
     }
 
     showStreets();
