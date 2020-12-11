@@ -5,7 +5,7 @@
             <div class="card">
                 <img class="card-img-top" src="{{Storage::url($person->image_url)}}" alt="{{$person->first_name}}" title="{{$person->first_name}}">
                 <div class="card-body">
-                    <h5 class="card-title title pl-1">{{$person->first_name}}</h5>
+                    <h5 class="card-title title pl-1">{{$person->first_name}} {{$person->last_name}}</h5>
                     <div class="row w-100 m-0">
                         <div class="col-sm-12 col-lg-6 p-1">
                             <a class="btn btn-primary btn-block" href="/personas/{{$person->id}}/editar">
