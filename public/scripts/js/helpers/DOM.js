@@ -32,3 +32,12 @@ export function append(element, childs = []) {
 export function insertBefore(father, newNode) {
     father.insertBefore(newNode, father.firstChild);
 }
+
+export function createHTMLOptions(arrayObjects, props = []) {
+    let tpl = "";
+    const [value, text] = props;
+    for (const item of arrayObjects) {
+        tpl += `<option value="${item[value]}">${item[text]}</option>`;
+    }
+    return tpl;
+}
