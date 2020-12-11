@@ -68,7 +68,7 @@ Retorno:["message":"ok"]
 Ruta:/persona/{person_id}  
 Metodo:DELETE  
 Retorno:["message":"ok"]  
-### API Calles:  
+### API Personas:  
 ### Verificar cedula    
 Ruta:/api/personas/verificar-cedula  
 Metodo:POST  
