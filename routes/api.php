@@ -19,7 +19,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::group(["middleware" => "web"],function(){
+Route::group(["middleware" => "auth"],function(){
     Route::get("/calles", "App\Http\Controllers\StreetController@indexApi");
     Route::get("/calles/{street}/casas", "App\Http\Controllers\StreetController@housesApi");
+    
+
+    Route::post("/personas/verificar-cedula", "App\Http\Controllers\PersonController@verificateDniApi");
 });
