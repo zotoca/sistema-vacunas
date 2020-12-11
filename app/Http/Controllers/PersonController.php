@@ -100,7 +100,7 @@ class PersonController extends Controller
         }, ARRAY_FILTER_USE_KEY);
         if(isset($validated["image"])){
             Storage::delete($person->image_url);
-            $person_data["image_url"] = Storage::putFile("avatars", $request->file("image"));
+            $person_data["image_url"] = Storage::putFile("public", $request->file("image"));
         }
         
         if(isset($validated["father_dni"])){
