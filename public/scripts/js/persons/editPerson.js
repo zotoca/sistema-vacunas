@@ -13,35 +13,9 @@ window.addEventListener("DOMContentLoaded", () => {
     // ---------- CALLES Y CASAS -----------------
     const streetsSelect = getId("street-id");
     const loaderStreet = getId("loader-street");
-
     const housesSelect = getId("house-id");
     const loaderHouse = getId("loader-house");
-
     // --------------------------------------------
-    streetsSelect.addEventListener("change", (e) => {
-        showHouses(e.target.value);
-    });
-
-    async function showStreets() {
-        loaderStreet.style.display = "block";
-        const streets = await getStreets();
-        streetsSelect.innerHTML = createHTMLOptions(streets, ["id", "name"]);
-        streetsSelect.disabled = false;
-        loaderStreet.style.display = "none";
-        showHouses(streetsSelect.value);
-    }
-
-    async function showHouses(id) {
-        housesSelect.disabled = true;
-        loaderHouse.style.display = "block";
-        const houses = await getHouses(id);
-        console.log(houses);
-        housesSelect.innerHTML = createHTMLOptions(houses, ["id", "number"]);
-        loaderHouse.style.display = "none";
-        housesSelect.disabled = false;
-    }
-
-    showStreets();
 
     const btnUploadImage = getId("upload-image");
     const btnFile = getId("perfil-photo");
@@ -66,6 +40,31 @@ window.addEventListener("DOMContentLoaded", () => {
         anchorImagePreview.setAttribute("data-lightbox", img);
     };
 
+    showStreets();
+
+    async function showStreets() {
+        loaderStreet.style.display = "block";
+        const streets = await getStreets();
+        streetsSelect.innerHTML = createHTMLOptions(streets, ["id", "name"]);
+        streetsSelect.disabled = false;
+        loaderStreet.style.display = "none";
+        showHouses(streetsSelect.value);
+    }
+
+    async function showHouses(id) {
+        housesSelect.disabled = true;
+        loaderHouse.style.display = "block";
+        const houses = await getHouses(id);
+        console.log(houses);
+        housesSelect.innerHTML = createHTMLOptions(houses, ["id", "number"]);
+        loaderHouse.style.display = "none";
+        housesSelect.disabled = false;
+    }
+
+    streetsSelect.addEventListener("change", (e) => {
+        showHouses(e.target.value);
+    });
+
     form.addEventListener("submit", (e) => e.preventDefault());
     btnUploadImage.addEventListener("click", () => btnFile.click());
 
@@ -76,9 +75,7 @@ window.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        fileReader.onload = () => {
-            setLinkImagePreview(fileReader.result);
-        };
+        fileReader.onload = () => setLinkImagePreview(fileReader.result);
         fileReader.readAsDataURL(imgFile);
     });
 
