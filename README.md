@@ -69,11 +69,8 @@ Ruta:/persona/{person_id}
 Metodo:DELETE  
 Retorno:["message":"ok"]  
 ### API Calles:  
-#### Listar calles  
-Ruta:/api/calles  
-Metodo:GET  
-Retorno:[['id','name','created_at','updated_at']...] Todas las calles  
-### Listar casas de la calle  
-Ruta:/api/calles/{street_id}/casas  
-Metodo:GET  
-Retorno:[['id','number','created_at','updated_at']...]  Todas las casas de esa calle  
+### Verificar cedula    
+Ruta:/api/personas/verificar-cedula  
+Metodo:POST  
+Datos requeridos: dni: requerido y numerico.  
+Retorno:["isValid":true]  
