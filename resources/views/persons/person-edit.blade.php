@@ -5,7 +5,7 @@
     <section class="container mt-5">
         <div class="d-flex align-items-center">
             <a href="/personas" class="btn btn-primary mr-3"><i class="fa fa-arrow-left"></i></a>
-            <h2 class="title title-big">Crear persona</h2>
+            <h2 class="title title-big">Editar persona</h2>
         </div>
     </section>
 
@@ -216,5 +216,5 @@
         </form>
     </section>
     @include("components.footer.footer")
-    {{-- <script src={{asset("scripts/js/persons/createPerson.js")}} type="module"></script> --}}
+    <script src={{asset("scripts/js/persons/editPerson.js")}} type="module"></script>
 @endsection

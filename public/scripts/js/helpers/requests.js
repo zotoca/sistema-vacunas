@@ -3,8 +3,10 @@ import {
     STREETS_URL,
     HOUSES_URL,
     PERSONS_URL,
+    STREETS_API_URL,
+    HOUSES_API_URL,
 } from "./config.js";
-import POST, { DELETE, PUT } from "./http.js";
+import POST, { DELETE, PUT, GET } from "./http.js";
 
 export function createVaccination(name) {
     return POST(VACCINATIONS_URL, { name });
@@ -48,4 +50,8 @@ export async function createPerson(person) {
 
 export async function deletePerson(id) {
     return DELETE(`${PERSONS_URL}/${id}`);
+}
+
+export async function getStreets() {
+    return GET(STREETS_API_URL);
 }
