@@ -12,6 +12,7 @@ use Storage;
 
 use App\Http\Requests\PersonCreateRequest;
 use App\Http\Requests\PersonUpdateRequest;
+use App\Http\Requests\DniRequest;
 use App\Models\Person;
 use App\Models\Vaccination;
 use App\Models\Street;
@@ -131,6 +132,12 @@ class PersonController extends Controller
         $person->delete();
 
         return response()->json(["message"=>"ok"]);
+    }
+
+    public function verificateDniApi(DniRequest $request){
+        $is_valid = Person::where("dni", $request->all()["dni"])->exists();
+
+        return response()->json(["isValid" => $is_valid]);
 
 
     }

@@ -169,4 +169,19 @@ class PersonsTest extends TestCase
         
         $this->assertDatabaseMissing("persons", ["first_name" => $person->first_name]);
     }
+
+    public function test_a_administrator_can_verificate_dni(){
+
+        $this->signIn();
+
+        $person = Person::factory()->create();
+
+        $this->post("/api/personas/verificar-cedula", ["dni" => $person->dni])
+            ->assertStatus(200)
+            ->assertJson(["isValid" => true]);
+
+        $this->post("api/personas/verificar-cedula", ["dni" => "0"])
+            ->assertStatus(200)
+            ->assertJson(["isValid" => false]);
+    }
 }
