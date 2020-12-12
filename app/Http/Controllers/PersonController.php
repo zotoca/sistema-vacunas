@@ -88,7 +88,10 @@ class PersonController extends Controller
     }
 
     public function edit(Person $person){
-        return View::make("persons.person-edit",["person"=>$person]);
+        $person_vaccinations = $person->personVaccinations;
+
+
+        return View::make("persons.person-edit",["person"=>$person,"person_vaccinations" => $person_vaccinations]);
     }
 
     public function update(PersonUpdateRequest $request, Person $person){
@@ -140,5 +143,16 @@ class PersonController extends Controller
         return response()->json(["isValid" => $is_valid]);
 
 
+    }
+
+    public function streetApi(Request $request, Person $person){
+        $street = $person->house->street;
+    
+        return response()->json($street);
+    }
+    public function houseApi(Request $request, Person $person){
+        $house = $person->house;
+
+        return response()->json($house);
     }
 }

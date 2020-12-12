@@ -24,6 +24,8 @@ Route::group(["middleware" => "auth"],function(){
     Route::get("/calles/{street}/casas", "App\Http\Controllers\StreetController@housesApi");
     
 
+    Route::get("/personas/{person}/calles", "App\Http\Controllers\PersonController@streetApi");
+    Route::get("/personas/{person}/casas", "App\Http\Controllers\PersonController@houseApi");
     Route::post("/personas/verificar-cedula", "App\Http\Controllers\PersonController@verificateDniApi");
 
 
