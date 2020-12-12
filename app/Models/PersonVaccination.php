@@ -12,6 +12,13 @@ class PersonVaccination extends Model
 
     protected $table = "person_vaccination";
 
+    protected $guarded = [];
+
+    public function path(){
+        return "/vacunas-personas/$this->id";
+
+    }
+
     public function person(){
         return $this->belongsTo("App\Models\Person");
 

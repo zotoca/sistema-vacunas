@@ -12,6 +12,12 @@ class PersonVaccinationTest extends TestCase
 
     use RefreshDatabase;
 
+    public function test_it_has_a_path(){
+        $person_vaccination = PersonVaccination::factory()->create();
+
+        $this->assertEquals("/vacunas-personas/" . $person_vaccination->id, $person_vaccination->path());
+    }
+
     public function test_it_belongs_to_a_person(){
         $person_vaccination = PersonVaccination::factory()->create();
 
