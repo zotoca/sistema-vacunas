@@ -25,4 +25,9 @@ Route::group(["middleware" => "auth"],function(){
     
 
     Route::post("/personas/verificar-cedula", "App\Http\Controllers\PersonController@verificateDniApi");
+
+
+    Route::post("/vacunas-personas", "App\Http\Controllers\PersonVaccinationController@store");
+    Route::put("/vacunas-personas/{person_vaccination}", "App\Http\Controllers\PersonVaccinationController@update");
+    Route::delete("/vacunas-personas/{person_vaccination}", "App\Http\Controllers\PersonVaccinationController@delete");
 });
