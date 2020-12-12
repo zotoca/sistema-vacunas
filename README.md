@@ -74,6 +74,14 @@ Ruta:/api/personas/verificar-cedula
 Metodo:POST  
 Datos requeridos: dni: requerido y numerico.  
 Retorno:["isValid":true]  
+### Calle de una persona  
+Ruta:/api/personas/{person_id}/calles  
+Metodo:GET    
+Retorno:[["id","name","created_at","updated_at"]]  
+### Casa de una persona  
+Ruta:/api/personas/{person_id}/casas  
+Metodo:GET  
+Retorno:[["id","number","created_at","updated_at"]]  
 ### Api Vacunas de personas:  
 ### Crear vacuna de una persona  
 Ruta:/api/vacunas-personas  
