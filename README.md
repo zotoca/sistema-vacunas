@@ -69,8 +69,23 @@ Ruta:/persona/{person_id}
 Metodo:DELETE  
 Retorno:["message":"ok"]  
 ### API Personas:  
-### Verificar cedula    
+### Verificar cedula  
 Ruta:/api/personas/verificar-cedula  
 Metodo:POST  
 Datos requeridos: dni: requerido y numerico.  
 Retorno:["isValid":true]  
+### Api Vacunas de personas:  
+### Crear vacuna de una persona  
+Ruta:/api/vacunas-personas  
+Metodo:POST  
+Datos requeridos: vaccination_id:requerido y existente en vacunas, person_id:requerido y existente en personas, vaccination_date:requerido y fecha, lot_number:string, dose:string  
+Retorno:[["id","vaccination_id","person_id","vaccination_id","lot_number","dose"]]  
+### Crear vacuna de una persona  
+Ruta:/api/vacunas-personas/{person_vaccination_id}  
+Metodo:PUT  
+Datos requeridos: vaccination_id:existente en vacunas, vaccination_date:fecha, lot_number:string, dose:string  
+Retorno:[["id","vaccination_id","person_id","vaccination_id","lot_number","dose"]]  
+### Eliminar vacuna de una persona  
+Ruta:/api/vacunas-personas/{person_vaccination_id}  
+Metodo:DELETE  
+Retorno:["message":"ok"]  
