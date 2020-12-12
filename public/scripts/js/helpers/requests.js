@@ -5,6 +5,7 @@ import {
     PERSONS_URL,
     STREETS_API_URL,
     HOUSES_API_URL,
+    DNI_CHECK_URL,
 } from "./config.js";
 import POST, { DELETE, PUT, GET } from "./http.js";
 
@@ -58,4 +59,8 @@ export async function getStreets() {
 
 export async function getHouses(streetId) {
     return GET(HOUSES_API_URL(streetId));
+}
+
+export async function isValidDni(dni) {
+    return POST(DNI_CHECK_URL, { dni });
 }

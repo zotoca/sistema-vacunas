@@ -143,15 +143,23 @@
                     <div class="col-sm-12 col-lg-6 mb-3">
                         <label for="father-dni" class="font-weight-bold mb-2 lead d-block">
                             Cédula del padre 
-                        <small class="text-muted ml-2 float-right">(opcional)</small></label>
+                            <small class="text-muted ml-2 float-right">
+                                (opcional)
+                                 <div class="loader-data" id="loader-dni-father" style="display: none;"></div>
+                            </small>
+                        </label>
                         <input type="number" class="form-control" name="father_dni" id="father-dni" placeholder="0000000">
                     </div>
 
                     <div class="col-sm-12 col-lg-6">
-                        <label for="mother-number" class="font-weight-bold mb-2 lead d-block">
+                        <label for="mother-dni" class="font-weight-bold mb-2 lead d-block">
                             Cédula de la madre 
-                        <small class="text-muted ml-2 float-right">(opcional)</small></label>
-                        <input type="number" class="form-control" name="mother_dni" id="mother-number" placeholder="0000000">
+                            <small class="text-muted ml-2 float-right">
+                                (opcional)
+                                <div class="loader-data" id="loader-dni-mother" style="display: none;"></div>
+                            </small>
+                        </label>
+                        <input type="number" class="form-control" name="mother_dni" id="mother-dni" placeholder="0000000">
                     </div>
                 </div>
             </div>

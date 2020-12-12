@@ -1,5 +1,10 @@
 import { success, error } from "../helpers/sweetAlerts.js";
-import { createPerson, getStreets, getHouses } from "../helpers/requests.js";
+import {
+    createPerson,
+    getStreets,
+    getHouses,
+    isValidDni,
+} from "../helpers/requests.js";
 import { isImage } from "../helpers/checkTypeFile.js";
 import { createHTMLOptions } from "../helpers/DOM.js";
 import isValidForm, {
@@ -15,7 +20,15 @@ window.addEventListener("DOMContentLoaded", () => {
     const loaderStreet = getId("loader-street");
     const housesSelect = getId("house-id");
     const loaderHouse = getId("loader-house");
-    // --------------------------------------------
+
+    // ------------ CEDULAS ------------------------
+    const motherDni = getId("mother-dni");
+
+    const fatherDni = getId("father-dni");
+    const loadersDni = {
+        father_dni: getId("loader-dni-father"),
+        mother_dni: getId("loader-dni-mother"),
+    };
 
     const btnUploadImage = getId("upload-image");
     const btnFile = getId("perfil-photo");
@@ -40,8 +53,6 @@ window.addEventListener("DOMContentLoaded", () => {
         anchorImagePreview.setAttribute("data-lightbox", img);
     };
 
-    showStreets();
-
     async function showStreets() {
         loaderStreet.style.display = "block";
         const streets = await getStreets();
@@ -55,16 +66,30 @@ window.addEventListener("DOMContentLoaded", () => {
         housesSelect.disabled = true;
         loaderHouse.style.display = "block";
         const houses = await getHouses(id);
-        console.log(houses);
         housesSelect.innerHTML = createHTMLOptions(houses, ["id", "number"]);
         loaderHouse.style.display = "none";
         housesSelect.disabled = false;
     }
 
-    streetsSelect.addEventListener("change", (e) => {
-        showHouses(e.target.value);
-    });
+    async function checkDni({ target }) {
+        if (target.value) {
+            loadersDni[target.name].style.display = "block";
+            const isValid = await isValidDni(target.value);
+            if (!isValid.isValid) {
+                target.classList.add("bad");
+            } else {
+                target.classList.remove("bad");
+            }
+            loadersDni[target.name].style.display = "none";
+            console.log(isValid);
+        }
+    }
 
+    showStreets();
+
+    streetsSelect.addEventListener("change", (e) => showHouses(e.target.value));
+    motherDni.addEventListener("blur", checkDni);
+    fatherDni.addEventListener("blur", checkDni);
     form.addEventListener("submit", (e) => e.preventDefault());
     btnUploadImage.addEventListener("click", () => btnFile.click());
 
