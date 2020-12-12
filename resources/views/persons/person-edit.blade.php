@@ -13,6 +13,8 @@
        {{--enctype para enviarse archivos binarios--}}
         <form id="edit-person-form" data-aos="fade-up">
             <input type="hidden" id="person-id" name="person_id" value="{{ $person->id }}">
+            <input type="hidden" id="person-street-id" name="person_house_id" value="{{ $person->house->street->id }}">
+            <input type="hidden" id="person-house-id" name="person_house_id" value="{{ $person->house->id }}">
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-md-2 col-lg-1 d-flex align-items-center">
