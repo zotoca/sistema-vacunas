@@ -12,6 +12,7 @@
     <section class="container mt-5">
        {{--enctype para enviarse archivos binarios--}}
         <form id="edit-person-form" data-aos="fade-up">
+            <input type="hidden" id="person-id" name="person_id" value="{{ $person->id }}">
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-md-2 col-lg-1 d-flex align-items-center">
@@ -51,7 +52,7 @@
                             Nombre
                             <small class="text-muted float-right font-weight-bold">(requerido)</small>
                         </label>
-                        <input type="text" class="form-control" name="first_name" id="first-name" placeholder="Juan" autofocus required>
+                        <input type="text" class="form-control" name="first_name" id="first-name" placeholder="Juan" value="{{$person->first_name}}" autofocus required>
                     </div>
 
                     <div class="col-sm-12 col-lg-6">
@@ -59,7 +60,7 @@
                             Apellido
                             <small class="text-muted float-right font-weight-bold">(requerido)</small>
                         </label>
-                        <input type="text" class="form-control" name="last_name" id="last-name" placeholder="Mendoza" required>
+                        <input type="text" class="form-control" name="last_name" id="last-name" placeholder="Mendoza" value="{{$person->last_name}}" required>
                     </div>
                 </div>
             </div>
@@ -74,7 +75,7 @@
                                 <div class="loader-data" id="loader-dni-person" style="display: none;"></div>
                             </small>
                         </label>
-                        <input type="number" class="form-control" name="dni" id="dni" placeholder="0000000" required>
+                        <input type="number" class="form-control" name="dni" id="dni" placeholder="0000000" value="{{$person->dni}}" required>
                     </div>
 
                     <div class="col-sm-12 col-lg-6">
@@ -82,7 +83,7 @@
                             Teléfono
                             <small class="text-muted float-right font-weight-bold">(requerido)</small>
                         </label>
-                        <input type="number" class="form-control" name="phone_number" id="phone-number" placeholder="0000000" required>
+                        <input type="number" class="form-control" name="phone_number" id="phone-number" value="{{$person->phone_number}}" placeholder="0000000" required>
                     </div>
                 </div>
             </div>
@@ -94,7 +95,7 @@
                             Fecha de nacimiento
                             <small class="text-muted float-right font-weight-bold">(requerido)</small>
                         </label>
-                        <input type="date" class="form-control" name="birthday" id="birthday" required>
+                        <input type="date" class="form-control" name="birthday" id="birthday" value="{{$person->birthday}}" required>
                     </div>
 
                     <div class="col-sm-12 col-lg-6 mb-3">
@@ -103,8 +104,8 @@
                             <small class="text-muted float-right font-weight-bold">(requerido)</small>
                         </label>
                         <select name="gender" id="gender" class="form-control" required>
-                            <option value="femenino">Mujer</option>
-                            <option value="masculino">Hombre</option>
+                            <option {{ $person->gender == 'femenino'?"selected":""}} value="femenino">Mujer</option>
+                            <option {{ $person->gender == 'masculino'?"selected":""}} value="masculino">Hombre</option>
                         </select>
                     </div>
                 </div>
@@ -151,7 +152,7 @@
                                  <div class="loader-data" id="loader-dni-father" style="display: none;"></div>
                             </small>
                         </label>
-                        <input type="number" class="form-control" name="father_dni" id="father-dni" placeholder="0000000">
+                        <input type="number" class="form-control" name="father_dni" id="father-dni" value="{{$person->father_dni}}" placeholder="0000000">
                     </div>
 
                     <div class="col-sm-12 col-lg-6">
@@ -162,7 +163,7 @@
                                 <div class="loader-data" id="loader-dni-mother" style="display: none;"></div>
                             </small>
                         </label>
-                        <input type="number" class="form-control" name="mother_dni" id="mother-dni" placeholder="0000000">
+                        <input type="number" class="form-control" name="mother_dni" id="mother-dni" value="{{$person->mother_dni}}" placeholder="0000000">
                     </div>
                 </div>
             </div>
