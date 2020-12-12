@@ -211,7 +211,7 @@
                     </div>
                 </div>
             </div>
-
+         
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-2">
@@ -221,10 +221,21 @@
                         </button>
                     </div>
                     <div class="col-sm-12 col-lg-6">
-                        <button class="btn btn-primary btn-block" type="button" id="view-vaccinations">
+                        <button class="btn btn-primary btn-block" type="button" id="view-vaccinations" data-target="#vaccinations-list" data-toggle="collapse" aria-expanded="false" aria-controls="vaccinations-list">
                             Ver vacunas                            
                             <i class="fa fa-list ml-1"></i>
                         </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="collapse" id="vaccinations-list">
+                    <div class="card card-body">
+                        Anim pariatur cliche reprehenderit, enim eiusmod high 
+                        life accusamus terry richardson ad squid. Nihil anim keffiyeh 
+                        helvetica, craft beer labore wes anderson cred nesciunt 
+                        sapiente ea proident.
                     </div>
                 </div>
             </div>
