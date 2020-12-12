@@ -170,7 +170,7 @@ class PersonsTest extends TestCase
         $this->assertDatabaseMissing("persons", ["first_name" => $person->first_name]);
     }
 
-    public function test_a_administrator_can_verificate_dni(){
+    public function test_a_administrator_can_verificate_dni_api(){
 
         $this->signIn();
 
@@ -184,4 +184,31 @@ class PersonsTest extends TestCase
             ->assertStatus(200)
             ->assertJson(["isValid" => false]);
     }
+
+    public function test_a_administrator_can_get_the_street_of_an_person(){
+
+        $this->signIn();
+
+        $person = Person::factory()->create();
+
+        $street = $person->house->street;
+
+        $this->get("/api".$person->path()."/calles")
+            ->assertStatus(200)
+            ->assertJson(["id" => $street->id, "name" => $street->name]);  
+    }
+
+    public function test_a_administrator_can_get_the_house_of_an_person(){
+
+        $this->signIn();
+
+        $person = Person::factory()->create();
+
+        $house = $person->house;
+
+        $this->get("/api".$person->path()."/casas")
+            ->assertStatus(200)
+            ->assertJson(["id" => $house->id, "number" => $house->number]);  
+    }
+
 }
