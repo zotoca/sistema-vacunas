@@ -28,7 +28,7 @@ class PersonCreateRequest extends FormRequest
             "first_name" => "required|string",
             "last_name" => "required|string",
             "image" => "mimes:jpeg,jpg,png,gif,bmp,svg,webp",
-            "dni" => "required|numeric",
+            "dni" => "required|numeric|unique:persons,dni",
             "gender" => "required|in:masculino,femenino",
             "birthday" => "required|date",
             "phone_number" => "required|string",
