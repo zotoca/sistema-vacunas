@@ -23,11 +23,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // ------------ CEDULAS ------------------------
     const motherDni = getId("mother-dni");
-
     const fatherDni = getId("father-dni");
-    const loadersDni = {
-        father_dni: getId("loader-dni-father"),
-        mother_dni: getId("loader-dni-mother"),
+    const personDNI = getId("dni");
+    const personsDNI = {
+        dni: { node: getId("loader-dni-person"), valid: false },
+        father_dni: { node: getId("loader-dni-father"), valid: true },
+        mother_dni: { node: getId("loader-dni-mother"), valid: true },
     };
 
     const btnUploadImage = getId("upload-image");
@@ -36,7 +37,8 @@ window.addEventListener("DOMContentLoaded", () => {
     const anchorImagePreview = imagePreview.parentNode;
     const fileReader = new FileReader();
     const form = getId("edit-person-form");
-    const btnCreatePerson = getId("create-person");
+    const btnCreatePerson = getId("edit-person");
+
     const inputNames = [
         "first_name",
         "last_name",
@@ -73,21 +75,26 @@ window.addEventListener("DOMContentLoaded", () => {
 
     async function checkDni({ target }) {
         if (target.value) {
-            loadersDni[target.name].style.display = "block";
+            let { node, valid } = personsDNI[target.name];
+            node.style.display = "block";
             const isValid = await isValidDni(target.value);
+
             if (!isValid.isValid) {
                 target.classList.add("bad");
+                valid = false;
             } else {
                 target.classList.remove("bad");
+                valid = true;
             }
-            loadersDni[target.name].style.display = "none";
-            console.log(isValid);
+            node.style.display = "none";
+            console.log(valid);
         }
     }
 
     showStreets();
 
     streetsSelect.addEventListener("change", (e) => showHouses(e.target.value));
+    personDNI.addEventListener("blur", checkDni);
     motherDni.addEventListener("blur", checkDni);
     fatherDni.addEventListener("blur", checkDni);
     form.addEventListener("submit", (e) => e.preventDefault());

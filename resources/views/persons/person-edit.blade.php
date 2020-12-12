@@ -69,7 +69,10 @@
                     <div class="col-sm-12 col-lg-6 mb-3">
                         <label for="dni" class="font-weight-bold mb-2 lead d-block">
                             Cédula
-                            <small class="text-muted float-right font-weight-bold">(requerido)</small>
+                            <small class="text-muted float-right font-weight-bold">
+                                (requerido)
+                                <div class="loader-data" id="loader-dni-person" style="display: none;"></div>
+                            </small>
                         </label>
                         <input type="number" class="form-control" name="dni" id="dni" placeholder="0000000" required>
                     </div>
@@ -212,7 +215,7 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-2">
-                        <button class="btn btn-success btn-block" type="submit" id="create-person">
+                        <button class="btn btn-success btn-block" type="submit" id="edit-person">
                             Editar persona
                             <i class="fa fa-arrow-right ml-1"></i>
                         </button>
