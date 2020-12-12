@@ -24,9 +24,7 @@ window.addEventListener("DOMContentLoaded", () => {
     // ------------ CEDULAS ------------------------
     const motherDni = getId("mother-dni");
     const fatherDni = getId("father-dni");
-    const personDNI = getId("dni");
     const personsDNI = {
-        dni: { node: getId("loader-dni-person"), valid: false },
         father_dni: { node: getId("loader-dni-father"), valid: true },
         mother_dni: { node: getId("loader-dni-mother"), valid: true },
     };
@@ -94,12 +92,10 @@ window.addEventListener("DOMContentLoaded", () => {
     showStreets();
 
     streetsSelect.addEventListener("change", (e) => showHouses(e.target.value));
-    personDNI.addEventListener("blur", checkDni);
     motherDni.addEventListener("blur", checkDni);
     fatherDni.addEventListener("blur", checkDni);
     form.addEventListener("submit", (e) => e.preventDefault());
     btnUploadImage.addEventListener("click", () => btnFile.click());
-
     btnFile.addEventListener("change", (e) => {
         const imgFile = e.target.files[0];
         if (!isImage(btnFile)) {
@@ -116,7 +112,16 @@ window.addEventListener("DOMContentLoaded", () => {
     btnCreatePerson.addEventListener("click", async () => {
         const data = new FormData(form);
         const isValid = isValidForm(form, inputNames);
+        const invalidDNI =
+            !personsDNI.mother_dni.valid || !personsDNI.father_dni.valid;
+
         if (!isValid) return;
+        if (invalidDNI) {
+            error(
+                "Cédula incorrecta, verifique las cédulas de identidad solicitdas."
+            );
+            return;
+        }
 
         Swal.fire({
             title: "Creando persona",

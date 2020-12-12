@@ -177,8 +177,8 @@
                             Vacuna
                             <small class="text-muted ml-2 float-right">(opcional)</small>
                         </label>
-                        <select name="vaccination_id" id="vaccination-id" class="form-control" required>
-                            <option value="">Triple virídica</option>
+                        <select name="vaccination_id" id="vaccination-id" class="form-control">
+                            <option value="triple viridica">Triple virídica</option>
                         </select>
                     </div>
 
@@ -187,7 +187,7 @@
                             Dosis
                             <small class="text-muted ml-2 float-right">(opcional)</small>
                         </label>
-                        <input type="text" class="form-control" name="vaccionation_dose" id="vaccionation-dose" required>
+                        <input type="text" class="form-control" name="vaccionation_dose" id="vaccionation-dose">
                     </div>
                 </div>
             </div>
@@ -199,7 +199,7 @@
                             Nro. de Lote
                             <small class="text-muted ml-2 float-right">(opcional)</small>
                         </label>
-                        <input type="text" class="form-control" name="vaccionation_lot" id="vaccionation-lot" required>
+                        <input type="text" class="form-control" name="vaccionation_lot" id="vaccionation-lot">
                     </div>
 
                     <div class="col-sm-12 col-lg-6">
@@ -207,7 +207,7 @@
                             Fecha de vacuna
                             <small class="text-muted ml-2 float-right">(opcional)</small>
                         </label>
-                        <input type="date" class="form-control" name="vaccination_date" id="vaccination-date" required>
+                        <input type="date" class="form-control" name="vaccination_date" id="vaccination-date">
                     </div>
                 </div>
             </div>
