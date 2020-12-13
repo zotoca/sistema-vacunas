@@ -5,17 +5,25 @@ import {
     getHouses,
     isValidDni,
 } from "../helpers/requests.js";
+
 import { isImage } from "../helpers/checkTypeFile.js";
 import { createHTMLOptions } from "../helpers/DOM.js";
+
 import isValidForm, {
     checkEmptyInputsInForm,
     checkEmptyValueFormData,
 } from "../helpers/forms.js";
 
-import { getId } from "../helpers/DOM.js";
+import {
+    getId,
+    display,
+    addClass,
+    removeClass,
+    setValueInSelect,
+} from "../helpers/DOM.js";
 
 window.addEventListener("DOMContentLoaded", () => {
-    // ---------- CALLES Y CASAS -----------------
+    // ---------- CALLES Y CASAS (inputs y loaders) -----------------
     const streetsSelect = getId("street-id");
     const loaderStreet = getId("loader-street");
     const housesSelect = getId("house-id");
@@ -24,11 +32,18 @@ window.addEventListener("DOMContentLoaded", () => {
     // ------------ CEDULAS ------------------------
     const motherDni = getId("mother-dni");
     const fatherDni = getId("father-dni");
+    // las cedulas son validas porq estan vacias
     const personsDNI = {
         father_dni: { node: getId("loader-dni-father"), valid: true },
         mother_dni: { node: getId("loader-dni-mother"), valid: true },
     };
 
+    // -------- CALLE, CASA y ID DE LA PERSONA DESDE EL SERVER ------
+    const streetId = getId("person-street-id").value;
+    const houseId = getId("person-house-id").value;
+    const personId = getId("person-id").value;
+
+    // --------- MANEJO DE IMAGENES, ARCHIVOS Y FORMULARIO ------------
     const btnUploadImage = getId("upload-image");
     const btnFile = getId("perfil-photo");
     const imagePreview = getId("perfil-preview");
@@ -54,38 +69,54 @@ window.addEventListener("DOMContentLoaded", () => {
     };
 
     async function showStreets() {
-        loaderStreet.style.display = "block";
+        display(loaderStreet);
+        streetsSelect.disabled = true;
         const streets = await getStreets();
         streetsSelect.innerHTML = createHTMLOptions(streets, ["id", "name"]);
         streetsSelect.disabled = false;
-        loaderStreet.style.display = "none";
+        display(loaderStreet, "none");
+        setValueInSelect(streetsSelect, streetId);
         showHouses(streetsSelect.value);
     }
 
     async function showHouses(id) {
+        display(loaderHouse);
         housesSelect.disabled = true;
-        loaderHouse.style.display = "block";
         const houses = await getHouses(id);
         housesSelect.innerHTML = createHTMLOptions(houses, ["id", "number"]);
-        loaderHouse.style.display = "none";
         housesSelect.disabled = false;
+        display(loaderHouse, "none");
+        setValueInSelect(housesSelect, houseId);
+    }
+
+    function toggleBtnSubmit(isDisable = false) {
+        btnCreatePerson.disabled = isDisable;
     }
 
     async function checkDni({ target }) {
+        let input = personsDNI[target.name];
         if (target.value) {
-            let { node, valid } = personsDNI[target.name];
-            node.style.display = "block";
+            display(input.node);
+            toggleBtnSubmit(true);
             const isValid = await isValidDni(target.value);
 
             if (!isValid.isValid) {
-                target.classList.add("bad");
-                valid = false;
+                addClass(target, "bad");
+                input.valid = false;
             } else {
-                target.classList.remove("bad");
-                valid = true;
+                removeClass(target, "bad");
+                input.valid = true;
             }
-            node.style.display = "none";
-            console.log(valid);
+            display(input.node, "none");
+        } else {
+            removeClass(target, "bad");
+            input.valid = true;
+        }
+
+        toggleBtnSubmit();
+
+        if (!personsDNI.father_dni.valid || !personsDNI.mother_dni.valid) {
+            toggleBtnSubmit(true);
         }
     }
 
@@ -120,6 +151,7 @@ window.addEventListener("DOMContentLoaded", () => {
             error(
                 "Cédula incorrecta, verifique las cédulas de identidad solicitdas."
             );
+            toggleBtnSubmit(true);
             return;
         }
 
@@ -131,15 +163,18 @@ window.addEventListener("DOMContentLoaded", () => {
                 // execute code before the alert open
                 Swal.showLoading();
                 try {
-                    const res = await editPerson(checkEmptyValueFormData(data));
+                    const res = await editPerson(
+                        personId,
+                        checkEmptyValueFormData(data)
+                    );
                     if (res.message === "ok") {
                         success(
-                            "Persona creada",
-                            "La Persona " + number + " se creó con exito."
+                            "Persona editada",
+                            "La Persona " + personId + " se editó con exito."
                         );
                         window.location.href = "/personas";
                     } else {
-                        error("Ocurrió un error al crear la persona.");
+                        error("Ocurrió un error al editar la persona.");
                     }
                 } catch (e) {
                     console.log(e);

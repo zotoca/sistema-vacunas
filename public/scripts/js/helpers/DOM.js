@@ -41,3 +41,26 @@ export function createHTMLOptions(arrayObjects, props = []) {
     }
     return tpl;
 }
+
+export function display(element, display = "block") {
+    element.style.display = display;
+}
+
+export function addClass(element, className) {
+    element.classList.add(className);
+}
+
+export function removeClass(element, className) {
+    element.classList.remove(className);
+}
+
+export function setValueInSelect(select, value) {
+    const countOptions = select.options.length;
+    let flag = true;
+    for (let i = 0; i < countOptions && flag; i++) {
+        if (value === select.options[i].value) {
+            flag = false;
+            select.value = select.options[i].value;
+        }
+    }
+}
