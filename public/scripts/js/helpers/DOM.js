@@ -41,3 +41,15 @@ export function createHTMLOptions(arrayObjects, props = []) {
     }
     return tpl;
 }
+
+export function display(element, display = "block") {
+    element.style.display = display;
+}
+
+export function addClass(element, className) {
+    element.classList.add(className);
+}
+
+export function removeClass(element, className) {
+    element.classList.remove(className);
+}

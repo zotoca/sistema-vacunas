@@ -12,7 +12,7 @@ import isValidForm, {
     checkEmptyValueFormData,
 } from "../helpers/forms.js";
 
-import { getId } from "../helpers/DOM.js";
+import { getId, display, addClass, removeClass } from "../helpers/DOM.js";
 
 window.addEventListener("DOMContentLoaded", () => {
     // ---------- CALLES Y CASAS -----------------
@@ -54,20 +54,20 @@ window.addEventListener("DOMContentLoaded", () => {
     };
 
     async function showStreets() {
-        loaderStreet.style.display = "block";
+        display(loaderStreet);
         const streets = await getStreets();
         streetsSelect.innerHTML = createHTMLOptions(streets, ["id", "name"]);
         streetsSelect.disabled = false;
-        loaderStreet.style.display = "none";
+        display(loaderStreet, "none");
         showHouses(streetsSelect.value);
     }
 
     async function showHouses(id) {
         housesSelect.disabled = true;
-        loaderHouse.style.display = "block";
+        display(loaderHouse);
         const houses = await getHouses(id);
         housesSelect.innerHTML = createHTMLOptions(houses, ["id", "number"]);
-        loaderHouse.style.display = "none";
+        display(loaderHouse, "none");
         housesSelect.disabled = false;
     }
 
@@ -78,25 +78,28 @@ window.addEventListener("DOMContentLoaded", () => {
     async function checkDni({ target }) {
         let input = personsDNI[target.name];
         if (target.value) {
+            display(input.node);
             toggleBtnSubmit(true);
-            input.node.style.display = "block";
             const isValid = await isValidDni(target.value);
 
             if (!isValid.isValid) {
-                target.classList.add("bad");
+                addClass(target, "bad");
                 input.valid = false;
             } else {
-                target.classList.remove("bad");
+                removeClass(target, "bad");
                 input.valid = true;
-                toggleBtnSubmit();
             }
-            input.node.style.display = "none";
+            display(input.node, "none");
         } else {
-            target.classList.remove("bad");
+            removeClass(target, "bad");
             input.valid = true;
-            toggleBtnSubmit();
         }
-        console.log("target.name: " + input.valid);
+
+        toggleBtnSubmit();
+
+        if (!personsDNI.father_dni.valid || !personsDNI.mother_dni.valid) {
+            toggleBtnSubmit(true);
+        }
     }
 
     showStreets();
