@@ -71,22 +71,32 @@ window.addEventListener("DOMContentLoaded", () => {
         housesSelect.disabled = false;
     }
 
+    function toggleBtnSubmit(isDisable = false) {
+        btnCreatePerson.disabled = isDisable;
+    }
+
     async function checkDni({ target }) {
+        let input = personsDNI[target.name];
         if (target.value) {
-            let { node, valid } = personsDNI[target.name];
-            node.style.display = "block";
+            toggleBtnSubmit(true);
+            input.node.style.display = "block";
             const isValid = await isValidDni(target.value);
 
             if (!isValid.isValid) {
                 target.classList.add("bad");
-                valid = false;
+                input.valid = false;
             } else {
                 target.classList.remove("bad");
-                valid = true;
+                input.valid = true;
+                toggleBtnSubmit();
             }
-            node.style.display = "none";
-            console.log(valid);
+            input.node.style.display = "none";
+        } else {
+            target.classList.remove("bad");
+            input.valid = true;
+            toggleBtnSubmit();
         }
+        console.log("target.name: " + input.valid);
     }
 
     showStreets();
@@ -120,6 +130,7 @@ window.addEventListener("DOMContentLoaded", () => {
             error(
                 "Cédula incorrecta, verifique las cédulas de identidad solicitdas."
             );
+            toggleBtnSubmit(true);
             return;
         }
 
@@ -129,24 +140,27 @@ window.addEventListener("DOMContentLoaded", () => {
             showConfirmButton: false,
             onBeforeOpen: async () => {
                 // execute code before the alert open
-                Swal.showLoading();
-                try {
-                    const res = await editPerson(checkEmptyValueFormData(data));
-                    if (res.message === "ok") {
-                        success(
-                            "Persona creada",
-                            "La Persona " + number + " se creó con exito."
-                        );
-                        window.location.href = "/personas";
-                    } else {
-                        error("Ocurrió un error al crear la persona.");
-                    }
-                } catch (e) {
-                    console.log(e);
-                    error("Ocurrió un error de conexión.");
-                } finally {
-                    Swal.hideLoading();
-                }
+                // Swal.showLoading();
+                // try {
+                //     const res = await editPerson(
+                //         ID_PERSON,
+                //         checkEmptyValueFormData(data)
+                //     );
+                //     if (res.message === "ok") {
+                //         success(
+                //             "Persona creada",
+                //             "La Persona " + number + " se creó con exito."
+                //         );
+                //         window.location.href = "/personas";
+                //     } else {
+                //         error("Ocurrió un error al crear la persona.");
+                //     }
+                // } catch (e) {
+                //     console.log(e);
+                //     error("Ocurrió un error de conexión.");
+                // } finally {
+                //     Swal.hideLoading();
+                // }
             },
             allowOutsideClick: () => !Swal.isLoading(), // don't exit while loading fetch
         });

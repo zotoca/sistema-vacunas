@@ -50,8 +50,8 @@ export async function createPerson(person) {
     return POST(`${PERSONS_URL}/`, person);
 }
 
-export async function editPerson(personId) {
-    return PUT(PERSON_EDIT_URL(personId));
+export async function editPerson(personId, data) {
+    return PUT(PERSON_EDIT_URL(personId), data);
 }
 
 export async function deletePerson(id) {
