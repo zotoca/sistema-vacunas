@@ -1,6 +1,6 @@
 import { success, error } from "../helpers/sweetAlerts.js";
 import {
-    createPerson,
+    editPerson,
     getStreets,
     getHouses,
     isValidDni,
@@ -131,9 +131,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 // execute code before the alert open
                 Swal.showLoading();
                 try {
-                    const res = await createPerson(
-                        checkEmptyValueFormData(data)
-                    );
+                    const res = await editPerson(checkEmptyValueFormData(data));
                     if (res.message === "ok") {
                         success(
                             "Persona creada",

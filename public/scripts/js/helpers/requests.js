@@ -3,6 +3,7 @@ import {
     STREETS_URL,
     HOUSES_URL,
     PERSONS_URL,
+    PERSON_EDIT_URL,
     STREETS_API_URL,
     HOUSES_API_URL,
     DNI_CHECK_URL,
@@ -47,6 +48,10 @@ export async function editHouse(number, id) {
 
 export async function createPerson(person) {
     return POST(`${PERSONS_URL}/`, person);
+}
+
+export async function editPerson(personId) {
+    return PUT(PERSON_EDIT_URL(personId));
 }
 
 export async function deletePerson(id) {
