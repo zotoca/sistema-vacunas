@@ -32,14 +32,16 @@ window.addEventListener("DOMContentLoaded", () => {
     // ------------ CEDULAS ------------------------
     const motherDni = getId("mother-dni");
     const fatherDni = getId("father-dni");
+    // las cedulas son validas porq estan vacias
     const personsDNI = {
         father_dni: { node: getId("loader-dni-father"), valid: true },
         mother_dni: { node: getId("loader-dni-mother"), valid: true },
     };
 
-    // --------- CALLE Y CASA DESDE EL SERVER -----------------------
+    // -------- CALLE, CASA y ID DE LA PERSONA DESDE EL SERVER ------
     const streetId = getId("person-street-id").value;
     const houseId = getId("person-house-id").value;
+    const personId = getId("person-id").value;
 
     // --------- MANEJO DE IMAGENES, ARCHIVOS Y FORMULARIO ------------
     const btnUploadImage = getId("upload-image");
@@ -68,6 +70,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     async function showStreets() {
         display(loaderStreet);
+        streetsSelect.disabled = true;
         const streets = await getStreets();
         streetsSelect.innerHTML = createHTMLOptions(streets, ["id", "name"]);
         streetsSelect.disabled = false;
@@ -77,12 +80,13 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     async function showHouses(id) {
-        housesSelect.disabled = true;
         display(loaderHouse);
+        housesSelect.disabled = true;
         const houses = await getHouses(id);
         housesSelect.innerHTML = createHTMLOptions(houses, ["id", "number"]);
-        display(loaderHouse, "none");
         housesSelect.disabled = false;
+        display(loaderHouse, "none");
+        setValueInSelect(housesSelect, houseId);
     }
 
     function toggleBtnSubmit(isDisable = false) {
@@ -157,27 +161,27 @@ window.addEventListener("DOMContentLoaded", () => {
             showConfirmButton: false,
             onBeforeOpen: async () => {
                 // execute code before the alert open
-                // Swal.showLoading();
-                // try {
-                //     const res = await editPerson(
-                //         ID_PERSON,
-                //         checkEmptyValueFormData(data)
-                //     );
-                //     if (res.message === "ok") {
-                //         success(
-                //             "Persona creada",
-                //             "La Persona " + number + " se creó con exito."
-                //         );
-                //         window.location.href = "/personas";
-                //     } else {
-                //         error("Ocurrió un error al crear la persona.");
-                //     }
-                // } catch (e) {
-                //     console.log(e);
-                //     error("Ocurrió un error de conexión.");
-                // } finally {
-                //     Swal.hideLoading();
-                // }
+                Swal.showLoading();
+                try {
+                    const res = await editPerson(
+                        personId,
+                        checkEmptyValueFormData(data)
+                    );
+                    if (res.message === "ok") {
+                        success(
+                            "Persona editada",
+                            "La Persona " + personId + " se editó con exito."
+                        );
+                        window.location.href = "/personas";
+                    } else {
+                        error("Ocurrió un error al editar la persona.");
+                    }
+                } catch (e) {
+                    console.log(e);
+                    error("Ocurrió un error de conexión.");
+                } finally {
+                    Swal.hideLoading();
+                }
             },
             allowOutsideClick: () => !Swal.isLoading(), // don't exit while loading fetch
         });
