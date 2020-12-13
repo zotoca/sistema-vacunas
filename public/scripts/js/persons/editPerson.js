@@ -5,17 +5,25 @@ import {
     getHouses,
     isValidDni,
 } from "../helpers/requests.js";
+
 import { isImage } from "../helpers/checkTypeFile.js";
 import { createHTMLOptions } from "../helpers/DOM.js";
+
 import isValidForm, {
     checkEmptyInputsInForm,
     checkEmptyValueFormData,
 } from "../helpers/forms.js";
 
-import { getId, display, addClass, removeClass } from "../helpers/DOM.js";
+import {
+    getId,
+    display,
+    addClass,
+    removeClass,
+    setValueInSelect,
+} from "../helpers/DOM.js";
 
 window.addEventListener("DOMContentLoaded", () => {
-    // ---------- CALLES Y CASAS -----------------
+    // ---------- CALLES Y CASAS (inputs y loaders) -----------------
     const streetsSelect = getId("street-id");
     const loaderStreet = getId("loader-street");
     const housesSelect = getId("house-id");
@@ -29,6 +37,11 @@ window.addEventListener("DOMContentLoaded", () => {
         mother_dni: { node: getId("loader-dni-mother"), valid: true },
     };
 
+    // --------- CALLE Y CASA DESDE EL SERVER -----------------------
+    const streetId = getId("person-street-id").value;
+    const houseId = getId("person-house-id").value;
+
+    // --------- MANEJO DE IMAGENES, ARCHIVOS Y FORMULARIO ------------
     const btnUploadImage = getId("upload-image");
     const btnFile = getId("perfil-photo");
     const imagePreview = getId("perfil-preview");
@@ -59,6 +72,7 @@ window.addEventListener("DOMContentLoaded", () => {
         streetsSelect.innerHTML = createHTMLOptions(streets, ["id", "name"]);
         streetsSelect.disabled = false;
         display(loaderStreet, "none");
+        setValueInSelect(streetsSelect, streetId);
         showHouses(streetsSelect.value);
     }
 
