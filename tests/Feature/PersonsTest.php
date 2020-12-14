@@ -33,7 +33,7 @@ class PersonsTest extends TestCase
         $this->get("/personas/1/editar")
             ->assertRedirect("/iniciar-sesion");
         
-        $this->put("/api/personas/1")
+        $this->put("/personas/1")
             ->assertRedirect("/iniciar-sesion");
 
         $this->delete("/personas/1")
@@ -138,7 +138,7 @@ class PersonsTest extends TestCase
 
         $old_image_url = $person->image_url;
 
-        $this->put("/api" . $person->path(), $attributes)
+        $this->put($person->path(), $attributes)
             ->assertStatus(302);
 
         $this->get("/personas")
