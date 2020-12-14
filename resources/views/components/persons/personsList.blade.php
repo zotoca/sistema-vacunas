@@ -3,7 +3,7 @@
         @forelse($persons as $person)
         <div class="col-sm-12 col-md-6 col-lg-4 px-2 py-2">
             <div class="card">
-                <img class="card-img-top" 
+                <img class="card-img-top person-image" 
                     src="{{Storage::url($person->image_url)}}" 
                     alt="{{$person->first_name}}"
                     title="{{$person->first_name}}"
