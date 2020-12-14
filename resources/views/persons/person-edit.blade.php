@@ -154,6 +154,7 @@
                             <small class="text-muted ml-2 float-right">
                                 (opcional)
                                  <div class="loader-data" id="loader-dni-father" style="display: none;"></div>
+                                <i class="fa fa-exclamation-circle text-danger ml-1" id="dni-father-error" style="display:none;" title="OCURRIÓ UN ERROR DE RED"></i>
                             </small>
                         </label>
                         <input type="number" class="form-control" name="father_dni" id="father-dni" value="{{$person->father_dni}}" placeholder="0000000">
@@ -165,6 +166,7 @@
                             <small class="text-muted ml-2 float-right">
                                 (opcional)
                                 <div class="loader-data" id="loader-dni-mother" style="display: none;"></div>
+                                <i class="fa fa-exclamation-circle text-danger ml-1" id="dni-mother-error" style="display:none;" title="OCURRIÓ UN ERROR DE RED"></i>
                             </small>
                         </label>
                         <input type="number" class="form-control" name="mother_dni" id="mother-dni" value="{{$person->mother_dni}}" placeholder="0000000">

@@ -46,6 +46,10 @@ window.addEventListener("DOMContentLoaded", () => {
     // ------- ICONOS PARA ERRORES DE RED -----------------------------
     const streetError = getId("street-error");
     const houseError = getId("house-error");
+    const dniError = {
+        father_dni: getId("dni-father-error"),
+        mother_dni: getId("dni-mother-error"),
+    };
 
     // --------- MANEJO DE IMAGENES, ARCHIVOS Y FORMULARIO ------------
     const btnUploadImage = getId("upload-image");
@@ -116,16 +120,20 @@ window.addEventListener("DOMContentLoaded", () => {
     async function checkDni({ target }) {
         let input = personsDNI[target.name];
         if (target.value) {
-            display(input.node);
-            toggleBtnSubmit(true);
-            const isValid = await isValidDni(target.value);
+            try {
+                display(input.node);
+                toggleBtnSubmit(true);
+                const isValid = await isValidDni(target.value);
 
-            if (!isValid.isValid) {
-                addClass(target, "bad");
-                input.valid = false;
-            } else {
-                removeClass(target, "bad");
-                input.valid = true;
+                if (!isValid.isValid) {
+                    addClass(target, "bad");
+                    input.valid = false;
+                } else {
+                    removeClass(target, "bad");
+                    input.valid = true;
+                }
+            } catch (error) {
+                display(dniError[target.name], "inline");
             }
             display(input.node, "none");
         } else {
