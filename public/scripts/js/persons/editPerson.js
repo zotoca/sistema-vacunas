@@ -43,6 +43,10 @@ window.addEventListener("DOMContentLoaded", () => {
     const houseId = getId("person-house-id").value;
     const personId = getId("person-id").value;
 
+    // ------- ICONOS PARA ERRORES DE RED -----------------------------
+    const streetError = getId("street-error");
+    const houseError = getId("house-error");
+
     // --------- MANEJO DE IMAGENES, ARCHIVOS Y FORMULARIO ------------
     const btnUploadImage = getId("upload-image");
     const btnFile = getId("perfil-photo");
@@ -69,24 +73,40 @@ window.addEventListener("DOMContentLoaded", () => {
     };
 
     async function showStreets() {
-        display(loaderStreet);
-        streetsSelect.disabled = true;
-        const streets = await getStreets();
-        streetsSelect.innerHTML = createHTMLOptions(streets, ["id", "name"]);
-        streetsSelect.disabled = false;
+        try {
+            display(loaderStreet);
+            streetsSelect.disabled = true;
+            const streets = await getStreets();
+            streetsSelect.innerHTML = createHTMLOptions(streets, [
+                "id",
+                "name",
+            ]);
+            streetsSelect.disabled = false;
+            setValueInSelect(streetsSelect, streetId);
+            showHouses(streetsSelect.value);
+        } catch (e) {
+            display(streetError, "inline");
+            display(houseError, "inline");
+            display(loaderHouse, "none");
+        }
         display(loaderStreet, "none");
-        setValueInSelect(streetsSelect, streetId);
-        showHouses(streetsSelect.value);
     }
 
     async function showHouses(id) {
-        display(loaderHouse);
-        housesSelect.disabled = true;
-        const houses = await getHouses(id);
-        housesSelect.innerHTML = createHTMLOptions(houses, ["id", "number"]);
-        housesSelect.disabled = false;
+        try {
+            display(loaderHouse);
+            housesSelect.disabled = true;
+            const houses = await getHouses(id);
+            housesSelect.innerHTML = createHTMLOptions(houses, [
+                "id",
+                "number",
+            ]);
+            housesSelect.disabled = false;
+            setValueInSelect(housesSelect, houseId);
+        } catch (e) {
+            display(houseError, "inline");
+        }
         display(loaderHouse, "none");
-        setValueInSelect(housesSelect, houseId);
     }
 
     function toggleBtnSubmit(isDisable = false) {

@@ -121,6 +121,7 @@
                             <small class="text-muted float-right font-weight-bold">
                                 (requerido)
                                 <div class="loader-data" id="loader-street"></div>
+                                <i class="fa fa-exclamation-circle text-danger ml-1" id="street-error" style="display:none;" title="OCURRIÓ UN ERROR DE RED"></i>
                             </small>
                         </label>
                         <select name="street_id" id="street-id"  class="form-control" required disabled>
@@ -133,6 +134,7 @@
                             <small class="text-muted float-right font-weight-bold">
                                 (requerido)
                                 <div class="loader-data" id="loader-house"></div>
+                                <i class="fa fa-exclamation-circle text-danger ml-1" id="house-error" style="display:none;" title="OCURRIÓ UN ERROR DE RED"></i>
                             </small>
                         </label>
                         <select name="house_id" id="house-id"  class="form-control" required disabled>
@@ -214,6 +216,13 @@
                     </div>
                 </div>
             </div>
+
+            <div class="form-group">
+                <label for="is-vaccinate" class="font-weight-bold mb-2 lead d-block">
+                    ¿Está vacunado?
+                </label>
+                <input type="checkbox" name="is_vaccinate" id="is-vaccinate">
+            </div>
          
             <div class="form-group">
                 <div class="row">
@@ -234,12 +243,118 @@
 
             <div class="form-group">
                 <div class="collapse" id="vaccinations-list">
-                    <div class="card card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high 
-                        life accusamus terry richardson ad squid. Nihil anim keffiyeh 
-                        helvetica, craft beer labore wes anderson cred nesciunt 
-                        sapiente ea proident.
+                    <div class="row">
+
+                        <div class="col-sm-6 col-lg-3 mb-2">
+                            <div class="card card-body">
+                                <h6 class="font-weight-bold">Triple veridica</h6>
+                                <p class="text-muted mb-0">
+                                    <span class="font-weight-bold">Dosís:</span>
+                                    <span>5</span>
+                                </p>
+                                <p class="text-muted mb-0">
+                                    <span class="font-weight-bold">Lote:</span>
+                                    <span>7</span>
+                                </p>
+                                <p class="text-muted mb-0">
+                                    <span class="font-weight-bold">Fecha:</span>
+                                    <time datetime="14-02-202">14-02-202</time>
+                                </p>
+                                <button class="btn btn-danger btn-sm mt-1">
+                                    Eliminar
+                                    <i class="fa fa-times ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-lg-3 mb-2">
+                            <div class="card card-body">
+                                <h6 class="font-weight-bold">Triple veridica</h6>
+                                <p class="text-muted mb-0">
+                                    <span class="font-weight-bold">Dosís:</span>
+                                    <span>5</span>
+                                </p>
+                                <p class="text-muted mb-0">
+                                    <span class="font-weight-bold">Lote:</span>
+                                    <span>7</span>
+                                </p>
+                                <p class="text-muted mb-0">
+                                    <span class="font-weight-bold">Fecha:</span>
+                                    <time datetime="14-02-202">14-02-202</time>
+                                </p>
+                                <button class="btn btn-danger btn-sm mt-1">
+                                    Eliminar
+                                    <i class="fa fa-times ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-3 mb-2">
+                            <div class="card card-body">
+                                <h6 class="font-weight-bold">Triple veridica</h6>
+                                <p class="text-muted mb-0">
+                                    <span class="font-weight-bold">Dosís:</span>
+                                    <span>5</span>
+                                </p>
+                                <p class="text-muted mb-0">
+                                    <span class="font-weight-bold">Lote:</span>
+                                    <span>7</span>
+                                </p>
+                                <p class="text-muted mb-0">
+                                    <span class="font-weight-bold">Fecha:</span>
+                                    <time datetime="14-02-202">14-02-202</time>
+                                </p>
+                                <button class="btn btn-danger btn-sm mt-1">
+                                    Eliminar
+                                    <i class="fa fa-times ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-3 mb-2">
+                            <div class="card card-body">
+                                <h6 class="font-weight-bold">Triple veridica</h6>
+                                <p class="text-muted mb-0">
+                                    <span class="font-weight-bold">Dosís:</span>
+                                    <span>5</span>
+                                </p>
+                                <p class="text-muted mb-0">
+                                    <span class="font-weight-bold">Lote:</span>
+                                    <span>7</span>
+                                </p>
+                                <p class="text-muted mb-0">
+                                    <span class="font-weight-bold">Fecha:</span>
+                                    <time datetime="14-02-202">14-02-202</time>
+                                </p>
+                                <button class="btn btn-danger btn-sm mt-1">
+                                    Eliminar
+                                    <i class="fa fa-times ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6 col-lg-3 mb-2">
+                            <div class="card card-body">
+                                <h6 class="font-weight-bold">Triple veridica</h6>
+                                <p class="text-muted mb-0">
+                                    <span class="font-weight-bold">Dosís:</span>
+                                    <span>5</span>
+                                </p>
+                                <p class="text-muted mb-0">
+                                    <span class="font-weight-bold">Lote:</span>
+                                    <span>7</span>
+                                </p>
+                                <p class="text-muted mb-0">
+                                    <span class="font-weight-bold">Fecha:</span>
+                                    <time datetime="14-02-202">14-02-202</time>
+                                </p>
+                                <button class="btn btn-danger btn-sm mt-1">
+                                    Eliminar
+                                    <i class="fa fa-times ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
                     </div>
+                    
                 </div>
             </div>
         </form>
