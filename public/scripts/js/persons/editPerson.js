@@ -97,6 +97,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     async function showHouses(id) {
+        toggleBtnSubmit(true);
         try {
             display(loaderHouse);
             housesSelect.disabled = true;
@@ -111,6 +112,7 @@ window.addEventListener("DOMContentLoaded", () => {
             display(houseError, "inline");
         }
         display(loaderHouse, "none");
+        toggleBtnSubmit();
     }
 
     function toggleBtnSubmit(isDisable = false) {
@@ -169,7 +171,6 @@ window.addEventListener("DOMContentLoaded", () => {
     checkEmptyInputsInForm(form, inputNames);
 
     btnCreatePerson.addEventListener("click", async () => {
-        const data = new FormData(form);
         const isValid = isValidForm(form, inputNames);
         const invalidDNI =
             !personsDNI.mother_dni.valid || !personsDNI.father_dni.valid;
@@ -182,36 +183,7 @@ window.addEventListener("DOMContentLoaded", () => {
             toggleBtnSubmit(true);
             return;
         }
-
-        Swal.fire({
-            title: "Creando persona",
-            allowEscapeKey: false,
-            showConfirmButton: false,
-            onBeforeOpen: async () => {
-                // execute code before the alert open
-                Swal.showLoading();
-                try {
-                    const res = await editPerson(
-                        personId,
-                        checkEmptyValueFormData(data)
-                    );
-                    if (res.message === "ok") {
-                        success(
-                            "Persona editada",
-                            "La Persona " + personId + " se editó con exito."
-                        );
-                        window.location.href = "/personas";
-                    } else {
-                        error("Ocurrió un error al editar la persona.");
-                    }
-                } catch (e) {
-                    console.log(e);
-                    error("Ocurrió un error de conexión.");
-                } finally {
-                    Swal.hideLoading();
-                }
-            },
-            allowOutsideClick: () => !Swal.isLoading(), // don't exit while loading fetch
-        });
+        // si no hay errores enviar el formulario
+        form.submit();
     });
 });

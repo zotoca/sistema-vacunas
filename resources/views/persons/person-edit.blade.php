@@ -11,7 +11,7 @@
 
     <section class="container mt-5">
        {{--enctype para enviarse archivos binarios--}}
-        <form action="{{$person->path()}}" method="POST" data-aos="fade-up" enctype="multipart/form-data">
+        <form action="{{$person->path()}}" method="POST" data-aos="fade-up" enctype="multipart/form-data" id="edit-person-form">
             @csrf
             <input type="hidden" name="_method" value="PUT">
             <input type="hidden" id="person-id" name="person_id" value="{{ $person->id }}">
@@ -27,6 +27,9 @@
                             <div class="perfil-preview-icon">
                                 <i class="fa fa-eye"></i>
                             </div>
+                            {{-- aqui se puede hacer una comprobacion si el user tiene imagen
+                                ponerle la url de la imagen, sino dejarle la de anonimo
+                            --}}
                             <img src="{{asset("images/anon.png")}}" 
                                 alt="Anoymous user" 
                                 id="perfil-preview"
@@ -277,7 +280,7 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-2">
-                        <button class="btn btn-success btn-block" type="submit">
+                        <button class="btn btn-success btn-block" type="submit" id="edit-person">
                             Editar persona
                             <i class="fa fa-arrow-right ml-1"></i>
                         </button>
@@ -290,124 +293,6 @@
                     </div>
                 </div>
             </div>
-<!--
-            <div class="form-group">
-                <div class="collapse" id="vaccinations-list">
-                    <div class="row">
-
-                        <div class="col-sm-6 col-lg-3 mb-2">
-                            <div class="card card-body">
-                                <h6 class="font-weight-bold">Triple veridica</h6>
-                                <p class="text-muted mb-0">
-                                    <span class="font-weight-bold">Dosís:</span>
-                                    <span>5</span>
-                                </p>
-                                <p class="text-muted mb-0">
-                                    <span class="font-weight-bold">Lote:</span>
-                                    <span>7</span>
-                                </p>
-                                <p class="text-muted mb-0">
-                                    <span class="font-weight-bold">Fecha:</span>
-                                    <time datetime="14-02-202">14-02-202</time>
-                                </p>
-                                <button class="btn btn-danger btn-sm mt-1">
-                                    Eliminar
-                                    <i class="fa fa-times ml-1"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 col-lg-3 mb-2">
-                            <div class="card card-body">
-                                <h6 class="font-weight-bold">Triple veridica</h6>
-                                <p class="text-muted mb-0">
-                                    <span class="font-weight-bold">Dosís:</span>
-                                    <span>5</span>
-                                </p>
-                                <p class="text-muted mb-0">
-                                    <span class="font-weight-bold">Lote:</span>
-                                    <span>7</span>
-                                </p>
-                                <p class="text-muted mb-0">
-                                    <span class="font-weight-bold">Fecha:</span>
-                                    <time datetime="14-02-202">14-02-202</time>
-                                </p>
-                                <button class="btn btn-danger btn-sm mt-1">
-                                    Eliminar
-                                    <i class="fa fa-times ml-1"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-lg-3 mb-2">
-                            <div class="card card-body">
-                                <h6 class="font-weight-bold">Triple veridica</h6>
-                                <p class="text-muted mb-0">
-                                    <span class="font-weight-bold">Dosís:</span>
-                                    <span>5</span>
-                                </p>
-                                <p class="text-muted mb-0">
-                                    <span class="font-weight-bold">Lote:</span>
-                                    <span>7</span>
-                                </p>
-                                <p class="text-muted mb-0">
-                                    <span class="font-weight-bold">Fecha:</span>
-                                    <time datetime="14-02-202">14-02-202</time>
-                                </p>
-                                <button class="btn btn-danger btn-sm mt-1">
-                                    Eliminar
-                                    <i class="fa fa-times ml-1"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-lg-3 mb-2">
-                            <div class="card card-body">
-                                <h6 class="font-weight-bold">Triple veridica</h6>
-                                <p class="text-muted mb-0">
-                                    <span class="font-weight-bold">Dosís:</span>
-                                    <span>5</span>
-                                </p>
-                                <p class="text-muted mb-0">
-                                    <span class="font-weight-bold">Lote:</span>
-                                    <span>7</span>
-                                </p>
-                                <p class="text-muted mb-0">
-                                    <span class="font-weight-bold">Fecha:</span>
-                                    <time datetime="14-02-202">14-02-202</time>
-                                </p>
-                                <button class="btn btn-danger btn-sm mt-1">
-                                    Eliminar
-                                    <i class="fa fa-times ml-1"></i>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-lg-3 mb-2">
-                            <div class="card card-body">
-                                <h6 class="font-weight-bold">Triple veridica</h6>
-                                <p class="text-muted mb-0">
-                                    <span class="font-weight-bold">Dosís:</span>
-                                    <span>5</span>
-                                </p>
-                                <p class="text-muted mb-0">
-                                    <span class="font-weight-bold">Lote:</span>
-                                    <span>7</span>
-                                </p>
-                                <p class="text-muted mb-0">
-                                    <span class="font-weight-bold">Fecha:</span>
-                                    <time datetime="14-02-202">14-02-202</time>
-                                </p>
-                                <button class="btn btn-danger btn-sm mt-1">
-                                    Eliminar
-                                    <i class="fa fa-times ml-1"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-            -->
         </form>
     </section>
     @include("components.footer.footer")
