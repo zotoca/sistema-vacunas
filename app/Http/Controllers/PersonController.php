@@ -124,7 +124,7 @@ class PersonController extends Controller
         $person->update($person_data);
 
 
-        return redirect("/personas");
+        return redirect($person->path()."/editar");
 
 
     }

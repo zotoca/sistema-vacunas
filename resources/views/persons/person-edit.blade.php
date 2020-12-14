@@ -11,7 +11,9 @@
 
     <section class="container mt-5">
        {{--enctype para enviarse archivos binarios--}}
-        <form id="edit-person-form" data-aos="fade-up">
+        <form action="{{$person->path()}}" method="POST" data-aos="fade-up" enctype="multipart/form-data">
+            @csrf
+            <input type="hidden" name="_method" value="PUT">
             <input type="hidden" id="person-id" name="person_id" value="{{ $person->id }}">
             <input type="hidden" id="person-street-id" name="person_street_id" value="{{ $person->house->street->id }}">
             <input type="hidden" id="person-house-id" name="person_house_id" value="{{ $person->house->id }}">
@@ -50,6 +52,11 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
+                        @error("first_name")
+                            <div class="alert alert-danger">
+                                {{$message}}
+                            </div>
+                        @enderror
                         <label for="first-name" class="font-weight-bold mb-2 lead d-block">
                             Nombre
                             <small class="text-muted float-right font-weight-bold">(requerido)</small>
@@ -58,6 +65,11 @@
                     </div>
 
                     <div class="col-sm-12 col-lg-6">
+                        @error("last_name")
+                            <div class="alert alert-danger">
+                                {{$message}}
+                            </div>
+                        @enderror
                         <label for="last-name" class="font-weight-bold mb-2 lead d-block">
                             Apellido
                             <small class="text-muted float-right font-weight-bold">(requerido)</small>
@@ -70,6 +82,11 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
+                        @error("dni")
+                            <div class="alert alert-danger">
+                                {{$message}}
+                            </div>
+                        @enderror
                         <label for="dni" class="font-weight-bold mb-2 lead d-block">
                             Cédula
                             <small class="text-muted float-right font-weight-bold">
@@ -81,6 +98,11 @@
                     </div>
 
                     <div class="col-sm-12 col-lg-6">
+                        @error("phone_number")
+                            <div class="alert alert-danger">
+                                {{$message}}
+                            </div>
+                        @enderror
                         <label for="phone-number" class="font-weight-bold mb-2 lead d-block">
                             Teléfono
                             <small class="text-muted float-right font-weight-bold">(requerido)</small>
@@ -93,6 +115,11 @@
             <div class="form-group">
                  <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
+                        @error("birthday")
+                            <div class="alert alert-danger">
+                                {{$message}}
+                            </div>
+                        @enderror
                         <label for="birthday" class="font-weight-bold mb-2 lead d-block">
                             Fecha de nacimiento
                             <small class="text-muted float-right font-weight-bold">(requerido)</small>
@@ -101,6 +128,11 @@
                     </div>
 
                     <div class="col-sm-12 col-lg-6 mb-3">
+                        @error("gender")
+                            <div class="alert alert-danger">
+                                {{$message}}
+                            </div>
+                        @enderror
                         <label for="gender" class="font-weight-bold mb-2 lead d-block">
                             Género
                             <small class="text-muted float-right font-weight-bold">(requerido)</small>
@@ -116,6 +148,7 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
+                        
                         <label for="street-id" class="font-weight-bold mb-2 lead d-block">
                             Calle
                             <small class="text-muted float-right font-weight-bold">
@@ -129,6 +162,11 @@
                     </div>
 
                     <div class="col-sm-12 col-lg-6">
+                        @error("house_id")
+                            <div class="alert alert-danger">
+                                {{$message}}
+                            </div>
+                        @enderror
                         <label for="house-id" class="font-weight-bold mb-2 lead d-block">
                             Casa
                             <small class="text-muted float-right font-weight-bold">
@@ -149,6 +187,11 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
+                        @error("father_dni")
+                            <div class="alert alert-danger">
+                                {{$message}}
+                            </div>
+                        @enderror
                         <label for="father-dni" class="font-weight-bold mb-2 lead d-block">
                             Cédula del padre 
                             <small class="text-muted ml-2 float-right">
@@ -161,6 +204,11 @@
                     </div>
 
                     <div class="col-sm-12 col-lg-6">
+                        @error("mother_dni")
+                            <div class="alert alert-danger">
+                                {{$message}}
+                            </div>
+                        @enderror
                         <label for="mother-dni" class="font-weight-bold mb-2 lead d-block">
                             Cédula de la madre 
                             <small class="text-muted ml-2 float-right">
@@ -176,7 +224,7 @@
 
             <hr class="my-4" />
 
-            <div class="form-group">
+          <!--   <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-3">
                     
@@ -225,11 +273,11 @@
                 </label>
                 <input type="checkbox" name="is_vaccinate" id="is-vaccinate">
             </div>
-         
+          -->
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-lg-6 mb-2">
-                        <button class="btn btn-success btn-block" type="submit" id="edit-person">
+                        <button class="btn btn-success btn-block" type="submit">
                             Editar persona
                             <i class="fa fa-arrow-right ml-1"></i>
                         </button>
@@ -242,7 +290,7 @@
                     </div>
                 </div>
             </div>
-
+<!--
             <div class="form-group">
                 <div class="collapse" id="vaccinations-list">
                     <div class="row">
@@ -359,6 +407,7 @@
                     
                 </div>
             </div>
+            -->
         </form>
     </section>
     @include("components.footer.footer")

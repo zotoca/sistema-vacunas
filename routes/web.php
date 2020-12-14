@@ -46,7 +46,7 @@ Route::group(["middleware" => "auth"], function(){
     Route::post("/personas", "App\Http\Controllers\PersonController@store");
     Route::get("/personas/{person}", "App\Http\Controllers\PersonController@show");
     Route::get("/personas/{person}/editar", "App\Http\Controllers\PersonController@edit");
-    
+    Route::put("/personas/{person}", "App\Http\Controllers\PersonController@update");    
     Route::delete("/personas/{person}", "App\Http\Controllers\PersonController@destroy");
 
 
