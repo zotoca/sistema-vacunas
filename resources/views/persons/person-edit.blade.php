@@ -20,8 +20,8 @@
             <div class="form-group">
                 <div class="row">
                     <div class="col-sm-12 col-md-2 col-lg-1 d-flex align-items-center">
-                        <a href="{{asset("images/anon.png")}}" 
-                            data-lightbox="{{asset("images/anon.png")}}"
+                        <a href='{{$person->image_url != "person.png"?Storage::url($person->image_url):asset("images/anon.png")}}' 
+                            data-lightbox='{{$person->image_url != "person.png"?Storage::url($person->image_url):asset("images/anon.png")}}'
                             class="d-block position-relative text-reset perfil-preview-container"
                         >
                             <div class="perfil-preview-icon">
@@ -30,7 +30,8 @@
                             {{-- aqui se puede hacer una comprobacion si el user tiene imagen
                                 ponerle la url de la imagen, sino dejarle la de anonimo
                             --}}
-                            <img src="{{asset("images/anon.png")}}" 
+                            
+                            <img src='{{$person->image_url != "person.png"?Storage::url($person->image_url):asset("images/anon.png")}}' 
                                 alt="Anoymous user" 
                                 id="perfil-preview"
                                 class="rounded-circle" 
