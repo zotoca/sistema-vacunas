@@ -1,6 +1,11 @@
 import { isImage } from "../helpers/checkTypeFile.js";
 import isValidForm, { checkEmptyInputsInForm } from "../helpers/forms.js";
-import { getId, setLinkImagePreview, showStreets } from "../helpers/DOM.js";
+import {
+    getId,
+    setLinkImagePreview,
+    showStreets,
+    showHouses,
+} from "../helpers/DOM.js";
 
 window.addEventListener("DOMContentLoaded", () => {
     // ---------- CALLES Y CASAS (inputs y loaders) -----------------
@@ -31,17 +36,35 @@ window.addEventListener("DOMContentLoaded", () => {
         "house_id",
     ];
 
+    function toggleBtnSubmit(isDisable = false) {
+        btnCreatePerson.disabled = isDisable;
+    }
+    
+    function _showHouses(id) {
+        showHouses({
+            id,
+            loaderHouse,
+            housesSelect,
+            houseId: 0,
+            toggleBtnSubmit,
+            houseError,
+        });
+    }
+
     showStreets({
         loaderStreet,
         loaderHouse,
         streetsSelect,
-        streetId : 0,
-        showHouses : () => {}, 
+        streetId: 0,
+        showHouses: _showHouses,
         streetError,
         houseError,
     });
 
     checkEmptyInputsInForm(form, inputNames);
+    streetsSelect.addEventListener("change", (e) =>
+        _showHouses(e.target.value)
+    );
     btnUploadImage.addEventListener("click", () => btnFile.click());
     btnFile.addEventListener("change", (e) => {
         const imgFile = e.target.files[0];

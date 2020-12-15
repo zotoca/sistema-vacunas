@@ -44,7 +44,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const anchorImagePreview = imagePreview.parentNode;
     const fileReader = new FileReader();
     const form = getId("edit-person-form");
-    const btnCreatePerson = getId("edit-person");
+    const btnEditPerson = getId("edit-person");
 
     const inputNames = [
         "first_name",
@@ -69,7 +69,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     function toggleBtnSubmit(isDisable = false) {
-        btnCreatePerson.disabled = isDisable;
+        btnEditPerson.disabled = isDisable;
     }
 
     showStreets({
@@ -110,7 +110,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     checkEmptyInputsInForm(form, inputNames);
 
-    btnCreatePerson.addEventListener("click", async () => {
+    btnEditPerson.addEventListener("click", async () => {
         const isValid = isValidForm(form, inputNames);
         const invalidDNI =
             !personsDNI.mother_dni.valid || !personsDNI.father_dni.valid;
