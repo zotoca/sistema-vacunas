@@ -1,8 +1,18 @@
 import { isImage } from "../helpers/checkTypeFile.js";
 import isValidForm, { checkEmptyInputsInForm } from "../helpers/forms.js";
-import { getId } from "../helpers/DOM.js";
+import { getId, setLinkImagePreview, showStreets } from "../helpers/DOM.js";
 
 window.addEventListener("DOMContentLoaded", () => {
+    // ---------- CALLES Y CASAS (inputs y loaders) -----------------
+    const streetsSelect = getId("street-id");
+    const loaderStreet = getId("loader-street");
+    const housesSelect = getId("house-id");
+    const loaderHouse = getId("loader-house");
+
+    // ------- ICONOS PARA ERRORES DE RED -----------------------------
+    const streetError = getId("street-error");
+    const houseError = getId("house-error");
+
     const btnUploadImage = getId("upload-image");
     const btnFile = getId("perfil-photo");
     const imagePreview = getId("perfil-preview");
@@ -20,24 +30,29 @@ window.addEventListener("DOMContentLoaded", () => {
         "street_id",
         "house_id",
     ];
-    const setLinkImagePreview = (img) => {
-        imagePreview.src = img;
-        anchorImagePreview.href = img;
-        anchorImagePreview.setAttribute("data-lightbox", img);
-    };
+
+    showStreets({
+        loaderStreet,
+        loaderHouse,
+        streetsSelect,
+        streetId : 0,
+        showHouses : () => {}, 
+        streetError,
+        houseError,
+    });
 
     checkEmptyInputsInForm(form, inputNames);
-
     btnUploadImage.addEventListener("click", () => btnFile.click());
-
     btnFile.addEventListener("change", (e) => {
         const imgFile = e.target.files[0];
+        const args = { anchorImagePreview, imagePreview };
         if (!isImage(btnFile)) {
-            setLinkImagePreview("/images/anon.png");
+            setLinkImagePreview({ img: "/images/anon.png", ...args });
             return;
         }
 
-        fileReader.onload = () => setLinkImagePreview(fileReader.result);
+        fileReader.onload = () =>
+            setLinkImagePreview({ img: fileReader.result, ...args });
         fileReader.readAsDataURL(imgFile);
     });
 

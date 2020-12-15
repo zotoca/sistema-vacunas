@@ -1,25 +1,12 @@
-import { success, error } from "../helpers/sweetAlerts.js";
-import {
-    editPerson,
-    getStreets,
-    getHouses,
-    isValidDni,
-} from "../helpers/requests.js";
-
+import { error } from "../helpers/sweetAlerts.js";
 import { isImage } from "../helpers/checkTypeFile.js";
-import { createHTMLOptions } from "../helpers/DOM.js";
-
-import isValidForm, {
-    checkEmptyInputsInForm,
-    checkEmptyValueFormData,
-} from "../helpers/forms.js";
-
+import isValidForm, { checkEmptyInputsInForm } from "../helpers/forms.js";
 import {
     getId,
-    display,
-    addClass,
-    removeClass,
-    setValueInSelect,
+    showStreets,
+    showHouses,
+    setLinkImagePreview,
+    checkDni,
 } from "../helpers/DOM.js";
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -41,7 +28,6 @@ window.addEventListener("DOMContentLoaded", () => {
     // -------- CALLE, CASA y ID DE LA PERSONA DESDE EL SERVER ------
     const streetId = getId("person-street-id").value;
     const houseId = getId("person-house-id").value;
-    const personId = getId("person-id").value;
 
     // ------- ICONOS PARA ERRORES DE RED -----------------------------
     const streetError = getId("street-error");
@@ -70,101 +56,55 @@ window.addEventListener("DOMContentLoaded", () => {
         "street_id",
         "house_id",
     ];
-    const setLinkImagePreview = (img) => {
-        imagePreview.src = img;
-        anchorImagePreview.href = img;
-        anchorImagePreview.setAttribute("data-lightbox", img);
-    };
 
-    async function showStreets() {
-        try {
-            display(loaderStreet);
-            streetsSelect.disabled = true;
-            const streets = await getStreets();
-            streetsSelect.innerHTML = createHTMLOptions(streets, [
-                "id",
-                "name",
-            ]);
-            streetsSelect.disabled = false;
-            setValueInSelect(streetsSelect, streetId);
-            showHouses(streetsSelect.value);
-        } catch (e) {
-            display(streetError, "inline");
-            display(houseError, "inline");
-            display(loaderHouse, "none");
-        }
-        display(loaderStreet, "none");
-    }
-
-    async function showHouses(id) {
-        toggleBtnSubmit(true);
-        try {
-            display(loaderHouse);
-            housesSelect.disabled = true;
-            const houses = await getHouses(id);
-            housesSelect.innerHTML = createHTMLOptions(houses, [
-                "id",
-                "number",
-            ]);
-            housesSelect.disabled = false;
-            setValueInSelect(housesSelect, houseId);
-        } catch (e) {
-            display(houseError, "inline");
-        }
-        display(loaderHouse, "none");
-        toggleBtnSubmit();
+    function _showHouses(id) {
+        showHouses({
+            id,
+            loaderHouse,
+            housesSelect,
+            houseId,
+            toggleBtnSubmit,
+            houseError,
+        });
     }
 
     function toggleBtnSubmit(isDisable = false) {
         btnCreatePerson.disabled = isDisable;
     }
 
-    async function checkDni({ target }) {
-        let input = personsDNI[target.name];
-        if (target.value) {
-            try {
-                display(input.node);
-                toggleBtnSubmit(true);
-                const isValid = await isValidDni(target.value);
+    showStreets({
+        loaderStreet,
+        loaderHouse,
+        streetsSelect,
+        streetId,
+        showHouses: _showHouses,
+        streetError,
+        houseError,
+    });
 
-                if (!isValid.isValid) {
-                    addClass(target, "bad");
-                    input.valid = false;
-                } else {
-                    removeClass(target, "bad");
-                    input.valid = true;
-                }
-            } catch (error) {
-                display(dniError[target.name], "inline");
-            }
-            display(input.node, "none");
-        } else {
-            removeClass(target, "bad");
-            input.valid = true;
-        }
-
-        toggleBtnSubmit();
-
-        if (!personsDNI.father_dni.valid || !personsDNI.mother_dni.valid) {
-            toggleBtnSubmit(true);
-        }
-    }
-
-    showStreets();
-
-    streetsSelect.addEventListener("change", (e) => showHouses(e.target.value));
-    motherDni.addEventListener("blur", checkDni);
-    fatherDni.addEventListener("blur", checkDni);
+    // ----------- MANEJADORES DE EVENTOS --------------------------------------
+    streetsSelect.addEventListener("change", (e) =>
+        _showHouses(e.target.value)
+    );
+    motherDni.addEventListener("blur", (e) =>
+        checkDni({ target: e.target, personsDNI, toggleBtnSubmit, dniError })
+    );
+    fatherDni.addEventListener("blur", (e) =>
+        checkDni({ target: e.target, personsDNI, toggleBtnSubmit, dniError })
+    );
     form.addEventListener("submit", (e) => e.preventDefault());
     btnUploadImage.addEventListener("click", () => btnFile.click());
+
     btnFile.addEventListener("change", (e) => {
         const imgFile = e.target.files[0];
+        const args = { anchorImagePreview, imagePreview };
         if (!isImage(btnFile)) {
-            setLinkImagePreview("/images/anon.png");
+            setLinkImagePreview({ img: "/images/anon.png", ...args });
             return;
         }
 
-        fileReader.onload = () => setLinkImagePreview(fileReader.result);
+        fileReader.onload = () =>
+            setLinkImagePreview({ img: fileReader.result, ...args });
         fileReader.readAsDataURL(imgFile);
     });
 

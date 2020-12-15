@@ -149,13 +149,16 @@
                         
                         <label for="street-id" class="font-weight-bold mb-2 lead d-block">
                             Calle
-                            <small class="text-muted float-right font-weight-bold">(requerido)</small>
+                            <small class="text-muted float-right font-weight-bold">
+                                (requerido)
+                                <div class="loader-data" id="loader-street"></div>
+                                <i class="fa fa-exclamation-circle text-danger ml-1" id="street-error" style="display:none;" title="OCURRIÓ UN ERROR DE RED"></i>
+                            </small>
                         </label>
-                        <select name="street_id" id="street-id"  class="form-control" required>
-                           @foreach($streets as $street)
+                        <select name="street_id" id="street-id"  class="form-control" required disabled>
+                           {{-- @foreach($streets as $street)
                                 <option {{ (old("street_id") == $street->id ? "selected":"")}} value="{{$street->id}}">{{$street->name}}</option>
-                           @endforeach
-                            
+                           @endforeach --}}
                         </select>
                     </div>
 
@@ -167,12 +170,16 @@
                         @enderror
                         <label for="house-id" class="font-weight-bold mb-2 lead d-block">
                             Casa
-                            <small class="text-muted float-right font-weight-bold">(requerido)</small>
+                            <small class="text-muted float-right font-weight-bold">
+                                (requerido)
+                                <div class="loader-data" id="loader-house"></div>
+                                <i class="fa fa-exclamation-circle text-danger ml-1" id="house-error" style="display:none;" title="OCURRIÓ UN ERROR DE RED"></i>
+                            </small>
                         </label>
-                        <select name="house_id" id="house-id"  class="form-control" required>
-                            @foreach($houses as $house)
+                        <select name="house_id" id="house-id"  class="form-control" required disabled>
+                            {{-- @foreach($houses as $house)
                                 <option {{ (old("house_id") == $house->id ? "selected":"")}} value="{{$house->id}}">Casa N#{{$house->number}} Calle {{$streets[0]->name}}</option>
-                            @endforeach
+                            @endforeach --}}
                         </select>
                     </div>
                 </div>
@@ -208,36 +215,6 @@
                 </div>
             </div>
 
-            {{-- <div class="form-group" data-aos="fade-up">
-                <div class="row">
-                    <div class="col-sm-12 col-lg-6 mb-3">
-                        <label for="vaccination-id" class="font-weight-bold mb-2 lead">Vacuna</label>
-                        <select name="vaccination_id" id="vaccination-id" class="form-control" required>
-                            <option value="">Triple virídica</option>
-                        </select>
-                    </div>
-
-                    <div class="col-sm-12 col-lg-6">
-                        <label for="vaccionation-dose" class="font-weight-bold mb-2 lead">Dosis</label>
-                        <input type="text" class="form-control" name="vaccionation_dose" id="vaccionation-dose" required>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-group" data-aos="fade-up">
-                <div class="row">
-                    <div class="col-sm-12 col-lg-6 mb-3">
-                        <label for="vaccionation-lot" class="font-weight-bold mb-2 lead">Nro. de Lote</label>
-                        <input type="text" class="form-control" name="vaccionation_lot" id="vaccionation-lot" required>
-                    </div>
-
-                    <div class="col-sm-12 col-lg-6">
-                        <label for="vaccination-date" class="font-weight-bold mb-2 lead">Fecha de vacuna</label>
-                        <input type="date" class="form-control" name="vaccination_date" id="vaccination-date" required>
-                    </div>
-                </div>
-            </div> --}}
-
             <div class="form-group">
                 <div class="row">
                     <div class="col-12">
@@ -246,12 +223,6 @@
                             <i class="fa fa-arrow-right ml-1"></i>
                         </button>
                     </div>
-                    {{-- <div class="col-sm-12 col-lg-6">
-                        <button class="btn btn-primary btn-block" type="button" id="view-vaccinations">
-                            Ver vacunas                            
-                            <i class="fa fa-list ml-1"></i>
-                        </button>
-                    </div> --}}
                 </div>
             </div>
         </form>

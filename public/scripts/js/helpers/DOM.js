@@ -1,3 +1,5 @@
+import { getStreets, getHouses, isValidDni } from "../helpers/requests.js";
+
 export const body = document.body;
 
 export function getId(node) {
@@ -62,5 +64,96 @@ export function setValueInSelect(select, value) {
             flag = false;
             select.value = select.options[i].value;
         }
+    }
+}
+
+export function setLinkImagePreview({ img, imagePreview, anchorImagePreview }) {
+    imagePreview.src = img;
+    anchorImagePreview.href = img;
+    anchorImagePreview.setAttribute("data-lightbox", img);
+}
+
+export async function showStreets({
+    loaderStreet,
+    loaderHouse,
+    streetsSelect,
+    streetId,
+    showHouses,
+    streetError,
+    houseError,
+}) {
+    try {
+        display(loaderStreet);
+        streetsSelect.disabled = true;
+        const streets = await getStreets();
+        streetsSelect.innerHTML = createHTMLOptions(streets, ["id", "name"]);
+        streetsSelect.disabled = false;
+        setValueInSelect(streetsSelect, streetId);
+        showHouses(streetsSelect.value);
+    } catch (e) {
+        console.log(e);
+        display(streetError, "inline");
+        display(houseError, "inline");
+        display(loaderHouse, "none");
+    }
+    display(loaderStreet, "none");
+}
+
+export async function showHouses({
+    id,
+    loaderHouse,
+    housesSelect,
+    houseId,
+    toggleBtnSubmit,
+    houseError,
+}) {
+    toggleBtnSubmit(true);
+    try {
+        display(loaderHouse);
+        housesSelect.disabled = true;
+        const houses = await getHouses(id);
+        housesSelect.innerHTML = createHTMLOptions(houses, ["id", "number"]);
+        housesSelect.disabled = false;
+        setValueInSelect(housesSelect, houseId);
+    } catch (e) {
+        display(houseError, "inline");
+    }
+    display(loaderHouse, "none");
+    toggleBtnSubmit();
+}
+
+export async function checkDni({
+    target,
+    personsDNI,
+    dniError,
+    toggleBtnSubmit,
+}) {
+    let input = personsDNI[target.name];
+    if (target.value) {
+        try {
+            display(input.node);
+            toggleBtnSubmit(true);
+            const isValid = await isValidDni(target.value);
+
+            if (!isValid.isValid) {
+                addClass(target, "bad");
+                input.valid = false;
+            } else {
+                removeClass(target, "bad");
+                input.valid = true;
+            }
+        } catch (error) {
+            display(dniError[target.name], "inline");
+        }
+        display(input.node, "none");
+    } else {
+        removeClass(target, "bad");
+        input.valid = true;
+    }
+
+    toggleBtnSubmit();
+
+    if (!personsDNI.father_dni.valid || !personsDNI.mother_dni.valid) {
+        toggleBtnSubmit(true);
     }
 }
