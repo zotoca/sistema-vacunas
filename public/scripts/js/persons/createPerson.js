@@ -39,7 +39,7 @@ window.addEventListener("DOMContentLoaded", () => {
     function toggleBtnSubmit(isDisable = false) {
         btnCreatePerson.disabled = isDisable;
     }
-    
+
     function _showHouses(id) {
         showHouses({
             id,
@@ -65,6 +65,8 @@ window.addEventListener("DOMContentLoaded", () => {
     streetsSelect.addEventListener("change", (e) =>
         _showHouses(e.target.value)
     );
+
+    form.addEventListener("submit", (e) => e.preventDefault());
     btnUploadImage.addEventListener("click", () => btnFile.click());
     btnFile.addEventListener("change", (e) => {
         const imgFile = e.target.files[0];
@@ -82,5 +84,6 @@ window.addEventListener("DOMContentLoaded", () => {
     btnCreatePerson.addEventListener("click", async () => {
         const isValid = isValidForm(form, inputNames);
         if (!isValid) return;
+        form.submit();
     });
 });
