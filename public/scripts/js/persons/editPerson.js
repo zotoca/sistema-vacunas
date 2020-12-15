@@ -86,12 +86,14 @@ window.addEventListener("DOMContentLoaded", () => {
     streetsSelect.addEventListener("change", (e) =>
         _showHouses(e.target.value)
     );
+
     motherDni.addEventListener("blur", (e) =>
         checkDni({ target: e.target, personsDNI, toggleBtnSubmit, dniError })
     );
     fatherDni.addEventListener("blur", (e) =>
         checkDni({ target: e.target, personsDNI, toggleBtnSubmit, dniError })
     );
+    
     form.addEventListener("submit", (e) => e.preventDefault());
     btnUploadImage.addEventListener("click", () => btnFile.click());
 

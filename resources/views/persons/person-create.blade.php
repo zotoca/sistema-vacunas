@@ -197,7 +197,12 @@
                         @enderror
                         <label for="father-dni" class="font-weight-bold mb-2 lead d-block">
                             Cédula del padre 
-                        <small class="text-muted ml-2 float-right">(opcional)</small></label>
+                            <small class="text-muted ml-2 float-right">
+                                (opcional)
+                                <div class="loader-data" id="loader-dni-father" style="display: none;"></div>
+                                <i class="fa fa-exclamation-circle text-danger ml-1" id="dni-father-error" style="display:none;" title="OCURRIÓ UN ERROR DE RED"></i>
+                            </small>
+                        </label>
                         <input type="number" class="form-control" value="{{old('father_dni')}}" name="father_dni" id="father-dni" placeholder="0000000">
                     </div>
 
@@ -209,8 +214,13 @@
                         @enderror
                         <label for="mother-number" class="font-weight-bold mb-2 lead d-block">
                             Cédula de la madre 
-                        <small class="text-muted ml-2 float-right">(opcional)</small></label>
-                        <input type="number" class="form-control" value="{{old('mother_dni')}}" name="mother_dni" id="mother-number" placeholder="0000000">
+                            <small class="text-muted ml-2 float-right">
+                                (opcional)
+                                <div class="loader-data" id="loader-dni-mother" style="display: none;"></div>
+                                <i class="fa fa-exclamation-circle text-danger ml-1" id="dni-mother-error" style="display:none;" title="OCURRIÓ UN ERROR DE RED"></i>
+                            </small>
+                        </label>
+                        <input type="number" class="form-control" value="{{old('mother_dni')}}" name="mother_dni" id="mother-dni" placeholder="0000000">
                     </div>
                 </div>
             </div>

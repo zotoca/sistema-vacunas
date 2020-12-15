@@ -1,3 +1,4 @@
+import { error } from "../helpers/sweetAlerts.js";
 import { isImage } from "../helpers/checkTypeFile.js";
 import isValidForm, { checkEmptyInputsInForm } from "../helpers/forms.js";
 import {
@@ -5,6 +6,7 @@ import {
     setLinkImagePreview,
     showStreets,
     showHouses,
+    checkDni,
 } from "../helpers/DOM.js";
 
 window.addEventListener("DOMContentLoaded", () => {
@@ -14,10 +16,24 @@ window.addEventListener("DOMContentLoaded", () => {
     const housesSelect = getId("house-id");
     const loaderHouse = getId("loader-house");
 
+    // ------------ CEDULAS ------------------------
+    const motherDni = getId("mother-dni");
+    const fatherDni = getId("father-dni");
+    // las cedulas son validas porq estan vacias
+    const personsDNI = {
+        father_dni: { node: getId("loader-dni-father"), valid: true },
+        mother_dni: { node: getId("loader-dni-mother"), valid: true },
+    };
+
     // ------- ICONOS PARA ERRORES DE RED -----------------------------
     const streetError = getId("street-error");
     const houseError = getId("house-error");
+    const dniError = {
+        father_dni: getId("dni-father-error"),
+        mother_dni: getId("dni-mother-error"),
+    };
 
+    // --------- MANEJO DE IMAGENES, ARCHIVOS Y FORMULARIO ------------
     const btnUploadImage = getId("upload-image");
     const btnFile = getId("perfil-photo");
     const imagePreview = getId("perfil-preview");
@@ -66,6 +82,13 @@ window.addEventListener("DOMContentLoaded", () => {
         _showHouses(e.target.value)
     );
 
+    motherDni.addEventListener("blur", (e) =>
+        checkDni({ target: e.target, personsDNI, toggleBtnSubmit, dniError })
+    );
+    fatherDni.addEventListener("blur", (e) =>
+        checkDni({ target: e.target, personsDNI, toggleBtnSubmit, dniError })
+    );
+
     form.addEventListener("submit", (e) => e.preventDefault());
     btnUploadImage.addEventListener("click", () => btnFile.click());
     btnFile.addEventListener("change", (e) => {
@@ -83,7 +106,17 @@ window.addEventListener("DOMContentLoaded", () => {
 
     btnCreatePerson.addEventListener("click", async () => {
         const isValid = isValidForm(form, inputNames);
+        const invalidDNI =
+            !personsDNI.mother_dni.valid || !personsDNI.father_dni.valid;
+
         if (!isValid) return;
+        if (invalidDNI) {
+            error(
+                "Cédula incorrecta, verifique las cédulas de identidad solicitdas."
+            );
+            toggleBtnSubmit(true);
+            return;
+        }
         form.submit();
     });
 });
