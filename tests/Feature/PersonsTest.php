@@ -76,6 +76,40 @@ class PersonsTest extends TestCase
             ->assertDontSee($person_vaccinations[1]->person->first_name);
     }
 
+    public function test_a_administrator_can_see_a_person(){
+        $this->withoutExceptionHandling();
+        $this->signIn();
+
+        $person = Person::factory()->create();
+        
+        $this->get($person->path())
+            ->assertStatus(200)
+            ->assertSee($person->first_name)
+            ->assertSee($person->last_name)
+            ->assertSee($person->age)
+            ->assertSee($person->house->number)
+            ->assertSee($person->house->street->name)
+            ->assertSee($person->phone_number)
+            ->assertSee($person->created_at)
+            ->assertSee($person->updated_at);
+    }
+
+    public function test_a_administrator_can_see_the_sons_and_parents_of_a_person(){
+        $this->signIn();
+        
+        $parents = Person::factory(2)->create();
+        
+        $person = Person::factory()->create(["father_id" => $parents[0]->id,"mother_id" => $parents[1]->id]);
+        
+        $sons = Person::factory(2)->create(["father_id" => $person->id]);
+        
+        $this->get($person->path())
+            ->assertStatus(200)
+            ->assertSee($parents[0]->first_name)
+            ->assertSee($parents[1]->first_name)
+            ->assertSee($sons[0]->first_name)
+            ->assertSee($sons[1]->first_name);
+    }
 
     public function test_a_administrator_can_create_a_person(){
         $this->withoutExceptionHandling();
