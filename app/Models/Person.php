@@ -25,6 +25,23 @@ class Person extends Model
         return $this->hasMany("App\Models\PersonVaccination");
     }
     
+    public function getFullNameAttribute(){
+        return $this->first_name . " " . $this->last_name;
+    }
+
+    
+    public function father(){
+        return $this->belongsTo("App\Models\Person","father_id","id");
+    }
+
+    public function mother(){
+        return $this->belongsTo("App\Models\Person","mother_id", "id");
+    }
+
+    public function sons(){
+        return $this->hasMany("App\Models\Person",'father_id','id')->orWhere('mother_id', $this->id);
+    }
+    
 
 
 

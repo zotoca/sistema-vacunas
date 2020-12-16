@@ -287,10 +287,10 @@
                         </button>
                     </div>
                     <div class="col-sm-12 col-lg-6">
-                        <button class="btn btn-primary btn-block" type="button" id="view-vaccinations" data-target="#vaccinations-list" data-toggle="collapse" aria-expanded="false" aria-controls="vaccinations-list">
+                        <a class="btn btn-primary btn-block" href="{{$person->path()}}/vacunas-personas">
                             Ver vacunas                            
                             <i class="fa fa-list ml-1"></i>
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>

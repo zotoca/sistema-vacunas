@@ -45,10 +45,8 @@ class PersonController extends Controller
     }
 
     public function show(Request $request, Person $person){
-        $person->load(["person_vaccination" => function($query){
-            $query->orderBy("created_at", "ASC");
-        }]);
-    }
+        return View::make("persons.person-show", ["person" => $person]);
+    } 
 
     public function create(){
         $streets = Street::all();
@@ -125,9 +123,30 @@ class PersonController extends Controller
 
 
         return redirect($person->path()."/editar");
+    }
+
+    public function personVaccinations(Request $request, Person $person){
+        
+        $vaccination_date = $request->get("vaccination-date");
+        
+        $vaccination_id = $request->get("vaccination-id");
+        $dose = $request->get("dose");
+        $is_vaccinated = $request->get("is_vaccinated");
+
+        $person_vaccinations = $person
+            ->personVaccinations()
+            ->vaccinationDate($vaccination_date)
+            ->vaccinationId($vaccination_id)
+            ->dose($dose)
+            ->isVaccinated($is_vaccinated)
+            ->get();
+
+         
+        return View::make("persons.person-vaccinations",["person_vaccinations" => $person_vaccinations, "person" => $person]);
 
 
     }
+
 
     public function destroy(Person $person){
         Storage::delete($person->image_url);
