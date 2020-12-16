@@ -11,7 +11,7 @@
 
     <section class="container mt-5">
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-md-6 col-lg-3">
                 <img class="shadow-sm d-block" 
                  src="{{Storage::url($person->image_url)}}" 
                  alt="Imagen de perfil de {{$person->fullName}}" 
@@ -29,7 +29,7 @@
                 </div>
             </div>
 
-            <div class="col-4 px-0">
+            <div class="col-md-6 col-lg-4 px-0 mt-3 mt-lg-0 mt-md-0">
                 <div class="ml-4">
                     <h6>
                         <span class="font-weight-bold mr-2">Nombres:</span>
