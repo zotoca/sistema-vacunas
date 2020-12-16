@@ -200,7 +200,7 @@
                             Cédula del padre 
                             <small class="text-muted ml-2 float-right">
                                 (opcional)
-                                 <div class="loader-data" id="loader-dni-father" style="display: none;"></div>
+                                <div class="loader-data" id="loader-dni-father" style="display: none;"></div>
                                 <i class="fa fa-exclamation-circle text-danger ml-1" id="dni-father-error" style="display:none;" title="OCURRIÓ UN ERROR DE RED"></i>
                             </small>
                         </label>
