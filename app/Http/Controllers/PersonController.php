@@ -127,11 +127,12 @@ class PersonController extends Controller
 
     public function personVaccinations(Request $request, Person $person){
         
+        
         $vaccination_date = $request->get("vaccination-date");
         
         $vaccination_id = $request->get("vaccination-id");
         $dose = $request->get("dose");
-        $is_vaccinated = $request->get("is_vaccinated");
+        $is_vaccinated = $request->get("is-vaccinated");
 
         $person_vaccinations = $person
             ->personVaccinations()
@@ -141,8 +142,16 @@ class PersonController extends Controller
             ->isVaccinated($is_vaccinated)
             ->get();
 
-         
-        return View::make("persons.person-vaccinations",["person_vaccinations" => $person_vaccinations, "person" => $person]);
+        
+        $vaccinations = Vaccination::all();
+
+        $context_data = [
+            "person_vaccinations" => $person_vaccinations, 
+            "person" => $person,
+            "vaccinations" => $vaccinations
+        ];
+
+        return View::make("persons.person-vaccinations",$context_data);
 
 
     }

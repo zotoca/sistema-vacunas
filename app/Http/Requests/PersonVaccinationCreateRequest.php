@@ -30,7 +30,8 @@ class PersonVaccinationCreateRequest extends FormRequest
             "vaccination_id" => "required|exists:vaccinations,id",
             "vaccination_date" => "required|date",
             "dose" => "nullable|string",
-            "lot_number" => "nullable|string"
+            "lot_number" => "nullable|string",
+            "is_vaccinated" => "required|boolean"
         ];
     }
 

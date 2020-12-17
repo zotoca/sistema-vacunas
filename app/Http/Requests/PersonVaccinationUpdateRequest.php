@@ -24,10 +24,11 @@ class PersonVaccinationUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            "vaccination_id" => "required_without_all:vaccination_date,dose,lot_number|exists:vaccinations,id",
-            "vaccination_date" => "required_without_all:vaccination_id,dose,lot_number|date",
-            "dose" => "required_without_all:vaccination_id,vaccination_date,lot_number|string",
-            "lot_number" => "required_without_all:vaccination_id,vaccination_date,dose|string"
+            "vaccination_id" => "required_without_all:vaccination_date,dose,lot_number,is_vaccinated|exists:vaccinations,id",
+            "vaccination_date" => "required_without_all:vaccination_id,dose,lot_number,is_vaccinated|date",
+            "dose" => "required_without_all:vaccination_id,vaccination_date,lot_number,is_vaccinated|string",
+            "lot_number" => "required_without_all:vaccination_id,vaccination_date,dose,is_vaccinated|string",
+            "is_vaccinated" => "required_without_all:vaccination_id,vaccination_date,dose,lot_number|boolean"
         ];
     }
 }

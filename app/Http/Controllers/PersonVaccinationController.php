@@ -16,7 +16,7 @@ class PersonVaccinationController extends Controller
 
         $person_vaccination = PersonVaccination::create($validated);
 
-        return response()->json($person_vaccination);
+        return response()->json(["message" => "ok"]);
     }
 
     public function update(PersonVaccinationUpdateRequest $request, PersonVaccination $person_vaccination){
@@ -25,7 +25,7 @@ class PersonVaccinationController extends Controller
         $person_vaccination->update($validated);
 
 
-        return response()->json($person_vaccination);
+        return response()->json(["message" => "ok"]);
     }
 
     public function delete(Request $request,PersonVaccination $person_vaccination){

@@ -23,11 +23,11 @@ Route::group(["middleware" => "auth"],function(){
     Route::get("/calles", "App\Http\Controllers\StreetController@indexApi");
     Route::get("/calles/{street}/casas", "App\Http\Controllers\StreetController@housesApi");
     
+    Route::get("/vacunas", "App\Http\Controllers\VaccinationController@indexApi");
 
     Route::get("/personas/{person}/calles", "App\Http\Controllers\PersonController@streetApi");
     Route::get("/personas/{person}/casas", "App\Http\Controllers\PersonController@houseApi");
     Route::post("/personas/verificar-cedula", "App\Http\Controllers\PersonController@verificateDniApi");
-  
 
 
     Route::post("/vacunas-personas", "App\Http\Controllers\PersonVaccinationController@store");

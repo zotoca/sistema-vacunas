@@ -9,6 +9,7 @@ export const PERSONS_URL = BASE_URL + "/personas";
 export const BASE_API = BASE_URL + "/api";
 export const STREETS_API_URL = BASE_API + "/calles";
 export const PERSON_EDIT_URL = (personId) => `${BASE_API}/personas/${personId}`;
+export const PERSON_VACCINATIONS_URL = `${BASE_API}/vacunas-personas`;
 export const HOUSES_API_URL = (houseId) =>
-    `${BASE_API}/calles/${houseId}/casas`;
+`${BASE_API}/calles/${houseId}/casas`;
 export const DNI_CHECK_URL = BASE_API + "/personas/verificar-cedula";

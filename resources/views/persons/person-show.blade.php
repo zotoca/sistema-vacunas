@@ -56,12 +56,12 @@
 
                     <h6>
                         <span class="font-weight-bold mr-2">Fecha de creación:</span>
-                        {{ date("d-m-Y", strtotime($person->created_at)) }}
+                        {{ $person->created_at }}
                     </h6>
 
                     <h6>
                         <span class="font-weight-bold mr-2">Fecha de modificación:</span>
-                        {{ date("d-m-Y", strtotime($person->updated_at)) }}
+                        {{ $person->updated_at }}
                     </h6>
                 </div>
             </div>

@@ -4,6 +4,7 @@ import {
     HOUSES_URL,
     PERSONS_URL,
     PERSON_EDIT_URL,
+    PERSON_VACCINATIONS_URL,
     STREETS_API_URL,
     HOUSES_API_URL,
     DNI_CHECK_URL,
@@ -52,6 +53,18 @@ export async function createPerson(person) {
 
 export async function editPerson(personId, data) {
     return PUT(PERSON_EDIT_URL(personId), data);
+}
+
+export function createPersonVaccination(vaccination_id, person_id, dose, lot_number, vaccination_date, is_vaccinated) {
+    return POST(PERSON_VACCINATIONS_URL, { vaccination_id, person_id, dose, lot_number, vaccination_date, is_vaccinated });
+}
+
+export async function deletePersonVaccination(id) {
+    return DELETE(`${PERSON_VACCINATIONS_URL}/${id}`);
+}
+
+export async function editPersonVaccination(id, vaccination_id, dose, lot_number, vaccination_date, is_vaccinated) {
+    return PUT(`${PERSON_VACCINATIONS_URL}/${id}`, { vaccination_id, dose, lot_number, vaccination_date, is_vaccinated });
 }
 
 export async function deletePerson(id) {

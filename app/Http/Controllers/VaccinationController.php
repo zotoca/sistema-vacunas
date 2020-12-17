@@ -44,8 +44,13 @@ class VaccinationController extends Controller
         $vaccination->delete();
 
         return response()->json(["message" => "ok"]);
+    }
 
+    public function indexApi(Request $request){
+        $vaccinations = Vaccination::all();
+        
 
+        return response()->json($vaccinations);
     }
 
 
