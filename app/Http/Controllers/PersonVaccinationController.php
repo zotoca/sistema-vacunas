@@ -13,9 +13,9 @@ class PersonVaccinationController extends Controller
     
     public function store(PersonVaccinationCreateRequest $request){
         $validated = $request->validated();
-
+        
         $person_vaccination = PersonVaccination::create($validated);
-
+        
         return response()->json(["message" => "ok"]);
     }
 

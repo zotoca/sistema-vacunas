@@ -43,8 +43,9 @@ class PersonVaccination extends Model
     }
 
     public function scopeDose($query, $dose){
-        return $query->where("dose", "LIKE", "%$dose%");
-        
+        if($dose !=""){
+            return $query->where("dose", "LIKE", "%$dose%");
+        }
     }
 
     public function scopeIsVaccinated($query, $is_vaccinated){
