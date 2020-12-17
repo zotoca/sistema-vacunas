@@ -23,7 +23,7 @@
                         <i class="fa fa-pencil ml-1"></i>
                     </a>
 
-                    <a class="btn btn-outline-info" href="/personas/{{$person->id}}/vacunas">
+                    <a class="btn btn-outline-info" href="/personas/{{$person->id}}/vacunas-personas">
                         <i class="fa fa-list-ul ml-1"></i>
                     </a>
                 </div>

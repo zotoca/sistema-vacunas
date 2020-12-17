@@ -27,7 +27,7 @@
 
                     <div class="row w-100 m-0">
                         <div class="col-sm-12 col-lg-6 p-1">
-                            <a class="btn btn-info btn-block" href="/personas/{{$person->id}}/vacunas">
+                            <a class="btn btn-info btn-block" href="/personas/{{$person->id}}/vacunas-personas">
                                 Vacunas
                                 <i class="fa fa-list-ul ml-1"></i>
                             </a>

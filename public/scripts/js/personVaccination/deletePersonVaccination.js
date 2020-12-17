@@ -3,7 +3,9 @@ import { deletePersonVaccination } from "../helpers/requests.js";
 import { selectorAll } from "../helpers/DOM.js";
 
 window.addEventListener("DOMContentLoaded", () => {
-    const btnsDeletePersonVaccinations = selectorAll("button[data-action='delete']");
+    const btnsDeletePersonVaccinations = selectorAll(
+        "button[data-action='delete']"
+    );
 
     btnsDeletePersonVaccinations.forEach((btn) =>
         btn.addEventListener("click", () => {
@@ -24,14 +26,16 @@ function deletePersonVaccinationConfirm(id) {
         // hasta no terminar, no es posible salir del modal
         preConfirm: () => {
             // promise returned
-            
+
             return deletePersonVaccination(id).then(
                 (res) => {
                     if (res.message === "ok") {
                         success("Vacuna de la persona eliminada", "");
                         window.location.reload();
                     } else {
-                        error("Ocurrió un error al eliminar la vacuna de esta persona.");
+                        error(
+                            "Ocurrió un error al eliminar la vacuna de esta persona."
+                        );
                     }
                 },
                 () => error("Ocurrió un error de conexión.")

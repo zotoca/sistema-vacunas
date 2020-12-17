@@ -35,12 +35,19 @@
                     
                     
                 </div>
-                <div class="form-check mx-auto">
-                    <input type="checkbox" name="is-vaccinated" class="form-check-input" value="true"/>
-                    <label class="form-check-label">¿Puestas?</label>
-                </div>
-                <div class="input-group w-100 mt-2">
-                    <button class="btn btn-primary btn-block">Buscar <i class="fa fa-search ml-1"></i></button>
+                <div class="row w-100 mt-2">
+                    <div class="col-2">
+                        <label class="form-check-label">
+                            ¿Puestas?
+                             <input type="checkbox" name="is-vaccinated" class="form-check-input ml-1" value="true"/>
+                        </label>
+                    </div>
+               
+                    <div class="col-10 px-0">
+                        <button class="btn btn-primary btn-block">
+                            Buscar <i class="fa fa-search ml-1"></i>
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>
