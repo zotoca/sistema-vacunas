@@ -120,5 +120,15 @@ class VaccinationsTest extends TestCase
         
         $this->assertDatabaseMissing("vaccinations", ["name" => $vaccination->name]);
     }
+    public function test_an_administrator_can_get_vaccinations_api(){
+        $this->withoutExceptionHandling();
+        $this->signIn();
+
+        $vaccination = Vaccination::factory()->create();
+        
+        $this->get("/api/vacunas")
+            ->assertStatus(200)
+            ->assertJsonStructure([["id", "name", "created_at", "updated_at"]]);
+    }
 
 }
