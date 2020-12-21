@@ -64,10 +64,9 @@
                         {{ $person->updated_at }}
                     </h6>
 
-                    <h6>
-                        <span class="font-weight-bold mr-2 mb-2 d-block">Padres:</span>
                         @if ($person->father || $person->mother)
-                         
+                            <h6>
+                                <span class="font-weight-bold mr-2 mb-2 d-block">Padres:</span>
                                 @if($person->father)
                                     <a href="{{$person->father->path()}}" class="d-block mb-2"> 
                                         <span class="d-block">
@@ -96,20 +95,44 @@
                                         </span>
                                     </a>
                                 @endif
+                            </h6>
                         @endif
-                    </h6>
+                  
+
+                    
+                        @if($person->sons->count() > 0)
+                            <h6>
+                            <span class="font-weight-bold mr-2 mb-2 d-block">Hijos:</span>
+                            @foreach($person->sons as $son)
+                                
+                                <a href="{{$son->path()}}" class="d-block">
+                                    <span class="d-flex align-items-center">
+                                        <img 
+                                        src="{{asset('images/son.png')}}" 
+                                        class="mr-1"
+                                        alt="Mother" 
+                                        width="20" 
+                                        height="20">
+                                        Nro.{{$loop->iteration}} {{$son->fullName}}
+                                    </span>
+                                </a>
+                               
+                            @endforeach
+                            </h6>
+                        @endif
+                    
                 </div>
             </div>
         </div>
 
-        @if($person->sons->count() > 0)
+        <!-- @if($person->sons->count() > 0)
             <div>
                 <h3>Hijos:</h3>
                 @foreach($person->sons as $son)
                     <h5><a href="{{$son->path()}}">Hijo N#{{$loop->iteration}} {{$son->fullName}}</a></h5>
                 @endforeach
             <div> 
-        @endif
+        @endif -->
     
     </section>
 @include("components.footer.footer")
