@@ -63,21 +63,45 @@
                         <span class="font-weight-bold mr-2">Fecha de modificación:</span>
                         {{ $person->updated_at }}
                     </h6>
+
+                    <h6>
+                        <span class="font-weight-bold mr-2 mb-2 d-block">Padres:</span>
+                        @if ($person->father || $person->mother)
+                         
+                                @if($person->father)
+                                    <a href="{{$person->father->path()}}" class="d-block mb-2"> 
+                                        <span class="d-block">
+                                           <img 
+                                            src="{{asset('images/man.png')}}" 
+                                           
+                                            alt="Father" 
+                                            width="20" 
+                                            height="20"> 
+
+                                            Padre: {{$person->father->fullName}}
+                                        </span>
+                                    </a>
+                                @endif
+                                
+                                @if($person->mother)
+                                    <a href="{{$person->mother->path()}}" class="d-block"> 
+                                        <span class="d-block">
+                                            <img 
+                                            src="{{asset('images/woman.png')}}" 
+                                      
+                                            alt="Mother" 
+                                            width="20" 
+                                            height="20"> 
+                                            Madre: {{$person->mother->fullName}}
+                                        </span>
+                                    </a>
+                                @endif
+                        @endif
+                    </h6>
                 </div>
             </div>
         </div>
 
-        @if($person->father || $person->mother))
-            <div>
-                <h3>Padres:</h3>
-                @if($person->father)
-                    <h5><a href="{{$person->father->path()}}">Padre: {{$person->father->fullName}}</a></h5>
-                @endif
-                @if($person->mother)
-                <h5><a href="{{$person->mother->path()}}">Madre: {{$person->mother->fullName}}</a></h5>
-                @endif
-            </div>
-        @endif
         @if($person->sons->count() > 0)
             <div>
                 <h3>Hijos:</h3>
