@@ -124,16 +124,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- @if($person->sons->count() > 0)
-            <div>
-                <h3>Hijos:</h3>
-                @foreach($person->sons as $son)
-                    <h5><a href="{{$son->path()}}">Hijo N#{{$loop->iteration}} {{$son->fullName}}</a></h5>
-                @endforeach
-            <div> 
-        @endif -->
-    
     </section>
 @include("components.footer.footer")
 @endsection
