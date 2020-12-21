@@ -105,7 +105,7 @@
                             <span class="font-weight-bold mr-2 mb-2 d-block">Hijos:</span>
                             @foreach($person->sons as $son)
                                 
-                                <a href="{{$son->path()}}" class="d-block">
+                                <a href="{{$son->path()}}" class="d-block mb-1">
                                     <span class="d-flex align-items-center">
                                         <img 
                                         src="{{asset('images/son.png')}}" 
