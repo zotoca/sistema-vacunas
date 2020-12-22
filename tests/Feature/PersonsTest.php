@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use Storage;
 use Illuminate\Http\UploadedFile;
+use Carbon\Carbon;
 
 use App\Models\Person;
 use App\Models\PersonVaccination;
@@ -138,6 +139,17 @@ class PersonsTest extends TestCase
         
     }
 
+    public function test_a_person_not_has_more_110_years_ago(){
+        $this->signIn();
+
+        $attributes = Person::factory()->raw(["birthday" => "1910-12-22"]);
+       
+        $this->post("/personas", $attributes)->assertSessionHasErrors("birthday");
+
+
+        $this->assertDatabaseMissing("persons", ["first_name" => $attributes["first_name"]]);
+    }
+
 
     public function test_a_person_requires_a_first_name(){
 
@@ -153,8 +165,6 @@ class PersonsTest extends TestCase
 
 
     public function test_a_administrator_can_update_a_person(){
-
-        $this->withoutExceptionHandling();
 
         $this->signIn();
 
