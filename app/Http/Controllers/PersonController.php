@@ -75,7 +75,7 @@ class PersonController extends Controller
             $person_data["mother_id"] = Person::where("dni",$validated["mother_dni"])->first()->id;
         }
 
-        $actual = Carbon::now();
+        
         
         $new_person = Person::create($person_data);
 
@@ -111,7 +111,6 @@ class PersonController extends Controller
             $person_data["mother_id"] = Person::where("dni",$validated["mother_dni"])->first()->id;
         }
 
-        $actual = Carbon::now();
 
         $person->update($person_data);
 

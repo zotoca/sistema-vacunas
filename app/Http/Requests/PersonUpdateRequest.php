@@ -39,7 +39,7 @@ class PersonUpdateRequest extends FormRequest
                 Rule::unique("persons")->ignore($person_id, "id")
             ],
             "gender" => "required_without_all:first_name,last_name,image,dni,birthday,phone_number,father_dni,mother_dni,house_id|in:masculino,femenino",
-            "birthday" => "required_without_all:first_name,last_name,image,dni,gender,phone_number,father_dni,mother_dni,house_id|date",
+            "birthday" => "required_without_all:first_name,last_name,image,dni,gender,phone_number,father_dni,mother_dni,house_id|date|after:". Carbon::now()->subYear(110),
             "phone_number" => "required_without_all:first_name,last_name,image,dni,gender,birthday,father_dni,mother_dni,house_id|string",
             "father_dni" => "nullable|exists:persons,dni",
             "mother_dni" => "nullable|exists:persons,dni",
