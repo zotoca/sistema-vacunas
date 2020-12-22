@@ -104,7 +104,7 @@ class PersonController extends Controller
         }
         
         if(isset($validated["father_dni"])){
-            $person_data["father_id"] = Person::where("dni",$validated["father_dni"]); 
+            $person_data["father_id"] = Person::where("dni",$validated["father_dni"])->first()->id; 
         }
 
         if(isset($validated["mother_dni"])){
