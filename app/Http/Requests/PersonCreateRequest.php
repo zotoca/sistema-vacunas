@@ -2,7 +2,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use Carbon\Carbon;
 use Illuminate\Contracts\Validation\Validator;
 
 class PersonCreateRequest extends FormRequest
@@ -30,7 +30,7 @@ class PersonCreateRequest extends FormRequest
             "image" => "mimes:jpeg,jpg,png,gif,bmp,svg,webp",
             "dni" => "required|numeric|unique:persons,dni",
             "gender" => "required|in:masculino,femenino",
-            "birthday" => "required|date",
+            "birthday" => "required|date|after:". Carbon::now()->subYear(110),
             "phone_number" => "required|string",
             "father_dni" => "nullable|exists:persons,dni",
             "mother_dni" => "nullable|exists:persons,dni",

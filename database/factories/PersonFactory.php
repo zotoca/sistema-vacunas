@@ -28,8 +28,7 @@ class PersonFactory extends Factory
             "last_name" => $this->faker->lastName,
             "dni" => $this->faker->randomNumber(8),
             "gender" => \Arr::random(["masculino","femenino"]),
-            "birthday" => $this->faker->date,
-            "age" => $this->faker->numberBetween(1,80),
+            "birthday" => $this->faker->dateTimeBetween('-109 years',"now"),
             "phone_number" => $this->faker->phoneNumber,
             "house_id" => House::factory()->create()->id
         ];

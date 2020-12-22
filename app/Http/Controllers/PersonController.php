@@ -76,8 +76,6 @@ class PersonController extends Controller
         }
 
         $actual = Carbon::now();
-
-        $person_data["age"] = Carbon::parse($person_data["birthday"])->age;
         
         $new_person = Person::create($person_data);
 
@@ -114,10 +112,6 @@ class PersonController extends Controller
         }
 
         $actual = Carbon::now();
-
-        if(isset($validated["birthday"])){
-            $person_data["age"] = Carbon::parse($person_data["birthday"])->age;
-        }
 
         $person->update($person_data);
 

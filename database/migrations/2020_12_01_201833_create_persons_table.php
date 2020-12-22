@@ -22,7 +22,6 @@ class CreatePersonsTable extends Migration
             $table->string("image_url")->default("person.png");
             $table->enum("gender",['masculino','femenino']);
             $table->date("birthday");
-            $table->unsignedTinyInteger("age");
             $table->string("phone_number");
 
             $table->unsignedBigInteger("father_id")->nullable();
