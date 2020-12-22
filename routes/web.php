@@ -50,6 +50,7 @@ Route::group(["middleware" => "auth"], function(){
     Route::get("/personas/{person}/vacunas-personas", "App\Http\Controllers\PersonController@personVaccinations");    
     Route::delete("/personas/{person}", "App\Http\Controllers\PersonController@destroy");
 
+    Route::get("/administradores", "App\Http\Controllers\AdministratorController@index");
     
     Route::get("/logout", "App\Http\Controllers\AuthController@logout");
 

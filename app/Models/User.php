@@ -40,4 +40,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function path(){
+        return "/administradores/$this->id";
+    }
+
+    public function scopeFirstName($query, $first_name){
+        if($first_name != ""){
+            
+            return $query->where("first_name", "LIKE", "%$first_name%");
+        }
+    }
+    
+    public function scopeLastName($query, $last_name){
+        if($last_name != ""){
+            
+            return $query->where("last_name", "LIKE", "%$last_name%");
+        }
+    }
 }
