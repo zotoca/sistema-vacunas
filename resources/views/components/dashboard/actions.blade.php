@@ -29,7 +29,7 @@
                 <div class="card-body">
                     <h3 class="card-title title">Administradores</h3>
                     <p class="card-text">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi neque reiciendis sequi atque soluta, laudantium nostrum laborum consequatur distinctio p</p>
-                    <a href="#" class="btn btn-block btn-primary stretched-link">Seleccionar</a>
+                    <a href="/administradores" class="btn btn-block btn-primary stretched-link">Seleccionar</a>
                 </div>
             </div>
         </div>

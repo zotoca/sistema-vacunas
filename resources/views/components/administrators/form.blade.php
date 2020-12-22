@@ -3,7 +3,7 @@
         <div class="col-md-12 col-lg-4 mb-1">
             <div class="row">
                
-                <div class="col-sm-12 col-md-6 col-lg-6 px-lg-1">
+                <div class="col-12">
                     <a href="/administradores/crear" class="btn btn-success btn-block">Crear administrador <i class="fa fa-plus ml-1"></i></a>
                 </div>
             </div>
