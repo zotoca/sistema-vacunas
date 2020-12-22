@@ -7,7 +7,8 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 use App\Models\User;
-
+use Storage;
+use Illuminate\Http\UploadedFile;
 class AdministratorsTest extends TestCase
 {
     use RefreshDatabase;
@@ -48,6 +49,73 @@ class AdministratorsTest extends TestCase
         ->assertDontSee($users[1]->last_name);
 
     }
+    public function test_a_administrator_can_see_create_administrator(){
 
+        $this->signIn();
+
+        $user = User::factory()->create();
+
+        $this->get("/administradores/crear")
+            ->assertStatus(200)
+            ->assertSee("Crear");
+    }
+
+    public function test_a_administrator_can_create_an_administrator(){
+
+        $this->signIn();
+
+        $attributes = User::factory()->raw();
+
+        
+        $attributes["password"] = "Secret123";
+        $attributes["repeatPassword"] = "Secret123";
+
+        $this->post("/administradores", $attributes)
+            ->assertRedirect("/administradores");
+
+        $this->get("/administradores")
+            ->assertStatus(200)
+            ->assertSee($attributes["first_name"]);
+
+        $this->assertDatabaseHas("users", ["first_name" => $attributes["first_name"]]);
+    }
+
+    public function test_an_administrator_can_create_an_administrator_with_image(){
+        $this->withoutExceptionHandling();
+        $this->signIn();
+
+        $attributes = User::factory()->raw();
+
+        $attributes["image"] = UploadedFile::fake()->image("user.jpg");
+
+        $attributes["password"] = "Secret123";
+        $attributes["repeatPassword"] = "Secret123";
+
+        $this->post("/administradores", $attributes)
+            ->assertRedirect("/administradores");
+
+        $this->get("/administradores")
+            ->assertStatus(200)
+            ->assertSee($attributes["first_name"]);
+
+        $this->assertDatabaseHas("users", ["first_name" => $attributes["first_name"]]);
     
+        $administrator = User::where("first_name", $attributes["first_name"])->first();
+
+        Storage::assertExists($administrator->image_url);
+    }
+
+    public function test_a_administrator_cannot_create_an_administrator_without_attributes(){
+        $this->signIn();
+
+        $this->post("/administradores")
+            ->assertStatus(302)
+            ->assertSessionHasErrors("first_name")
+            ->assertSessionHasErrors("last_name")
+            ->assertSessionHasErrors("email")
+            ->assertSessionHasErrors("password");
+
+    }
+
+
 }
