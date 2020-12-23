@@ -8,6 +8,7 @@ import {
     STREETS_API_URL,
     HOUSES_API_URL,
     DNI_CHECK_URL,
+    ADMIN_URL,
 } from "./config.js";
 import POST, { DELETE, PUT, GET } from "./http.js";
 
@@ -81,4 +82,9 @@ export async function getHouses(streetId) {
 
 export async function isValidDni(dni) {
     return POST(DNI_CHECK_URL, { dni });
+}
+
+
+export async function deleteAdmin(id) {
+    return DELETE(`${ADMIN_URL}/${id}`);
 }

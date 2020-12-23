@@ -8,5 +8,5 @@
     @include("components.administrators.pagination")
     @include("components.footer.footer")
     
-    <script src={{asset("scripts/js/admins/deleteAdmins.js")}} type="module"></script>
+    <script src={{asset("scripts/js/administrators/deleteAdmins.js")}} type="module"></script>
 @endsection

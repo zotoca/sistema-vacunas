@@ -1,6 +1,6 @@
 <section class="container mt-5">
    {{--enctype para enviarse archivos binarios--}}
-   <form data-aos="fade-up" method="POST" action="/administradores"  enctype="multipart/form-data">
+   <form data-aos="fade-up" method="POST" action="/administradores"  enctype="multipart/form-data" id ="create-admin-form">
       @csrf
       <div class="form-group">
          @error("image")
@@ -66,7 +66,7 @@
       </div>
       <div class="form-group">
          <div class="row">
-            <div class="col-sm-12 col-lg-6 mb-3">
+            <div class="col-12">
                @error("email")
                <div class="alert alert-danger">
                   {{$message}}
@@ -115,7 +115,7 @@
       <div class="form-group">
          <div class="row">
             <div class="col-12">
-               <button class="btn btn-success btn-block" type="submit">
+               <button class="btn btn-success btn-block" type="submit" id="create-admin">
                Crear administrador
                <i class="fa fa-arrow-right ml-1"></i>
                </button>
