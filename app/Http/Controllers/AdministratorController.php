@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use View;
+use Storage;
 
 use App\Models\User;
 
+use App\Http\Requests\UserCreateRequest;
 class AdministratorController extends Controller
 {
     public function index(Request $request){
@@ -23,4 +25,27 @@ class AdministratorController extends Controller
         
         return View::make("administrators.administrators-index", ["administrators" => $users]);
     }
+
+    public function create(){
+
+        return View::make("administrators.administrators-create");
+
+
+    }
+
+    public function store(UserCreateRequest $request){
+        $validated = $request->validated();
+        
+
+        if(isset($validated["image"])){
+            $validated["image_url"] = Storage::putFile("public", $request->file("image"));
+        }        
+
+        $new_administrator = User::create($validated);
+
+        
+        return redirect("/administradores");
+    }
+
+    
 }
