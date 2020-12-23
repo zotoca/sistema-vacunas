@@ -114,7 +114,79 @@ class AdministratorsTest extends TestCase
             ->assertSessionHasErrors("last_name")
             ->assertSessionHasErrors("email")
             ->assertSessionHasErrors("password");
+    }
 
+    public function test_a_administrator_can_see_edit_administrator(){
+        $this->withoutExceptionHandling();
+        $this->signIn();
+
+        $administrator = User::factory()->create();
+
+        $this->get($administrator->path()."/editar")
+            ->assertStatus(200)
+            ->assertSee($administrator->first_name)
+            ->assertSee($administrator->last_name);
+
+
+    }
+
+    public function test_a_administrator_can_edit_an_administrator(){
+        $this->withoutExceptionHandling();
+        $this->signIn();
+
+        $administrator = User::factory()->create();
+
+        $attributes = ["first_name" => "first name test"];
+
+        $this->put($administrator->path(), $attributes)
+            ->assertRedirect($administrator->path()."/editar");
+
+
+
+        $this->assertDatabaseHas("users", $attributes);
+    }
+
+    public function test_a_administrator_can_edit_an_administrator_with_image(){
+        $this->signIn();
+
+        $administrator = User::factory()->create();
+    
+        $attributes = [
+            "image" => UploadedFile::fake()->image("avatar.jpg")
+        ];
+        
+
+        $administrator->image_url = Storage::putFile("avatars", UploadedFile::fake()->image("avatar.jpg"));
+
+        $old_image_url = $administrator->image_url;
+
+        $administrator->save();
+
+        $this->put($administrator->path(), $attributes)
+            ->assertRedirect($administrator->path()."/editar");
+
+
+        $administrator->refresh();
+        
+        Storage::assertExists($administrator->image_url);
+        Storage::assertMissing($old_image_url);
+    }
+
+    public function test_a_administrator_can_delete_a_person(){
+        $this->withoutExceptionHandling();
+        $this->signIn();
+
+        $administrator = User::factory()->create();
+
+        $this->delete($administrator->path())
+            ->assertStatus(200);
+
+        $this->get("/administradores")
+            ->assertStatus(200)
+            ->assertDontSee($administrator->first_name);
+        
+        
+        $this->assertDatabaseMissing("users", ["id" => $administrator->id]);
     }
 
 
