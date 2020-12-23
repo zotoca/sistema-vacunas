@@ -18,7 +18,10 @@
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="foro">Foro</a>
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="/noticias">Noticias</a>
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="/logout">Cerrar sesion</a>
-                <a href="#" class="nav-item" id="dark-mode">Modo oscuro</a>
+                <input type="checkbox" id="dark-mode-toggler" class="d-none">
+                <label for="dark-mode-toggler" id="dark-mode" class="nav-item ">
+                    <i class="fa fa-moon"></i>
+                </label>
             </div>
         </div>
     </nav>
