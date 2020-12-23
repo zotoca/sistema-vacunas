@@ -2,7 +2,6 @@
    {{--enctype para enviarse archivos binarios--}}
    <form data-aos="fade-up" method="POST" action="/administradores"  enctype="multipart/form-data">
       @csrf
-      <input name="_method" value="PUT">
       <div class="form-group">
          @error("image")
          <div class="alert alert-danger">
