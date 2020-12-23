@@ -1,8 +1,8 @@
 <section class="container mt-5">
    {{--enctype para enviarse archivos binarios--}}
-   <form data-aos="fade-up" method="POST" action="/administradores"  enctype="multipart/form-data">
+   <form data-aos="fade-up" method="POST" action="{{$administrator->path()}}"  enctype="multipart/form-data">
       @csrf
-      <input name="_method" value="PUT">
+      <input name="_method" value="PUT" type="hidden">
       <div class="form-group">
          @error("image")
          <div class="alert alert-danger">
@@ -11,20 +11,23 @@
          @enderror
          <div class="row">
             <div class="col-sm-12 col-md-2 col-lg-1 d-flex align-items-center">
-               <a href="{{asset("images/anon.png")}}" 
-               data-lightbox="{{asset("images/anon.png")}}"
-               class="d-block position-relative text-reset perfil-preview-container"
-               >
-               <div class="perfil-preview-icon">
-                  <i class="fa fa-eye"></i>
-               </div>
-               <img src="{{asset("images/anon.png")}}" 
-               alt="Anoymous user" 
-               id="perfil-preview"
-               class="rounded-circle" 
-               width="80" height="80" 
-               style="object-fit: cover;"
-               >
+            <a href='{{$administrator->image_url != "person.png"?Storage::url($administrator->image_url):asset("images/anon.png")}}' 
+                  data-lightbox='{{$administrator->image_url != "person.png"?Storage::url($administrator->image_url):asset("images/anon.png")}}'
+                  class="d-block position-relative text-reset perfil-preview-container"
+                  >
+                  <div class="perfil-preview-icon">
+                     <i class="fa fa-eye"></i>
+                  </div>
+                  {{-- aqui se puede hacer una comprobacion si el user tiene imagen
+                  ponerle la url de la imagen, sino dejarle la de anonimo
+                  --}}
+                  <img src='{{$administrator->image_url != "person.png"?Storage::url($administrator->image_url):asset("images/anon.png")}}' 
+                     alt="Anoymous user" 
+                     id="perfil-preview"
+                     class="rounded-circle" 
+                     width="80" height="80" 
+                     style="object-fit: cover;"
+                     >
                </a>
             </div>
             <div class="col-sm-12 col-md-10 col-lg-11">
@@ -49,7 +52,7 @@
                Nombre
                <small class="text-muted float-right font-weight-bold">(requerido)</small>
                </label>
-               <input type="text" value="{{old('first_name')}}" class="form-control" name="first_name" id="first-name" placeholder="Juan" autofocus required>
+               <input type="text" value="{{$administrator->first_name}}" class="form-control" name="first_name" id="first-name" placeholder="Juan" autofocus required>
             </div>
             <div class="col-sm-12 col-lg-6">
                @error("last_name")
@@ -61,7 +64,7 @@
                Apellido
                <small class="text-muted float-right font-weight-bold">(requerido)</small>
                </label>
-               <input type="text" value="{{old('last_name')}}" class="form-control" name="last_name" id="last-name" placeholder="Mendoza" required>
+               <input type="text" value="{{$administrator->last_name}}" class="form-control" name="last_name" id="last-name" placeholder="Mendoza" required>
             </div>
          </div>
       </div>
@@ -77,7 +80,7 @@
                Correo electronico
                <small class="text-muted float-right font-weight-bold">(requerido)</small>
                </label>
-               <input type="email" value="{{old('email')}}" class="form-control" name="email" id="email" placeholder="Correo electronico" required>
+               <input type="email" value="{{$administrator->email}}" class="form-control" name="email" id="email" placeholder="Correo electronico" required>
             </div>
             
          </div>
@@ -94,7 +97,7 @@
                Contraseña
                <small class="text-muted float-right font-weight-bold">(requerido)</small>
                </label>
-               <input type="password" value="{{old('password')}}" class="form-control" name="password" id="password" placeholder="0000000" required>
+               <input type="password" value="" class="form-control" name="password" id="password" placeholder="0000000" >
             </div>
             <div class="col-sm-12 col-lg-6">
                @error("repeatPassword")
@@ -106,7 +109,7 @@
                Confirmar contraseña
                <small class="text-muted float-right font-weight-bold">(requerido)</small>
                </label>
-               <input type="password" value="{{old('repeatPassword')}}"  class="form-control" name="repeatPassword" id="repeatPassword" placeholder="0000000" required>
+               <input type="password" value=""  class="form-control" name="repeatPassword" id="repeatPassword" placeholder="0000000" >
             </div>
          </div>
       </div>
@@ -117,7 +120,7 @@
          <div class="row">
             <div class="col-12">
                <button class="btn btn-success btn-block" type="submit">
-               Crear administrador
+               Editar administrador
                <i class="fa fa-arrow-right ml-1"></i>
                </button>
             </div>

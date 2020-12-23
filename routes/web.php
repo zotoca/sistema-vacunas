@@ -52,7 +52,10 @@ Route::group(["middleware" => "auth"], function(){
 
     Route::get("/administradores", "App\Http\Controllers\AdministratorController@index");
     Route::get("/administradores/crear", "App\Http\Controllers\AdministratorController@create");
+    Route::get("/administradores/{user}/editar", "App\Http\Controllers\AdministratorController@edit");
     Route::post("/administradores", "App\Http\Controllers\AdministratorController@store");
+    Route::put("/administradores/{user}", "App\Http\Controllers\AdministratorController@update");
+    Route::delete("/administradores/{user}", "App\Http\Controllers\AdministratorController@destroy");
     
     Route::get("/logout", "App\Http\Controllers\AuthController@logout");
 
