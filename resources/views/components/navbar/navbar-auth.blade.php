@@ -1,5 +1,5 @@
 <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light mt-3">
+    <nav class="navbar navbar-auth navbar-expand-lg navbar-light mt-3">
         <a class="title navbar-brand text-uppercase" href="/">
             <img src="{{asset("images/brand.png")}}" 
                 width="32" height="32" alt="Logo del sistema" class="mr-1">
@@ -18,6 +18,7 @@
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="foro">Foro</a>
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="/noticias">Noticias</a>
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="/logout">Cerrar sesion</a>
+                <a href="#" class="nav-item" id="dark-mode">Modo oscuro</a>
             </div>
         </div>
     </nav>
