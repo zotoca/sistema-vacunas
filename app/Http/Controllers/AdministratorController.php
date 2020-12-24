@@ -9,6 +9,7 @@ use Storage;
 use App\Models\User;
 
 use App\Http\Requests\UserCreateRequest;
+use App\Http\Requests\UserUpdateRequest;
 class AdministratorController extends Controller
 {
     public function index(Request $request){
@@ -33,6 +34,9 @@ class AdministratorController extends Controller
 
     }
 
+
+
+
     public function store(UserCreateRequest $request){
         $validated = $request->validated();
         
@@ -47,5 +51,36 @@ class AdministratorController extends Controller
         return redirect("/administradores");
     }
 
+    public function edit(User $user){ 
+
+        return View::make("administrators.administrator-edit",["administrator" => $user]);
+    }
+
+
+    public function update(UserUpdateRequest $request, User $user){
+       
+        $validated = $request->validated();
+
+        $validated = array_filter($validated);
+
+        if(isset($validated["image"])){
+            Storage::delete($user->image_url);
+            $validated["image_url"] = Storage::putFile("public", $request->file("image"));
+        }
+
+        
+        $user->update($validated);
+
+
+        return redirect($user->path() . "/editar");
+    }
+
+    public function destroy(User $user){
+        Storage::delete($user->image_url);
+
+        $user->delete();
+
+        return response()->json(["message"=>"ok"]);
+    }
     
 }
