@@ -28,7 +28,7 @@
         <script src="{{asset("scripts/vendors/bootstrap.js")}}"></script>
         <script src="{{asset("scripts/vendors/polyfill.js")}}"></script>
         <script src="{{asset("scripts/vendors/aos.js")}}"></script>
-        <script src="{{asset("scripts/js/helpers/darkMode.js")}}"></script>
+        <script src="{{asset("scripts/js/helpers/darkMode.js")}}" type="module"></script>
         <script src="https://kit.fontawesome.com/7d7cc578e0.js" crossorigin="anonymous"></script>
         <script src="{{asset("scripts/script.js")}}" type="module"></script>
         <script>
