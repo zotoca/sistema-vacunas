@@ -2,7 +2,7 @@ import { deleteOrExitButtons, success, error } from "../helpers/sweetAlerts.js";
 import { deletePersonVaccination } from "../helpers/requests.js";
 import { selectorAll } from "../helpers/DOM.js";
 
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     const btnsDeletePersonVaccinations = selectorAll(
         "button[data-action='delete']"
     );

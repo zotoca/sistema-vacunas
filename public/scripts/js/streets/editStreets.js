@@ -2,7 +2,7 @@ import { eidtOrExitButtons, success, error } from "../helpers/sweetAlerts.js";
 import { editStreet } from "../helpers/requests.js";
 import { selectorAll } from "../helpers/DOM.js";
 
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     const btnsDeleteStreets = selectorAll("button[data-action='edit']");
 
     btnsDeleteStreets.forEach((btn) =>

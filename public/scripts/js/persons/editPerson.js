@@ -9,7 +9,7 @@ import {
     checkDni,
 } from "../helpers/DOM.js";
 
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     // ---------- CALLES Y CASAS (inputs y loaders) -----------------
     const streetsSelect = getId("street-id");
     const loaderStreet = getId("loader-street");

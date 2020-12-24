@@ -2,7 +2,7 @@ import { createOrExitButtons, success, error } from "../helpers/sweetAlerts.js";
 import { createStreet } from "../helpers/requests.js";
 import { getId } from "../helpers/DOM.js";
 
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     const btnCreateStreet = getId("create-street");
     btnCreateStreet.addEventListener("click", async () => {
         Swal.fire({

@@ -2,7 +2,7 @@ import { isImage } from "../helpers/checkTypeFile.js";
 import isValidForm, { checkEmptyInputsInForm } from "../helpers/forms.js";
 import { getId, setLinkImagePreview } from "../helpers/DOM.js";
 
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     // --------- MANEJO DE IMAGENES, ARCHIVOS Y FORMULARIO ------------
     const btnUploadImage = getId("upload-image");
     const btnFile = getId("perfil-photo");

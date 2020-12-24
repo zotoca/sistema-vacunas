@@ -1,6 +1,6 @@
 import { getId, body } from "./DOM.js";
 
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     const isDarkMode = JSON.parse(localStorage.getItem("isDarkMode"));
     const label = getId("dark-mode");
     const chkbox = getId("dark-mode-toggler");

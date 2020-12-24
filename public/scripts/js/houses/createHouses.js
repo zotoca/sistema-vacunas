@@ -2,7 +2,7 @@ import { createOrExitButtons, success, error } from "../helpers/sweetAlerts.js";
 import { createHouse } from "../helpers/requests.js";
 import { getId } from "../helpers/DOM.js";
 
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     const btnCreateHouse = getId("create-house");
     btnCreateHouse.addEventListener("click", async () => {
         Swal.fire({

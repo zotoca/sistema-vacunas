@@ -2,7 +2,7 @@ import { eidtOrExitButtons, success, error } from "../helpers/sweetAlerts.js";
 import { editVaccination } from "../helpers/requests.js";
 import { selectorAll } from "../helpers/DOM.js";
 
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     const btnsDeleteVaccionations = selectorAll("button[data-action='edit']");
 
     btnsDeleteVaccionations.forEach((btn) =>

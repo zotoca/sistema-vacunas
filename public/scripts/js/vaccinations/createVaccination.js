@@ -2,7 +2,7 @@ import { createOrExitButtons, success, error } from "../helpers/sweetAlerts.js";
 import { createVaccination } from "../helpers/requests.js";
 import { getId } from "../helpers/DOM.js";
 
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     const btnCreateVaccination = getId("create-vaccination");
     btnCreateVaccination.addEventListener("click", async () => {
         Swal.fire({

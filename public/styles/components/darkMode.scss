@@ -10,7 +10,7 @@ body.dark-mode {
     .loader {
         background: $dark-mode-bg;
     }
-    .loader .lds-ellipsis div{
+    .loader .lds-ellipsis div {
         background: #fff;
     }
 
@@ -22,7 +22,9 @@ body.dark-mode {
         color: $dark-mode-color;
     }
 
-    input {
+    input,
+    select,
+    select option {
         color: #000;
     }
 

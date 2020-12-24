@@ -2,7 +2,7 @@ import { createOrExitButtons, success, error } from "../helpers/sweetAlerts.js";
 import { createPersonVaccination } from "../helpers/requests.js";
 import { getId } from "../helpers/DOM.js";
 
-window.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", async () => {
     const loadInputs = async () => {
         let vaccinationSelect = await loadVaccinationSelect();
 

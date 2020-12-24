@@ -2,7 +2,7 @@ import { deleteOrExitButtons, success, error } from "../helpers/sweetAlerts.js";
 import { deleteHouse } from "../helpers/requests.js";
 import { selectorAll } from "../helpers/DOM.js";
 
-window.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     const btnsDeleteHouses = selectorAll("button[data-action='delete']");
 
     btnsDeleteHouses.forEach((btn) =>
