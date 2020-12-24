@@ -1,6 +1,6 @@
 <section class="container mt-5">
    {{--enctype para enviarse archivos binarios--}}
-   <form data-aos="fade-up" method="POST" action="/administradores"  enctype="multipart/form-data" id ="create-admin-form">
+   <form data-aos="fade-up" method="POST" action="/administradores" enctype="multipart/form-data" id="create-admin-form">
       @csrf
       <div class="form-group">
          @error("image")

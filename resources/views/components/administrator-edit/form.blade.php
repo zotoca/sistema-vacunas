@@ -1,6 +1,6 @@
 <section class="container mt-5">
    {{--enctype para enviarse archivos binarios--}}
-   <form data-aos="fade-up" method="POST" action="{{$administrator->path()}}"  enctype="multipart/form-data">
+   <form data-aos="fade-up" action="{{$administrator->path()}}" enctype="multipart/form-data" id="edit-admin-form">
       @csrf
       <input name="_method" value="PUT" type="hidden">
       <div class="form-group">
@@ -70,7 +70,7 @@
       </div>
       <div class="form-group">
          <div class="row">
-            <div class="col-sm-12 col-lg-6 mb-3">
+            <div class="col-12">
                @error("email")
                <div class="alert alert-danger">
                   {{$message}}
@@ -119,7 +119,7 @@
       <div class="form-group">
          <div class="row">
             <div class="col-12">
-               <button class="btn btn-success btn-block" type="submit">
+               <button class="btn btn-success btn-block" type="submit" id="edit-admin">
                Editar administrador
                <i class="fa fa-arrow-right ml-1"></i>
                </button>
