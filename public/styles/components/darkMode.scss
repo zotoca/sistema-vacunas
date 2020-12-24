@@ -1,0 +1,20 @@
+body.dark-mode {
+    background: $dark-mode-bg;
+    color: $dark-mode-color;
+
+    * {
+        color: $dark-mode-color;
+    }
+
+    .navbar-light .navbar-nav .nav-link,
+    .navbar-brand,
+    .page-link {
+        color: $dark-mode-color;
+    }
+
+    .card:not(.card-houses):not(.card-admins):not(.card-persons):not(.card-streets),
+    .page-link,
+    .page-item.disabled .page-link {
+        background: darken($dark-mode-bg, 5%);
+    }
+}
