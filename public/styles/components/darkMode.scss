@@ -6,18 +6,23 @@ body.dark-mode {
         color: $dark-mode-color;
     }
 
-    .swal2-popup {
+    .swal2-popup,
+    .loader {
         background: $dark-mode-bg;
+    }
+    .loader .lds-ellipsis div{
+        background: #fff;
     }
 
     .navbar-light .navbar-nav .nav-link,
     .navbar-brand,
     .navbar-brand:hover,
-    .page-link {
+    .page-link,
+    .swal2-input {
         color: $dark-mode-color;
     }
 
-    input{
+    input {
         color: #000;
     }
 
