@@ -8,6 +8,7 @@
 @import "./components/global.scss";
 @import "./components/loaders.scss";
 @import "./components/not-results.scss";
+@import "./components/darkMode.scss";
 
 // web pages
 @import "./pages/home.scss";
@@ -16,7 +17,5 @@
 @import "./pages/personCreate.scss";
 @import "./pages/personList.scss";
 
-// media queries 
+// media queries
 @import "./components/media-queries.scss";
-
-

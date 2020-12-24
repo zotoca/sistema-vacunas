@@ -1,6 +1,39 @@
+.navbar.navbar-auth {
+    font-size: 14px;
+}
+
 .navbar .navbar-toggler {
     border: 0;
     outline: none;
+}
+
+#dark-mode {
+    position: relative;
+    border: 1px solid rgba(128, 128, 128, 0.575);
+    width: 70px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.164) inset;
+
+    & i {
+        background: rgba(128, 128, 128, 0.335);
+        padding: 0.4rem;
+        color: #000;
+        border-radius: 20px;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s ease;
+        transform: translateX(-21px);
+    }
+}
+
+#dark-mode-toggler:checked ~ #dark-mode i {
+    transform: translateX(78%);
 }
 
 .navbar-nav .nav-item.nav-item-hover {

@@ -1,0 +1,39 @@
+body.dark-mode {
+    background: $dark-mode-bg;
+    color: $dark-mode-color;
+
+    * {
+        color: $dark-mode-color;
+    }
+
+    .navbar-light .navbar-nav .nav-link,
+    .navbar-brand,
+    .navbar-brand:hover,
+    .page-link {
+        color: $dark-mode-color;
+    }
+
+    .navbar-toggler-icon {
+        position: relative;
+
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 120%;
+            height: 120%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 20px;
+            background: #fff;
+            z-index: -1;
+        }
+    }
+
+    .card:not(.card-houses):not(.card-admins):not(.card-persons):not(.card-streets),
+    .page-link,
+    .page-item.disabled .page-link {
+        background: darken($dark-mode-bg, 5%);
+    }
+}
