@@ -1,6 +1,6 @@
 <section class="container mt-5">
    {{--enctype para enviarse archivos binarios--}}
-   <form data-aos="fade-up" action="{{$administrator->path()}}" enctype="multipart/form-data" id="edit-admin-form">
+   <form data-aos="fade-up" method="POST" action="{{$administrator->path()}}" enctype="multipart/form-data" id="edit-admin-form">
       @csrf
       <input name="_method" value="PUT" type="hidden">
       <div class="form-group">

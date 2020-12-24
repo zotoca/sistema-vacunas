@@ -24,15 +24,6 @@
                             </a>
                         </div>
                     </div>
-
-                    <div class="row w-100 m-0">
-                        <div class="col-sm-12 col-lg-6 p-1">
-                            <a class="btn btn-info btn-block" href="/administradores/{{$administrator->id}}">
-                                Ver perfil
-                                <i class="fa fa-eye ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
