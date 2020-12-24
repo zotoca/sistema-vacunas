@@ -6,6 +6,10 @@ body.dark-mode {
         color: $dark-mode-color;
     }
 
+    .swal2-popup {
+        background: $dark-mode-bg;
+    }
+
     .navbar-light .navbar-nav .nav-link,
     .navbar-brand,
     .navbar-brand:hover,
