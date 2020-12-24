@@ -8,6 +8,7 @@ body.dark-mode {
 
     .navbar-light .navbar-nav .nav-link,
     .navbar-brand,
+    .navbar-brand:hover,
     .page-link {
         color: $dark-mode-color;
     }
