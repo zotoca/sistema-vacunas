@@ -95,7 +95,6 @@
                @enderror
                <label for="password" class="font-weight-bold mb-2 lead d-block">
                Contraseña
-               <small class="text-muted float-right font-weight-bold">(requerido)</small>
                </label>
                <input type="password" value="" class="form-control" name="password" id="password" placeholder="0000000" >
             </div>
@@ -107,7 +106,6 @@
                @enderror
                <label for="repeatPassword" class="font-weight-bold mb-2 lead d-block">
                Confirmar contraseña
-               <small class="text-muted float-right font-weight-bold">(requerido)</small>
                </label>
                <input type="password" value=""  class="form-control" name="repeatPassword" id="repeatPassword" placeholder="0000000" >
             </div>

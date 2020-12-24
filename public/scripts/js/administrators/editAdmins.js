@@ -16,8 +16,6 @@ document.addEventListener("DOMContentLoaded", () => {
         "first_name",
         "last_name",
         "email",
-        "password",
-        "repeatPassword",
     ];
 
     checkEmptyInputsInForm(form, inputNames);
