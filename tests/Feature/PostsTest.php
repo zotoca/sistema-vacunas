@@ -4,7 +4,11 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
+use Storage;
+
+
 
 use App\Models\Post;
 
@@ -36,6 +40,63 @@ class PostsTest extends TestCase
             ->assertDontSee($posts[1]->title);
     }
 
+    public function test_an_administrator_can_see_create_post(){
+        $this->signIn();
+
+        $this->get("/foro/crear")
+            ->assertStatus(200)
+            ->assertSee("Crear publicacion");
+    }
+
+    public function test_an_administrator_can_create_a_post(){
+
+        $this->withoutExceptionHandling();
+        $this->signIn();
+
+
+        $attributes = Post::factory()->raw();
+
+
+        $this->post("/foro", $attributes)
+            ->assertRedirect("/foro");
+
+        $this->get("/foro")
+            ->assertStatus(200)
+            ->assertSee($attributes["title"]);
+
+        $this->assertDatabaseHas("posts",["title" => $attributes["title"]]);
+    }
+
+    public function test_an_administrator_can_create_a_post_with_image(){
+        $this->signIn();
+
+        $attributes = Post::factory()->raw();
+
+        $attributes["image"] = UploadedFile::fake()->image("post.jpg");
+
+        $this->post("/foro", $attributes)
+            ->assertRedirect("/foro");
+
+        $this->get("/foro")
+            ->assertStatus(200)
+            ->assertSee($attributes["title"]);
+
+        $post = Post::where("title", $attributes["title"])->first();
+
+        Storage::disk("public")->assertExists($post->image_url);
+    }
+
+    public function test_an_administrator_can_upload_content_images(){
+        $this->signIn();
+
+        $attributes = [
+            "image" => UploadedFile::fake()->image("post.jpg")
+        ];
+
+        $this->post("/foro/subir-imagen", $attributes)
+            ->assertStatus(200)
+            ->assertJsonStructure(["location"]);
+    }
 
     public function test_an_administrator_can_delete_a_post(){
         $this->signIn();
@@ -50,9 +111,6 @@ class PostsTest extends TestCase
             ->assertDontSee($post->title);
 
         $this->assertDatabaseMissing("posts", ["title" => $post->title]);
-
-
-
     }
 
     
