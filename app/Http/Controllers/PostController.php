@@ -8,6 +8,7 @@ use Storage;
 
 use App\Models\Post;
 use App\Http\Requests\PostCreateRequest;
+use App\Http\Requests\PostUpdateRequest;
 use App\Http\Requests\UploadImageRequest;
 
 
@@ -36,12 +37,36 @@ class PostController extends Controller
 
 
         if(isset($validated["image"])){
-            $validated["image_url"] = Storage::disk("public")->putFile("/posts", $request->file("image"));
+            $validated["image_url"] = Storage::disk("public")->putFile("/post-images", $request->file("image"));
         }     
         $validated["user_id"] = auth()->user()->id;
         Post::create($validated);
 
         return redirect("/foro");
+    }
+
+    public function edit(Post $post){
+
+        return View::make("posts.post-edit",["post" => $post]);
+
+    }
+
+    public function update(PostUpdateRequest $request,Post $post){
+        $validated = $request->validated();
+
+        array_filter($validated);
+
+        if(isset($validated["image"])){
+            if($post->image_url != "foro.jpg"){
+                Storage::disk("public")->delete($post->image_url);
+            }
+            $validated["image_url"] = Storage::disk("public")->putFile("/post-images", $validated["image"]);
+        }
+
+        $post->update($validated);
+
+        return redirect($post->path());
+
     }
 
 

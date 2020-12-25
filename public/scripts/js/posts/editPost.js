@@ -5,7 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
         toolbar: 'image code',
         relative_urls : false,
         convert_urls : true,
+        remove_script_host : false, 
         images_upload_url: '/foro/subir-imagen',
         height:"480px"
-    });    
+    });
 });

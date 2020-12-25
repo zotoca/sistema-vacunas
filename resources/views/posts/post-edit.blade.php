@@ -2,8 +2,8 @@
 @section("title", "Sistema vacunativo » Crear publicacion")
 @section("body")
     @include("components.navbar.navbar-auth")
-    @include("components.post-create.title")
-    @include("components.post-create.form")
+    @include("components.post-edit.title")
+    @include("components.post-edit.form")
     @include("components.footer.footer")
-    <script src={{asset("scripts/js/posts/createPost.js")}} type="module"></script>
+    <script src={{asset("scripts/js/posts/editPost.js")}} type="module"></script>
 @endsection
