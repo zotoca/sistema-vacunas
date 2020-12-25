@@ -4,6 +4,8 @@ export const VACCINATIONS_URL = BASE_URL + "/vacunas";
 export const STREETS_URL = BASE_URL + "/calles";
 export const HOUSES_URL = BASE_URL + "/casas";
 export const PERSONS_URL = BASE_URL + "/personas";
+export const POSTS_URL = BASE_URL + "/foro";
+
 
 // ----------------- API ------------------------------
 export const BASE_API = BASE_URL + "/api";

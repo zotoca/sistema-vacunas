@@ -57,6 +57,10 @@ Route::group(["middleware" => "auth"], function(){
     Route::put("/administradores/{user}", "App\Http\Controllers\AdministratorController@update");
     Route::delete("/administradores/{user}", "App\Http\Controllers\AdministratorController@destroy");
     
+    Route::get("/foro", "App\Http\Controllers\PostController@index");
+    Route::delete("/foro/{post}", "App\Http\Controllers\PostController@destroy");
+
+
     Route::get("/logout", "App\Http\Controllers\AuthController@logout");
 
 
