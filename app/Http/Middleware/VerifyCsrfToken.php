@@ -12,6 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        "/api/personas/verificar-cedula"
+        "/api/personas/verificar-cedula",
+        "/foro/subir-imagen",
     ];
 }

@@ -58,6 +58,11 @@ Route::group(["middleware" => "auth"], function(){
     Route::delete("/administradores/{user}", "App\Http\Controllers\AdministratorController@destroy");
     
     Route::get("/foro", "App\Http\Controllers\PostController@index");
+    Route::get("/foro/crear", "App\Http\Controllers\PostController@create");
+    Route::post("/foro", "App\Http\Controllers\PostController@store");
+
+    Route::post("/foro/subir-imagen", "App\Http\Controllers\PostController@uploadImage");
+
     Route::delete("/foro/{post}", "App\Http\Controllers\PostController@destroy");
 
 

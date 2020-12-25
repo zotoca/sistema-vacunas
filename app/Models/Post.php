@@ -9,6 +9,13 @@ class Post extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        "title",
+        "content",
+        "image_url",
+        "user_id",
+    ];
+
 
     public function path(){
 

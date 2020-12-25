@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="{{asset("styles/styles.css")}}">
         <script src="{{asset("scripts/vendors/axios.min.js")}}"></script>
         <script src="{{asset("scripts/vendors/sweetalert2.all.min.js")}}"></script>
+        <script src="{{asset("scripts/vendors/tinymce/tinymce.min.js")}}"></script>
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link rel="shortcut icon" href="{{asset("favicon.png")}}" type="image/png">
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
