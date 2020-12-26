@@ -66,8 +66,19 @@ Route::group(["middleware" => "auth"], function(){
 
     Route::put("/foro/{post}", "App\Http\Controllers\PostController@update");
 
+    Route::get("/foro/{post}", "App\Http\Controllers\PostController@show");
+
 
     Route::delete("/foro/{post}", "App\Http\Controllers\PostController@destroy");
+
+
+
+    Route::post("/comentarios", "App\Http\Controllers\CommentController@store");
+
+    Route::put("/comentarios/{comment}", "App\Http\Controllers\CommentController@update");
+
+    Route::delete("/comentarios/{comment}", "App\Http\Controllers\CommentController@destroy");
+
 
 
     Route::get("/logout", "App\Http\Controllers\AuthController@logout");

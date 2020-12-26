@@ -28,6 +28,10 @@ class Post extends Model
 
     }
 
+    public function comments(){
+        return $this->hasMany("App\Models\Comment");
+    }
+
     public function scopeTitle($query, $title){
         if($title != ""){
             return $query->where("title", "LIKE", "%$title%");

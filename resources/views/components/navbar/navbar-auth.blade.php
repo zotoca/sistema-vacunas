@@ -15,7 +15,7 @@
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="/personas">Personas</a>
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="/administradores">Administradores</a>
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="/calles">Calles</a>
-                <a class="nav-item nav-link nav-item-hover text-uppercase" href="foro">Foro</a>
+                <a class="nav-item nav-link nav-item-hover text-uppercase" href="/foro">Foro</a>
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="/noticias">Noticias</a>
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="/logout">Cerrar sesion</a>
                 <input type="checkbox" id="dark-mode-toggler" class="d-none">

@@ -10,6 +10,7 @@ import {
     DNI_CHECK_URL,
     ADMIN_URL,
     POSTS_URL,
+    COMMENTS_URL,
 } from "./config.js";
 import POST, { DELETE, PUT, GET } from "./http.js";
 
@@ -91,4 +92,11 @@ export async function deleteAdmin(id) {
 }
 export async function deletePost(id) {
     return DELETE(`${POSTS_URL}/${id}`);
+}
+export async function deleteComment(id) {
+    return DELETE(`${COMMENTS_URL}/${id}`);
+}
+
+export async function editComment(content, id) {
+    return PUT(`${COMMENTS_URL}/${id}`, { content });
 }

@@ -27,6 +27,12 @@ class PostController extends Controller
         return View::make("posts.post-index", ["posts" => $posts]);
     }
 
+
+    public function show(Request $request, Post $post){
+
+        return View::make("posts.post-show", ["post" => $post]);
+    }
+
     public function create(Request $request){
 
         return View::make("posts.post-create");
