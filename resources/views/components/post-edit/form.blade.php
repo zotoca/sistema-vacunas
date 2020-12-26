@@ -6,7 +6,7 @@
       <hr class="my-4" />
       <div class="form-group">
          <div class="row">
-            <div class="col-sm-12 col-lg-6 mb-3">
+            <div class="col-12">
                @error("title")
                <div class="alert alert-danger">
                   {{$message}}

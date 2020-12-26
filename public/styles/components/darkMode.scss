@@ -28,6 +28,15 @@ body.dark-mode {
         color: #000;
     }
 
+    .tox .tox-collection__item-checkmark svg,
+    .tox .tox-collection__item-icon svg {
+        fill: #000;
+    }
+
+    input[type="file"] {
+        color: #fff;
+    }
+
     .navbar-toggler-icon {
         position: relative;
 
