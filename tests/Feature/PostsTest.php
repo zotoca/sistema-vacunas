@@ -40,6 +40,19 @@ class PostsTest extends TestCase
             ->assertDontSee($posts[1]->title);
     }
 
+    public function test_an_administrator_can_see_a_post(){
+        $this->withoutExceptionHandling();
+        $this->signIn();
+
+        $post = Post::factory()->create();
+
+
+        $this->get($post->path())
+            ->assertStatus(200)
+            ->assertSee($post->title)
+            ->assertSee($post->content);
+    }
+
     public function test_an_administrator_can_see_create_post(){
         $this->signIn();
 
