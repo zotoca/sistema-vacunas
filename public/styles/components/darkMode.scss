@@ -6,6 +6,10 @@ body.dark-mode {
         color: $dark-mode-color;
     }
 
+    .dropdown-menu {
+        background: $dark-mode-bg;
+    }
+
     .swal2-popup,
     .loader {
         background: $dark-mode-bg;
