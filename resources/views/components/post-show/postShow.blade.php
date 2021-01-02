@@ -27,11 +27,13 @@
         {!! $post->content  !!}
       </div>
    </div>
-   <div class="col-12">
-      <form class="text-center p-5" data-aos="fade-up" method="POST" action="/comentarios">
+
+      <h3 class="title mt-5">Comentarios</h3>
+     <hr class="my-4" />
+      <form class="text-center" data-aos="fade-up" method="POST" action="/comentarios">
          @csrf
          <input type="hidden" name="post_id" value="{{$post->id}}">
-         <hr class="my-4" />
+         
          <div class="form-group">
             <div class="row">
                <div class="col-sm-12 col-lg-12 mb-3">
@@ -40,11 +42,8 @@
                      {{$message}}
                   </div>
                   @enderror
-                  <label for="content" class="font-weight-bold mb-2 lead d-block">
-                  Contenido
-                  <small class="text-muted float-right font-weight-bold">(requerido)</small>
-                  </label>
-                  <input type="text" class="form-control" name="content" id="content" placeholder="Contenido" required>
+                  <textarea type="text" class="form-control" name="content" id="content" placeholder="Escribe tu comentario" required>
+                  </textarea>
                </div>
             </div>
          </div>
@@ -59,7 +58,7 @@
             </div>
          </div>
       </form>
-   </div>
+   
    <div class="row">
       @foreach($post->comments as $comment)
       <div class="col-12 row mt-4">

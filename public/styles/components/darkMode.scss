@@ -6,6 +6,10 @@ body.dark-mode {
         color: $dark-mode-color;
     }
 
+    hr {
+        background: rgba(238, 238, 238, 0.582);
+    }
+
     .dropdown-menu {
         background: $dark-mode-bg;
     }
@@ -23,7 +27,7 @@ body.dark-mode {
     .navbar-brand:hover,
     .page-link,
     .swal2-input {
-        color: $dark-mode-color;
+        color: $dark-mode-color !important;
     }
 
     input,
