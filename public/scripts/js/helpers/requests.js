@@ -11,6 +11,7 @@ import {
     ADMIN_URL,
     POSTS_URL,
     COMMENTS_URL,
+    NEWS_URL,
 } from "./config.js";
 import POST, { DELETE, PUT, GET } from "./http.js";
 
@@ -99,4 +100,8 @@ export async function deleteComment(id) {
 
 export async function editComment(content, id) {
     return PUT(`${COMMENTS_URL}/${id}`, { content });
+}
+
+export async function deleteNews(id) {
+    return DELETE(`${NEWS_URL}/${id}`);
 }

@@ -6,6 +6,7 @@ export const HOUSES_URL = BASE_URL + "/casas";
 export const PERSONS_URL = BASE_URL + "/personas";
 export const POSTS_URL = BASE_URL + "/foro";
 export const COMMENTS_URL = BASE_URL + "/comentarios";
+export const NEWS_URL = BASE_URL + "/noticias";
 
 
 // ----------------- API ------------------------------
