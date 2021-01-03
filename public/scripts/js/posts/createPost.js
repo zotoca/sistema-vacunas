@@ -20,5 +20,8 @@ document.addEventListener("DOMContentLoaded", () => {
         convert_urls: true,
         images_upload_url: "/foro/subir-imagen",
         height: "480px",
+        forced_root_block: "",
+        force_br_newlines: true,
+        force_p_newlines: false,
     });
 });

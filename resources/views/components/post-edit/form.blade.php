@@ -33,7 +33,7 @@
                Imagen
                <small class="text-muted float-right font-weight-bold">(Opcional)</small>
                </label>
-               <input type="file" class="form-control-file" name="image" id="image">
+               <input type="file" class="form-control-file" name="image" id="image" accept="image/*">
             </div>
          </div>
       </div>
