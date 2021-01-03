@@ -68,36 +68,40 @@
          </div>
       </div>
    </form>
-   
+
    <div class="row">
       @foreach($post->comments as $comment)
-      <div class="col-12 row mt-4" data-aos="fade-up">
-         <div class="col-md-2 col-lg-1 mr-0 mr-md-1">
-            <img class="shadow-sm d-block" 
-               src="{{Storage::url($comment->user->image_url)}}" 
-               alt="Imagen de perfil de {{$comment->user->first_name}}" 
-               title="Imagen de perfil de {{$comment->user->first_name}}" 
-               width="100" height="100" style="object-fit: cover;"/>
-         </div>
-         <div class="pl-0 pl-lg-2 mr-1 mr-lg-0 col-md-6 col-lg-6">
-            <div class="ml-4">
-               <h6>
-                  <span class="font-weight-bold mr-2">Nombres:</span>
-                  <span>{{$comment->user->first_name}} {{$comment->user->last_name}}</span>
-               </h6>
+      <div class="col-12 mt-4" data-aos="fade-up">
+         <div class="row">
+            <div class="col-3 col-sm-4 col-md-2 col-lg-2 mr-0 mr-md-1">
+               <img class="shadow-sm d-block post-comment-perfil" 
+                  src="{{Storage::url($comment->user->image_url)}}" 
+                  alt="Imagen de perfil de {{$comment->user->first_name}}" 
+                  title="Imagen de perfil de {{$comment->user->first_name}}" 
+                  />
             </div>
-            <div class="ml-4">
-               <p class="post-comment-text">
-                  {{$comment->content}}
-               </p>
-            </div>
-            <div class="ml-4">
-               <button class="btn btn-sm btn-primary mr-1" data-action='edit' data-id="{{$comment->id}}">
-               <i class="fa fa-pencil"></i>
-               </button>
-               <button class="btn btn-sm btn-danger" data-action='delete' data-id="{{$comment->id}}">
-               <i class="fa fa-trash-alt"></i>
-               </button>
+            <div class="mr-1 mr-lg-0 col-8 col-sm-6 col-md-6 col-lg-6">
+               <div>
+                  <h6>
+                     <span class="font-weight-bold mr-2">Nombres:</span>
+                     <span>{{$comment->user->first_name}} {{$comment->user->last_name}}</span>
+                  </h6>
+               </div>
+
+               <div>
+                  <p class="post-comment-text">
+                     {{$comment->content}}
+                  </p>
+               </div>
+
+               <div>
+                  <button class="btn btn-sm btn-primary mr-1" data-action='edit' data-id="{{$comment->id}}">
+                  <i class="fa fa-pencil"></i>
+                  </button>
+                  <button class="btn btn-sm btn-danger" data-action='delete' data-id="{{$comment->id}}">
+                  <i class="fa fa-trash-alt"></i>
+                  </button>
+               </div>
             </div>
          </div>
       </div>
