@@ -7,9 +7,6 @@
                alt="Imagen de perfil de {{$post->user->first_name}}" 
                title="Imagen de perfil de {{$post->user->first_name}}" 
                width="120" height="120" style="object-fit: cover;"/>
-
-
-
             <div class="ml-0 ml-lg-3 ml-md-3  text-center text-md-left text-lg-left">
                <h5 class="font-weight-bold mb-3">
                   {{$post->user->first_name}} {{$post->user->last_name}}
@@ -31,7 +28,6 @@
             </div>
          </div>
       </div>
-
       <div class="col-12">
          <hr class="my-4" />
          <div class="post-content">
@@ -41,9 +37,9 @@
          </div>
       </div>
    </div>
-
    <h3 class="title mt-5">Comentarios</h3>
    <hr class="my-4" />
+
    <form class="text-center" data-aos="fade-up" method="POST" action="/comentarios">
       @csrf
       <input type="hidden" name="post_id" value="{{$post->id}}">
@@ -72,7 +68,7 @@
          </div>
       </div>
    </form>
-
+   
    <div class="row">
       @foreach($post->comments as $comment)
       <div class="col-12 row mt-4" data-aos="fade-up">
@@ -83,7 +79,6 @@
                title="Imagen de perfil de {{$comment->user->first_name}}" 
                width="100" height="100" style="object-fit: cover;"/>
          </div>
-
          <div class="pl-0 pl-lg-2 mr-1 mr-lg-0 col-md-6 col-lg-6">
             <div class="ml-4">
                <h6>
@@ -96,18 +91,13 @@
                   {{$comment->content}}
                </p>
             </div>
-
-            <div class="row ml-4">
-               <div class="col-sm-12 col-lg-6 p-1">
-                  <button class="btn btn-sm btn-primary btn-block" data-action='edit' data-id="{{$comment->id}}">
-                  <i class="fa fa-pencil ml-1"></i>
-                  </button>
-               </div>
-               <div class="col-sm-12 col-lg-6 p-1">
-                  <button class="btn btn-sm btn-danger btn-block" data-action='delete' data-id="{{$comment->id}}">
-                  <i class="fa fa-trash-alt ml-1"></i>
-                  </button>
-               </div>
+            <div class="ml-4">
+               <button class="btn btn-sm btn-primary mr-1" data-action='edit' data-id="{{$comment->id}}">
+               <i class="fa fa-pencil"></i>
+               </button>
+               <button class="btn btn-sm btn-danger" data-action='delete' data-id="{{$comment->id}}">
+               <i class="fa fa-trash-alt"></i>
+               </button>
             </div>
          </div>
       </div>
