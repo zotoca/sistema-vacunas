@@ -10,6 +10,13 @@ img.card-img-top.post-image {
     object-fit: cover;
 }
 
+.comment-toggler {
+    text-decoration: underline;
+    color: #007bff !important;
+    display: inline-block;
+    margin-left: 5px;
+}
+
 .post-comment-text {
     width: 100%;
     font-size: 80%;

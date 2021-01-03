@@ -33,7 +33,7 @@ body.dark-mode {
     input,
     select,
     select option {
-        color: #000;
+        color: #000 !important;
     }
 
     .tox .tox-collection__item-checkmark svg,

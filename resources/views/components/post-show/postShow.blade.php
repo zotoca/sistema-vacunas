@@ -69,31 +69,27 @@
       </div>
    </form>
 
-   <div class="row">
+   <div class="row mb-3">
       @foreach($post->comments as $comment)
       <div class="col-12 mt-4" data-aos="fade-up">
          <div class="row">
-            <div class="col-3 col-sm-4 col-md-2 col-lg-2 mr-0 mr-md-1">
+            <div class="col-3 col-sm-3 col-md-2 col-lg-2 mr-0 mr-md-1">
                <img class="shadow-sm d-block post-comment-perfil" 
                   src="{{Storage::url($comment->user->image_url)}}" 
                   alt="Imagen de perfil de {{$comment->user->first_name}}" 
                   title="Imagen de perfil de {{$comment->user->first_name}}" 
                   />
             </div>
-            <div class="mr-1 mr-lg-0 col-8 col-sm-6 col-md-6 col-lg-6">
-               <div>
-                  <h6>
-                     <span class="font-weight-bold mr-2">Nombres:</span>
-                     <span>{{$comment->user->first_name}} {{$comment->user->last_name}}</span>
-                  </h6>
-               </div>
 
-               <div>
-                  <p class="post-comment-text">
-                     {{$comment->content}}
-                  </p>
-               </div>
+            <div class="mr-1 mr-lg-0 col-8 col-sm-8 col-md-9 col-lg-9">
+               <h6 class="font-weight-bold">
+                  {{$comment->user->first_name}} {{$comment->user->last_name}}
+                </h6>
 
+               <p class="post-comment-text">
+                  <span>{{$comment->content}}</span>
+               </p>
+          
                <div>
                   <button class="btn btn-sm btn-primary mr-1" data-action='edit' data-id="{{$comment->id}}">
                   <i class="fa fa-pencil"></i>
@@ -103,6 +99,7 @@
                   </button>
                </div>
             </div>
+
          </div>
       </div>
       @endforeach
