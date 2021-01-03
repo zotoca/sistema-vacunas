@@ -75,8 +75,8 @@
 
    <div class="row">
       @foreach($post->comments as $comment)
-      <div class="col-12 row mt-4">
-         <div class="col-md-2 col-lg-1">
+      <div class="col-12 row mt-4" data-aos="fade-up">
+         <div class="col-md-2 col-lg-1 mr-0 mr-md-1">
             <img class="shadow-sm d-block" 
                src="{{Storage::url($comment->user->image_url)}}" 
                alt="Imagen de perfil de {{$comment->user->first_name}}" 
@@ -84,7 +84,7 @@
                width="100" height="100" style="object-fit: cover;"/>
          </div>
 
-         <div class="mr-1 mr-lg-0 col-md-6 col-lg-6">
+         <div class="pl-0 pl-lg-2 mr-1 mr-lg-0 col-md-6 col-lg-6">
             <div class="ml-4">
                <h6>
                   <span class="font-weight-bold mr-2">Nombres:</span>
@@ -96,6 +96,7 @@
                   {{$comment->content}}
                </p>
             </div>
+
             <div class="row ml-4">
                <div class="col-sm-12 col-lg-6 p-1">
                   <button class="btn btn-sm btn-primary btn-block" data-action='edit' data-id="{{$comment->id}}">
