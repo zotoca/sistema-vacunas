@@ -56,6 +56,65 @@ class NewsTest extends TestCase
             ->assertDontSee($news[1]->title);
     }
 
+    public function test_an_administrator_can_see_create_news(){
+        $this->signIn();
+
+        $this->get("/noticias/crear")
+            ->assertStatus(200)
+            ->assertSee("Crear publicacion");
+    }
+
+    public function test_an_administrator_can_create_a_news(){
+
+        $this->withoutExceptionHandling();
+        $this->signIn();
+
+
+        $attributes = News::factory()->raw();
+
+
+        $this->post("/noticias", $attributes)
+            ->assertRedirect("/noticias");
+
+        $this->get("/noticias")
+            ->assertStatus(200)
+            ->assertSee($attributes["title"]);
+
+        $this->assertDatabaseHas("news",["title" => $attributes["title"]]);
+    }
+
+    public function test_an_administrator_can_create_a_news_with_image(){
+        $this->signIn();
+
+        $attributes = News::factory()->raw();
+
+        $attributes["image"] = UploadedFile::fake()->image("news.jpg");
+
+        $this->post("/noticias", $attributes)
+            ->assertRedirect("/noticias");
+
+        $this->get("/noticias")
+            ->assertStatus(200)
+            ->assertSee($attributes["title"]);
+
+        $news = News::where("title", $attributes["title"])->first();
+
+        Storage::disk("public")->assertExists($news->image_url);
+    }
+
+    public function test_an_administrator_can_upload_content_images(){
+        $this->signIn();
+        
+        $attributes = [
+            "file" => UploadedFile::fake()->image("post.jpg")
+        ];
+
+        $this->post("/noticias/subir-imagen", $attributes)
+            ->assertStatus(200)
+            ->assertJsonStructure(["location"]);
+    }
+
+
     public function test_an_administrator_can_delete_a_news(){
         $this->signIn();
 
