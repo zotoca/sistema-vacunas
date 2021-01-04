@@ -33,7 +33,11 @@
                Imagen
                <small class="text-muted float-right font-weight-bold">(Opcional)</small>
                </label>
-               <input type="file" class="form-control-file" name="image" id="image" accept="image/*">
+               <button class="btn btn-outline-primary d-block" type="button" id="upload-image">
+                  Subir imágen 
+                  <i class="fa fa-file-upload ml-1" aria-hidden="true"></i>
+               </button>
+               <input type="file" class="d-none" name="image" id="image" accept="image/*">
             </div>
          </div>
       </div>

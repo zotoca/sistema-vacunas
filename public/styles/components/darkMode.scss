@@ -30,7 +30,7 @@ body.dark-mode {
         color: $dark-mode-color !important;
     }
 
-    input,
+    input:not([type="file"]),
     select,
     select option {
         color: #000 !important;

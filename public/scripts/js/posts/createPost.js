@@ -1,9 +1,13 @@
 import { isImage } from "../helpers/checkTypeFile.js";
 import { getId } from "../helpers/DOM.js";
 import { error } from "../helpers/sweetAlerts.js";
+import { configPost } from "../helpers/tinymceConfig.js";
 
 document.addEventListener("DOMContentLoaded", () => {
     const btnUploadFile = getId("image");
+    const btnUpload = getId("upload-image");
+
+    btnUpload.addEventListener("click", () => btnUploadFile.click());
 
     btnUploadFile.addEventListener("change", () => {
         if (!isImage(btnUploadFile)) {
@@ -12,16 +16,5 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    tinymce.init({
-        selector: "#content",
-        plugins: "image code",
-        toolbar: "image code",
-        relative_urls: false,
-        convert_urls: true,
-        images_upload_url: "/foro/subir-imagen",
-        height: "480px",
-        forced_root_block: "",
-        force_br_newlines: true,
-        force_p_newlines: false,
-    });
+    tinymce.init(configPost);
 });

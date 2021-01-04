@@ -59,20 +59,22 @@ export function removeClass(element, className) {
 export function togglerTextLarge(
     nodes = [],
     symbol = "[ver más]",
-    symbolHide = "[ocultar]"
+    symbolHide = "[ocultar]",
+    maxLen = 400
 ) {
     const commentsText = {};
     const togglerText = (e) => {
         e.preventDefault();
-        const id = e.target.getAttribute("data-comment");
+        const t = e.target;
+        const id = t.getAttribute("data-comment");
         const obj = commentsText[id];
         const span = obj.node.querySelector("span");
         if (!obj.isExpanded) {
             span.innerText = obj.text;
-            e.target.innerText = symbolHide;
+            t.innerText = symbolHide;
         } else {
-            e.target.innerText = symbol;
-            span.innerText = obj.text.substring(0, 220);
+            t.innerText = symbol;
+            span.innerText = obj.text.substring(0, maxLen);
         }
 
         obj.isExpanded = !obj.isExpanded;
@@ -92,11 +94,10 @@ export function togglerTextLarge(
             isExpanded: false,
         };
 
-        if (text.length > 200) {
+        if (text.length > maxLen) {
             anchor.setAttribute("data-comment", i);
-            node.querySelector("span").innerText = text.substring(0, 220);
+            node.querySelector("span").innerText = text.substring(0, maxLen);
             node.appendChild(anchor);
-            console.log(node);
         }
     });
 }
