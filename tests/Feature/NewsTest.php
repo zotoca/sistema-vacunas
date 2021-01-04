@@ -56,6 +56,19 @@ class NewsTest extends TestCase
             ->assertDontSee($news[1]->title);
     }
 
+    public function test_an_administrator_can_see_a_news(){
+        $this->withoutExceptionHandling();
+        $this->signIn();
+
+        $news = News::factory()->create();
+
+
+        $this->get($news->path())
+            ->assertStatus(200)
+            ->assertSee($news->title)
+            ->assertSee($news->content);
+    }
+
     public function test_an_administrator_can_see_create_news(){
         $this->signIn();
 
@@ -113,6 +126,63 @@ class NewsTest extends TestCase
             ->assertStatus(200)
             ->assertJsonStructure(["location"]);
     }
+
+    public function test_an_administrator_can_see_edit_news(){
+        $this->signIn();
+        $this->withoutExceptionHandling();
+
+        $news = News::factory()->create();
+
+        $this->get($news->path()."/editar")
+            ->assertStatus(200)
+            ->assertSee($news->title)
+            ->assertSee($news->content);
+    }
+
+    public function test_an_administrator_can_edit_a_news(){
+        $this->signIn();
+        
+        
+        $news = News::factory()->create();
+
+        $attributes = ["title" => "test post title"];
+
+        $this->put($news->path(), $attributes)
+            ->assertRedirect($news->path());
+
+
+        $this->get("/noticias")
+            ->assertStatus(200)
+            ->assertSee($attributes["title"]);
+
+        $this->assertDatabaseHas("news", ["id" => $news->id, "title" => $attributes["title"]]);
+    }
+
+    
+    public function test_an_administrator_can_edit_a_news_with_image(){
+        $this->signIn();
+
+        $old_image_url = Storage::disk("public")->putFile("/news-images",UploadedFile::fake()->image("news.jpg"));
+
+        $news = News::factory()->create(["image_url" => $old_image_url]);
+
+        $attributes = ["image" => UploadedFile::fake()->image("news.jpg")];
+
+        $this->put($news->path(), $attributes)
+            ->assertRedirect($news->path());
+
+
+        $this->get("/noticias")
+            ->assertStatus(200)
+            ->assertSee($news->title);
+
+        Storage::disk("public")->assertMissing($old_image_url);
+        
+        $news->refresh();
+
+        Storage::disk("public")->assertExists($news->image_url);
+    }
+
 
 
     public function test_an_administrator_can_delete_a_news(){

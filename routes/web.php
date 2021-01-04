@@ -82,10 +82,12 @@ Route::group(["middleware" => "auth"], function(){
     Route::delete("/comentarios/{comment}", "App\Http\Controllers\CommentController@destroy");
     
     Route::get("/noticias/crear", "App\Http\Controllers\NewsController@create");
+    Route::get("/noticias/{news}/editar", "App\Http\Controllers\NewsController@edit");
+    Route::get("/noticias/{news}", "App\Http\Controllers\NewsController@show");
 
     Route::post("/noticias", "App\Http\Controllers\NewsController@store");
+    Route::put("/noticias/{news}", "App\Http\Controllers\NewsController@update");
     Route::delete("/noticias/{news}", "App\Http\Controllers\NewsController@destroy");
-
     Route::post("/noticias/subir-imagen", "App\Http\Controllers\NewsController@uploadImage");
     
     Route::get("/logout", "App\Http\Controllers\AuthController@logout");

@@ -1,12 +1,19 @@
+import { isImage } from "../helpers/checkTypeFile.js";
+import { getId } from "../helpers/DOM.js";
+import { configNews } from "../helpers/tinymceConfig.js";
+
 document.addEventListener("DOMContentLoaded", () => {
-    tinymce.init({
-        selector:'#content',
-        plugins: 'image code',
-        toolbar: 'image code',
-        relative_urls : false,
-        convert_urls : true,
-        remove_script_host : false, 
-        images_upload_url: '/noticias/subir-imagen',
-        height:"480px"
+    const btnUploadFile = getId("image");
+    const btnUpload = getId("upload-image");
+
+    btnUpload.addEventListener("click", () => btnUploadFile.click());
+
+    btnUploadFile.addEventListener("change", () => {
+        if (!isImage(btnUploadFile)) {
+            error("Seleccione un archivo formato imagen");
+            btnUploadFile.value = null;
+        }
     });
+
+    tinymce.init(configNews);
 });
