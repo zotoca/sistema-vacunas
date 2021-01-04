@@ -14,5 +14,6 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         "/api/personas/verificar-cedula",
         "/foro/subir-imagen",
+        "/noticias/subir-imagen",
     ];
 }

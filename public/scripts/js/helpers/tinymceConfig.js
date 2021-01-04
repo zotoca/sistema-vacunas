@@ -18,3 +18,18 @@ export const configPost = {
     force_p_newlines: false,
     ...propsInDarkMode(),
 };
+
+export const configNews = {
+    selector: "#content",
+    plugins: "image code",
+    toolbar: "image code",
+    relative_urls: false,
+    convert_urls: true,
+    remove_script_host: false,
+    images_upload_url: "/noticias/subir-imagen",
+    height: "480px",
+    forced_root_block: "",
+    force_br_newlines: true,
+    force_p_newlines: false,
+    ...propsInDarkMode(),
+};
