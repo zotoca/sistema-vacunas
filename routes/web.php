@@ -25,7 +25,7 @@ Route::group(["middleware" => "guest"], function(){
 
 Route::get("/noticias", "App\Http\Controllers\NewsController@index");
 
-
+Route::get("/noticias/{news}", "App\Http\Controllers\NewsController@show");
 
 Route::group(["middleware" => "auth"], function(){
     Route::get("/panel", "App\Http\Controllers\DashboardController@index");
@@ -83,7 +83,7 @@ Route::group(["middleware" => "auth"], function(){
     
     Route::get("/noticias/crear", "App\Http\Controllers\NewsController@create");
     Route::get("/noticias/{news}/editar", "App\Http\Controllers\NewsController@edit");
-    Route::get("/noticias/{news}", "App\Http\Controllers\NewsController@show");
+   
 
     Route::post("/noticias", "App\Http\Controllers\NewsController@store");
     Route::put("/noticias/{news}", "App\Http\Controllers\NewsController@update");
