@@ -56,6 +56,52 @@ export function removeClass(element, className) {
     element.classList.remove(className);
 }
 
+export function togglerTextLarge(
+    nodes = [],
+    symbol = "[ver más]",
+    symbolHide = "[ocultar]",
+    maxLen = 400
+) {
+    const commentsText = {};
+    const togglerText = (e) => {
+        e.preventDefault();
+        const t = e.target;
+        const id = t.getAttribute("data-comment");
+        const obj = commentsText[id];
+        const span = obj.node.querySelector("span");
+        if (!obj.isExpanded) {
+            span.innerText = obj.text;
+            t.innerText = symbolHide;
+        } else {
+            t.innerText = symbol;
+            span.innerText = obj.text.substring(0, maxLen);
+        }
+
+        obj.isExpanded = !obj.isExpanded;
+    };
+
+    nodes.forEach((node, i) => {
+        const text = node.innerText;
+        const anchor = element("a", {
+            href: "#",
+            innerText: symbol,
+            className: "comment-toggler",
+            onclick: togglerText,
+        });
+        commentsText[i] = {
+            node,
+            text,
+            isExpanded: false,
+        };
+
+        if (text.length > maxLen) {
+            anchor.setAttribute("data-comment", i);
+            node.querySelector("span").innerText = text.substring(0, maxLen);
+            node.appendChild(anchor);
+        }
+    });
+}
+
 export function setValueInSelect(select, value) {
     const countOptions = select.options.length;
     let flag = true;

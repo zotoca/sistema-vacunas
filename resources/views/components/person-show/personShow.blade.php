@@ -40,11 +40,11 @@
             <hr class="mt-4"/>
             <h6>
                <span class="font-weight-bold mr-2">Fecha de creación:</span>
-               {{ $person->created_at }}
+               {{ date_format($person->created_at, "d/m/Y") }}
             </h6>
             <h6>
                <span class="font-weight-bold mr-2">Fecha de modificación:</span>
-               {{ $person->updated_at }}
+               {{ date_format($person->updated_at, "d/m/Y") }}
             </h6>
             @if ($person->father || $person->mother)
             <h6>

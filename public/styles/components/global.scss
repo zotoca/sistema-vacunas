@@ -19,9 +19,14 @@
     background: rgba(104, 104, 104, 0.856);
 }
 
+.card .title {
+    margin-bottom: 1rem;
+}
+
 .title {
     font-family: $title;
     font-weight: bold;
+    margin-bottom: 0;
 
     &.title-underline {
         position: relative;

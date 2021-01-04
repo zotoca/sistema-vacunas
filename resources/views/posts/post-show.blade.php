@@ -7,5 +7,5 @@
     @include("components.footer.footer")
     <script src={{asset("scripts/js/comments/editComments.js")}} type="module"></script>
     <script src={{asset("scripts/js/comments/deleteComments.js")}} type="module"></script>
-
+    <script src={{asset("scripts/js/comments/showMoreText.js")}} type="module"></script>
 @endsection

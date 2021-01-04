@@ -22,17 +22,21 @@
       </div>
       <div class="form-group">
          <div class="row">
-            <div class="col-sm-12 col-lg-6 mb-3">
+            <div class="col-12">
                @error("image")
                <div class="alert alert-danger">
                   {{$message}}
                </div>
                @enderror
-               <label for="dni" class="font-weight-bold mb-2 lead d-block">
+               <label for="image" class="font-weight-bold mb-2 lead d-block">
                Imagen
                <small class="text-muted float-right font-weight-bold">(Opcional)</small>
                </label>
-               <input type="file" class="form-control-file" name="image" id="image">
+               <button class="btn btn-outline-primary d-block" type="button" id="upload-image">
+                  Subir imágen 
+                  <i class="fa fa-file-upload ml-1" aria-hidden="true"></i>
+               </button>
+               <input type="file" class="d-none" name="image" id="image" accept="image/*">
             </div>
          </div>
       </div>

@@ -1,25 +1,29 @@
 import { getId, body } from "./DOM.js";
 
+export default function isDarkMode() {
+    return JSON.parse(localStorage.getItem("isDarkMode"));
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-    const isDarkMode = JSON.parse(localStorage.getItem("isDarkMode"));
+    const isDarkModeFlag = isDarkMode();
     const label = getId("dark-mode");
     const chkbox = getId("dark-mode-toggler");
-    //fa-sun
-    if (isDarkMode) {
+
+    if (isDarkModeFlag && chkbox) {
         chkbox.checked = true;
         setDarkMode();
     }
 
     chkbox.addEventListener("change", ({ target }) => {
-        const isDarkMode = target.checked;
-        localStorage.setItem("isDarkMode", isDarkMode);
-        setDarkMode(isDarkMode);
+        const isDarkModeFlag = target.checked;
+        localStorage.setItem("isDarkMode", isDarkModeFlag);
+        setDarkMode(isDarkModeFlag);
     });
 
-    function setDarkMode(isDarkMode = true) {
+    function setDarkMode(isDarkModeFlag = true) {
         const icon = label.querySelector("i.fa");
 
-        if (isDarkMode) {
+        if (isDarkModeFlag) {
             body.classList.add("dark-mode");
             icon.className = "fa fa-sun text-warning";
         } else {
