@@ -7,6 +7,8 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 use App\Models\User;
+use App\Models\UserLog;
+use App\Models\Person;
 use Storage;
 use Illuminate\Http\UploadedFile;
 class AdministratorsTest extends TestCase
@@ -187,6 +189,77 @@ class AdministratorsTest extends TestCase
         
         
         $this->assertDatabaseMissing("users", ["id" => $administrator->id]);
+    }
+
+
+    public function test_a_administrator_can_see_admin_actions_list(){
+        $this->withoutExceptionHandling();
+        $this->signIn();
+
+        $create_user_log = UserLog::factory()->create(["action_type" => "Crear"]);
+        $edit_user_log = UserLog::factory()->create(["action_type" => "Editar"]);
+        $delete_user_log = UserLog::factory()->create(["action_type" => "Eliminar"]);
+
+        $this->get("/registro-personas")
+            ->assertStatus(200)
+            ->assertSee($create_user_log->action_type)
+            ->assertSee($edit_user_log->action_type)
+            ->assertSee($delete_user_log->action_type);
+    }
+
+    public function test_a_administrator_can_create_admin_actions(){
+        $this->signIn();
+
+        $attributes = Person::factory()->raw();
+
+        $edit_person = Person::factory()->create();
+        $edit_person_attributes = ["first_name" => "Hey"];
+        
+        $delete_person = Person::factory()->create();
+
+        $this->post("/personas", $attributes)
+            ->assertStatus(302);
+        
+        $this->put($edit_person->path(), $edit_person_attributes)
+            ->assertStatus(302);
+        
+        $this->delete($delete_person->path())
+            ->assertStatus(200);
+
+        $this->get("/registro-personas")
+            ->assertStatus(200)
+            ->assertSee(auth()->user()->first_name)
+            ->assertSee("Editar")
+            ->assertSee("Eliminar")
+            ->assertSee("Crear");        
+    }
+
+    public function test_a_administrator_can_search_user_logs_by_the_user_first_name(){
+
+        $this->withoutExceptionHandling();
+        $this->signIn();
+
+        $user_logs = UserLog::factory(2)->create();
+
+        $this->get("/registro-personas?first-name=" . $user_logs[0]->user->first_name)
+        ->assertStatus(200)
+        ->assertSee($user_logs[0]->user->first_name)
+        ->assertDontSee($user_logs[1]->user->first_name);
+ 
+    }
+
+    public function test_a_administrator_can_search_user_logs_by_the_user_last_name(){
+
+
+        $this->signIn();
+
+        $user_logs = UserLog::factory(2)->create();
+
+        $this->get("/registro-personas?last-name=" . $user_logs[0]->user->last_name)
+        ->assertStatus(200)
+        ->assertSee($user_logs[0]->user->last_name)
+        ->assertDontSee($user_logs[1]->user->last_name);
+
     }
 
 
