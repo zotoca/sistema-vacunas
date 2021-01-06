@@ -6,6 +6,9 @@
                 <div class="col-12">
                     <a href="/administradores/crear" class="btn btn-success btn-block">Crear administrador <i class="fa fa-plus ml-1"></i></a>
                 </div>
+                <div class="col-12 mt-3">
+                    <a href="/registro-personas" class="btn btn-success btn-block">Acciones de administradores <i class="fa fa-list ml-1"></i></a>
+                </div>
             </div>
         </div>
         <div class="col-md-12 col-lg-8 text-center">

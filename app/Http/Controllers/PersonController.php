@@ -16,6 +16,7 @@ use App\Http\Requests\DniRequest;
 use App\Models\Person;
 use App\Models\Vaccination;
 use App\Models\Street;
+use App\Models\UserLog;
 
 class PersonController extends Controller
 {
@@ -79,6 +80,12 @@ class PersonController extends Controller
         
         $new_person = Person::create($person_data);
 
+        UserLog::create([
+            "person_id" => $new_person->id,
+            "person_dni" => $new_person->dni,
+            "action_type" => "Crear",
+            "user_id" => auth()->user()->id
+        ]);
 
         return redirect("/personas");
     }
@@ -114,6 +121,12 @@ class PersonController extends Controller
 
         $person->update($person_data);
 
+        UserLog::create([
+            "person_id" => $person->id,
+            "person_dni" => $person->dni,
+            "action_type" => "Editar",
+            "user_id" => auth()->user()->id
+        ]);
 
         return redirect($person->path()."/editar");
     }
@@ -154,6 +167,13 @@ class PersonController extends Controller
         Storage::delete($person->image_url);
 
         $person->delete();
+
+        UserLog::create([
+            "person_id" => $person->id,
+            "person_dni" => $person->dni,
+            "action_type" => "Eliminar",
+            "user_id" => auth()->user()->id
+        ]);
 
         return response()->json(["message"=>"ok"]);
     }

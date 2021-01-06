@@ -7,6 +7,7 @@ use View;
 use Storage;
 
 use App\Models\User;
+use App\Models\UserLog;
 
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
@@ -83,4 +84,18 @@ class AdministratorController extends Controller
         return response()->json(["message"=>"ok"]);
     }
     
+
+    public function userLogs(Request $request){
+
+        $first_name = $request->get("first-name");
+        $last_name = $request->get("last-name");
+
+        $user_logs = UserLog::userFirstName($first_name)
+        ->userLastName($last_name)
+        ->orderBy("created_at", "DESC")
+        ->paginate(5)
+        ->appends(["first-name" => $first_name, "last-name" => $last_name]);
+
+        return View::make("administrators.administrator-logs", ["user_logs" => $user_logs]);
+    }
 }

@@ -35,8 +35,6 @@ class Post extends Model
     public function scopeTitle($query, $title){
         if($title != ""){
             return $query->where("title", "LIKE", "%$title%");
-
-
         }
 
 
