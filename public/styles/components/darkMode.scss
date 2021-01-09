@@ -10,6 +10,11 @@ body.dark-mode {
         background: rgba(238, 238, 238, 0.582);
     }
 
+    .loader-data {
+        border-left-color: #fff;
+        border-right-color: #fff;
+    }
+
     .dropdown-menu {
         background: $dark-mode-bg;
     }
