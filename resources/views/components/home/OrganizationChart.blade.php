@@ -7,6 +7,6 @@
         perspiciatis excepturi minus, aliquid atque quisquam voluptatibus. 
         Animi eaque possimus voluptatibus ipsam.
     </p>
-    <img src="{{asset("images/organigrama.jpg")}}" 
-    alt="Organigrama de la urbaniación" class="img-fluid">
+    <img src="{{asset("images/organigrama.png")}}" 
+    alt="Organigrama de la urbaniación" class="img-fluid mx-auto">
 </section>
