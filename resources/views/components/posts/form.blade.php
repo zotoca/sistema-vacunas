@@ -2,18 +2,7 @@
     <div class="row">
         <div class="col-md-12 col-lg-4 mb-1">
             <div class="row">
-                <div class="col-sm-12 col-md-6 col-lg-6 mb-1 px-lg-1">
-                    <div class="dropdown">
-                        <button class="btn btn-primary btn-block dropdown-toggle" type="button" id="posts-filter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Filtrar
-                            <i class="fa fa-filter ml-1"></i>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="posts-filter">
-                            <a class="dropdown-item" href="#">Titulo</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-6 px-lg-1">
+                <div class="col-12">
                     <a href="/foro/crear" class="btn btn-success btn-block">Crear publicacion <i class="fa fa-plus ml-1"></i></a>
                 </div>
             </div>

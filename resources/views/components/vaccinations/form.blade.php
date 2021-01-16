@@ -2,19 +2,7 @@
     <div class="row">
         <div class="col-md-12 col-lg-4 mb-1">
             <div class="row">
-                <div class="col-sm-12 col-md-6 col-lg-6 mb-1 px-lg-1">
-                    <div class="dropdown">
-                        <button class="btn btn-primary btn-block dropdown-toggle" type="button" id="vaccinations-filter" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Filtrar
-                            <i class="fa fa-filter ml-1"></i>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="vaccinations-filter">
-                            <a class="dropdown-item" href="#">Lote</a>
-                            <a class="dropdown-item" href="#">Nombre</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-6 px-lg-1">
+                <div class="col-12">
                     <button class="btn btn-success btn-block" id="create-vaccination">Crear vacuna <i class="fa fa-plus ml-1"></i></button>
                 </div>
             </div>
