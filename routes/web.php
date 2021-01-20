@@ -18,6 +18,10 @@ Route::group(["middleware" => "guest"], function(){
     Route::get('/', function () {
         return view('home');
     });
+
+    Route::get('/desarrolladores', function () {
+        return view('developers');
+    });
     
     Route::get("/iniciar-sesion", "App\Http\Controllers\AuthController@showLogin")->name("iniciar-sesion");
     Route::post("/do-login", "App\Http\Controllers\AuthController@doLogin");
@@ -96,4 +100,5 @@ Route::group(["middleware" => "auth"], function(){
     
 });
 
+Route::get("/noticias/{news}", "App\Http\Controllers\NewsController@show");
 Route::get("/noticias/{news}", "App\Http\Controllers\NewsController@show");

@@ -10,12 +10,13 @@
         </button>
         <div class="collapse navbar-collapse" id="navbar">
             <div class="navbar-nav mx-auto">
-                <a class="nav-item nav-link nav-item-hover text-uppercase" href="http://{{request()->getHttpHost()}}/#mision" data-hash="mision">misión</a>
-                <a class="nav-item nav-link nav-item-hover text-uppercase" href="http://{{request()->getHttpHost()}}/#vision" data-hash="vision">visión</a>
-                <a class="nav-item nav-link nav-item-hover text-uppercase" href="http://{{request()->getHttpHost()}}/#galeria" data-hash="galeria">galería</a>
-                <a class="nav-item nav-link nav-item-hover text-uppercase" href="http://{{request()->getHttpHost()}}/#organigrama" data-hash="organigrama">organigrama</a>
-                <a class="nav-item nav-link nav-item-hover text-uppercase" href="/noticias">noticias</a>
-                <a class="nav-item nav-link nav-item-hover text-uppercase border rounded" href="/iniciar-sesion">iniciar sesión</a>
+                <a class="nav-item nav-link nav-item-hover text-uppercase" href="http://{{request()->getHttpHost()}}/#mision" data-hash="mision">Misión</a>
+                <a class="nav-item nav-link nav-item-hover text-uppercase" href="http://{{request()->getHttpHost()}}/#vision" data-hash="vision">Visión</a>
+                <a class="nav-item nav-link nav-item-hover text-uppercase" href="http://{{request()->getHttpHost()}}/#galeria" data-hash="galeria">Galería</a>
+                <a class="nav-item nav-link nav-item-hover text-uppercase" href="http://{{request()->getHttpHost()}}/#organigrama" data-hash="organigrama">Organigrama</a>
+                <a class="nav-item nav-link nav-item-hover text-uppercase" href="/noticias">Noticias</a>
+                <a class="nav-item nav-link nav-item-hover text-uppercase" href="/desarrolladores">Desarrolladores</a>
+                <a class="nav-item nav-link nav-item-hover text-uppercase border rounded" href="/iniciar-sesion">Iniciar sesión</a>
             </div>
         </div>
     </nav>
