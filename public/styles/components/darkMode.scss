@@ -35,7 +35,8 @@ body.dark-mode {
         color: $dark-mode-color !important;
     }
 
-    input:not([type="file"]),
+    input:not([type="file"]):not(.swal2-input),
+    input:not(.swal2-input),
     select,
     select option {
         color: #000 !important;

@@ -33,7 +33,9 @@
         <script src="https://kit.fontawesome.com/7d7cc578e0.js" crossorigin="anonymous"></script>
         <script src="{{asset("scripts/script.js")}}" type="module"></script>
         <script>
-            AOS.init();
+            AOS.init({
+                once: true
+            });
         </script>
     </body>
 </html>
