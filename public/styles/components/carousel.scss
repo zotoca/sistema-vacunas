@@ -4,9 +4,18 @@
     }
     .carousel-item {
         height: $carousel-height;
-        img {
-            object-fit: cover;
+
+        a > img {
+            object-fit: contain;
+            width: 100%;
             height: 100%;
         }
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        background-color: rgba(0, 0, 0, 0.753);
+        padding: 1rem;
+        border-radius: 50%;
     }
 }

@@ -14,11 +14,13 @@ document.addEventListener("DOMContentLoaded", () => {
         setDarkMode();
     }
 
-    chkbox.addEventListener("change", ({ target }) => {
-        const isDarkModeFlag = target.checked;
-        localStorage.setItem("isDarkMode", isDarkModeFlag);
-        setDarkMode(isDarkModeFlag);
-    });
+    if (chkbox) {
+        chkbox.addEventListener("change", ({ target }) => {
+            const isDarkModeFlag = target.checked;
+            localStorage.setItem("isDarkMode", isDarkModeFlag);
+            setDarkMode(isDarkModeFlag);
+        });
+    }
 
     function setDarkMode(isDarkModeFlag = true) {
         const icon = label.querySelector("i.fa");

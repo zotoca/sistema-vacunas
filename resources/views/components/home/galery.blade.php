@@ -9,22 +9,13 @@
     </p>
     <div id="galery-carrusel" class="carousel slide mt-5" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <a href="https://picsum.photos/id/102/800/800"  data-lightbox="https://picsum.photos/id/102/800/800">
-                    <img class="d-block w-100" src="https://picsum.photos/id/102/800/800" alt="First slide" />
-                </a>
-                
-            </div>
-            <div class="carousel-item">
-                <a href="https://picsum.photos/id/69/800/800"  data-lightbox="https://picsum.photos/id/69/800/800">
-                    <img class="d-block w-100" src="https://picsum.photos/id/69/800/800" alt="First slide" />
-                </a>
-            </div>
-            <div class="carousel-item">
-                <a href="https://picsum.photos/id/63/800/800"  data-lightbox="https://picsum.photos/id/63/800/800">
-                    <img class="d-block w-100" src="https://picsum.photos/id/63/800/800" alt="First slide" />
-                </a>
-            </div>
+            @for ($i=1; $i <=3; $i++)
+                 <div class="carousel-item {{ $i==1 ? 'active' : ''}}">
+                    <a href="{{asset("/images/galery/$i.jpeg")}}" data-lightbox="{{asset("/images/galery/$i.jpeg")}}">
+                        <img class="d-block w-100"  src="{{asset("/images/galery/$i.jpeg")}}" alt="First slide" />
+                    </a>   
+                </div>
+            @endfor
         </div>
         <a class="carousel-control-prev" href="#galery-carrusel" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
