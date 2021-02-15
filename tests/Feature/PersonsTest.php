@@ -88,14 +88,12 @@ class PersonsTest extends TestCase
             ->assertSee($person->first_name)
             ->assertSee($person->last_name)
             ->assertSee($person->age)
-            ->assertSee($person->house->number)
-            ->assertSee($person->house->street->name)
             ->assertSee($person->phone_number)
-            ->assertSee($person->created_at)
-            ->assertSee($person->updated_at);
+            ->assertSee($person->address);
     }
 
     public function test_a_administrator_can_see_the_sons_and_parents_of_a_person(){
+        $this->withoutExceptionHandling();
         $this->signIn();
         
         $parents = Person::factory(2)->create();
@@ -227,32 +225,6 @@ class PersonsTest extends TestCase
         $this->post("api/personas/verificar-cedula", ["dni" => "0"])
             ->assertStatus(200)
             ->assertJson(["isValid" => false]);
-    }
-
-    public function test_a_administrator_can_get_the_street_of_an_person(){
-
-        $this->signIn();
-
-        $person = Person::factory()->create();
-
-        $street = $person->house->street;
-
-        $this->get("/api".$person->path()."/calles")
-            ->assertStatus(200)
-            ->assertJson(["id" => $street->id, "name" => $street->name]);  
-    }
-
-    public function test_a_administrator_can_get_the_house_of_an_person(){
-
-        $this->signIn();
-
-        $person = Person::factory()->create();
-
-        $house = $person->house;
-
-        $this->get("/api".$person->path()."/casas")
-            ->assertStatus(200)
-            ->assertJson(["id" => $house->id, "number" => $house->number]);  
     }
 
 }

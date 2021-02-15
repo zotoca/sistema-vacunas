@@ -23,6 +23,7 @@ class CreatePersonsTable extends Migration
             $table->enum("gender",['masculino','femenino']);
             $table->date("birthday");
             $table->string("phone_number");
+            $table->string("address");
 
             $table->unsignedBigInteger("father_id")->nullable();
             $table->foreign("father_id")
@@ -33,15 +34,8 @@ class CreatePersonsTable extends Migration
             $table->foreign("mother_id")
                 ->references("id")
                 ->on("persons");
-
-
-            $table->unsignedBigInteger("house_id");
-            $table->foreign("house_id")
-                ->references("id")
-                ->on("houses")
-                ->onDelete("cascade");
-
-            $table->timestamps();
+                
+            $table->timestamps();  
         });
     }
 

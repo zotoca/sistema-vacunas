@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Carbon\Carbon;
+
 class Person extends Model
 {
     use HasFactory;
@@ -12,10 +14,6 @@ class Person extends Model
     protected $table = "persons";
 
     protected $guarded = [];
-
-    public function house(){
-        return $this->belongsTo("App\Models\House");
-    }
 
     public function path(){
         return "/personas/$this->id";
@@ -29,7 +27,11 @@ class Person extends Model
         return $this->first_name . " " . $this->last_name;
     }
 
-    
+    public function getAgeAttribute(){
+        return Carbon::parse($this->attributes["birthday"])->age;
+    }
+
+
     public function father(){
         return $this->belongsTo("App\Models\Person","father_id","id");
     }

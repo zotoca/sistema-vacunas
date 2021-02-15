@@ -22,16 +22,16 @@
                <span>{{ $person->fullName }}</span>
             </h6>
             <h6>
+               <span class="font-weight-bold mr-2">Fecha de nacimiento:</span>
+               <span>{{ $person->birthday }}</span>
+            </h6>
+            <h6>
                <span class="font-weight-bold mr-2">Edad:</span>
                <span>{{ $person->age }}</span>
             </h6>
             <h6>
                <span class="font-weight-bold mr-2">Casa:</span>
-               <span>Nro. {{ $person->house->number }}</span>
-            </h6>
-            <h6>
-               <span class="font-weight-bold mr-2">Calle:</span>
-               <span>{{ $person->house->street->name }}</span>
+               <span>Nro. {{ $person->address }}</span>
             </h6>
             <h6>
                <span class="font-weight-bold mr-2">Teléfono:</span>

@@ -32,9 +32,9 @@ class PersonCreateRequest extends FormRequest
             "gender" => "required|in:masculino,femenino",
             "birthday" => "required|date|after:". Carbon::now()->subYear(110),
             "phone_number" => "required|string",
+            "address" => "required|string",
             "father_dni" => "nullable|exists:persons,dni",
             "mother_dni" => "nullable|exists:persons,dni",
-            "house_id" => "required|exists:houses,id",
         ];
     }
     

@@ -7,8 +7,6 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 use App\Models\Person;
-use App\Models\House;
-use App\Models\Street;
 
 class DashboardTest extends TestCase
 {
@@ -30,20 +28,17 @@ class DashboardTest extends TestCase
 
     public function test_a_administrator_see_dashboard(){
         
-
+        $this->withoutExceptionHandling();
 
         $this->signIn();
 
         $persons = Person::factory(10)->create();
-        $houses = House::factory(20)->create();
-        $streets = Street::factory(30)->create();
+
 
         $this->get("/panel")
             ->assertStatus(200)
             ->assertSee("1")
-            ->assertSee("10")
-            ->assertSee("30")
-            ->assertSee("60");
+            ->assertSee("10");
     }
 
 

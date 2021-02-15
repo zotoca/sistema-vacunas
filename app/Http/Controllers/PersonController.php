@@ -15,7 +15,6 @@ use App\Http\Requests\PersonUpdateRequest;
 use App\Http\Requests\DniRequest;
 use App\Models\Person;
 use App\Models\Vaccination;
-use App\Models\Street;
 use App\Models\UserLog;
 
 class PersonController extends Controller
@@ -50,10 +49,8 @@ class PersonController extends Controller
     } 
 
     public function create(){
-        $streets = Street::all();
-        $houses = $streets[0]->houses;
 
-        return View::make("persons.person-create",["streets" => $streets, "houses" => $houses]);
+        return View::make("persons.person-create");
     }
 
     public function store(PersonCreateRequest $request){
@@ -61,7 +58,7 @@ class PersonController extends Controller
         
         
         $person_data =  array_filter($validated, function($key){
-            return in_array($key,["first_name","last_name","dni","gender","birthday","phone_number","house_id"]);
+            return in_array($key,["first_name","last_name","dni","gender","birthday","phone_number","address"]);
         }, ARRAY_FILTER_USE_KEY);
 
 
@@ -103,7 +100,7 @@ class PersonController extends Controller
         
         
         $person_data =  array_filter($validated, function($key){
-            return in_array($key,["first_name","last_name","dni","gender","birthday","phone_number","house_id"]);
+            return in_array($key,["first_name","last_name","dni","gender","birthday","phone_number","address"]);
         }, ARRAY_FILTER_USE_KEY);
         if(isset($validated["image"])){
             Storage::delete($person->image_url);
@@ -184,16 +181,5 @@ class PersonController extends Controller
         return response()->json(["isValid" => $is_valid]);
 
 
-    }
-
-    public function streetApi(Request $request, Person $person){
-        $street = $person->house->street;
-    
-        return response()->json($street);
-    }
-    public function houseApi(Request $request, Person $person){
-        $house = $person->house;
-
-        return response()->json($house);
     }
 }

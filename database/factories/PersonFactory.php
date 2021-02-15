@@ -30,7 +30,7 @@ class PersonFactory extends Factory
             "gender" => \Arr::random(["masculino","femenino"]),
             "birthday" => $this->faker->dateTimeBetween('-109 years',"now"),
             "phone_number" => $this->faker->phoneNumber,
-            "house_id" => House::factory()->create()->id
+            "address" => $this->faker->address
         ];
     }
 }

@@ -18,9 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AdminSeeder::class,
             VaccinationSeeder::class,
-            StreetSeeder::class,
             PersonSeeder::class,
-            HouseSeeder::class,
         ]);
 
     }

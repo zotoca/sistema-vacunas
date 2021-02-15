@@ -25,7 +25,7 @@ class UserLogFactory extends Factory
     public function definition()
     {
         $person = Person::factory()->create();
-        dd($person);
+        
         return [
             "person_id" => $person->id,
             "person_dni" => $person->dni,
