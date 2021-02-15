@@ -14,7 +14,7 @@
                         <div class="col-sm-12 col-lg-6 p-1">
                             <a class="btn btn-primary btn-block" href="/personas/{{$person->id}}/editar">
                                 Editar
-                                <i class="fa fa-pencil ml-1"></i>
+                                <i class="fa fa-edit ml-1"></i>
                             </a>
                         </div>
                         <div class="col-sm-12 col-lg-6 p-1">
@@ -29,7 +29,7 @@
                         <div class="col-sm-12 col-lg-6 p-1">
                             <a class="btn btn-info btn-block" href="/personas/{{$person->id}}/vacunas-personas">
                                 Vacunas
-                                <i class="fa fa-list-ul ml-1"></i>
+                                <i class="fa fa-syringe ml-1"></i>
                             </a>
                         </div>
                         <div class="col-sm-12 col-lg-6 p-1">

@@ -8,10 +8,14 @@
             width="100%" height="220px" style="object-fit: cover;"/>
          <div class="btn-group mt-2 w-100" role="group">
             <a class="btn btn-outline-primary" href="/personas/{{$person->id}}/editar">
-            <i class="fa fa-pencil ml-1"></i>
+               
+               <i class="fa fa-edit mr-1"></i>
+               Editar
             </a>
             <a class="btn btn-outline-info" href="/personas/{{$person->id}}/vacunas-personas">
-            <i class="fa fa-list-ul ml-1"></i>
+               
+               <i class="fa fa-syringe mr-1"></i>
+               Vacunas
             </a>
          </div>
       </div>
