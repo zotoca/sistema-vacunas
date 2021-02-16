@@ -135,7 +135,7 @@
                </div>
                @enderror
                <label for="address" class="font-weight-bold mb-2 lead d-block">
-               Teléfono
+               Dirección
                <small class="text-muted float-right font-weight-bold">(requerido)</small>
                </label>
                <input type="text" class="form-control" name="address" id="address" value="{{$person->address}}" placeholder="Avenida Romulo Gallegos N#9" required>
@@ -191,7 +191,7 @@
             <div class="col-sm-12 col-lg-6">
                <a class="btn btn-primary btn-block" href="{{$person->path()}}/vacunas-personas">
                Ver vacunas                            
-               <i class="fa fa-list ml-1"></i>
+               <i class="fa fa-syringe  ml-1"></i>
                </a>
             </div>
          </div>
