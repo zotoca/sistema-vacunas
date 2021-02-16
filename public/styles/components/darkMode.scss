@@ -23,6 +23,11 @@ body.dark-mode {
     .loader {
         background: $dark-mode-bg;
     }
+
+    .swal2-popup .swal2-validation-message {
+        background: #000;
+    }
+
     .loader .lds-ellipsis div {
         background: #fff;
     }

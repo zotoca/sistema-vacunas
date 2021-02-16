@@ -1,7 +1,6 @@
 import { deleteOrExitButtons, success, error } from "../helpers/sweetAlerts.js";
 import { deleteVaccination } from "../helpers/requests.js";
 import { selectorAll } from "../helpers/DOM.js";
-
 document.addEventListener("DOMContentLoaded", () => {
     const btnsDeleteVaccionations = selectorAll("button[data-action='delete']");
 
@@ -14,28 +13,36 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function deleteVaccinationConfirm(id) {
+    let isLoading = false;
+
     Swal.fire({
         title: "¿Deseas eliminar esta vacuna?",
         icon: "warning",
         allowEscapeKey: false,
-        showLoaderOnConfirm: true,
         allowOutsideClick: false,
-        // es necesario retornar una promesa para que se pause el modal
-        // hasta no terminar, no es posible salir del modal
-        preConfirm: () => {
-            // promise returned
-            return deleteVaccination(id).then(
+        input: "password",
+        inputLabel: "Escriba la contraseña para confirmar",
+        inputValidator: async (value) => {
+            if (!value) {
+                return "El campo debe ser obligatorio";
+            }
+            isLoading = true;
+            Swal.showLoading();
+            await deleteVaccination(id).then(
                 (res) => {
                     if (res.message === "ok") {
                         success("Vacuna eliminada", "");
                         window.location.reload();
                     } else {
-                        error("Ocurrió un error al crear la vacuna.");
+                        error("Ocurrió un error al eliminar la vacuna.");
                     }
                 },
                 () => error("Ocurrió un error de conexión.")
             );
+            Swal.hideLoading();
+            isLoading = false;
         },
+        allowOutsideClick: () => !isLoading,
         ...deleteOrExitButtons,
     });
 }

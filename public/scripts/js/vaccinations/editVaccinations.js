@@ -38,7 +38,7 @@ function editVaccinationConfirm(id) {
                         success("Vacuna editada", "");
                         window.location.reload();
                     } else {
-                        error("Ocurrió un error al editada la vacuna.");
+                        error("Ocurrió un error al editar la vacuna.");
                     }
                 },
                 () => error("Ocurrió un error de conexión.")
