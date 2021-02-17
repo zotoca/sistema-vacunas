@@ -28,7 +28,7 @@ function deleteVaccinationConfirm(id) {
             }
             isLoading = true;
             Swal.showLoading();
-            await deleteVaccination(id).then(
+            await deleteVaccination(id, value).then(
                 (res) => {
                     if (res.message === "ok") {
                         success("Vacuna eliminada", "");
