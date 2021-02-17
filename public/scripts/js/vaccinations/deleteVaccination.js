@@ -17,6 +17,7 @@ function deleteVaccinationConfirm(id) {
 
     Swal.fire({
         title: "¿Deseas eliminar esta vacuna?",
+        text:"Advertencia: Todas las vacunas de las personas asociadas a esta vacuna seran eliminadas.",
         icon: "warning",
         allowEscapeKey: false,
         allowOutsideClick: false,
@@ -28,7 +29,7 @@ function deleteVaccinationConfirm(id) {
             }
             isLoading = true;
             Swal.showLoading();
-            await deleteVaccination(id).then(
+            await deleteVaccination(id, value).then(
                 (res) => {
                     if (res.message === "ok") {
                         success("Vacuna eliminada", "");

@@ -19,8 +19,10 @@ export function createVaccination(name) {
     return POST(VACCINATIONS_URL, { name });
 }
 
-export async function deleteVaccination(id) {
-    return DELETE(`${VACCINATIONS_URL}/${id}`);
+export async function deleteVaccination(id, password) {
+
+    return POST(`${VACCINATIONS_URL}/${id}/eliminar`,{ password });
+
 }
 
 export async function editVaccination(name, id) {
