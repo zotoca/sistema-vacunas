@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Vaccination;
 
+use App\Http\Requests\VaccinationDestroyRequest;
+
 use View;
 
 class VaccinationController extends Controller
@@ -40,7 +42,7 @@ class VaccinationController extends Controller
         return response()->json(["message" => "ok"]);
     }
 
-    public function destroy(Request $request, Vaccination $vaccination){
+    public function destroy(VaccinationDestroyRequest $request, Vaccination $vaccination){
         $vaccination->delete();
 
         return response()->json(["message" => "ok"]);

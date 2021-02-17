@@ -36,7 +36,7 @@ Route::group(["middleware" => "auth"], function(){
     Route::get("/vacunas", "App\Http\Controllers\VaccinationController@index");
     Route::post("/vacunas", "App\Http\Controllers\VaccinationController@store");
     Route::put("/vacunas/{vaccination}", "App\Http\Controllers\VaccinationController@update");    
-    Route::delete("/vacunas/{vaccination}", "App\Http\Controllers\VaccinationController@destroy");
+    Route::post("/vacunas/{vaccination}/eliminar", "App\Http\Controllers\VaccinationController@destroy");
     
     Route::get("/personas", "App\Http\Controllers\PersonController@index");
     Route::get("/personas/crear", "App\Http\Controllers\PersonController@create");
