@@ -17,7 +17,8 @@ function deleteVaccinationConfirm(id) {
 
     Swal.fire({
         title: "¿Deseas eliminar esta vacuna?",
-        text:"Advertencia: Todas las vacunas de las personas asociadas a esta vacuna seran eliminadas.",
+        text:
+            "Advertencia: Todas las vacunas de las personas asociadas a esta vacuna seran eliminadas.",
         icon: "warning",
         allowEscapeKey: false,
         allowOutsideClick: false,
@@ -38,7 +39,15 @@ function deleteVaccinationConfirm(id) {
                         error("Ocurrió un error al eliminar la vacuna.");
                     }
                 },
-                () => error("Ocurrió un error de conexión.")
+                (err) => {
+                    if (err?.response?.data?.errors?.password) {
+                        error(
+                            "Contraseña incorrecta, verifique y intente de nuevo."
+                        );
+                        return;
+                    }
+                    error("Ocurrió un error de conexión.");
+                }
             );
             Swal.hideLoading();
             isLoading = false;
