@@ -49,6 +49,9 @@ class NewsController extends Controller
         if(isset($validated["image"])){
             $validated["image_url"] = Storage::disk("public")->putFile("/news-images", $request->file("image"));
         }     
+        else{
+            $validated["image_url"] = "news-images/news.jpg";
+        }
         $validated["user_id"] = auth()->user()->id;
         News::create($validated);
 

@@ -25,6 +25,7 @@ class NewsFactory extends Factory
         return [
             "title" => $this->faker->sentence,
             "content" => $this->faker->paragraph,
+            "image_url" => "news-images/news.jpg",
             "user_id" => User::factory()->create()->id
         ];
     }

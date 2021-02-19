@@ -25,6 +25,7 @@ class PostFactory extends Factory
         return [
             "title" => $this->faker->sentence,
             "content" => $this->faker->paragraph,
+            "image_url" => "foro.jpg",
             "user_id" => User::factory()->create()
         ];
     }

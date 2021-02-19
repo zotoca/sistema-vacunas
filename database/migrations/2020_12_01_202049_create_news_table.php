@@ -18,7 +18,7 @@ class CreateNewsTable extends Migration
 
             $table->string("title");
             $table->text("content");
-            $table->text("image_url")->default("news-images/news.jpg");
+            $table->text("image_url")->nullable();
             
             $table->unsignedBigInteger("user_id");
             $table->foreign("user_id")
