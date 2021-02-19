@@ -64,6 +64,8 @@ class PersonController extends Controller
 
         if(isset($validated["image"])){
             $person_data["image_url"] = Storage::putFile("public", $request->file("image"));
+        }else{
+            $person_data["image_url"] = "person.png";
         }        
         if(isset($validated["father_dni"]) && $validated["father_dni"] != ""){
             $person_data["father_id"] = Person::where("dni",$validated["father_dni"])->first()->id; 

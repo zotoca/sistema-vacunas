@@ -29,6 +29,7 @@ class PersonFactory extends Factory
             "dni" => $this->faker->randomNumber(8),
             "gender" => \Arr::random(["masculino","femenino"]),
             "birthday" => $this->faker->dateTimeBetween('-109 years',"now"),
+            "image_url" => "person.png",
             "phone_number" => $this->faker->phoneNumber,
             "address" => $this->faker->address
         ];
