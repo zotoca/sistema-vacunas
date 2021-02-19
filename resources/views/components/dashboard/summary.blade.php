@@ -1,7 +1,7 @@
 <section class="container mt-5" data-aos="fade-up">
     <h2 class="title title-big title-underline my-5">Resumen</h2>
-    <div class="row justify-content-center">
-        <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
             <div class="card card-admins border-0 shadow-element">
                 <div class="card-body text-white">
                     <div class="row">
@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
+        <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
             <div class="card card-persons border-0 shadow-element">
                 <div class="card-body text-white">
                     <div class="row">
