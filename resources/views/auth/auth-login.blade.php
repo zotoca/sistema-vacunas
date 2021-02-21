@@ -38,6 +38,20 @@
                         <button class="btn btn-primary btn-block">Ok<i class="fa fa-check ml-2"></i></button>
                     </div>
                 </div>
+                <div class="container mx-auto">
+                    <a class="link" data-toggle="collapse" type="button" href="#recovery-password-collapsable" data-target="#recovery-password-collapsable" aria-expanded="false" aria-controls="recovery-password-collapsable">Recuperar contraseña</a>
+                    
+                </div>
+                <div class="collapse multi-collapse" id="recovery-password-collapsable">
+                    <div class="card card-body">
+                        Si has perdido tu contraseña, contacta con el soporte tecnico, envia un mensaje a cualquiera de estos correos electronicos para confirmar tu identidad.
+                        <ul>
+                            <li>santi16648@gmail.com</li>
+                            <li>libardojesusrengifo129@gmail.com</li>
+                            
+                        </ul>
+                    </div>
+                </div>
             </form>    
         </div>
     </div>
