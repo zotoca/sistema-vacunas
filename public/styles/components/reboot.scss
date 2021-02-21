@@ -7,4 +7,18 @@ body {
         font-family: $font-text;
         text-rendering: optimizeLegibility;
     }
+
+    .btn,
+    .form-control {
+        border-radius: 3px;
+    }
+
+    .form-control {
+        border-color: #ced4dad1;
+    }
+
+    .btn.btn-danger {
+        background: $color-primary;
+        border-color: $color-primary;
+    }
 }
