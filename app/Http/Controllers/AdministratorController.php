@@ -46,7 +46,7 @@ class AdministratorController extends Controller
             $validated["image_url"] = Storage::putFile("public", $request->file("image"));
         }
         else{
-            $validated["image_url"] => "person.png";
+            $validated["image_url"] = "person.png";
         }        
 
         $new_administrator = User::create($validated);
