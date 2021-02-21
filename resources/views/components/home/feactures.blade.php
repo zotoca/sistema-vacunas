@@ -23,7 +23,7 @@
                     </h2>
                     <h5 class="card-title font-weight-bold">Herramientas</h5>
                     <p class="card-text">
-                        Manejo de casas, calles, personas y sistemas como noticias y foro.
+                        Manejo de vacunas, personas y módulos como noticias y foro.
                     </p>
                 </div>
             </div>
@@ -37,7 +37,8 @@
                     </h2>
                     <h5 class="card-title font-weight-bold">Portable</h5>
                     <p class="card-text">
-                        Multiplataforma y portable, puede usar usado en diferentes ordenadores.
+                        Multiplataforma y portable, puede ser 
+                        usado en diferentes sistemas operativos.
                     </p>
                 </div>
             </div>
