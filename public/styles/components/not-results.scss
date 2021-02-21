@@ -1,8 +1,9 @@
 .not-results {
-    background: #56ccf2;
-    background: linear-gradient(to right, #0575e6, #021b79);
+    background: $color-primary;
+    background: -webkit-linear-gradient(to right, #93291e, $color-primary);
+    background: linear-gradient(to right, #93291e, $color-primary);
     border-radius: 8px;
-    padding: 1rem 3rem;
+    padding: 4rem 3rem;
 }
 
 .img-not-results {

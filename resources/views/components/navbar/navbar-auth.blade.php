@@ -10,7 +10,6 @@
         </button>
         <div class="collapse navbar-collapse" id="navbar">
             <div class="navbar-nav mx-auto">
-                <a class="nav-item nav-link nav-item-hover text-uppercase" href="/perfil">Ver mi perfil</a>
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="/vacunas">Vacunas</a>
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="/personas">Personas</a>
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="/administradores">Administradores</a>
