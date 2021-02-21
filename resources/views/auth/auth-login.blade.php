@@ -4,9 +4,9 @@
 @include("components.navbar.navbar")
 
 <section class="container mt-5" data-aos="fade-up">
-    <div class="row" data-aos="fade-up">
+    <div class="row pt-4" data-aos="fade-up">
         <img class="col-lg-6 offset-lg-3 col-12 rounded-sm img-login" src="{{asset("images/lading_page.png")}}" class="img-fluid" alt="">
-        <div class="col-lg-6 offset-lg-3 col-12 mt-3">
+        <div class="col-lg-6 offset-lg-3 col-12 mt-4">
             <h2 class="text-center title mb-4">Iniciar sesion</h2>
             <form action="/do-login" method="POST">
                 @csrf
