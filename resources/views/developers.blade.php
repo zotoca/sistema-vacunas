@@ -19,8 +19,15 @@
                         
                     </p>
                     <p class="lead">
-                        <a href="https://github.com/znareak" class="text-reset">
-                            <i class="fa fa-github mr-2"></i>Github
+                        <a href="https://github.com/znareak" class="text-reset d-block">
+                            <small class="text-muted font-weight-bold">
+                                Github
+                            </small>
+                        </a>
+                        <a href="mailto:libardojesusrengifo129@gmail.com" class="text-reset">
+                            <small class="text-muted">
+                                libardojesusrengifo129@gmail.com
+                            </small>
                         </a>
                     </p>
                 </div>
@@ -51,8 +58,15 @@
                         <blockquote>
                     </p>
                     <p class="lead">
-                        <a href="https://github.com/N3CROM4NC3R" class="text-reset">
-                            <i class="fa fa-github mr-2"></i>Github
+                        <a href="https://github.com/N3CROM4NC3R" class="text-reset d-block">
+                            <small class="text-muted font-weight-bold">
+                                Github
+                            </small>
+                        </a>
+                        <a href="mailto:santi16648@gmail.com" class="text-reset">
+                            <small class="text-muted">
+                                santi16648@gmail.com
+                            </small>
                         </a>
                     </p>
                 </div>
