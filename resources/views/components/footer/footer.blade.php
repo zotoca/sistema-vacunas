@@ -1,12 +1,12 @@
 <footer class="container pt-4 my-md-5 pt-md-5 border-top" data-aos="fade-up">
     <div class="row">
-        <div class="col-12 col-md-2 col-lg-2">
+        <div class="col-12 col-lg-2">
             <img class="mb-2" src="{{asset("images/brand.png")}}" alt="Logo de la aplicación" width="40" height="40" />
             <small class="d-block mb-1 text-muted">Sector Morichal</small>
             <small class="d-block text-muted">© 2020-2021</small>
         </div>
 
-        <div class="col-6 col-md-2 col-lg-2">
+        <div class="col-6 col-lg-2">
             <h5>Redes Sociales</h5>
             <ul class="list-unstyled text-small">
                 <li>
@@ -22,7 +22,7 @@
             </ul>
         </div>
 
-        <div class="col-6 col-md-2 col-lg-3">
+        <div class="col-6 col-lg-3">
             <h5>Información Relacionada</h5>
             <ul class="list-unstyled text-small">
                 <li>
@@ -48,24 +48,24 @@
             </ul>
         </div>
 
-        <div class="col-6 col-md-2 col-lg-2">
+        <div class="col-6 col-lg-3">
             <h5>Soporte y Contacto</h5>
             <ul class="list-unstyled text-small">
                 <li>
                     <a class="text-muted" href="mailto:libardojesusrengifo129@gmail.com">
-                        Libardo Rengifo
+                        <small>libardojesusrengifo129@gmail.com</small>
                     </a>
                 </li>
                 <li>    
                     <a class="text-muted" href="mailto:santi16648@gmail.com">
-                        Santiago Padrón
+                        <small>santi16648@gmail.com</small>
                     </a>
                 </li>
                 <li><a class="text-muted" href="/desarrolladores">Más información</a></li>
             </ul>
         </div>
 
-        <div class="col-6 col-md-2 col-lg-3">
+        <div class="col-6 col-lg-3">
             <h5>Ley Constitucionales</h5>
             <ul class="list-unstyled text-small">
                 <li>

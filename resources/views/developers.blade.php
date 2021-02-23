@@ -1,5 +1,5 @@
 @extends("components.layout.layout")
-@section("title", "Sistema vacunativo » Desarrolladores")
+@section("title", "Sistema de vacunas » Desarrolladores")
 @section("body")
     @include("components.navbar.navbar")
     <div class="container pt-5">

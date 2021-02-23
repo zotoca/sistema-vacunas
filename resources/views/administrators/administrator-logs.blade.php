@@ -1,5 +1,5 @@
 @extends("components.layout.layout")
-@section("title", "Sistema vacunativo » Registro de acciones")
+@section("title", "Sistema de vacunas » Registro de acciones")
 @section("body")
     @include("components.navbar.navbar-auth")
     @include("components.administrator-logs.title")

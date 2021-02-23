@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-lg-6">
             <h1 class="display-5 title title-home mb-4">
-                Sistema Vacunativo Morichal
+                Sistema de Vacunas Morichal
             </h1>
             <p class="lead">
                 Sistema de gestión de vacunas dirigido al sector <strong>Morichal</strong>,
