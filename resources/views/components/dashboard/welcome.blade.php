@@ -6,7 +6,7 @@
             </div>
             <div class="col-8">
                 <p class="lead title text-white">
-                    Bienvenido al Sistema Vacunativo Morichal, selecciona el modulo 
+                    Bienvenido al Sistema de Vacunas Morichal, selecciona el modulo 
                     que deseas revisar.
                 </p>
             </div>

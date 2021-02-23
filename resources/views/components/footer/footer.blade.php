@@ -1,12 +1,12 @@
 <footer class="container pt-4 my-md-5 pt-md-5 border-top" data-aos="fade-up">
     <div class="row">
-        <div class="col-12 col-lg-2">
+        <div class="col-sm-12 col-lg-1 mb-4">
             <img class="mb-2" src="{{asset("images/brand.png")}}" alt="Logo de la aplicación" width="40" height="40" />
-            <small class="d-block mb-1 text-muted">Sector Morichal</small>
-            <small class="d-block text-muted">© 2020-2021</small>
+            <small class="d-block mb-1 text-muted text-lg-center">Sector Morichal</small>
+            <small class="d-block text-muted text-wrap text-lg-center">© 2020-2021</small>
         </div>
 
-        <div class="col-6 col-lg-2">
+        <div class="col-sm-6 col-lg-2 mb-4">
             <h5>Redes Sociales</h5>
             <ul class="list-unstyled text-small">
                 <li>
@@ -22,7 +22,7 @@
             </ul>
         </div>
 
-        <div class="col-6 col-lg-3">
+        <div class="col-sm-6 col-lg-3 mb-4">
             <h5>Información Relacionada</h5>
             <ul class="list-unstyled text-small">
                 <li>
@@ -48,7 +48,7 @@
             </ul>
         </div>
 
-        <div class="col-6 col-lg-3">
+        <div class="col-sm-6 col-lg-3">
             <h5>Soporte y Contacto</h5>
             <ul class="list-unstyled text-small">
                 <li>
@@ -65,7 +65,7 @@
             </ul>
         </div>
 
-        <div class="col-6 col-lg-3">
+        <div class="col-sm-6 col-lg-3">
             <h5>Ley Constitucionales</h5>
             <ul class="list-unstyled text-small">
                 <li>
