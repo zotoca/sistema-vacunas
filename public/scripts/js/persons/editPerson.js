@@ -1,21 +1,9 @@
 import { error } from "../helpers/sweetAlerts.js";
 import { isImage } from "../helpers/checkTypeFile.js";
 import isValidForm, { checkEmptyInputsInForm } from "../helpers/forms.js";
-import {
-    getId,
-    showStreets,
-    showHouses,
-    setLinkImagePreview,
-    checkDni,
-} from "../helpers/DOM.js";
+import { getId, setLinkImagePreview, checkDni } from "../helpers/DOM.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-    // ---------- CALLES Y CASAS (inputs y loaders) -----------------
-    const streetsSelect = getId("street-id");
-    const loaderStreet = getId("loader-street");
-    const housesSelect = getId("house-id");
-    const loaderHouse = getId("loader-house");
-
     // ------------ CEDULAS ------------------------
     const motherDni = getId("mother-dni");
     const fatherDni = getId("father-dni");
@@ -25,13 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
         mother_dni: { node: getId("loader-dni-mother"), valid: true },
     };
 
-    // -------- CALLE, CASA y ID DE LA PERSONA DESDE EL SERVER ------
-    const streetId = getId("person-street-id").value;
-    const houseId = getId("person-house-id").value;
-
     // ------- ICONOS PARA ERRORES DE RED -----------------------------
-    const streetError = getId("street-error");
-    const houseError = getId("house-error");
     const dniError = {
         father_dni: getId("dni-father-error"),
         mother_dni: getId("dni-mother-error"),
@@ -45,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const fileReader = new FileReader();
     const form = getId("edit-person-form");
     const btnEditPerson = getId("edit-person");
-
     const inputNames = [
         "first_name",
         "last_name",
@@ -53,47 +34,23 @@ document.addEventListener("DOMContentLoaded", () => {
         "phone_number",
         "gender",
         "birthday",
-        "street_id",
-        "house_id",
+        "address",
     ];
-
-    function _showHouses(id) {
-        showHouses({
-            id,
-            loaderHouse,
-            housesSelect,
-            houseId,
-            toggleBtnSubmit,
-            houseError,
-        });
-    }
 
     function toggleBtnSubmit(isDisable = false) {
         btnEditPerson.disabled = isDisable;
     }
 
-    showStreets({
-        loaderStreet,
-        loaderHouse,
-        streetsSelect,
-        streetId,
-        showHouses: _showHouses,
-        streetError,
-        houseError,
-    });
-
     // ----------- MANEJADORES DE EVENTOS --------------------------------------
-    streetsSelect.addEventListener("change", (e) =>
-        _showHouses(e.target.value)
-    );
+    checkEmptyInputsInForm(form, inputNames);
 
-    motherDni.addEventListener("blur", (e) =>
-        checkDni({ target: e.target, personsDNI, toggleBtnSubmit, dniError })
-    );
-    fatherDni.addEventListener("blur", (e) =>
-        checkDni({ target: e.target, personsDNI, toggleBtnSubmit, dniError })
-    );
-    
+    function checkDniHandler(e) {
+        checkDni({ target: e.target, personsDNI, toggleBtnSubmit, dniError });
+    }
+
+    motherDni.addEventListener("blur", checkDniHandler);
+    fatherDni.addEventListener("blur", checkDniHandler);
+
     form.addEventListener("submit", (e) => e.preventDefault());
     btnUploadImage.addEventListener("click", () => btnFile.click());
 
@@ -109,8 +66,6 @@ document.addEventListener("DOMContentLoaded", () => {
             setLinkImagePreview({ img: fileReader.result, ...args });
         fileReader.readAsDataURL(imgFile);
     });
-
-    checkEmptyInputsInForm(form, inputNames);
 
     btnEditPerson.addEventListener("click", async () => {
         const isValid = isValidForm(form, inputNames);
