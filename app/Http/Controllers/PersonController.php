@@ -136,6 +136,7 @@ class PersonController extends Controller
         $vaccination_date = $request->get("vaccination-date");
         
         $vaccination_id = $request->get("vaccination-id");
+        $lot_number = $request->get("lot-number");
         $dose = $request->get("dose");
         $is_vaccinated = $request->get("is-vaccinated");
 
@@ -143,6 +144,7 @@ class PersonController extends Controller
             ->personVaccinations()
             ->vaccinationDate($vaccination_date)
             ->vaccinationId($vaccination_id)
+            ->lotNumber($lot_number)
             ->dose($dose)
             ->isVaccinated($is_vaccinated)
             ->get();
