@@ -18,6 +18,7 @@
                 <label for="missing-vaccination">Vacuna faltante:</label>
                 <div class="input-group w-100 mt-2">
                     <select name="missing-vaccination" placeholder="Vacuna faltante" class="form-control">
+                        <option value="">Selecciona una vacuna</option>
                         @foreach($vaccinations as $vaccination)
                             <option value="{{$vaccination->id}}">{{$vaccination->name}}</option>
                         @endforeach
