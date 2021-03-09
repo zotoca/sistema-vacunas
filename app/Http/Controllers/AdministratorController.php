@@ -48,7 +48,7 @@ class AdministratorController extends Controller
         else{
             $validated["image_url"] = "person.png";
         }        
-
+        $validated["password"] = bcrypt($validated["password"]);
         $new_administrator = User::create($validated);
 
         
@@ -72,7 +72,8 @@ class AdministratorController extends Controller
             $validated["image_url"] = Storage::putFile("public", $request->file("image"));
         }
 
-        
+        $validated["password"] = bcrypt($validated["password"]);
+
         $user->update($validated);
 
 
