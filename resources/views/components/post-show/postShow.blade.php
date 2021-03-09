@@ -92,7 +92,7 @@
           
                <div>
                   <button class="btn btn-sm btn-primary mr-1" data-action='edit' data-id="{{$comment->id}}">
-                  <i class="fa fa-pencil"></i>
+                  <i class="fa fa-edit"></i>
                   </button>
                   <button class="btn btn-sm btn-danger" data-action='delete' data-id="{{$comment->id}}">
                   <i class="fa fa-trash-alt"></i>
