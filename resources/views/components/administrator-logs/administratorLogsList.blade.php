@@ -24,6 +24,12 @@
                         </span>
                         {{ $user_log->action_type }}
                     </h6>
+                    <h6 class="card-text pl-1">
+                        <span class="font-weight-bold mr-1">
+                            Fecha y hora: 
+                        </span>
+                        {{ $user_log->created_at}}
+                    </h6>
                 </div>
             </div>
         </div>

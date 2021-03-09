@@ -71,9 +71,9 @@ class AdministratorController extends Controller
             Storage::delete($user->image_url);
             $validated["image_url"] = Storage::putFile("public", $request->file("image"));
         }
-
-        $validated["password"] = bcrypt($validated["password"]);
-
+        if(isset($validated["password"])){
+            $validated["password"] = bcrypt($validated["password"]);
+        }
         $user->update($validated);
 
 
