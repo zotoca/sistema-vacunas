@@ -19,8 +19,8 @@ export function createVaccination(name) {
     return POST(VACCINATIONS_URL, { name });
 }
 
-export async function deleteVaccination(id) {
-    return DELETE(`${VACCINATIONS_URL}/${id}`);
+export async function deleteVaccination(id, password) {
+    return POST(`${VACCINATIONS_URL}/${id}/eliminar`,{ password });
 }
 
 export async function editVaccination(name, id) {
@@ -59,16 +59,43 @@ export async function editPerson(personId, data) {
     return PUT(PERSON_EDIT_URL(personId), data);
 }
 
-export function createPersonVaccination(vaccination_id, person_id, dose, lot_number, vaccination_date, is_vaccinated) {
-    return POST(PERSON_VACCINATIONS_URL, { vaccination_id, person_id, dose, lot_number, vaccination_date, is_vaccinated });
+export function createPersonVaccination(
+    vaccination_id,
+    person_id,
+    dose,
+    lot_number,
+    vaccination_date,
+    is_vaccinated
+) {
+    return POST(PERSON_VACCINATIONS_URL, {
+        vaccination_id,
+        person_id,
+        dose,
+        lot_number,
+        vaccination_date,
+        is_vaccinated,
+    });
 }
 
 export async function deletePersonVaccination(id) {
     return DELETE(`${PERSON_VACCINATIONS_URL}/${id}`);
 }
 
-export async function editPersonVaccination(id, vaccination_id, dose, lot_number, vaccination_date, is_vaccinated) {
-    return PUT(`${PERSON_VACCINATIONS_URL}/${id}`, { vaccination_id, dose, lot_number, vaccination_date, is_vaccinated });
+export async function editPersonVaccination(
+    id,
+    vaccination_id,
+    dose,
+    lot_number,
+    vaccination_date,
+    is_vaccinated
+) {
+    return PUT(`${PERSON_VACCINATIONS_URL}/${id}`, {
+        vaccination_id,
+        dose,
+        lot_number,
+        vaccination_date,
+        is_vaccinated,
+    });
 }
 
 export async function deletePerson(id) {
@@ -86,7 +113,6 @@ export async function getHouses(streetId) {
 export async function isValidDni(dni) {
     return POST(DNI_CHECK_URL, { dni });
 }
-
 
 export async function deleteAdmin(id) {
     return DELETE(`${ADMIN_URL}/${id}`);

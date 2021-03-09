@@ -44,8 +44,11 @@ class AdministratorController extends Controller
 
         if(isset($validated["image"])){
             $validated["image_url"] = Storage::putFile("public", $request->file("image"));
+        }
+        else{
+            $validated["image_url"] = "person.png";
         }        
-
+        $validated["password"] = bcrypt($validated["password"]);
         $new_administrator = User::create($validated);
 
         
@@ -68,8 +71,9 @@ class AdministratorController extends Controller
             Storage::delete($user->image_url);
             $validated["image_url"] = Storage::putFile("public", $request->file("image"));
         }
-
-        
+        if(isset($validated["password"])){
+            $validated["password"] = bcrypt($validated["password"]);
+        }
         $user->update($validated);
 
 
@@ -77,6 +81,11 @@ class AdministratorController extends Controller
     }
 
     public function destroy(User $user){
+        
+        if($user->is_super_admin == true){
+            return response()->json(["message" => "This is a super admin"], 404);
+        }
+
         Storage::delete($user->image_url);
 
         $user->delete();

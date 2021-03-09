@@ -7,10 +7,20 @@
 
         <div class="col-md-12 col-lg-7">
             <p class="lead text-right">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                Labore sapiente, corporis saepe iure, alias totam non provident 
-                ipsum perspiciatis excepturi minus, aliquid atque quisquam 
-                voluptatibus. Animi eaque possimus voluptatibus ipsam.
+                Ser un órgano rector en salud pública de referencia internacional, 
+                con reconocida capacidad para garantizar una sociedad y entornos 
+                saludables, con eficacia y eficiencia en el desarrollo y ejecución 
+                de políticas apegadas a los principios, derechos y deberes 
+                constitucionales, atinentes a observar un Sistema Publico Nacional 
+                de Salud integrado y exitoso en la consecución de condiciones de 
+                bienestar para la sociedad, con progresiva disminución de los índices 
+                de morbi-mortalidad y de los factores de riesgos de enfermedades, con 
+                destacados avances en el logro de las metas previstas para el sector 
+                por organismos internacionales; llegando a promover la creciente 
+                soberanía e innovación científica y tecnológica para la producción 
+                de insumos y el impulso de un talento humano comprometido y capacitado 
+                para facilitar espacios de participación adecuados para la cogestión 
+                y rendición de cuentas en salud a la población venezolana.
             </p>
         </div>
     </div>

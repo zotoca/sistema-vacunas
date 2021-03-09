@@ -1,10 +1,14 @@
 <div class="jumbotron bg-white" data-aos="fade-up">
     <div class="row">
         <div class="col-lg-6">
-            <h1 class="display-4 title title-home mb-4">Sistema vacunativo</h1>
+            <h1 class="display-5 title title-home mb-4">
+                Sistema de Vacunas Morichal
+            </h1>
             <p class="lead">
-                Un sistema de vacunas <strong>simple</strong> y <strong>fácil</strong> de usar, posee diversas herramientas como monitoreo de administradores y gestión de datos como casas, calles y usuarios. Proporciona un resumen diarío de
-                datos y <strong>diagramas</strong> fáciles de ver.
+                Sistema de gestión de vacunas dirigido al sector <strong>Morichal</strong>,
+                el cual provee un conjunto de módulos para  <strong>facilitar</strong>
+                y <strong>agilizar</strong>
+                la administración y distribución de las vacunas dentro del sector.
             </p>
             <hr class="my-4" />
             <p class="lead">
@@ -16,7 +20,9 @@
         </div>
 
         <div class="col-lg-6">
-            <img src="{{asset("images/lading_page.png")}}" alt="Coverpage landinge page" class="img-fluid">
+            <img src="{{asset("images/lading_page.png")}}" 
+                alt="Coverpage landinge page" 
+                class="img-fluid w-100">
         </div>
     </div>
 </div>

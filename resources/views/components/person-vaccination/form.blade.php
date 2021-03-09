@@ -24,10 +24,11 @@
                         <input type="date" name="vaccination-date" placeholder="Fecha de vacunacion" class="form-control"/>
                     </div>
                     <div class="input-group w-100 mt-2">
-                        <label class="form-check-label">
-                                ¿Puestas?
-                                <input type="checkbox" name="is-vaccinated" class="form-check-input ml-1" value="true"/>
-                        </label>
+                        <select name="is-vaccinated" class="form-control">
+                            <option value="" selected>Selecciona el estado de la vacuna</option>
+                            <option value="1" >Vacunado</option>
+                            <option value="0" >No vacunado</option>
+                        </select>
                     </div>  
                 </div>
                     

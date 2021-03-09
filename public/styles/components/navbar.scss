@@ -1,5 +1,7 @@
 .navbar.navbar-auth {
     font-size: 14px;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .navbar .navbar-toggler {
@@ -36,26 +38,37 @@
     transform: translateX(78%);
 }
 
-.navbar-nav .nav-item.nav-item-hover {
+.navbar .navbar-nav {
     position: relative;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+    
+    .nav-item {
+        font-weight: bold;
 
-    &.active::before {
-        width: 100%;
-    }
+        &.nav-item-hover {
+            position: relative;
 
-    &:hover::before {
-        width: 100%;
-    }
+            &.active::before {
+                width: 100%;
+            }
 
-    &::before {
-        content: "";
-        display: block;
-        position: absolute;
-        width: 0;
-        height: 3px;
-        background: $color-primary;
-        left: 0;
-        bottom: -8px;
-        transition: width $transition-time ease;
+            &:hover::before {
+                width: 100%;
+            }
+
+            &::before {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 0;
+                height: 3px;
+                background: $color-primary;
+                left: 0;
+                bottom: -8px;
+                transition: width $transition-time ease;
+            }
+        }
     }
 }

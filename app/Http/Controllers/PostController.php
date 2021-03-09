@@ -44,7 +44,10 @@ class PostController extends Controller
 
         if(isset($validated["image"])){
             $validated["image_url"] = Storage::disk("public")->putFile("/post-images", $request->file("image"));
-        }     
+        }
+        else{
+            $validated["image_url"] = "foro.jpg";
+        }
         $validated["user_id"] = auth()->user()->id;
         Post::create($validated);
 

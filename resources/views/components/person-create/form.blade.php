@@ -88,7 +88,7 @@
                Teléfono
                <small class="text-muted float-right font-weight-bold">(requerido)</small>
                </label>
-               <input type="number" value="{{old('phone_number')}}"  class="form-control" name="phone_number" id="phone-number" placeholder="0000000" required>
+               <input type="tel" value="{{old('phone_number')}}"  class="form-control" name="phone_number" id="phone-number" placeholder="0000000" required>
             </div>
          </div>
       </div>
@@ -122,43 +122,21 @@
                </select>
             </div>
          </div>
-      </div>
-      <div class="form-group">
-         <div class="row">
-            <div class="col-sm-12 col-lg-6 mb-3">
-               <label for="street-id" class="font-weight-bold mb-2 lead d-block">
-                  Calle
-                  <small class="text-muted float-right font-weight-bold">
-                     (requerido)
-                     <div class="loader-data" id="loader-street"></div>
-                     <i class="fa fa-exclamation-circle text-danger ml-1" id="street-error" style="display:none;" title="OCURRIÓ UN ERROR DE RED"></i>
-                  </small>
-               </label>
-               <select name="street_id" id="street-id"  class="form-control" required disabled>
-               {{-- @foreach($streets as $street)
-               <option {{ (old("street_id") == $street->id ? "selected":"")}} value="{{$street->id}}">{{$street->name}}</option>
-               @endforeach --}}
-               </select>
-            </div>
-            <div class="col-sm-12 col-lg-6">
-               @error("house_id")
-               <div class="alert alert-danger">
-                  {{$message}}
+         <div class="form-group">
+            <div class="row">
+               <div class="col-sm-12 col-lg-6">
+                     @error("address")
+                     <div class="alert alert-danger">
+                        {{$message}}
+                     </div>
+                     @enderror
+                     <label for="address" class="font-weight-bold mb-2 lead d-block">
+                     Direccion
+                     <small class="text-muted float-right font-weight-bold">(requerido)</small>
+                     </label>
+                     <input type="text" value="{{old('address')}}"  class="form-control" name="address" id="address" placeholder="Avenida Romulo Gallegos N#9" required>
+                  </div>
                </div>
-               @enderror
-               <label for="house-id" class="font-weight-bold mb-2 lead d-block">
-                  Casa
-                  <small class="text-muted float-right font-weight-bold">
-                     (requerido)
-                     <div class="loader-data" id="loader-house"></div>
-                     <i class="fa fa-exclamation-circle text-danger ml-1" id="house-error" style="display:none;" title="OCURRIÓ UN ERROR DE RED"></i>
-                  </small>
-               </label>
-               <select name="house_id" id="house-id"  class="form-control" required disabled>
-               {{-- @foreach($houses as $house)
-               <option {{ (old("house_id") == $house->id ? "selected":"")}} value="{{$house->id}}">Casa N#{{$house->number}} Calle {{$streets[0]->name}}</option>
-               @endforeach --}}
-               </select>
             </div>
          </div>
       </div>

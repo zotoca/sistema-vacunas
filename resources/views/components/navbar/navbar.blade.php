@@ -3,7 +3,7 @@
         <a class="title navbar-brand text-uppercase" href="/">
             <img src="{{asset("images/brand.png")}}" 
                 width="32" height="32" alt="Logo del sistema" class="mr-1">
-            Navbar
+            SVM
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -14,6 +14,7 @@
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="http://{{request()->getHttpHost()}}/#vision" data-hash="vision">Visión</a>
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="http://{{request()->getHttpHost()}}/#galeria" data-hash="galeria">Galería</a>
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="http://{{request()->getHttpHost()}}/#organigrama" data-hash="organigrama">Organigrama</a>
+                <a class="nav-item nav-link nav-item-hover text-uppercase" href="{{Storage::url('others/manual-usuario.pdf')}}">Manual de usuario</a>
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="/noticias">Noticias</a>
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="/desarrolladores">Desarrolladores</a>
                 <a class="nav-item nav-link nav-item-hover text-uppercase border rounded" href="/iniciar-sesion">Iniciar sesión</a>

@@ -119,55 +119,6 @@ export function setLinkImagePreview({ img, imagePreview, anchorImagePreview }) {
     anchorImagePreview.setAttribute("data-lightbox", img);
 }
 
-export async function showStreets({
-    loaderStreet,
-    loaderHouse,
-    streetsSelect,
-    streetId,
-    showHouses,
-    streetError,
-    houseError,
-}) {
-    try {
-        display(loaderStreet);
-        streetsSelect.disabled = true;
-        const streets = await getStreets();
-        streetsSelect.innerHTML = createHTMLOptions(streets, ["id", "name"]);
-        streetsSelect.disabled = false;
-        setValueInSelect(streetsSelect, streetId);
-        showHouses(streetsSelect.value);
-    } catch (e) {
-        console.log(e);
-        display(streetError, "inline");
-        display(houseError, "inline");
-        display(loaderHouse, "none");
-    }
-    display(loaderStreet, "none");
-}
-
-export async function showHouses({
-    id,
-    loaderHouse,
-    housesSelect,
-    houseId,
-    toggleBtnSubmit,
-    houseError,
-}) {
-    toggleBtnSubmit(true);
-    try {
-        display(loaderHouse);
-        housesSelect.disabled = true;
-        const houses = await getHouses(id);
-        housesSelect.innerHTML = createHTMLOptions(houses, ["id", "number"]);
-        housesSelect.disabled = false;
-        setValueInSelect(housesSelect, houseId);
-    } catch (e) {
-        display(houseError, "inline");
-    }
-    display(loaderHouse, "none");
-    toggleBtnSubmit();
-}
-
 export async function checkDni({
     target,
     personsDNI,

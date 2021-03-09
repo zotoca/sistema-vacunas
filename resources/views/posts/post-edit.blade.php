@@ -1,5 +1,5 @@
 @extends("components.layout.layout")
-@section("title", "Sistema vacunativo » Editar publicacion")
+@section("title", "Sistema de vacunas » Editar publicacion")
 @section("body")
     @include("components.navbar.navbar-auth")
     @include("components.post-edit.title")

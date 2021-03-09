@@ -174,15 +174,14 @@ class AdministratorsTest extends TestCase
         Storage::assertMissing($old_image_url);
     }
 
-    public function test_a_administrator_can_delete_a_person(){
+    public function test_a_administrator_can_delete_a_administrator(){
         $this->withoutExceptionHandling();
         $this->signIn();
 
         $administrator = User::factory()->create();
-
         $this->delete($administrator->path())
             ->assertStatus(200);
-
+        
         $this->get("/administradores")
             ->assertStatus(200)
             ->assertDontSee($administrator->first_name);
@@ -262,5 +261,20 @@ class AdministratorsTest extends TestCase
 
     }
 
+    public function test_an_administrator_cant_delete_an_super_admin(){
 
+        $this->signIn();
+
+        $admin = User::factory()->create(["is_super_admin" => true]);
+
+        $this->delete($admin->path())
+            ->assertStatus(404);
+        
+
+        $this->get("/administradores")
+            ->assertSee($admin->first_name);
+
+
+
+    }
 }

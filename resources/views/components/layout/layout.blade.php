@@ -8,14 +8,17 @@
         <link rel="stylesheet" href="{{asset("styles/vendors/aos.css")}}" />
         <link rel="stylesheet" href="{{asset("styles/vendors/bootstrap.css")}}">
         <link rel="stylesheet" href="{{asset("styles/vendors/lightbox.min.css")}}">
+        <link rel="stylesheet" href="{{asset("styles/vendors/fontawesome/css/all.min.css")}}">
         <link rel="stylesheet" href="{{asset("styles/styles.css")}}">
+        <link rel="shortcut icon" href="{{asset("favicon.png")}}" type="image/png">
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link rel="stylesheet" href="{{asset("styles/fonts/fonts.lato.google.css")}}">
+        <link rel="stylesheet" href="{{asset("styles/fonts/fonts.archivoblack.google.css")}}">
+       
         <script src="{{asset("scripts/vendors/axios.min.js")}}"></script>
         <script src="{{asset("scripts/vendors/sweetalert2.all.min.js")}}"></script>
         <script src="{{asset("scripts/vendors/tinymce/tinymce.min.js")}}"></script>
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link rel="shortcut icon" href="{{asset("favicon.png")}}" type="image/png">
-        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap" rel="stylesheet">
         <title>@yield("title")</title>
     </head>
     <body style="overflow-y: hidden;">
@@ -30,7 +33,6 @@
         <script src="{{asset("scripts/vendors/polyfill.js")}}"></script>
         <script src="{{asset("scripts/vendors/aos.js")}}"></script>
         <script src="{{asset("scripts/js/helpers/darkMode.js")}}" type="module"></script>
-        <script src="https://kit.fontawesome.com/7d7cc578e0.js" crossorigin="anonymous"></script>
         <script src="{{asset("scripts/script.js")}}" type="module"></script>
         <script>
             AOS.init({

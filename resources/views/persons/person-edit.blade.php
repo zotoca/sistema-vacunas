@@ -1,5 +1,5 @@
 @extends("components.layout.layout")
-@section("title", "Sistema vacunativo » Crear persona")
+@section("title", "Sistema de vacunas » Crear persona")
 @section("body")
     @include("components.navbar.navbar-auth")
     @include("components.person-edit.title")

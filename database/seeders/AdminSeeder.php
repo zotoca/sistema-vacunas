@@ -19,9 +19,10 @@ class AdminSeeder extends Seeder
             "first_name"=>"Super",
             "last_name" => "Admin",
             "email" => "admin@mail.com",
-            "password" => bcrypt("Secret123")    
+            "password" => bcrypt("Secret123"),
+            "is_super_admin" => true    
         ];
 
-        User::create($data);
+        User::factory()->create($data);
     }
 }

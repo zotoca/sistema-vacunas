@@ -4,8 +4,6 @@
       @csrf
       <input type="hidden" name="_method" value="PUT">
       <input type="hidden" id="person-id" name="person_id" value="{{ $person->id }}">
-      <input type="hidden" id="person-street-id" name="person_street_id" value="{{ $person->house->street->id }}">
-      <input type="hidden" id="person-house-id" name="person_house_id" value="{{ $person->house->id }}">
       <div class="form-group">
          <div class="row">
             <div class="col-sm-12 col-md-2 col-lg-1 d-flex align-items-center">
@@ -93,7 +91,7 @@
                Teléfono
                <small class="text-muted float-right font-weight-bold">(requerido)</small>
                </label>
-               <input type="number" class="form-control" name="phone_number" id="phone-number" value="{{$person->phone_number}}" placeholder="0000000" required>
+               <input type="tel" class="form-control" name="phone_number" id="phone-number" value="{{$person->phone_number}}" placeholder="0000000" required>
             </div>
          </div>
       </div>
@@ -130,34 +128,17 @@
       </div>
       <div class="form-group">
          <div class="row">
-            <div class="col-sm-12 col-lg-6 mb-3">
-               <label for="street-id" class="font-weight-bold mb-2 lead d-block">
-                  Calle
-                  <small class="text-muted float-right font-weight-bold">
-                     (requerido)
-                     <div class="loader-data" id="loader-street"></div>
-                     <i class="fa fa-exclamation-circle text-danger ml-1" id="street-error" style="display:none;" title="OCURRIÓ UN ERROR DE RED"></i>
-                  </small>
-               </label>
-               <select name="street_id" id="street-id"  class="form-control" required disabled>
-               </select>
-            </div>
             <div class="col-sm-12 col-lg-6">
-               @error("house_id")
+               @error("address")
                <div class="alert alert-danger">
                   {{$message}}
                </div>
                @enderror
-               <label for="house-id" class="font-weight-bold mb-2 lead d-block">
-                  Casa
-                  <small class="text-muted float-right font-weight-bold">
-                     (requerido)
-                     <div class="loader-data" id="loader-house"></div>
-                     <i class="fa fa-exclamation-circle text-danger ml-1" id="house-error" style="display:none;" title="OCURRIÓ UN ERROR DE RED"></i>
-                  </small>
+               <label for="address" class="font-weight-bold mb-2 lead d-block">
+               Dirección
+               <small class="text-muted float-right font-weight-bold">(requerido)</small>
                </label>
-               <select name="house_id" id="house-id"  class="form-control" required disabled>
-               </select>
+               <input type="text" class="form-control" name="address" id="address" value="{{$person->address}}" placeholder="Avenida Romulo Gallegos N#9" required>
             </div>
          </div>
       </div>
@@ -210,7 +191,7 @@
             <div class="col-sm-12 col-lg-6">
                <a class="btn btn-primary btn-block" href="{{$person->path()}}/vacunas-personas">
                Ver vacunas                            
-               <i class="fa fa-list ml-1"></i>
+               <i class="fa fa-syringe  ml-1"></i>
                </a>
             </div>
          </div>

@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     if (res.message === "ok") {
                         success(
                             "Vacuna creada",
-                            "La vacuna " + name + " se creó con exito."
+                            `La vacuna ${name} se creó con exito.`
                         );
                         window.location.reload();
                     } else {

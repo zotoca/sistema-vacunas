@@ -15,7 +15,6 @@ use App\Http\Requests\PersonUpdateRequest;
 use App\Http\Requests\DniRequest;
 use App\Models\Person;
 use App\Models\Vaccination;
-use App\Models\Street;
 use App\Models\UserLog;
 
 class PersonController extends Controller
@@ -50,10 +49,8 @@ class PersonController extends Controller
     } 
 
     public function create(){
-        $streets = Street::all();
-        $houses = $streets[0]->houses;
 
-        return View::make("persons.person-create",["streets" => $streets, "houses" => $houses]);
+        return View::make("persons.person-create");
     }
 
     public function store(PersonCreateRequest $request){
@@ -61,12 +58,14 @@ class PersonController extends Controller
         
         
         $person_data =  array_filter($validated, function($key){
-            return in_array($key,["first_name","last_name","dni","gender","birthday","phone_number","house_id"]);
+            return in_array($key,["first_name","last_name","dni","gender","birthday","phone_number","address"]);
         }, ARRAY_FILTER_USE_KEY);
 
 
         if(isset($validated["image"])){
             $person_data["image_url"] = Storage::putFile("public", $request->file("image"));
+        }else{
+            $person_data["image_url"] = "person.png";
         }        
         if(isset($validated["father_dni"]) && $validated["father_dni"] != ""){
             $person_data["father_id"] = Person::where("dni",$validated["father_dni"])->first()->id; 
@@ -103,7 +102,7 @@ class PersonController extends Controller
         
         
         $person_data =  array_filter($validated, function($key){
-            return in_array($key,["first_name","last_name","dni","gender","birthday","phone_number","house_id"]);
+            return in_array($key,["first_name","last_name","dni","gender","birthday","phone_number","address"]);
         }, ARRAY_FILTER_USE_KEY);
         if(isset($validated["image"])){
             Storage::delete($person->image_url);
@@ -137,6 +136,7 @@ class PersonController extends Controller
         $vaccination_date = $request->get("vaccination-date");
         
         $vaccination_id = $request->get("vaccination-id");
+        $lot_number = $request->get("lot-number");
         $dose = $request->get("dose");
         $is_vaccinated = $request->get("is-vaccinated");
 
@@ -144,6 +144,7 @@ class PersonController extends Controller
             ->personVaccinations()
             ->vaccinationDate($vaccination_date)
             ->vaccinationId($vaccination_id)
+            ->lotNumber($lot_number)
             ->dose($dose)
             ->isVaccinated($is_vaccinated)
             ->get();
@@ -184,16 +185,5 @@ class PersonController extends Controller
         return response()->json(["isValid" => $is_valid]);
 
 
-    }
-
-    public function streetApi(Request $request, Person $person){
-        $street = $person->house->street;
-    
-        return response()->json($street);
-    }
-    public function houseApi(Request $request, Person $person){
-        $house = $person->house;
-
-        return response()->json($house);
     }
 }

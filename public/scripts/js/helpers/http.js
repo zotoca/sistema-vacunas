@@ -9,6 +9,7 @@ export async function GET(url) {
 }
 
 export async function DELETE(url, params) {
+    console.log(params);
     const res = await axios.delete(url, params);
     return res.data;
 }

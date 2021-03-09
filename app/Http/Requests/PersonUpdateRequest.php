@@ -32,20 +32,21 @@ class PersonUpdateRequest extends FormRequest
         $person_id = request()->input("person_id");
 
         return [
-            "first_name" => "required_without_all:last_image,image,dni,gender,birthday,phone_number,father_dni,mother_dni,house_id|string",
-            "last_name" => "required_without_all:first_name,image,dni,gender,birthday,phone_number,father_dni,mother_dni,house_id|string",
+            "first_name" => "required_without_all:last_image,image,dni,gender,birthday,phone_number,address,father_dni,mother_dni|string",
+            "last_name" => "required_without_all:first_name,image,dni,gender,birthday,phone_number,address,father_dni,mother_dni|string",
             "image" => "nullable|mimes:jpeg,jpg,png,gif,bmp,svg,webp",
             "dni" => [
-                "required_without_all:first_name,last_name,image,gender,birthday,phone_number,father_dni,mother_dni,house_id",
+                "required_without_all:first_name,last_name,image,gender,birthday,phone_number,address,father_dni,mother_dni",
                 "numeric",
                 Rule::unique("persons")->ignore($person_id, "id")
             ],
-            "gender" => "required_without_all:first_name,last_name,image,dni,birthday,phone_number,father_dni,mother_dni,house_id|in:masculino,femenino",
-            "birthday" => "required_without_all:first_name,last_name,image,dni,gender,phone_number,father_dni,mother_dni,house_id|date|after:". Carbon::now()->subYear(110),
-            "phone_number" => "required_without_all:first_name,last_name,image,dni,gender,birthday,father_dni,mother_dni,house_id|string",
+            "gender" => "required_without_all:first_name,last_name,image,dni,birthday,phone_number,address,father_dni,mother_dni|in:masculino,femenino",
+            "birthday" => "required_without_all:first_name,last_name,image,dni,gender,phone_number,address,father_dni,mother_dni|date|after:". Carbon::now()->subYear(110),
+            "phone_number" => "required_without_all:first_name,last_name,image,dni,gender,birthday,address,father_dni,mother_dni|string",
+            "address" => "required_without_all:first_name,last_name,image,dni,gender,birthday,phone_number,father_dni,mother_dni|string",
             "father_dni" => "nullable|exists:persons,dni",
             "mother_dni" => "nullable|exists:persons,dni",
-            "house_id" => "required_without_all:first_name,last_name,image,dni,gender,birthday,phone_number,father_dni,mother_dni|exists:houses,id",
+            
         ];
     }
     public function failedValidation(Validator $validator){

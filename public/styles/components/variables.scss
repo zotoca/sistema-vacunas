@@ -2,25 +2,17 @@ $font-text: "Lato", sans-serif, Arial;
 $title: "Archivo Black", Impact;
 $title-underline-width: calc(4% + 10px);
 $title-size: 2.5rem;
-$color-primary: #007bff;
+$color-primary: #da2727;
 $transition-time: 0.2s;
-$carousel-height: 500px;
+$carousel-height: 600px;
 $card-names: (
     "admins": (
-        #6dd5ed,
-        #2193b0,
+        $color-primary,
+        #dd1818,
     ),
     "persons": (
-        #2b32b2,
-        #1488cc,
-    ),
-    "houses": (
-        #f5af19,
-        #f12711,
-    ),
-    "streets": (
-        #38ef7d,
-        #11998e,
+        $color-primary,
+        #FF4B2B,
     ),
 );
 $sm: 576px;

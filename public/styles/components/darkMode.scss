@@ -23,6 +23,11 @@ body.dark-mode {
     .loader {
         background: $dark-mode-bg;
     }
+
+    .swal2-popup .swal2-validation-message {
+        background: #000;
+    }
+
     .loader .lds-ellipsis div {
         background: #fff;
     }
@@ -40,6 +45,10 @@ body.dark-mode {
     select,
     select option {
         color: #000 !important;
+    }
+
+    .form-control {
+        border-color: transparent;
     }
 
     .tox .tox-collection__item-checkmark svg,
