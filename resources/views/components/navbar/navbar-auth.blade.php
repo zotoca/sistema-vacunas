@@ -15,6 +15,7 @@
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="/administradores">Administradores</a>
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="/foro">Foro</a>
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="/noticias">Noticias</a>
+                <a class="nav-item nav-link nav-item-hover text-uppercase" href="{{Storage::url('others/manual-usuario.pdf')}}">Manual de usuario</a>
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="/logout">Cerrar sesion</a>
                 <input type="checkbox" id="dark-mode-toggler" class="d-none">
                 <label for="dark-mode-toggler" id="dark-mode" class="nav-item ">

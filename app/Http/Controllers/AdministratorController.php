@@ -80,6 +80,11 @@ class AdministratorController extends Controller
     }
 
     public function destroy(User $user){
+        
+        if($user->is_super_admin == true){
+            return response()->json(["message" => "This is a super admin"], 404);
+        }
+
         Storage::delete($user->image_url);
 
         $user->delete();

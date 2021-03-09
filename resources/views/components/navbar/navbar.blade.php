@@ -14,6 +14,7 @@
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="http://{{request()->getHttpHost()}}/#vision" data-hash="vision">Visión</a>
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="http://{{request()->getHttpHost()}}/#galeria" data-hash="galeria">Galería</a>
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="http://{{request()->getHttpHost()}}/#organigrama" data-hash="organigrama">Organigrama</a>
+                <a class="nav-item nav-link nav-item-hover text-uppercase" href="{{Storage::url('others/manual-usuario.pdf')}}">Manual de usuario</a>
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="/noticias">Noticias</a>
                 <a class="nav-item nav-link nav-item-hover text-uppercase" href="/desarrolladores">Desarrolladores</a>
                 <a class="nav-item nav-link nav-item-hover text-uppercase border rounded" href="/iniciar-sesion">Iniciar sesión</a>

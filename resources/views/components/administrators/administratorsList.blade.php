@@ -17,12 +17,14 @@
                                 <i class="fa fa-pencil ml-1"></i>
                             </a>
                         </div>
-                        <div class="col-sm-12 col-lg-6 p-1">
-                            <a class="btn btn-danger btn-block" data-id="{{$administrator->id}}" data-action="delete">
-                                Eliminar
-                                <i class="fa fa-trash-alt ml-1"></i>
-                            </a>
-                        </div>
+                        @if($administrator->is_super_admin == false)
+                            <div class="col-sm-12 col-lg-6 p-1">
+                                <a class="btn btn-danger btn-block" data-id="{{$administrator->id}}" data-action="delete">
+                                    Eliminar
+                                    <i class="fa fa-trash-alt ml-1"></i>
+                                </a>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
