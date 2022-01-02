@@ -2,11 +2,12 @@
     <div class="row">
         <div class="col-md-12 col-lg-4 mb-1">
             <div class="row">
-               
+                @role("Super admin")
+                    <div class="col-12 mb-3">
+                        <a href="/administradores/crear" class="btn btn-success btn-block">Crear administrador <i class="fa fa-plus ml-1"></i></a>
+                    </div>
+                @endrole
                 <div class="col-12">
-                    <a href="/administradores/crear" class="btn btn-success btn-block">Crear administrador <i class="fa fa-plus ml-1"></i></a>
-                </div>
-                <div class="col-12 mt-3">
                     <a href="/registro-personas" class="btn btn-success btn-block">Acciones de administradores <i class="fa fa-list ml-1"></i></a>
                 </div>
             </div>

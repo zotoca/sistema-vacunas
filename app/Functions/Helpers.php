@@ -1,5 +1,7 @@
 <?php
-    function isRoute($route, $class){
-        return Route::current()->getName() == $route ? ' ' . $class : '';
+    if(!function_exists("isRoute")){
+        function isRoute($route, $class){
+            return Route::current()->getName() == $route ? ' ' . $class : '';
+        }
     }
 ?>

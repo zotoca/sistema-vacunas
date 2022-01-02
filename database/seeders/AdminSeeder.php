@@ -23,6 +23,6 @@ class AdminSeeder extends Seeder
             "is_super_admin" => true    
         ];
 
-        User::factory()->create($data);
+        User::factory()->create($data)->assignRole("Super admin");
     }
 }

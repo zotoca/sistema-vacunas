@@ -11,20 +11,23 @@
                 <div class="card-body">
                     <h5 class="card-title title pl-1">{{$administrator->first_name}} {{$administrator->last_name}}</h5>
                     <div class="row w-100 m-0">
-                        <div class="col-sm-12 col-lg-6 p-1">
-                            <a class="btn btn-primary btn-block" href="/administradores/{{$administrator->id}}/editar">
-                                Editar
-                                <i class="fa fa-edit ml-1"></i>
-                            </a>
-                        </div>
-                        @if($administrator->is_super_admin == false)
+                        @role("Super admin")
                             <div class="col-sm-12 col-lg-6 p-1">
-                                <a class="btn btn-danger btn-block" data-id="{{$administrator->id}}" data-action="delete">
-                                    Eliminar
-                                    <i class="fa fa-trash-alt ml-1"></i>
+                                <a class="btn btn-primary btn-block" href="/administradores/{{$administrator->id}}/editar">
+                                    Editar
+                                    <i class="fa fa-edit ml-1"></i>
                                 </a>
                             </div>
-                        @endif
+                        
+                            @if($administrator->is_super_admin == false)
+                                <div class="col-sm-12 col-lg-6 p-1">
+                                    <a class="btn btn-danger btn-block" data-id="{{$administrator->id}}" data-action="delete">
+                                        Eliminar
+                                        <i class="fa fa-trash-alt ml-1"></i>
+                                    </a>
+                                </div>
+                            @endif
+                        @endrole
                     </div>
                 </div>
             </div>
