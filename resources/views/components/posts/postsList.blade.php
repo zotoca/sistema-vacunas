@@ -14,7 +14,7 @@
                         <div class="col-sm-12 col-lg-6 p-1">
                             <a class="btn btn-primary btn-block" href="{{$post->path()}}/editar">
                                 Editar
-                                <i class="fa fa-pencil ml-1"></i>
+                                <i class="fa fa-edit ml-1"></i>
                             </a>
                         </div>
                         <div class="col-sm-12 col-lg-6 p-1">

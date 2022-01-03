@@ -1,5 +1,5 @@
 <section class="container mt-5 dashboard-actions" data-aos="fade-up">
-    <h2 class="title title-big title-underline my-5">Acciones</h2>
+    <h2 class="title title-big title-underline my-5">Módulos</h2>
     <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-4 mb-4 px-3">
             <div class="card">

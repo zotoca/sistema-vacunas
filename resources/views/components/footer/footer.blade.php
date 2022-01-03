@@ -14,11 +14,6 @@
                         Facebook
                     </a>
                 </li>
-                <li>
-                    <a class="text-muted" href="#">
-                        Twitter
-                    </a>
-                </li>
             </ul>
         </div>
 

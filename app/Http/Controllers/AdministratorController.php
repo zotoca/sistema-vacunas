@@ -29,10 +29,11 @@ class AdministratorController extends Controller
     }
 
     public function create(){
-
-        return View::make("administrators.administrators-create");
-
-
+        if(auth()->user()->hasRole("Super admin")){
+            return View::make("administrators.administrators-create");
+        }
+        
+        return redirect("/administradores");
     }
 
 
@@ -56,13 +57,18 @@ class AdministratorController extends Controller
     }
 
     public function edit(User $user){ 
-
-        return View::make("administrators.administrator-edit",["administrator" => $user]);
+        if(auth()->user()->hasRole('Super admin')){
+            return View::make("administrators.administrator-edit",["administrator" => $user]);
+        }
+        return redirect("/administradores");
     }
 
 
     public function update(UserUpdateRequest $request, User $user){
-       
+        if(!auth()->user()->hasRole('Super admin')){
+            return redirect("/administradores");
+        }
+
         $validated = $request->validated();
 
         $validated = array_filter($validated);
@@ -81,10 +87,13 @@ class AdministratorController extends Controller
     }
 
     public function destroy(User $user){
-        
-        if($user->is_super_admin == true){
+        if(!auth()->user()->hasRole("Super admin")){
+            return response()->json(["message" => "You aren't allowed to do this action"], 403);
+        }
+        else if($user->hasRole("Super admin")){
             return response()->json(["message" => "This is a super admin"], 404);
         }
+        
 
         Storage::delete($user->image_url);
 

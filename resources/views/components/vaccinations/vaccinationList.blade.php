@@ -10,7 +10,7 @@
                         <div class="col-sm-12 col-lg-6 p-1">
                             <button class="btn btn-primary btn-block" data-id="{{$vaccination->id}}" data-action="edit">
                                 Editar
-                                <i class="fa fa-pencil ml-1"></i>
+                                <i class="fa fa-edit ml-1"></i>
                             </button>
                         </div>
                         <div class="col-sm-12 col-lg-6 p-1">
