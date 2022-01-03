@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
+
 use Hash;
 
 
@@ -30,8 +31,9 @@ class VaccinationDestroyRequest extends FormRequest
         return [
             "password" => ["required",function($attribute, $value, $fails){
                 $old_password = auth()->user()->password;
-
+                
                 $password = $this->all()["password"];
+           
                 
                 if(!Hash::check($password, $old_password)){
                     $fails("Contraseña incorrecta");
@@ -40,6 +42,12 @@ class VaccinationDestroyRequest extends FormRequest
             }]
         ];
     }
+
+    /* public function failedValidation(Validator $validator){
+        //dd($validator->errors());
+
+        throw new ValidatorException($errors);
+    } */
 
    
 }

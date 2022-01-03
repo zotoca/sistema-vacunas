@@ -11,9 +11,14 @@ use App\Models\UserLog;
 use App\Models\Person;
 use Storage;
 use Illuminate\Http\UploadedFile;
+
+
+
+
 class AdministratorsTest extends TestCase
 {
     use RefreshDatabase;
+
 
     public function test_a_doctor_can_see_persons(){
         
@@ -206,6 +211,25 @@ class AdministratorsTest extends TestCase
         
         Storage::assertExists($administrator->image_url);
         Storage::assertMissing($old_image_url);
+    }
+
+    public function test_an_administrator_can_edit_a_doctor_with_delete_vaccine_permissions(){
+
+        /* $this->withoutExceptionHandling(); */
+        $this->signInAsAdministrator();
+
+        $doctor = User::factory()->create();
+
+        $attributes = ["delete_vaccine_permission" => true];
+
+        $this->put($doctor->path(), $attributes)
+            ->assertRedirect($doctor->path()."/editar");
+
+
+        $doctor->refresh();
+
+        $this->assertTrue($doctor->hasPermissionTo("remove vaccine"));
+        
     }
 
     public function test_a_administrator_can_delete_a_doctor(){

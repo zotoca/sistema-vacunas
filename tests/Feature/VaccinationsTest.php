@@ -5,9 +5,13 @@ namespace Tests\Feature;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use Illuminate\Support\Facades\Hash;
+
+
 
 use App\Models\Vaccination;
 use App\Models\User;
+
 class VaccinationsTest extends TestCase
 {
     use RefreshDatabase;
@@ -29,9 +33,9 @@ class VaccinationsTest extends TestCase
 
     }
 
-    public function test_a_administrator_can_see_vaccination(){
+    public function test_a_doctor_can_see_vaccination(){
         $this->withoutExceptionHandling();
-        $this->signIn();
+        $this->signInAsAdministrator();
 
         $vaccination = Vaccination::factory()->create();
 
@@ -40,8 +44,8 @@ class VaccinationsTest extends TestCase
             ->assertSee($vaccination->name);
     }
 
-    public function test_a_administrator_can_search_vaccinations_by_her_name(){
-        $this->signIn();
+    public function test_a_doctor_can_search_vaccinations_by_her_name(){
+        $this->signInAsAdministrator();
 
         $vaccinations = Vaccination::factory(2)->create();
 
@@ -52,9 +56,9 @@ class VaccinationsTest extends TestCase
     }
 
 
-    public function test_a_administrator_can_create_a_vaccination(){
+    public function test_a_doctor_can_create_a_vaccination(){
         $this->withoutExceptionHandling();
-        $this->signIn();
+        $this->signInAsAdministrator();
 
         $attributes = Vaccination::factory()->raw();
 
@@ -68,9 +72,9 @@ class VaccinationsTest extends TestCase
         $this->assertDatabaseHas("vaccinations", ["name" => $attributes["name"]]);
     }
 
-    public function test_a_vaccination_requires_a_name(){
+    public function test_a_doctor_requires_a_name(){
 
-        $this->signIn();
+        $this->signInAsAdministrator();
 
         $attributes = Vaccination::factory()->raw(["name" => ""]);
 
@@ -80,11 +84,11 @@ class VaccinationsTest extends TestCase
         $this->assertDatabaseMissing("vaccinations", ["name" => $attributes["name"]]);
     }
 
-    public function test_a_administrator_can_update_a_vaccination(){
+    public function test_a_doctor_can_update_a_vaccination(){
 
         $this->withoutExceptionHandling();
 
-        $this->signIn();
+        $this->signInAsAdministrator();
 
 
         $vaccination = Vaccination::factory()->create();
@@ -103,50 +107,101 @@ class VaccinationsTest extends TestCase
         $this->assertDatabaseHas("vaccinations",["id" => $vaccination->id, "name" => "vaccination test"]);
     }
 
-    //public function test_a_administrator_can_delete_a_vaccination(){
-    //    $this->withoutExceptionHandling();
-
-    //    $user = User::factory()->create(["password" => "Secret123."]);
+    public function test_a_administrator_can_delete_a_vaccination(){
+        $this->withoutExceptionHandling();
+        $password = "Secret123";
+        $hashed_password = Hash::make($password);
         
-    //    $this->signIn($user);
-
-    //    $vaccination = Vaccination::factory()->create();
-
-    //    $password = auth()->user()->password;
+        $user = User::factory()->create(["password" => $hashed_password]);
         
-    //    $this->post($vaccination->path()."/eliminar",["password" => "Secret123."])
-    //        ->assertStatus(200);
+        $this->signInAsAdministrator($user);
 
-    //    $this->get("/vacunas")
-    //        ->assertStatus(200)
-    //        ->assertDontSee($vaccination->name);
+        $user->assignRole("Super admin");
+
+        $vaccination = Vaccination::factory()->create();
+
         
-        
-    //    $this->assertDatabaseMissing("vaccinations", ["name" => $vaccination->name]);
-    //}
+        $this->delete($vaccination->path()."/eliminar",["password" => $password])
+            ->assertStatus(200);
 
-    //public function test_an_administrator_cannot_delete_a_vaccination_with_wrong_password(){
-        
-
-    //    $this->signIn();
-
-    //    $vaccination = Vaccination::factory()->create();
-
-    //    $this->post($vaccination->path()."/eliminar")
-    //        ->assertStatus(302);
-
-    //    $this->get("/vacunas")
-    //        ->assertStatus(200)
-    //        ->assertSee($vaccination->name);
+        $this->get("/vacunas")
+            ->assertStatus(200)
+            ->assertDontSee($vaccination->name);
         
         
-    //    $this->assertDatabaseHas("vaccinations", ["name" => $vaccination->name]);
+        $this->assertDatabaseMissing("vaccinations", ["name" => $vaccination->name]);
+    }
+
+    public function test_an_administrator_cannot_delete_a_vaccination_with_wrong_password(){
+      
 
 
-    //}
+        $this->signInAsAdministrator();
+
+        $vaccination = Vaccination::factory()->create();
+
+        $this->delete($vaccination->path()."/eliminar")
+            ->assertStatus(302);
+
+        $this->get("/vacunas")
+            ->assertStatus(200)
+            ->assertSee($vaccination->name);
+        
+        
+        $this->assertDatabaseHas("vaccinations", ["name" => $vaccination->name]);
+    }
+
+    public function test_a_doctor_without_permissions_cannot_delete_a_vaccination(){
+
+        $password = "Secret123";
+        $hashed_password = Hash::make($password);
+        
+        $user = User::factory()->create(["password" => $hashed_password]);
+        $this->signIn($user);
+        
+
+
+        $vaccination = Vaccination::factory()->create();
+
+        $this->delete($vaccination->path()."/eliminar",["password" => $password])
+            ->assertStatus(403);
+
+        $this->get("/vacunas")
+            ->assertStatus(200)
+            ->assertSee($vaccination->name);
+        
+        
+        $this->assertDatabaseHas("vaccinations", ["name" => $vaccination->name]);
+
+    }
+
+    public function test_a_doctor_with_permissions_can_delete_a_vaccination(){
+
+        $password = "Secret123";
+        $hashed_password = Hash::make($password);
+        
+        $user = User::factory()->create(["password" => $hashed_password]);
+        $this->signIn($user);
+        $user->givePermissionTo("remove vaccine");
+
+
+        $vaccination = Vaccination::factory()->create();
+        
+        $this->delete($vaccination->path()."/eliminar",["password" => $password])
+            ->assertStatus(200);
+
+        $this->get("/vacunas")
+            ->assertStatus(200)
+            ->assertDontSee($vaccination->name);
+        
+        
+        $this->assertDatabaseMissing("vaccinations", ["name" => $vaccination->name]);
+
+    }
+
     public function test_an_administrator_can_get_vaccinations_api(){
         $this->withoutExceptionHandling();
-        $this->signIn();
+        $this->signInAsAdministrator();
 
         $vaccination = Vaccination::factory()->create();
         

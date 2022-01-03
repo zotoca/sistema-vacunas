@@ -82,6 +82,18 @@ class AdministratorController extends Controller
         }
         $user->update($validated);
 
+        if(isset($validated["delete_vaccine_permission"])){
+            $delete_vaccine_permission = $validated["delete_vaccine_permission"];
+
+            if($delete_vaccine_permission == true){
+                $user->givePermissionTo('remove vaccine');
+            }
+            else{
+                $user->revokePermissionTo('remove vaccine');
+            }
+
+        }
+
 
         return redirect($user->path() . "/editar");
     }
