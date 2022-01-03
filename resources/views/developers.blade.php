@@ -2,7 +2,7 @@
 @section("title", "Sistema de vacunas » Desarrolladores")
 @section("body")
     @include("components.navbar.navbar")
-    <div class="container pt-5">
+    <div class="container pt-5"> 
         <div class="row my-5">
             <div class="col-12 col-md-6" data-aos="fade-up">
                 <img class="img-fluid w-100" src="{{asset("/images/dev/znareak.png")}}">
