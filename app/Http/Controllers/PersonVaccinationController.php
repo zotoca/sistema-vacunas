@@ -29,6 +29,15 @@ class PersonVaccinationController extends Controller
     }
 
     public function delete(Request $request,PersonVaccination $person_vaccination){
+        $user = auth()->user();
+
+
+        if(!$user->hasPermissionTo("remove person vaccination") && !$user->hasRole("Super admin")){
+            return response()->json(["message" => "You aren't allowed to do this action"], 403);
+        }
+
+
+
 
         $person_vaccination->delete();
 

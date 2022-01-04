@@ -9,13 +9,14 @@ use Tests\TestCase;
 use App\Models\PersonVaccination;
 use App\Models\Vaccination;
 use App\Models\Person;
+use App\Models\User;
 
 class PersonVaccinationsTest extends TestCase
 {
     use RefreshDatabase;
 
     
-    public function test_a_administrator_can_search_a_person_vaccination_by_her_vaccination_date(){
+    public function test_a_doctor_can_search_a_person_vaccination_by_her_vaccination_date(){
 
         $this->signIn();
 
@@ -31,7 +32,7 @@ class PersonVaccinationsTest extends TestCase
             ->assertDontSee($person_vaccinations[1]->vaccination_date);
     }
 
-    public function test_a_administrator_can_see_a_person_vaccination_list_of_a_person(){
+    public function test_a_doctor_can_see_a_person_vaccination_list_of_a_person(){
         $this->withoutExceptionHandling();
 
         $this->signIn();
@@ -48,7 +49,7 @@ class PersonVaccinationsTest extends TestCase
     
 
 
-    public function test_a_administrator_can_search_a_person_vaccination_by_her_vaccination_id(){
+    public function test_a_doctor_can_search_a_person_vaccination_by_her_vaccination_id(){
 
         $this->signIn();
 
@@ -63,7 +64,7 @@ class PersonVaccinationsTest extends TestCase
             ->assertDontSee($person_vaccinations[1]->dose);
     }
 
-    public function test_a_administrator_can_search_a_person_vaccination_by_her_dose(){
+    public function test_a_doctor_can_search_a_person_vaccination_by_her_dose(){
 
         $this->signIn();
 
@@ -77,7 +78,7 @@ class PersonVaccinationsTest extends TestCase
             ->assertDontSee($person_vaccinations[1]->dose);
     }
 
-    public function test_a_administrator_can_search_a_person_vaccination_if_is_vaccinated(){
+    public function test_a_doctor_can_search_a_person_vaccination_if_is_vaccinated(){
 
         $this->signIn();
 
@@ -96,7 +97,7 @@ class PersonVaccinationsTest extends TestCase
 
 
 
-    public function test_an_administrator_can_create_a_person_vaccination(){
+    public function test_a_doctor_can_create_a_person_vaccination(){
 
         
         $this->signIn();
@@ -136,7 +137,7 @@ class PersonVaccinationsTest extends TestCase
         $this->assertDatabaseMissing("person_vaccination", ["vaccination_id" => $attributes["vaccination_id"]]);
     }
 
-    public function test_an_administrator_can_edit_a_person_vaccination(){
+    public function test_a_doctor_can_edit_a_person_vaccination(){
 
         $this->signIn();
 
@@ -162,9 +163,11 @@ class PersonVaccinationsTest extends TestCase
         $this->assertDatabaseHas("person_vaccination", ["id" => $person_vaccination->id, "dose" => $attributes["dose"]]);
     }
 
-    public function test_an_administrator_can_delete_a_person_vaccination(){
+    public function test_a_doctor_with_permission_can_delete_a_person_vaccination(){
+        $doctor = User::factory()->create();
+        $this->signIn($doctor);
 
-        $this->signIn();
+        $doctor->givePermissionTo("remove person vaccination");
 
         $person_vaccination = PersonVaccination::factory()->create();
         $person = $person_vaccination->person;
@@ -180,4 +183,29 @@ class PersonVaccinationsTest extends TestCase
 
         $this->assertDatabaseMissing("person_vaccination", ["id" => $person_vaccination->id]);
     }
+
+
+    public function test_a_doctor_without_permission_cannot_delete_a_person(){
+        
+        $this->signIn();
+
+        $person_vaccination = PersonVaccination::factory()->create();
+        $person = $person_vaccination->person;
+
+
+        $this->delete("/api" . $person_vaccination->path())
+            ->assertStatus(403);
+       
+        $this->get($person->path()."/vacunas-personas")
+        ->assertStatus(200)
+        ->assertSee($person_vaccination->dose);
+
+        $this->assertDatabaseHas("person_vaccination", ["id" => $person_vaccination->id]);
+
+
+
+
+    }
+
+
 }
