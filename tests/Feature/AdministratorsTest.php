@@ -287,7 +287,11 @@ class AdministratorsTest extends TestCase
     }
 
     public function test_a_doctor_can_create_doctor_actions(){
-        $this->signIn();
+        
+        $doctor = User::factory()->create();
+
+        $this->signIn($doctor);
+        $doctor->givePermissionTo("remove person");
 
         $attributes = Person::factory()->raw();
 

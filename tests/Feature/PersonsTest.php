@@ -11,6 +11,7 @@ use Carbon\Carbon;
 
 use App\Models\Person;
 use App\Models\PersonVaccination;
+use App\Models\User;
 
 class PersonsTest extends TestCase
 {
@@ -42,7 +43,7 @@ class PersonsTest extends TestCase
 
     }
 
-    public function test_a_administrator_can_see_persons(){
+    public function test_a_doctor_can_see_persons(){
         $this->withoutExceptionHandling();
         $this->signIn();
 
@@ -53,7 +54,7 @@ class PersonsTest extends TestCase
             ->assertSee($person->first_name);
     }
 
-    public function test_a_administrator_can_search_persons_by_her_dni(){
+    public function test_a_doctor_can_search_persons_by_her_dni(){
         $this->signIn();
 
         $persons = Person::factory(2)->create();
@@ -65,7 +66,7 @@ class PersonsTest extends TestCase
     
         }
 
-    public function test_a_administrator_can_search_persons_by_missing_vaccines(){
+    public function test_a_doctor_can_search_persons_by_missing_vaccines(){
         $this->signIn();
 
         $person_vaccinations = PersonVaccination::factory(2)->create();
@@ -77,7 +78,7 @@ class PersonsTest extends TestCase
             ->assertDontSee($person_vaccinations[1]->person->first_name);
     }
 
-    public function test_a_administrator_can_see_a_person(){
+    public function test_a_doctor_can_see_a_person(){
         $this->withoutExceptionHandling();
         $this->signIn();
 
@@ -92,7 +93,7 @@ class PersonsTest extends TestCase
             ->assertSee($person->address);
     }
 
-    public function test_a_administrator_can_see_the_sons_and_parents_of_a_person(){
+    public function test_a_doctor_can_see_the_sons_and_parents_of_a_person(){
         $this->withoutExceptionHandling();
         $this->signIn();
         
@@ -110,7 +111,7 @@ class PersonsTest extends TestCase
             ->assertSee($sons[1]->first_name);
     }
 
-    public function test_a_administrator_can_create_a_person(){
+    public function test_a_doctor_can_create_a_person(){
         $this->withoutExceptionHandling();
         $this->signIn();
 
@@ -162,7 +163,7 @@ class PersonsTest extends TestCase
     }
 
 
-    public function test_a_administrator_can_update_a_person(){
+    public function test_a_doctor_can_update_a_person(){
 
         $this->signIn();
 
@@ -195,9 +196,13 @@ class PersonsTest extends TestCase
 
     
 
-    public function test_a_administrator_can_delete_a_person(){
+    public function test_a_doctor_with_permissions_can_delete_a_person(){
         $this->withoutExceptionHandling();
-        $this->signIn();
+        $doctor = User::factory()->create();
+
+
+        $this->signIn($doctor);
+        $doctor->givePermissionTo("remove person");
 
         $person = Person::factory()->create();
 
@@ -212,7 +217,28 @@ class PersonsTest extends TestCase
         $this->assertDatabaseMissing("persons", ["first_name" => $person->first_name]);
     }
 
-    public function test_a_administrator_can_verificate_dni_api(){
+    public function test_a_doctor_without_permissions_cannot_delete_a_person(){
+        $this->withoutExceptionHandling();
+
+
+
+        $this->signIn();
+   
+
+        $person = Person::factory()->create();
+
+        $this->delete($person->path())
+            ->assertStatus(403);
+
+        $this->get("/personas")
+            ->assertStatus(200)
+            ->assertSee($person->first_name);
+        
+        
+        $this->assertDatabaseHas("persons", ["first_name" => $person->first_name]);
+    }
+
+    public function test_a_doctor_can_verificate_dni_api(){
 
         $this->signIn();
 

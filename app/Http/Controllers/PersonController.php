@@ -165,6 +165,13 @@ class PersonController extends Controller
 
 
     public function destroy(Person $person){
+        
+        $user = auth()->user();
+
+        if(!$user->hasPermissionTo("remove person") && !$user->hasRole("Super admin")){
+            return response()->json(["message" => "You aren't allowed to do this action"], 403);
+        }
+        
         Storage::delete($person->image_url);
 
         $person->delete();
