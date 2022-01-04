@@ -82,17 +82,30 @@ class AdministratorController extends Controller
         }
         $user->update($validated);
 
-        if(isset($validated["delete_vaccine_permission"])){
-            $delete_vaccine_permission = $validated["delete_vaccine_permission"];
-
-            if($delete_vaccine_permission == true){
-                $user->givePermissionTo('remove vaccine');
-            }
-            else{
-                $user->revokePermissionTo('remove vaccine');
-            }
-
+        //TODO: Refactor this code snippet, we have to move this snippet to an observer
+        if(isset($validated["delete_vaccine_permission"]) && $validated["delete_vaccine_permission"] == 1){
+            $user->givePermissionTo('remove vaccine');    
+        }else{
+            $user->revokePermissionTo('remove vaccine');
         }
+
+
+        if(isset($validated["delete_person_vaccination_permission"]) && $validated["delete_person_vaccination_permission"] == 1){
+           
+            $user->givePermissionTo('remove person vaccination');
+            
+        }else{
+            $user->revokePermissionTo('remove person vaccination');
+        }
+
+        if(isset($validated["delete_person_permission"]) && $validated["delete_person_permission"] == 1){
+            $user->givePermissionTo('remove person');
+            
+        }else{
+            $user->revokePermissionTo('remove person');
+        }
+
+    
 
 
         return redirect($user->path() . "/editar");

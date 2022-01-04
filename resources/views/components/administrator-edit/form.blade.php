@@ -67,7 +67,8 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="row">
+            <div class="row"> 
+                
                 <div class="col-12">
                     @error('email')
                         <div class="alert alert-danger">
@@ -110,36 +111,60 @@
                     <input type="password" value="" class="form-control" name="repeatPassword" id="repeatPassword"
                         placeholder="0000000">
                 </div>
+                    @if(!$administrator->hasRole('Super admin'))
+                        <div>
+                            <h2 class="font-weight-bold mb-2 lead ">
+                                Permisos
+                            </h2>
+                            <div class="col-12 mt-2">
+                                
+                                <div class="form-check">
+                                    <input type='hidden' value='0' name="delete_vaccine_permission">
+                                    <input class="form-check-input" type="checkbox" value=1 name="delete_vaccine_permission"
+                                    @if($administrator->hasPermissionTo('remove vaccine'))
+                                        checked
+                                    @endif 
+                                    
+                                    
+                                    id="deleteVaccunePermission">
+                                    <label class="form-check-label" 
+                                    
+                                    for="deleteVaccunePermission">
+                                        Ortogar permisos para eliminar vacunas
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-2">
+                                <div class="form-check">
+                                    <input type='hidden' value=0 name="delete_person_permission">
 
-                <div class="col-12 mt-2">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" name="delete_vaccine_permission"
-                            id="deleteVaccunePermission">
-                        <label class="form-check-label" for="deleteVaccunePermission">
-                            Ortogar permisos para eliminar vacunas
-                        </label>
-                    </div>
-                </div>
+                                    <input class="form-check-input" type="checkbox" value=1 name="delete_person_permission"
+                                        @if($administrator->hasPermissionTo('remove person'))
+                                            checked
+                                        @endif
+                                        id="deletePersonPermission">
+                                    <label class="form-check-label" for="deletePersonPermission">
+                                        Ortogar permisos para eliminar personas
+                                    </label>
+                                </div>
+                            </div>
 
-                <div class="col-12 mt-2">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" name="delete_person_permission"
-                            id="deletePersonPermission">
-                        <label class="form-check-label" for="deletePersonPermission">
-                            Eliminar personas
-                        </label>
-                    </div>
-                </div>
-
-                <div class="col-12 mt-2">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value=""
-                            name="delete_person_vaccination_permission" id="deletePersonVaccinationPermission">
-                        <label class="form-check-label" for="deletePersonVaccinationPermission">
-                            Eliminar las vacunas de las personas
-                        </label>
-                    </div>
-                </div>
+                            <div class="col-12 mt-2">
+                                <div class="form-check">
+                                    <input type='hidden' value=0 name="delete_person_vaccination_permission">
+                                    <input class="form-check-input" type="checkbox" value=1
+                                        name="delete_person_vaccination_permission" 
+                                        @if($administrator->hasPermissionTo('remove person vaccination'))
+                                            checked
+                                        @endif
+                                        id="deletePersonVaccinationPermission">
+                                    <label class="form-check-label" for="deletePersonVaccinationPermission">
+                                        Ortogar permisos para eliminar las vacunas de las personas
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
             </div>
         </div>
         </div>

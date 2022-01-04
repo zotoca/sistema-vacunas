@@ -30,23 +30,25 @@ class UserUpdateRequest extends FormRequest
         
 
         return [
-            'first_name' => 'required_without_all:last_name,email,password,repeatPassword,image,delete_vaccine_permission|string',
-            'last_name'  => 'required_without_all:first_name,email,password,repeatPassword,image,delete_vaccine_permission|string',
+            'first_name' => 'required_without_all:last_name,email,password,repeatPassword,image,delete_vaccine_permission,delete_person_vaccination_permission,delete_person_permission|string',
+            'last_name'  => 'required_without_all:first_name,email,password,repeatPassword,image,delete_vaccine_permission,delete_person_vaccination_permission,delete_person_permission|string',
             'email' => [
-                'required_without_all:first_name,last_name,password,repeatPassword,image,delete_vaccine_permission',
+                'required_without_all:first_name,last_name,password,repeatPassword,image,delete_vaccine_permission,delete_person_vaccination_permission,delete_person_permission',
                 'email',
                 Rule::unique("users")->ignore($user)
             ],
-            "image" => "required_without_all:first_name,last_name,email,password,repeatPassword,delete_vaccine_permission|mimes:jpeg,jpg,png,gif,bmp,svg,webp",
-            'password' => 'required_without_all:first_name,last_name,email,image,delete_vaccine_permission|nullable|string',
-            'repeatPassword' => 'required_without_all:first_name,last_name,email,image,delete_vaccine_permission|same:password',
-            "delete_vaccine_permission" => "required_without_all:first_name,last_name,email,image,password|boolean"
+            "image" => "required_without_all:first_name,last_name,email,password,repeatPassword,delete_vaccine_permission,delete_person_vaccination_permission,delete_person_permission|mimes:jpeg,jpg,png,gif,bmp,svg,webp",
+            'password' => 'required_without_all:first_name,last_name,email,image,delete_vaccine_permission,delete_person_vaccination_permission,delete_person_permission|nullable|string',
+            'repeatPassword' => 'required_without_all:first_name,last_name,email,image,delete_vaccine_permission,delete_person_vaccination_permission,delete_person_permission|same:password',
+            "delete_vaccine_permission" => "required_without_all:first_name,last_name,email,image,password,delete_person_vaccination_permission,delete_person_permission|boolean",
+            "delete_person_vaccination_permission" => "required_without_all:first_name,last_name,email,image,password,delete_person_permission,delete_vaccine_permission|boolean",
+            "delete_person_permission" => "required_without_all:first_name,last_name,email,image,password,delete_person_vaccination_permission,delete_vaccine_permission|boolean"
         ];
     }
-
     public function failedValidation(Validator $validator){
         dd($validator->errors());
 
-       throw new ValidatorException($errors);
+        throw new ValidatorException($errors);
     }
+    
 }

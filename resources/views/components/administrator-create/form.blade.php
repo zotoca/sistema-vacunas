@@ -109,7 +109,7 @@
                 </div>
 
 
-                <div class="col-12 mt-2">
+                <!-- <div class="col-12 mt-2">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" name="delete_vaccine_permission"
                             id="deleteVaccunePermission">
@@ -137,7 +137,7 @@
                             Eliminar las vacunas de las personas
                         </label>
                     </div>
-                </div>
+                </div> -->
 
 
             </div>

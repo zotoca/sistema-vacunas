@@ -49,9 +49,5 @@ class PersonUpdateRequest extends FormRequest
             
         ];
     }
-    public function failedValidation(Validator $validator){
-        dd($validator->errors());
-
-    //   throw new ValidatorException($errors);
-    }
+    
 }

@@ -18,6 +18,8 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         $role = Role::create(["name" => "Super admin"]);
-        $permission = Permission::create(["name" => "remove vaccine"]);
+        $permission_1 = Permission::create(["name" => "remove vaccine"]);
+        $permission_2 = Permission::create(["name" => "remove person vaccination"]);
+        $permission_3 = Permission::create(["name" => "remove person"]);
     }
 }

@@ -215,12 +215,16 @@ class AdministratorsTest extends TestCase
 
     public function test_an_administrator_can_edit_a_doctor_with_delete_vaccine_permissions(){
 
-        /* $this->withoutExceptionHandling(); */
+        $this->withoutExceptionHandling();
         $this->signInAsAdministrator();
 
         $doctor = User::factory()->create();
 
-        $attributes = ["delete_vaccine_permission" => true];
+        $attributes = [
+            "delete_vaccine_permission"            => true,
+            "delete_person_vaccination_permission" => true,
+            "delete_person_permission"             => true
+        ];
 
         $this->put($doctor->path(), $attributes)
             ->assertRedirect($doctor->path()."/editar");
@@ -229,6 +233,8 @@ class AdministratorsTest extends TestCase
         $doctor->refresh();
 
         $this->assertTrue($doctor->hasPermissionTo("remove vaccine"));
+        $this->assertTrue($doctor->hasPermissionTo("remove person vaccination"));
+        $this->assertTrue($doctor->hasPermissionTo("remove person"));
         
     }
 
