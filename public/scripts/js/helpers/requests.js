@@ -20,7 +20,7 @@ export function createVaccination(name) {
 }
 
 export async function deleteVaccination(id, password) {
-    return POST(`${VACCINATIONS_URL}/${id}/eliminar`,{ password });
+    return DELETE(`${VACCINATIONS_URL}/${id}/eliminar`, { data: { password } });
 }
 
 export async function editVaccination(name, id) {
@@ -77,8 +77,8 @@ export function createPersonVaccination(
     });
 }
 
-export async function deletePersonVaccination(id) {
-    return DELETE(`${PERSON_VACCINATIONS_URL}/${id}`);
+export async function deletePersonVaccination(id, password) {
+    return DELETE(`${PERSON_VACCINATIONS_URL}/${id}`, { data: { password } });
 }
 
 export async function editPersonVaccination(
@@ -98,8 +98,8 @@ export async function editPersonVaccination(
     });
 }
 
-export async function deletePerson(id) {
-    return DELETE(`${PERSONS_URL}/${id}`);
+export async function deletePerson(id, password) {
+    return DELETE(`${PERSONS_URL}/${id}`, { data: { password } });
 }
 
 export async function getStreets() {
@@ -117,9 +117,11 @@ export async function isValidDni(dni) {
 export async function deleteAdmin(id) {
     return DELETE(`${ADMIN_URL}/${id}`);
 }
+
 export async function deletePost(id) {
     return DELETE(`${POSTS_URL}/${id}`);
 }
+
 export async function deleteComment(id) {
     return DELETE(`${COMMENTS_URL}/${id}`);
 }
