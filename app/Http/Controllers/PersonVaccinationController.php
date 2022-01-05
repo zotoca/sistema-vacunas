@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\PersonVaccination;
 use App\Http\Requests\PersonVaccinationCreateRequest;
 use App\Http\Requests\PersonVaccinationUpdateRequest;
+use App\Http\Requests\PersonVaccinationDeleteRequest;
+
 
 class PersonVaccinationController extends Controller
 {
@@ -28,7 +30,7 @@ class PersonVaccinationController extends Controller
         return response()->json(["message" => "ok"]);
     }
 
-    public function delete(Request $request,PersonVaccination $person_vaccination){
+    public function delete(PersonVaccinationDeleteRequest $request,PersonVaccination $person_vaccination){
         $user = auth()->user();
 
 

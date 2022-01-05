@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
 use App\Models\PersonVaccination;
@@ -11,11 +12,25 @@ use App\Models\Vaccination;
 use App\Models\Person;
 use App\Models\User;
 
+
 class PersonVaccinationsTest extends TestCase
 {
     use RefreshDatabase;
+/* 
+    public function test_a_doctor_can_see_all_the_person_vaccinations(){
+        $this->signIn();
 
-    
+        $person_vaccinations = PersonVaccination::factory(5)->create();
+
+
+        $response = $this->get("/vacunaciones")
+        ->assertStatus(200)
+        ->assertSee($person_vaccinations[0]->dose);
+
+
+
+    }    
+ */
     public function test_a_doctor_can_search_a_person_vaccination_by_her_vaccination_date(){
 
         $this->signIn();
@@ -164,7 +179,10 @@ class PersonVaccinationsTest extends TestCase
     }
 
     public function test_a_doctor_with_permission_can_delete_a_person_vaccination(){
-        $doctor = User::factory()->create();
+        $password = "Secret123";
+        $hashed_password = Hash::make($password);
+
+        $doctor = User::factory()->create(["password" => $hashed_password]);
         $this->signIn($doctor);
 
         $doctor->givePermissionTo("remove person vaccination");
@@ -173,7 +191,7 @@ class PersonVaccinationsTest extends TestCase
         $person = $person_vaccination->person;
 
 
-        $this->delete("/api" . $person_vaccination->path())
+        $this->delete("/api" . $person_vaccination->path(),["password" => $password])
             ->assertStatus(200)
             ->assertJson(["message" => "ok"]);
        
@@ -184,16 +202,44 @@ class PersonVaccinationsTest extends TestCase
         $this->assertDatabaseMissing("person_vaccination", ["id" => $person_vaccination->id]);
     }
 
+    public function test_a_doctor_with_permission_cannot_delete_a_person_vaccination_with_wrong_password(){
+        $password = "Secret123";
+        $hashed_password = Hash::make($password);
+
+
+        $doctor = User::factory()->create(["password" => $hashed_password]);
+        $this->signIn($doctor);
+
+        $doctor->givePermissionTo("remove person vaccination");
+
+        $person_vaccination = PersonVaccination::factory()->create();
+        $person = $person_vaccination->person;
+
+        $this->delete("/api" . $person_vaccination->path(),["password" => "wrongpassword"])
+            ->assertStatus(302);
+       
+        $this->get($person->path()."/vacunas-personas")
+        ->assertStatus(200)
+        ->assertSee($person_vaccination->dose);
+
+        $this->assertDatabaseHas("person_vaccination", ["id" => $person_vaccination->id]);
+    }
+
 
     public function test_a_doctor_without_permission_cannot_delete_a_person(){
         
-        $this->signIn();
+        $password = "Secret123";
+        $hashed_password = Hash::make($password);
+
+
+        $doctor = User::factory()->create(["password" => $hashed_password]);
+        $this->signIn($doctor);
 
         $person_vaccination = PersonVaccination::factory()->create();
         $person = $person_vaccination->person;
 
 
-        $this->delete("/api" . $person_vaccination->path())
+        $this->delete("/api" . $person_vaccination->path(),["password" => $password])
             ->assertStatus(403);
        
         $this->get($person->path()."/vacunas-personas")

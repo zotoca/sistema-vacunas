@@ -199,6 +199,32 @@ class VaccinationsTest extends TestCase
 
     }
 
+    public function test_a_doctor_with_permissions_cannot_delete_a_vaccination_with_a_wrong_password(){
+       
+        $password = "Secret123";
+        $hashed_password = Hash::make($password);
+        
+        $user = User::factory()->create(["password" => $hashed_password]);
+        $this->signIn($user);
+        $user->givePermissionTo("remove vaccine");
+
+
+        $vaccination = Vaccination::factory()->create();
+        
+        $this->delete($vaccination->path()."/eliminar",["password" => "wrongpassword"])
+            ->assertStatus(302);
+
+        $this->get("/vacunas")
+            ->assertStatus(200)
+            ->assertSee($vaccination->name);
+        
+        
+        $this->assertDatabaseHas("vaccinations", ["name" => $vaccination->name]);
+
+
+
+    }
+
     public function test_an_administrator_can_get_vaccinations_api(){
         $this->withoutExceptionHandling();
         $this->signInAsAdministrator();
