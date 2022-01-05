@@ -12,6 +12,7 @@ use Storage;
 
 use App\Http\Requests\PersonCreateRequest;
 use App\Http\Requests\PersonUpdateRequest;
+use App\Http\Requests\PersonDeleteRequest;
 use App\Http\Requests\DniRequest;
 use App\Models\Person;
 use App\Models\Vaccination;
@@ -164,7 +165,7 @@ class PersonController extends Controller
     }
 
 
-    public function destroy(Person $person){
+    public function destroy(PersonDeleteRequest $request, Person $person){
         
         $user = auth()->user();
 

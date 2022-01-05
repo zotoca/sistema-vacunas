@@ -8,6 +8,7 @@ use Tests\TestCase;
 use Storage;
 use Illuminate\Http\UploadedFile;
 use Carbon\Carbon;
+use Hash;
 
 use App\Models\Person;
 use App\Models\PersonVaccination;
@@ -198,15 +199,18 @@ class PersonsTest extends TestCase
 
     public function test_a_doctor_with_permissions_can_delete_a_person(){
         $this->withoutExceptionHandling();
-        $doctor = User::factory()->create();
 
-
+        $password = "Secret123";
+        $hashed_password = Hash::make($password);
+        
+        $doctor = User::factory()->create(["password" => $hashed_password]);
         $this->signIn($doctor);
+
         $doctor->givePermissionTo("remove person");
 
         $person = Person::factory()->create();
 
-        $this->delete($person->path())
+        $this->delete($person->path(),["password" => $password])
             ->assertStatus(200);
 
         $this->get("/personas")
@@ -217,18 +221,47 @@ class PersonsTest extends TestCase
         $this->assertDatabaseMissing("persons", ["first_name" => $person->first_name]);
     }
 
+
+
     public function test_a_doctor_without_permissions_cannot_delete_a_person(){
         $this->withoutExceptionHandling();
 
+        $password = "Secret123";
+        $hashed_password = Hash::make($password);
+        
+        $doctor = User::factory()->create(["password" => $hashed_password]);
 
-
-        $this->signIn();
+        $this->signIn($doctor);
    
+        $person = Person::factory()->create();
+
+
+        $this->delete($person->path(),["password" => $password])
+            ->assertStatus(403);
+
+
+        $this->get("/personas")
+            ->assertStatus(200)
+            ->assertSee($person->first_name);
+        
+        $this->assertDatabaseHas("persons", ["first_name" => $person->first_name]);
+    }
+
+    public function test_a_doctor_with_permissions_cannot_delete_a_person_with_wrong_password(){
+        
+
+        $password = "Secret123";
+        $hashed_password = Hash::make($password);
+        
+        $doctor = User::factory()->create(["password" => $hashed_password]);
+        $this->signIn($doctor);
+
+        $doctor->givePermissionTo("remove person");
 
         $person = Person::factory()->create();
 
-        $this->delete($person->path())
-            ->assertStatus(403);
+        $this->delete($person->path(),["password" => "wrongpassword"])
+            ->assertStatus(302);
 
         $this->get("/personas")
             ->assertStatus(200)
@@ -237,6 +270,7 @@ class PersonsTest extends TestCase
         
         $this->assertDatabaseHas("persons", ["first_name" => $person->first_name]);
     }
+
 
     public function test_a_doctor_can_verificate_dni_api(){
 

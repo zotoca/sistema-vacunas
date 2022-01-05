@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\UserLog;
 use App\Models\Person;
 use Storage;
+use Hash;
 use Illuminate\Http\UploadedFile;
 
 
@@ -288,9 +289,12 @@ class AdministratorsTest extends TestCase
 
     public function test_a_doctor_can_create_doctor_actions(){
         
-        $doctor = User::factory()->create();
-
+        $password = "Secret123";
+        $hashed_password = Hash::make($password);
+        
+        $doctor = User::factory()->create(["password" => $hashed_password]);
         $this->signIn($doctor);
+
         $doctor->givePermissionTo("remove person");
 
         $attributes = Person::factory()->raw();
@@ -306,7 +310,7 @@ class AdministratorsTest extends TestCase
         $this->put($edit_person->path(), $edit_person_attributes)
             ->assertStatus(302);
         
-        $this->delete($delete_person->path())
+        $this->delete($delete_person->path(),["password" => $password])
             ->assertStatus(200);
 
         $this->get("/registro-personas")
