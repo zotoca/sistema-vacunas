@@ -102,8 +102,9 @@ let loadInputs = async (
 ) => {
     let vaccinationSelect = await loadVaccinationSelect(vaccinationId);
 
-    let doseInput = `<input type="text" name="dose" class="swal2-input" id="person-vaccination-dose" value="${dose}" placeholder="Dosis"/>`;
-
+   
+    let doseInput = loadDoseSelect(dose);
+    console.log(doseInput);
     let lotNumberInput = `<input type="text" name="lot_number" class="swal2-input" id="person-vaccination-lot-number" value="${lotNumber}" placeholder="Numero de lote"/>`;
 
     let dateInput = `<input type="date" name="vaccination_date" class="swal2-input" id="person-vaccination-vaccination-date" value="${vaccinationDate}" placeholder="Fecha de vacunacion">`;
@@ -121,6 +122,18 @@ let loadInputs = async (
         isVaccinatedInput
     );
 };
+
+let loadDoseSelect = (dose) => {
+
+    let doseInput = '<select name="dose" class="swal2-input" id="person-vaccination-dose"  placeholder="Dosis">';
+    for(let i = 1; i < 10; i++){
+        doseInput += `<option value=${i} ${dose == i?"selected":""} >${i}</option>`
+    }
+
+    return doseInput += "</select>";
+    
+
+}
 
 let loadVaccinationSelect = async (vaccinationId) => {
     //Cargamos la primera parte del select

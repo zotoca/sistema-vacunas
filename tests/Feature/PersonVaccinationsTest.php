@@ -16,8 +16,8 @@ use App\Models\User;
 class PersonVaccinationsTest extends TestCase
 {
     use RefreshDatabase;
-/* 
-    public function test_a_doctor_can_see_all_the_person_vaccinations(){
+
+    /* public function test_a_doctor_can_see_all_the_person_vaccinations(){
         $this->signIn();
 
         $person_vaccinations = PersonVaccination::factory(5)->create();
@@ -27,10 +27,8 @@ class PersonVaccinationsTest extends TestCase
         ->assertStatus(200)
         ->assertSee($person_vaccinations[0]->dose);
 
+    }     */
 
-
-    }    
- */
     public function test_a_doctor_can_search_a_person_vaccination_by_her_vaccination_date(){
 
         $this->signIn();
@@ -75,8 +73,8 @@ class PersonVaccinationsTest extends TestCase
 
         $this->get($person->path(). "/vacunas-personas?vaccination-id=".$person_vaccinations[0]->vaccination_id)
             ->assertStatus(200)
-            ->assertSee($person_vaccinations[0]->dose)
-            ->assertDontSee($person_vaccinations[1]->dose);
+            ->assertSee("Dosis: " . $person_vaccinations[0]->dose)
+            ->assertDontSee("Dosis: " . $person_vaccinations[1]->dose);
     }
 
     public function test_a_doctor_can_search_a_person_vaccination_by_her_dose(){
@@ -89,8 +87,8 @@ class PersonVaccinationsTest extends TestCase
 
         $this->get($person->path(). "/vacunas-personas?dose=".$person_vaccinations[0]->dose)
             ->assertStatus(200)
-            ->assertSee($person_vaccinations[0]->dose)
-            ->assertDontSee($person_vaccinations[1]->dose);
+            ->assertSee("Dosis: " . $person_vaccinations[0]->dose)
+            ->assertDontSee("Dosis: " . $person_vaccinations[1]->dose);
     }
 
     public function test_a_doctor_can_search_a_person_vaccination_if_is_vaccinated(){
@@ -104,8 +102,8 @@ class PersonVaccinationsTest extends TestCase
 
         $this->get($person->path(). "/vacunas-personas?is-vaccinated=1")
             ->assertStatus(200)
-            ->assertSee($person_vaccination_vaccinated->dose)
-            ->assertDontSee($person_vaccination_not_vaccinated->dose);
+            ->assertSee("Dosis: " . $person_vaccination_vaccinated->dose)
+            ->assertDontSee("Dosis: " . $person_vaccination_not_vaccinated->dose);
     }
 
     
@@ -114,12 +112,13 @@ class PersonVaccinationsTest extends TestCase
 
     public function test_a_doctor_can_create_a_person_vaccination(){
 
-        
+        $this->withoutExceptionHandling();  
         $this->signIn();
 
         $attributes = PersonVaccination::factory()->raw();
+        
 
-        $this->withoutExceptionHandling();
+      
 
         $this->post("/api/vacunas-personas",$attributes)
             ->assertStatus(200)
@@ -130,8 +129,9 @@ class PersonVaccinationsTest extends TestCase
         $this->get($person->path()."/vacunas-personas")
             ->assertStatus(200)
             ->assertSee($attributes["vaccination_date"]);
+        $person_vaccination = PersonVaccination::find(["vaccination_id" => $attributes["vaccination_id"]]);
         
-        $this->assertDatabaseHas("person_vaccination", ["vaccination_id" => $attributes["vaccination_id"]]);
+        $this->assertDatabaseHas("person_vaccination", ["dose" => $attributes["dose"]]);
     }
 
 
@@ -172,7 +172,7 @@ class PersonVaccinationsTest extends TestCase
 
         $this->get($person->path()."/vacunas-personas")
             ->assertStatus(200)
-            ->assertSee($attributes["dose"]);
+            ->assertSee("Dosis: " . $attributes["dose"]);
         
         
         $this->assertDatabaseHas("person_vaccination", ["id" => $person_vaccination->id, "dose" => $attributes["dose"]]);
@@ -197,7 +197,7 @@ class PersonVaccinationsTest extends TestCase
        
         $this->get($person->path()."/vacunas-personas")
         ->assertStatus(200)
-        ->assertDontSee($person_vaccination->dose);
+        ->assertDontSee("Dosis: " . $person_vaccination->dose);
 
         $this->assertDatabaseMissing("person_vaccination", ["id" => $person_vaccination->id]);
     }
@@ -220,7 +220,7 @@ class PersonVaccinationsTest extends TestCase
        
         $this->get($person->path()."/vacunas-personas")
         ->assertStatus(200)
-        ->assertSee($person_vaccination->dose);
+        ->assertSee("Dosis: " . $person_vaccination->dose);
 
         $this->assertDatabaseHas("person_vaccination", ["id" => $person_vaccination->id]);
     }
@@ -244,7 +244,7 @@ class PersonVaccinationsTest extends TestCase
        
         $this->get($person->path()."/vacunas-personas")
         ->assertStatus(200)
-        ->assertSee($person_vaccination->dose);
+        ->assertSee("Dosis: " . $person_vaccination->dose);
 
         $this->assertDatabaseHas("person_vaccination", ["id" => $person_vaccination->id]);
 

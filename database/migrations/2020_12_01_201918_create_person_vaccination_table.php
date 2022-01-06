@@ -17,7 +17,7 @@ class CreatePersonVaccinationTable extends Migration
             $table->id();
             $table->date("vaccination_date");
 
-            $table->string("dose")
+            $table->integer("dose")
                 ->nullable();
             
             $table->string("lot_number")

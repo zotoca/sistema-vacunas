@@ -20,9 +20,9 @@
 
                         <h6 class="card-text pl-1">
                             <span class="font-weight-bold mr-1">
-                                Dosis:
+                                Dosis: {{ $person_vaccination->dose == '' ? 'No especificada' : $person_vaccination->dose }}
                             </span>
-                            {{ $person_vaccination->dose == '' ? 'No especificada' : $person_vaccination->dose }}
+                            
                         </h6>
 
                         <h6 class="card-text pl-1">

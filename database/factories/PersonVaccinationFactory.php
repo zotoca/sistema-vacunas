@@ -25,7 +25,7 @@ class PersonVaccinationFactory extends Factory
     public function definition()
     {
         return [
-            "dose" => $this->faker->sentence,
+            "dose" => $this->faker->randomNumber(1),
             "lot_number" => $this->faker->sentence,
             "is_vaccinated" => false,
             "vaccination_date" => $this->faker->date,
