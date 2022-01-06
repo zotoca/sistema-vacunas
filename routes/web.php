@@ -33,6 +33,8 @@ Route::get("/noticias", "App\Http\Controllers\NewsController@index");
 Route::group(["middleware" => "auth"], function(){
     Route::get("/panel", "App\Http\Controllers\DashboardController@index");
     
+    Route::get("/calendarios-de-vacunas", "App\Http\Controllers\PersonVaccinationController@index");
+
     Route::get("/vacunas", "App\Http\Controllers\VaccinationController@index");
     Route::post("/vacunas", "App\Http\Controllers\VaccinationController@store");
     Route::put("/vacunas/{vaccination}", "App\Http\Controllers\VaccinationController@update");    

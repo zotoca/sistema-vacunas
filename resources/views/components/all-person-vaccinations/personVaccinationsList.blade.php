@@ -20,9 +20,8 @@
 
                         <h6 class="card-text pl-1">
                             <span class="font-weight-bold mr-1">
-                                Dosis:
+                                Dosis: {{ $person_vaccination->dose == '' ? 'No especificada' : $person_vaccination->dose }}
                             </span>
-                            {{ $person_vaccination->dose == '' ? 'No especificada' : $person_vaccination->dose }}
                         </h6>
 
                         <h6 class="card-text pl-1">
@@ -37,7 +36,7 @@
                             {{ $person_vaccination->is_vaccinated == 1 ? 'Si' : 'No' }}
                         </h6>
 
-                        <div class="row w-100 m-0">
+                       <!--  <div class="row w-100 m-0">
                             <div class="col-sm-12 col-lg-6 p-1">
                                 <button class="btn btn-sm btn-primary btn-block"
                                     data-id="{{ $person_vaccination->id }}"
@@ -51,7 +50,6 @@
                                 </button>
                             </div>
 
-                            <!-- If the admin CAN delete the person vaccine -->
                             @can('remove person vaccination')
                                 <div class="col-sm-12 col-lg-6 p-1">
                                     <button class="btn btn-sm btn-danger btn-block"
@@ -61,7 +59,7 @@
                                     </button>
                                 </div>
                             @endcan
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>

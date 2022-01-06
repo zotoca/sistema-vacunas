@@ -17,17 +17,17 @@ class PersonVaccinationsTest extends TestCase
 {
     use RefreshDatabase;
 
-    /* public function test_a_doctor_can_see_all_the_person_vaccinations(){
+    public function test_a_doctor_can_see_all_the_person_vaccinations(){
         $this->signIn();
 
         $person_vaccinations = PersonVaccination::factory(5)->create();
 
 
-        $response = $this->get("/vacunaciones")
+        $response = $this->get("/calendarios-de-vacunas")
         ->assertStatus(200)
-        ->assertSee($person_vaccinations[0]->dose);
+        ->assertSee("Dosis: " . $person_vaccinations[0]->dose);
 
-    }     */
+    }    
 
     public function test_a_doctor_can_search_a_person_vaccination_by_her_vaccination_date(){
 
