@@ -165,6 +165,20 @@ class PersonController extends Controller
     }
 
 
+    public function personVaccinationPrint(Request $request, Person $person){
+
+        $person_vaccinations = $person
+            ->personVaccinations()
+            ->get();
+        
+        $context_data = [
+            "person_vaccinations" => $person_vaccinations, 
+            "person" => $person,
+        ];
+        return View::make("components.person-vaccination.print-vaccinations.index",$context_data);
+    }
+
+
     public function destroy(PersonDeleteRequest $request, Person $person){
         
         $user = auth()->user();

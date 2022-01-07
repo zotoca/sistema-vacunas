@@ -47,6 +47,7 @@ Route::group(["middleware" => "auth"], function(){
     Route::get("/personas/{person}/editar", "App\Http\Controllers\PersonController@edit");
     Route::put("/personas/{person}", "App\Http\Controllers\PersonController@update");
     Route::get("/personas/{person}/vacunas-personas", "App\Http\Controllers\PersonController@personVaccinations");    
+    Route::get("/personas/{person}/imprimir-vacunas-personas", "App\Http\Controllers\PersonController@personVaccinationPrint");
     Route::delete("/personas/{person}", "App\Http\Controllers\PersonController@destroy");
     
     Route::get("/administradores", "App\Http\Controllers\AdministratorController@index");
