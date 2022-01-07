@@ -31,6 +31,9 @@
         <script src="{{asset("scripts/vendors/lightbox.min.js")}}"></script>
         <script src="{{asset("scripts/vendors/bootstrap.js")}}"></script>
         <script src="{{asset("scripts/vendors/polyfill.js")}}"></script>
+        <script src="{{asset("scripts/vendors/html2canvas.min.js")}}"></script>
+        <script src="{{asset("scripts/vendors/jspdf.umd.min.js")}}"></script>
+
         <script src="{{asset("scripts/vendors/aos.js")}}"></script>
         <script src="{{asset("scripts/js/helpers/darkMode.js")}}" type="module"></script>
         <script src="{{asset("scripts/script.js")}}" type="module"></script>

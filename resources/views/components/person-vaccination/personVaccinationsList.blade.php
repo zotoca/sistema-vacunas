@@ -1,5 +1,5 @@
 <section class="container mt-5" data-aos="fade-up">
-    <div class="row">
+    <div class="row" id="person-vaccinations">
         @forelse($person_vaccinations as $person_vaccination)
             <div class="col-sm-12 col-md-6 col-lg-4 px-2 py-2">
                 <div class="card">
@@ -20,9 +20,10 @@
 
                         <h6 class="card-text pl-1">
                             <span class="font-weight-bold mr-1">
-                                Dosis: {{ $person_vaccination->dose == '' ? 'No especificada' : $person_vaccination->dose }}
+                                Dosis:
+                                {{ $person_vaccination->dose == '' ? 'No especificada' : $person_vaccination->dose }}
                             </span>
-                            
+
                         </h6>
 
                         <h6 class="card-text pl-1">
@@ -39,7 +40,8 @@
 
                         <div class="row w-100 m-0">
                             <div class="col-sm-12 col-lg-6 p-1">
-                                <button class="btn btn-sm btn-primary btn-block" data-id="{{ $person_vaccination->id }}"
+                                <button class="btn btn-sm btn-primary btn-block"
+                                    data-id="{{ $person_vaccination->id }}"
                                     data-vaccination-id="{{ $person_vaccination->vaccination_id }}"
                                     data-vaccination-date="{{ $person_vaccination->vaccination_date }}"
                                     data-dose="{{ $person_vaccination->dose }}"
@@ -53,8 +55,8 @@
                             <!-- If the admin CAN delete the person vaccine -->
                             @can('remove person vaccination')
                                 <div class="col-sm-12 col-lg-6 p-1">
-                                    <button class="btn btn-sm btn-danger btn-block" data-id="{{ $person_vaccination->id }}"
-                                        data-action="delete">
+                                    <button class="btn btn-sm btn-danger btn-block"
+                                        data-id="{{ $person_vaccination->id }}" data-action="delete">
                                         Eliminar
                                         <i class="fa fa-trash-alt ml-1"></i>
                                     </button>
