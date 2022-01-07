@@ -19,12 +19,14 @@ class PersonVaccinationController extends Controller
 
         $vaccination_date = $request->get("vaccination-date");
         
+        $dni = $request->get("dni");
         $vaccination_id = $request->get("vaccination-id");
         $lot_number = $request->get("lot-number");
         $dose = $request->get("dose");
         $is_vaccinated = $request->get("is-vaccinated");
 
         $person_vaccinations = PersonVaccination::vaccinationDate($vaccination_date)
+            ->personDni($dni)
             ->vaccinationId($vaccination_id)
             ->lotNumber($lot_number)
             ->dose($dose)

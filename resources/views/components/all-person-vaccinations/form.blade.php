@@ -22,20 +22,17 @@
 
 
                 <div class="row m-0 p-0 w-100 mt-1">
-                    <div class="col-12 p-0">
-                        <h2 class="font-weight-bold mb-2 lead mt-2">
-                            Buscar desde una dosis y día
-                        </h2>
-                    </div>
+                    
                     <div class="col-sm-12 col-md-4 col-lg-4 p-0">
-                        <label for="days" class="d-block w-100">Día </label>
-                        <input type="number" name="days" placeholder="Días" class="form-control d-block w-100" />
+                        <label for="dni" class="d-block w-100">Cedula: </label>
+                        <input type="text" name="dni" placeholder="Cedula" class="form-control d-block w-100" />
                     </div>
 
                     <div class="col-sm-12 col-md-4 col-lg-4 p-0 px-1">
                         <label for="after-dose" class="d-block w-100">Dosís </label>
-                        <select class="form-control d-block w-100" name="after-dose" id="person-vaccination-dose"
+                        <select class="form-control d-block w-100" name="dose" id="person-vaccination-dose"
                             placeholder="Dosis">
+                            <option value="">Selecciona una opcion</option>
                             @for ($i = 1; $i <= 10; $i++)
                                 <option value="{{ $i }}">{{ $i }}</option>
                             @endfor

@@ -5,11 +5,23 @@
                 <div class="card">
 
                     <div class="card-body">
-                        <h6 class="card-title title pl-1">Vacuna:
+                        
+                        <h6 class="card-title title pl-1">
                             <span class="ml-1">
-                                {{ $person_vaccination->vaccination->name }}
+                                Nombre y apellido: {{ $person_vaccination->person->first_name }} {{ $person_vaccination->person->last_name }}
                             </span>
+                        </h6>
+                        
+                        <h6 class="card-title title pl-1">
+                            <span class="ml-1">
+                                Cedula: {{ $person_vaccination->person->dni }}
+                            </span>
+                        </h6>
 
+                        <h6 class="card-title title pl-1">    
+                            <span class="ml-1">
+                                Vacuna: {{ $person_vaccination->vaccination->name }}
+                            </span>
                         </h6>
                         <hr>
                         <h6 class="card-text pl-1">

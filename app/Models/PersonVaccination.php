@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 
 class PersonVaccination extends Model
 {
@@ -39,6 +40,14 @@ class PersonVaccination extends Model
        
         if($vaccination_id != ""){
             return $query->where("vaccination_id",$vaccination_id);
+        }
+    }
+    public function scopePersonDni($query, $dni){
+       
+        if($dni != ""){
+            return $query->whereHas("person",function (Builder $query) use ($dni){
+                $query->where("dni","like","%$dni%");
+            });
         }
     }
 
