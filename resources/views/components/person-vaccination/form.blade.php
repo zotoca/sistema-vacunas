@@ -7,7 +7,9 @@
                             class="fa fa-plus ml-1"></i></button>
                 </div>
                 <div class="col-12 mt-2">
-                    <button class="btn btn-secondary btn-block" id="print">Imprimir vacunas <i class="fa fa-print ml-1"></i></button>
+                    <a class="btn btn-secondary btn-block"
+                        href="/personas/{{ $person->id }}/imprimir-vacunas-personas">Imprimir vacunas <i
+                            class="fa fa-print ml-1"></i></a>
                 </div>
             </div>
         </div>

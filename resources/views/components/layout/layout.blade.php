@@ -11,8 +11,7 @@
         <link rel="stylesheet" href="{{asset("styles/vendors/fontawesome/css/all.min.css")}}">
         <link rel="stylesheet" href="{{asset("styles/styles.css")}}">
         <link rel="shortcut icon" href="{{asset("favicon.png")}}" type="image/png">
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com">
+    
         <link rel="stylesheet" href="{{asset("styles/fonts/fonts.lato.google.css")}}">
         <link rel="stylesheet" href="{{asset("styles/fonts/fonts.archivoblack.google.css")}}">
        

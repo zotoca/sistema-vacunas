@@ -8,5 +8,4 @@
     @include("components.footer.footer")
 
     <script src={{ asset('scripts/js/personVaccination/personVaccination.js') }} type="module"></script>
-    <script src="{{ asset('scripts/js/all-person-vaccinations/printVaccinations.js') }}"></script>
 @endsection
