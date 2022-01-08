@@ -21,7 +21,7 @@ window.addEventListener("DOMContentLoaded", () => {
         }).then((canvas) => {
             const img = canvas.toDataURL("image/png");
 
-            const marginX = 100;
+            const marginX = 80;
             const marginTop = 70;
 
             pdf.addImage(
@@ -29,7 +29,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 "PNG",
                 marginX,
                 marginTop,
-                pdf.internal.pageSize.getWidth(),
+                pdf.internal.pageSize.getWidth() - 95,
                 pdf.internal.pageSize.getHeight()
             );
             pdf.save("vacunas.pdf");

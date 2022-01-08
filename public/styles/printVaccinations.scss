@@ -40,6 +40,41 @@ body {
     }
 }
 
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.column {
+    padding: 0 0.5rem;
+    width: 50%;
+}
+
+.img {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    margin-left: auto;
+    margin-top: -22px;
+}
+
+table {
+    margin-top: 1rem;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    text-align: center;
+    padding: 0.8rem;
+}
+
 #print {
     display: block;
     margin-top: 1rem;
