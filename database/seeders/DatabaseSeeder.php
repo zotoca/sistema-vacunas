@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
             VaccinationSeeder::class,
             PersonSeeder::class,
+            PersonVaccinationSeeder::class
         ]);
 
     }
