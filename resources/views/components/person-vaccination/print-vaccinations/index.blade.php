@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{ asset('styles/printVaccinations.css') }}">
 
     <div class="container" id="document">
-        <div id="ignorePDF">
+        <div id="ignorePDF" data-name="{{ $person->fullName }}">
             <button id="print">Imprimir documento</button>
         </div>
 

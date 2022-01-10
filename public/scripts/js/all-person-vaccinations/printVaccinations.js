@@ -10,30 +10,20 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const btnPrint = document.getElementById("print");
     const vaccinations = document.getElementById("document");
+    const ignorePdf = vaccinations.querySelector("#ignorePDF");
+    let pdfName = ignorePdf.getAttribute("data-name").replace(/\s/g, "-");
+    pdfName += "-vacunas.pdf";
 
     btnPrint.addEventListener("click", () => {
-        vaccinations.querySelector("#ignorePDF").style.display = "none";
-
-        html2canvas(vaccinations, {
-            scale: 2,
-            width: pdf.internal.pageSize.getWidth(),
-            height: pdf.internal.pageSize.getHeight(),
-        }).then((canvas) => {
-            const img = canvas.toDataURL("image/png");
-
-            const marginX = 80;
-            const marginTop = 70;
-
-            pdf.addImage(
-                img,
-                "PNG",
-                marginX,
-                marginTop,
-                pdf.internal.pageSize.getWidth() - 95,
-                pdf.internal.pageSize.getHeight()
-            );
-            pdf.save("vacunas.pdf");
-            vaccinations.querySelector("#ignorePDF").style.display = "";
+        btnPrint.style.display = "none";
+        pdf.html(document.body, {
+            callback: function (doc) {
+                doc.save(pdfName);
+                btnPrint.style.display = "block";
+                window.open(URL.createObjectURL(doc.output("blob")));
+            },
+            x: 10,
+            y: 10,
         });
     });
 });
