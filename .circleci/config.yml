@@ -62,5 +62,5 @@ jobs:
             sudo apt-get update
             sudo apt-get -qq install git-ftp
             echo "Deploying project ..."
-            git ftp init vacunasmorichal.atwebpages.com/home/www/vacunasmorichal.atwebpages.com --user "3421917_administrador" --passwd "}jYsQ3*92M)Y?;L)" 
+            git ftp init vacunasmorichal.atwebpages.com/vacunasmorichal.atwebpages.com --user "3421917_administrador" --passwd "}jYsQ3*92M)Y?;L)" 
             
