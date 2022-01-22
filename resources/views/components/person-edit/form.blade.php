@@ -79,7 +79,7 @@
                      <div class="loader-data" id="loader-dni-person" style="display: none;"></div>
                   </small>
                </label>
-               <input type="number" class="form-control" name="dni" id="dni" placeholder="0000000" value="{{$person->dni}}" required>
+               <input type="text" class="form-control" name="dni" id="dni" placeholder="0000000" value="{{$person->dni}}" required>
             </div>
             <div class="col-sm-12 col-lg-6">
                @error("phone_number")
