@@ -76,7 +76,7 @@
                Cédula
                <small class="text-muted float-right font-weight-bold">(requerido)</small>
                </label>
-               <input type="number" value="{{old('dni')}}" class="form-control" name="dni" id="dni" placeholder="0000000" required>
+               <input type="text" value="{{old('dni')}}" class="form-control" name="dni" id="dni" placeholder="0000000" required>
             </div>
             <div class="col-sm-12 col-lg-6">
                @error("phone_number")

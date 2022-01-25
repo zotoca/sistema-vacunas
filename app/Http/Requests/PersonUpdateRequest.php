@@ -37,7 +37,7 @@ class PersonUpdateRequest extends FormRequest
             "image" => "nullable|mimes:jpeg,jpg,png,gif,bmp,svg,webp",
             "dni" => [
                 "required_without_all:first_name,last_name,image,gender,birthday,phone_number,address,father_dni,mother_dni",
-                "numeric",
+                "string",
                 Rule::unique("persons")->ignore($person_id, "id")
             ],
             "gender" => "required_without_all:first_name,last_name,image,dni,birthday,phone_number,address,father_dni,mother_dni|in:masculino,femenino",
