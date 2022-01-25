@@ -90,6 +90,7 @@ Route::group(["middleware" => "auth"], function(){
     
     Route::get("/logout", "App\Http\Controllers\AuthController@logout");
     
+    Route::get("/private-files/{path}","App\Http\Controllers\FilesController");
     
 });
 
