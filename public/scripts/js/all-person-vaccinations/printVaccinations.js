@@ -16,14 +16,20 @@ window.addEventListener("DOMContentLoaded", () => {
 
     btnPrint.addEventListener("click", () => {
         btnPrint.style.display = "none";
-        pdf.html(document.body, {
+        pdf.html(vaccinations, {
             callback: function (doc) {
                 doc.save(pdfName);
                 btnPrint.style.display = "block";
                 window.open(URL.createObjectURL(doc.output("blob")));
             },
-            x: 10,
-            y: 10,
+            x: 20,
+            y: 20,
+
+            html2canvas: {
+                scale: "1",
+                scrollX: 0,
+                scrollY: 0,
+            },
         });
     });
 });
